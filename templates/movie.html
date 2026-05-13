@@ -1,0 +1,46 @@
+<section class="movie-hero">
+  <div class="poster-frame">
+    <img src="{poster_url}" alt="{title} poster">
+  </div>
+  <div class="movie-hero__copy">
+    <p class="eyebrow">Movie review and context</p>
+    <h1>{title}</h1>
+    <p class="movie-meta">{release_date} · Directed by {director}</p>
+    <div class="vibe-check" aria-label="Vibe check score {vibe} out of 10">
+      <span>Vibe Check</span>
+      <strong>{vibe}/10</strong>
+    </div>
+    <p class="lede">{teaser}</p>
+  </div>
+</section>
+
+<section class="primer-layout" aria-labelledby="primer-heading">
+  <article class="prose">
+    <p class="eyebrow">The Primer</p>
+    <h2 id="primer-heading">What to know before watching</h2>
+    {primer}
+  </article>
+  <aside class="footnotes" aria-labelledby="footnotes-heading">
+    <h2 id="footnotes-heading">Technical Footnotes</h2>
+    <ul>
+      {technical_footnotes}
+    </ul>
+  </aside>
+</section>
+
+<section class="section-shell prose" aria-labelledby="review-heading">
+  <p class="eyebrow">The Review</p>
+  <h2 id="review-heading">Full critique</h2>
+  {review}
+</section>
+
+<section class="section-shell" aria-labelledby="gallery-heading">
+  <div class="section-heading">
+    <p class="eyebrow">Gallery</p>
+    <h2 id="gallery-heading">Visual references</h2>
+  </div>
+  <ul class="reference-list">
+    {gallery}
+  </ul>
+</section>
+
