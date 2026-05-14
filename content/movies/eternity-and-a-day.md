@@ -3,7 +3,8 @@ title: Eternity and a Day
 slug: eternity-and-a-day
 tmdb_title: Eternity and a Day
 year: 1998
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

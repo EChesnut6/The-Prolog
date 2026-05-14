@@ -3,7 +3,8 @@ title: In the Mood for Love
 slug: in-the-mood-for-love
 tmdb_title: In the Mood for Love
 year: 2000
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: A Brighter Summer Day
 slug: a-brighter-summer-day
 tmdb_title: A Brighter Summer Day
 year: 1991
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

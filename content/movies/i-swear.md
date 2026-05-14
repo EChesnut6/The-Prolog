@@ -3,7 +3,8 @@ title: I Swear
 slug: i-swear
 tmdb_title: I Swear
 year: 2025
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

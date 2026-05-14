@@ -3,7 +3,8 @@ title: Project Hail Mary
 slug: project-hail-mary
 tmdb_title: Project Hail Mary
 year: 2026
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

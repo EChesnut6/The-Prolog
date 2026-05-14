@@ -3,7 +3,8 @@ title: Fantastic Mr. Fox
 slug: fantastic-mr-fox
 tmdb_title: Fantastic Mr. Fox
 year: 2009
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

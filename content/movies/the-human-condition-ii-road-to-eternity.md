@@ -3,7 +3,8 @@ title: The Human Condition II: Road to Eternity
 slug: the-human-condition-ii-road-to-eternity
 tmdb_title: The Human Condition II: Road to Eternity
 year: 1959
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

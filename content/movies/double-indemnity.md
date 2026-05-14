@@ -3,7 +3,8 @@ title: Double Indemnity
 slug: double-indemnity
 tmdb_title: Double Indemnity
 year: 1944
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

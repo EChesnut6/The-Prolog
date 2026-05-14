@@ -4,7 +4,7 @@ Key Sections Needed:
 
 Header: Minimalist title and navigation.
 
-Hero Section: Large movie poster placeholder on the left, movie title, and 'Vibe Check' (a 1-10 scale for mood/intensity) on the right.
+Hero Section: Large movie poster placeholder on the left, movie title, and separate enjoyment/filmmaking ratings on the right.
 
 The Primer (Context): A dedicated section for 'What to know before watching' with a sidebar for technical footnotes (e.g., aspect ratio, film stock).
 

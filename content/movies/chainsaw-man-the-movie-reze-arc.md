@@ -3,7 +3,8 @@ title: Chainsaw Man – The Movie: Reze Arc
 slug: chainsaw-man-the-movie-reze-arc
 tmdb_title: Chainsaw Man – The Movie: Reze Arc
 year: 2025
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

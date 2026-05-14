@@ -3,7 +3,8 @@ title: Harakiri
 slug: harakiri
 tmdb_title: Harakiri
 year: 1962
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

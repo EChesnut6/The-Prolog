@@ -3,7 +3,8 @@ title: The Good, the Bad and the Ugly
 slug: the-good-the-bad-and-the-ugly
 tmdb_title: The Good, the Bad and the Ugly
 year: 1966
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

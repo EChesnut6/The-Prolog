@@ -3,7 +3,8 @@ title: Once Upon a Time in the West
 slug: once-upon-a-time-in-the-west
 tmdb_title: Once Upon a Time in the West
 year: 1968
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

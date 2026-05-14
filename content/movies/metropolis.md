@@ -3,7 +3,8 @@ title: Metropolis
 slug: metropolis
 tmdb_title: Metropolis
 year: 1927
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

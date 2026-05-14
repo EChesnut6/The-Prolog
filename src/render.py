@@ -40,7 +40,7 @@ def render_movie(
 ) -> str:
     metadata = {**metadata, **_score_metadata(movie)}
     movie_data = asdict(movie)
-    for key in ("title", "year", "vibe", "teaser"):
+    for key in ("title", "year", "enjoyment_rating", "filmmaking_rating", "teaser"):
         movie_data[key] = escape(str(movie_data[key]))
     movie_data.update(
         {
@@ -48,7 +48,6 @@ def render_movie(
             "release_date": escape(str(metadata.get("release_date", movie.year))),
             "director": escape(str(metadata.get("director", "Director unavailable"))),
             "movie_badges": _render_movie_badges(movie),
-            "letterboxd_note": _render_letterboxd_note(movie),
             "movie_details": _render_movie_details(metadata),
             "technical_footnotes": _render_list(movie.technical_footnotes),
             "technical_specs": _render_specs(movie.technical_specs),
@@ -92,14 +91,18 @@ def _render_movie_card(movie: MovieContent, metadata: dict[str, Any]) -> str:
     title = escape(movie.title)
     teaser = _card_teaser(movie)
     year = escape(movie.year)
-    vibe = escape(movie.vibe)
-    kicker = _card_kicker(movie, vibe)
+    kicker = _card_kicker(movie)
     reviewed = "true" if movie.reviewed else "false"
     status = "Reviewed" if movie.reviewed else "Template"
     hidden = "" if movie.reviewed else " hidden"
-    search_text = escape(" ".join([movie.title, movie.year, metadata.get("director", ""), movie.teaser]).lower())
+    director_raw = str(metadata.get("director", ""))
+    keywords = " ".join(_search_keywords(movie, metadata))
+    title_search = escape(movie.title.lower())
+    director_search = escape(director_raw.lower())
+    year_search = escape(movie.year.lower())
+    keyword_search = escape(keywords.lower())
     return f"""
-<article class="movie-card" data-reviewed="{reviewed}" data-search="{search_text}"{hidden}>
+<article class="movie-card" data-reviewed="{reviewed}" data-title="{title_search}" data-director="{director_search}" data-year="{year_search}" data-keywords="{keyword_search}"{hidden}>
   <a href="public/reviews/{movie.slug}.html">
     <img class="movie-card__poster" src="{poster_url}" alt="{title} poster">
     <div class="movie-card__copy">
@@ -126,9 +129,17 @@ def _score_metadata(movie: MovieContent) -> dict[str, str]:
     }
 
 
-def _card_kicker(movie: MovieContent, vibe: str) -> str:
-    if movie.reviewed and vibe and vibe.upper() != "TBD":
-        return f"Vibe {vibe}/10"
+def _search_keywords(movie: MovieContent, metadata: dict[str, Any]) -> list[str]:
+    genres = metadata.get("genres", [])
+    genre_text = " ".join(str(genre) for genre in genres) if isinstance(genres, list) else str(genres)
+    return [movie.teaser, genre_text]
+
+
+def _card_kicker(movie: MovieContent) -> str:
+    if movie.reviewed:
+        ratings = _rating_summary(movie)
+        if ratings:
+            return ratings
     return "Pre-flight template"
 
 
@@ -140,20 +151,34 @@ def _card_teaser(movie: MovieContent) -> str:
 
 def _render_movie_badges(movie: MovieContent) -> str:
     badges = []
-    if movie.vibe and movie.vibe.upper() != "TBD":
+    if movie.enjoyment_rating and movie.enjoyment_rating.upper() != "TBD":
         badges.append(
             f"""
-<div class="vibe-check" aria-label="Vibe check score {escape(movie.vibe)} out of 10">
-  <span>Vibe Check</span>
-  <strong>{escape(movie.vibe)}/10</strong>
+<div class="rating-check" aria-label="Enjoyment rating {escape(movie.enjoyment_rating)} out of 10">
+  <span>Enjoyment</span>
+  <strong>{escape(movie.enjoyment_rating)}/10</strong>
+</div>
+""".strip()
+        )
+    if movie.filmmaking_rating and movie.filmmaking_rating.upper() != "TBD":
+        badges.append(
+            f"""
+<div class="rating-check" aria-label="Filmmaking rating {escape(movie.filmmaking_rating)} out of 10">
+  <span>Filmmaking</span>
+  <strong>{escape(movie.filmmaking_rating)}/10</strong>
 </div>
 """.strip()
         )
     return "\n".join(badges)
 
 
-def _render_letterboxd_note(movie: MovieContent) -> str:
-    return ""
+def _rating_summary(movie: MovieContent) -> str:
+    ratings = []
+    if movie.enjoyment_rating and movie.enjoyment_rating.upper() != "TBD":
+        ratings.append(f"Enjoyment {escape(movie.enjoyment_rating)}/10")
+    if movie.filmmaking_rating and movie.filmmaking_rating.upper() != "TBD":
+        ratings.append(f"Filmmaking {escape(movie.filmmaking_rating)}/10")
+    return " · ".join(ratings)
 
 
 def _render_list(items: list[str]) -> str:
@@ -185,6 +210,8 @@ def _rating_detail(metadata: dict[str, Any]) -> tuple[str, str] | None:
 
 
 def _render_specs(specs: dict[str, str]) -> str:
+    if not specs:
+        return ""
     return _render_definition_list(specs.items())
 
 

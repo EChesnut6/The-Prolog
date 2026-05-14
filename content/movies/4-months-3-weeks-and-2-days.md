@@ -3,7 +3,8 @@ title: 4 Months, 3 Weeks and 2 Days
 slug: 4-months-3-weeks-and-2-days
 tmdb_title: 4 Months, 3 Weeks and 2 Days
 year: 2007
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

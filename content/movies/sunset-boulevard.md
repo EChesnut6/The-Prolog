@@ -3,7 +3,8 @@ title: Sunset Boulevard
 slug: sunset-boulevard
 tmdb_title: Sunset Boulevard
 year: 1950
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

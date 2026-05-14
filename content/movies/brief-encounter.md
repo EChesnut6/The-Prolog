@@ -3,7 +3,8 @@ title: Brief Encounter
 slug: brief-encounter
 tmdb_title: Brief Encounter
 year: 1945
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

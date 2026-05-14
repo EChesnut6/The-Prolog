@@ -3,7 +3,8 @@ title: The Secret in Their Eyes
 slug: the-secret-in-their-eyes
 tmdb_title: The Secret in Their Eyes
 year: 2009
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

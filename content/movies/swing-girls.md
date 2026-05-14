@@ -3,7 +3,8 @@ title: Swing Girls
 slug: swing-girls
 tmdb_title: Swing Girls
 year: 2004
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

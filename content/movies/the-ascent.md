@@ -3,7 +3,8 @@ title: The Ascent
 slug: the-ascent
 tmdb_title: The Ascent
 year: 1977
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

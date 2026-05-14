@@ -3,7 +3,8 @@ title: Singin' in the Rain
 slug: singin-in-the-rain
 tmdb_title: Singin' in the Rain
 year: 1952
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

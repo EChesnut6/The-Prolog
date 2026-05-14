@@ -3,7 +3,8 @@ title: Wings of Desire
 slug: wings-of-desire
 tmdb_title: Wings of Desire
 year: 1987
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

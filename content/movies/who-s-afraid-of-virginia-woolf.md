@@ -3,7 +3,8 @@ title: Who's Afraid of Virginia Woolf?
 slug: who-s-afraid-of-virginia-woolf
 tmdb_title: Who's Afraid of Virginia Woolf?
 year: 1966
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

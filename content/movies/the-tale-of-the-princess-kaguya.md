@@ -3,7 +3,8 @@ title: The Tale of The Princess Kaguya
 slug: the-tale-of-the-princess-kaguya
 tmdb_title: The Tale of The Princess Kaguya
 year: 2013
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

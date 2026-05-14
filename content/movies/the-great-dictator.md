@@ -3,7 +3,8 @@ title: The Great Dictator
 slug: the-great-dictator
 tmdb_title: The Great Dictator
 year: 1940
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

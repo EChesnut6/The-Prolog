@@ -3,7 +3,8 @@ title: Son of the White Mare
 slug: son-of-the-white-mare
 tmdb_title: Son of the White Mare
 year: 1981
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Before Sunset
 slug: before-sunset
 tmdb_title: Before Sunset
 year: 2004
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Pather Panchali
 slug: pather-panchali
 tmdb_title: Pather Panchali
 year: 1955
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

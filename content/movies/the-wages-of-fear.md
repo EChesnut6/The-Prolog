@@ -3,7 +3,8 @@ title: The Wages of Fear
 slug: the-wages-of-fear
 tmdb_title: The Wages of Fear
 year: 1953
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

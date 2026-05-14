@@ -3,7 +3,8 @@ title: To Be or Not to Be
 slug: to-be-or-not-to-be
 tmdb_title: To Be or Not to Be
 year: 1942
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

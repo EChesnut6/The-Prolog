@@ -3,7 +3,8 @@ title: Sing Sing
 slug: sing-sing
 tmdb_title: Sing Sing
 year: 2023
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

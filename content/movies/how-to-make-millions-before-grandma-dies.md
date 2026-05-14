@@ -3,7 +3,8 @@ title: How to Make Millions Before Grandma Dies
 slug: how-to-make-millions-before-grandma-dies
 tmdb_title: How to Make Millions Before Grandma Dies
 year: 2024
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

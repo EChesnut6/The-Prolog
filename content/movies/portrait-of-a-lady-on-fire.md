@@ -3,7 +3,8 @@ title: Portrait of a Lady on Fire
 slug: portrait-of-a-lady-on-fire
 tmdb_title: Portrait of a Lady on Fire
 year: 2019
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

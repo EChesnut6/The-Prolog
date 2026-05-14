@@ -3,7 +3,8 @@ title: La Dolce Vita
 slug: la-dolce-vita
 tmdb_title: La Dolce Vita
 year: 1960
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

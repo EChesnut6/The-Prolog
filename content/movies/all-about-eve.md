@@ -3,7 +3,8 @@ title: All About Eve
 slug: all-about-eve
 tmdb_title: All About Eve
 year: 1950
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

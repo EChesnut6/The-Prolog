@@ -3,7 +3,8 @@ title: Autumn Sonata
 slug: autumn-sonata
 tmdb_title: Autumn Sonata
 year: 1978
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

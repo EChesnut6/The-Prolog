@@ -3,7 +3,8 @@ title: I'm Still Here
 slug: i-m-still-here
 tmdb_title: I'm Still Here
 year: 2024
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: The Treasure of the Sierra Madre
 slug: the-treasure-of-the-sierra-madre
 tmdb_title: The Treasure of the Sierra Madre
 year: 1948
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Apur Sansar
 slug: apur-sansar
 tmdb_title: Apur Sansar
 year: 1959
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

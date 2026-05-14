@@ -3,7 +3,8 @@ title: Saving Private Ryan
 slug: saving-private-ryan
 tmdb_title: Saving Private Ryan
 year: 1998
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

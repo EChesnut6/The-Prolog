@@ -3,7 +3,8 @@ title: City of God
 slug: city-of-god
 tmdb_title: City of God
 year: 2002
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

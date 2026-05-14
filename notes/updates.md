@@ -1,9 +1,10 @@
-Add search for movies
-Add metadata flag for "reviewed" if a movie still has the template
-    it shouldn't be visible unless searched
-Too many movies on the main page, break it up
-Remove letterboxd ranking, it doesn't matter
-Remove TMDB ID from movie info page
-Consider getting letterboxd score rather than using TMDB,
-    if can't use letterboxd, use imdb score instead, if that doesn't work, then Tmdb works
-Need to add the movie db recognition to homescreen
+no more "vibe" rating
+    instead, I want to have two, 
+        one for the enjoyment/how much fun was had watching it, 
+        and another for the actual filmaking quality of it
+Error on technical footnotes section of movies that have been reviewed where it says "Details forthcoming" despite that field being complete
+Change the color of the x on the search bar to gold like the rest of the site
+Edits for search
+    the hierarchy for the search should be Title, Director, Year, Keywords
+Need to add TMDB recognition to homescreen, bottom section, just a quick shoutout with a link to their website
+    https://www.themoviedb.org/?language=en-US

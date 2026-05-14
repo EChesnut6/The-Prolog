@@ -3,7 +3,8 @@ title: Casablanca
 slug: casablanca
 tmdb_title: Casablanca
 year: 1942
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

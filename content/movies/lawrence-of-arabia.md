@@ -3,7 +3,8 @@ title: Lawrence of Arabia
 slug: lawrence-of-arabia
 tmdb_title: Lawrence of Arabia
 year: 1962
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

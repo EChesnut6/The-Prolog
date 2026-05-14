@@ -3,7 +3,8 @@ title: Still Walking
 slug: still-walking
 tmdb_title: Still Walking
 year: 2008
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

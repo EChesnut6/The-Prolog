@@ -3,7 +3,8 @@ title: Mulholland Drive
 slug: mulholland-drive
 tmdb_title: Mulholland Drive
 year: 2001
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

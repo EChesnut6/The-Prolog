@@ -3,7 +3,8 @@ title: Amadeus
 slug: amadeus
 tmdb_title: Amadeus
 year: 1984
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

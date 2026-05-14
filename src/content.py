@@ -11,7 +11,8 @@ class MovieContent:
     slug: str
     tmdb_title: str
     year: str
-    vibe: str
+    enjoyment_rating: str
+    filmmaking_rating: str
     teaser: str
     reviewed: bool
     letterboxd_rank: str
@@ -43,7 +44,8 @@ def load_movie(path: Path) -> MovieContent:
         slug=slug,
         tmdb_title=metadata.get("tmdb_title", title),
         year=metadata.get("year", ""),
-        vibe=metadata.get("vibe", ""),
+        enjoyment_rating=metadata.get("enjoyment_rating", ""),
+        filmmaking_rating=metadata.get("filmmaking_rating", ""),
         teaser=metadata.get("teaser", ""),
         reviewed=_reviewed(metadata, sections),
         letterboxd_rank=metadata.get("letterboxd_rank", ""),
@@ -84,8 +86,9 @@ def _split_sections(body: str) -> dict[str, str]:
     current = ""
 
     for line in body.splitlines():
-        if line.startswith("## "):
-            current = line.removeprefix("## ").strip()
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            current = stripped.removeprefix("## ").strip()
             sections[current] = []
             continue
         if current:

@@ -3,7 +3,8 @@ title: The Hunt
 slug: the-hunt
 tmdb_title: The Hunt
 year: 2012
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

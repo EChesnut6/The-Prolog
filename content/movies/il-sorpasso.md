@@ -3,7 +3,8 @@ title: Il Sorpasso
 slug: il-sorpasso
 tmdb_title: Il Sorpasso
 year: 1962
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

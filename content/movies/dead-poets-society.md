@@ -3,7 +3,8 @@ title: Dead Poets Society
 slug: dead-poets-society
 tmdb_title: Dead Poets Society
 year: 1989
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

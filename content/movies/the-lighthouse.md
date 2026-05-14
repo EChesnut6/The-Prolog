@@ -3,7 +3,8 @@ title: The Lighthouse
 slug: the-lighthouse
 tmdb_title: The Lighthouse
 year: 2019
-vibe: 9
+enjoyment_rating: 9
+filmmaking_rating: 9
 teaser: A stormy chamber piece about labor, myth, isolation, and power.
 ---
 
@@ -17,7 +18,7 @@ the move has many references to greek mythology and the odessy, having some fami
 specifically, the character of proteus, a shapeshifter who must be grappled with and conquered. you will also note the great question and importance of what is true. 
 to steal from a post on reddit, grappling with proteus is an allegory for grappling with truth. 
 
-the vibe of the movie is incredibly surreal, tense
+the mood of the movie is incredibly surreal, tense
 
 ## Technical Footnotes
 
@@ -37,4 +38,3 @@ For the starter site, this sample keeps the structure visible without pretending
 - Symbolist painting references
 - Maritime photography
 - Production stills focused on costume, lensing, and set texture
-

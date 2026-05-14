@@ -3,7 +3,8 @@ title: No Country for Old Men
 slug: no-country-for-old-men
 tmdb_title: No Country for Old Men
 year: 2007
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Puella Magi Madoka Magica the Movie Part III: Rebellion
 slug: puella-magi-madoka-magica-the-movie-part-iii-rebellion
 tmdb_title: Puella Magi Madoka Magica the Movie Part III: Rebellion
 year: 2013
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

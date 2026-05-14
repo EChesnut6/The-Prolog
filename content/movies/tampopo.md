@@ -3,7 +3,8 @@ title: Tampopo
 slug: tampopo
 tmdb_title: Tampopo
 year: 1985
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

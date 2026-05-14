@@ -284,7 +284,8 @@ title: {title}
 slug: {slug}
 tmdb_title: {title}
 year: {year}
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

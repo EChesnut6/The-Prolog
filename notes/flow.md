@@ -13,7 +13,8 @@ To add your next review, the project flow is:
   slug: movie-title
   tmdb_title: Movie Title
   year: 2024
-  vibe: 8
+  enjoyment_rating: 8
+  filmmaking_rating: 8
   teaser: One short sentence that appears on the homepage and review hero.
   ---
 

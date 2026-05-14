@@ -3,7 +3,8 @@ title: Le Trou
 slug: le-trou
 tmdb_title: Le Trou
 year: 1960
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

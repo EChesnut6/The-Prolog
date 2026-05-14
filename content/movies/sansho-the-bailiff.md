@@ -3,7 +3,8 @@ title: Sansho the Bailiff
 slug: sansho-the-bailiff
 tmdb_title: Sansho the Bailiff
 year: 1954
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

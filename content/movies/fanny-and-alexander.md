@@ -3,7 +3,8 @@ title: Fanny and Alexander
 slug: fanny-and-alexander
 tmdb_title: Fanny and Alexander
 year: 1982
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

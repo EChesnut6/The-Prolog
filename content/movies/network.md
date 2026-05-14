@@ -3,7 +3,8 @@ title: Network
 slug: network
 tmdb_title: Network
 year: 1976
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

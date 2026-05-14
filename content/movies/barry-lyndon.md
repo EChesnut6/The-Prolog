@@ -3,7 +3,8 @@ title: Barry Lyndon
 slug: barry-lyndon
 tmdb_title: Barry Lyndon
 year: 1975
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: The Cranes Are Flying
 slug: the-cranes-are-flying
 tmdb_title: The Cranes Are Flying
 year: 1957
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

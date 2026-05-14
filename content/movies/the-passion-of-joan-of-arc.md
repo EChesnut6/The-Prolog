@@ -3,7 +3,8 @@ title: The Passion of Joan of Arc
 slug: the-passion-of-joan-of-arc
 tmdb_title: The Passion of Joan of Arc
 year: 1928
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

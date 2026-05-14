@@ -3,7 +3,8 @@ title: Yojimbo
 slug: yojimbo
 tmdb_title: Yojimbo
 year: 1961
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

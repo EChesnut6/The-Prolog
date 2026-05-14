@@ -3,7 +3,8 @@ title: Werckmeister Harmonies
 slug: werckmeister-harmonies
 tmdb_title: Werckmeister Harmonies
 year: 2000
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

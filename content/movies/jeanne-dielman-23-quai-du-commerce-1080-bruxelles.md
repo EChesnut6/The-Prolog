@@ -3,7 +3,8 @@ title: Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles
 slug: jeanne-dielman-23-quai-du-commerce-1080-bruxelles
 tmdb_title: Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles
 year: 1975
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

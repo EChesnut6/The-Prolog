@@ -3,7 +3,8 @@ title: The Godfather Part II
 slug: the-godfather-part-ii
 tmdb_title: The Godfather Part II
 year: 1974
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

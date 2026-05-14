@@ -3,7 +3,8 @@ title: Rocco and His Brothers
 slug: rocco-and-his-brothers
 tmdb_title: Rocco and His Brothers
 year: 1960
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

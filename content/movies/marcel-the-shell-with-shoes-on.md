@@ -3,7 +3,8 @@ title: Marcel the Shell with Shoes On
 slug: marcel-the-shell-with-shoes-on
 tmdb_title: Marcel the Shell with Shoes On
 year: 2021
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Underground
 slug: underground
 tmdb_title: Underground
 year: 1995
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

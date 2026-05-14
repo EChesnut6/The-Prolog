@@ -3,7 +3,8 @@ title: Eternal Sunshine of the Spotless Mind
 slug: eternal-sunshine-of-the-spotless-mind
 tmdb_title: Eternal Sunshine of the Spotless Mind
 year: 2004
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

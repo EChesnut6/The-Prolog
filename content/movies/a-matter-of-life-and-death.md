@@ -3,7 +3,8 @@ title: A Matter of Life and Death
 slug: a-matter-of-life-and-death
 tmdb_title: A Matter of Life and Death
 year: 1946
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

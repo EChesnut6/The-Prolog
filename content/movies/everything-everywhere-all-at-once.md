@@ -3,7 +3,8 @@ title: Everything Everywhere All at Once
 slug: everything-everywhere-all-at-once
 tmdb_title: Everything Everywhere All at Once
 year: 2022
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

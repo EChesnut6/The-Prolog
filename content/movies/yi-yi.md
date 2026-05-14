@@ -3,7 +3,8 @@ title: Yi Yi
 slug: yi-yi
 tmdb_title: Yi Yi
 year: 2000
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

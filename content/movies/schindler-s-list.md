@@ -3,7 +3,8 @@ title: Schindler's List
 slug: schindler-s-list
 tmdb_title: Schindler's List
 year: 1993
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

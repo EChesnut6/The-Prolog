@@ -3,7 +3,8 @@ title: Come and See
 slug: come-and-see
 tmdb_title: Come and See
 year: 1985
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

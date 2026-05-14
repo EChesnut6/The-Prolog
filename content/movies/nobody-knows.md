@@ -3,7 +3,8 @@ title: Nobody Knows
 slug: nobody-knows
 tmdb_title: Nobody Knows
 year: 2004
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Tokyo Godfathers
 slug: tokyo-godfathers
 tmdb_title: Tokyo Godfathers
 year: 2003
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: The Silence of the Lambs
 slug: the-silence-of-the-lambs
 tmdb_title: The Silence of the Lambs
 year: 1991
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Raise the Red Lantern
 slug: raise-the-red-lantern
 tmdb_title: Raise the Red Lantern
 year: 1991
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

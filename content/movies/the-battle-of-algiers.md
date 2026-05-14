@@ -3,7 +3,8 @@ title: The Battle of Algiers
 slug: the-battle-of-algiers
 tmdb_title: The Battle of Algiers
 year: 1966
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

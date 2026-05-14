@@ -3,7 +3,8 @@ title: The Dark Knight
 slug: the-dark-knight
 tmdb_title: The Dark Knight
 year: 2008
-vibe: 10
+enjoyment_rating: 10
+filmmaking_rating: 10
 teaser: I'm Batman
 ---
 

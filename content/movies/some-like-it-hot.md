@@ -3,7 +3,8 @@ title: Some Like It Hot
 slug: some-like-it-hot
 tmdb_title: Some Like It Hot
 year: 1959
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

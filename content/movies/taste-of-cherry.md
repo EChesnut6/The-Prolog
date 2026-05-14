@@ -3,7 +3,8 @@ title: Taste of Cherry
 slug: taste-of-cherry
 tmdb_title: Taste of Cherry
 year: 1997
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

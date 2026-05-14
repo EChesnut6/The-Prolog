@@ -3,7 +3,8 @@ title: Close-Up
 slug: close-up
 tmdb_title: Close-Up
 year: 1990
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

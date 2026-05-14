@@ -3,7 +3,8 @@ title: Woman in the Dunes
 slug: woman-in-the-dunes
 tmdb_title: Woman in the Dunes
 year: 1964
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

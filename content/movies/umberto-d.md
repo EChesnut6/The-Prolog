@@ -3,7 +3,8 @@ title: Umberto D.
 slug: umberto-d
 tmdb_title: Umberto D.
 year: 1952
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

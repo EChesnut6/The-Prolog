@@ -3,7 +3,8 @@ title: The Lives of Others
 slug: the-lives-of-others
 tmdb_title: The Lives of Others
 year: 2006
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

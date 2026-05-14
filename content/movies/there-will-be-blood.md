@@ -3,7 +3,8 @@ title: There Will Be Blood
 slug: there-will-be-blood
 tmdb_title: There Will Be Blood
 year: 2007
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

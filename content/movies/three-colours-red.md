@@ -3,7 +3,8 @@ title: Three Colours: Red
 slug: three-colours-red
 tmdb_title: Three Colours: Red
 year: 1994
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

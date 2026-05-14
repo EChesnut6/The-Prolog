@@ -3,7 +3,8 @@ title: Quo Vadis, Aida?
 slug: quo-vadis-aida
 tmdb_title: Quo Vadis, Aida?
 year: 2020
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

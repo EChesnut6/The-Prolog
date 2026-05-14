@@ -3,7 +3,8 @@ title: High and Low
 slug: high-and-low
 tmdb_title: High and Low
 year: 1963
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Time of the Gypsies
 slug: time-of-the-gypsies
 tmdb_title: Time of the Gypsies
 year: 1988
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

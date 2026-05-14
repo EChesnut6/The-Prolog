@@ -3,7 +3,8 @@ title: La Haine
 slug: la-haine
 tmdb_title: La Haine
 year: 1995
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

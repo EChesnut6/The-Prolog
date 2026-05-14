@@ -3,7 +3,8 @@ title: Anatomy of a Murder
 slug: anatomy-of-a-murder
 tmdb_title: Anatomy of a Murder
 year: 1959
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

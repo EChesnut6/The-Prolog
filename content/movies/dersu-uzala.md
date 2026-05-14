@@ -3,7 +3,8 @@ title: Dersu Uzala
 slug: dersu-uzala
 tmdb_title: Dersu Uzala
 year: 1975
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

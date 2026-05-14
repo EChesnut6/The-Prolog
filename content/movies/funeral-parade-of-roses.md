@@ -3,7 +3,8 @@ title: Funeral Parade of Roses
 slug: funeral-parade-of-roses
 tmdb_title: Funeral Parade of Roses
 year: 1969
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

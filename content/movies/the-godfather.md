@@ -3,7 +3,8 @@ title: The Godfather
 slug: the-godfather
 tmdb_title: The Godfather
 year: 1972
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

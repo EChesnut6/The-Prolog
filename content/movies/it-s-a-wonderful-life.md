@@ -3,7 +3,8 @@ title: It's a Wonderful Life
 slug: it-s-a-wonderful-life
 tmdb_title: It's a Wonderful Life
 year: 1946
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

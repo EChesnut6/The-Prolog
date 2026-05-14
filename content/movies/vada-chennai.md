@@ -3,7 +3,8 @@ title: Vada Chennai
 slug: vada-chennai
 tmdb_title: Vada Chennai
 year: 2018
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

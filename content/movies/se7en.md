@@ -3,7 +3,8 @@ title: Se7en
 slug: se7en
 tmdb_title: Se7en
 year: 1995
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Kamikaze Girls
 slug: kamikaze-girls
 tmdb_title: Kamikaze Girls
 year: 2004
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

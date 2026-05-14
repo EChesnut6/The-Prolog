@@ -3,7 +3,8 @@ title: One Flew Over the Cuckoo's Nest
 slug: one-flew-over-the-cuckoo-s-nest
 tmdb_title: One Flew Over the Cuckoo's Nest
 year: 1975
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Cinema Paradiso
 slug: cinema-paradiso
 tmdb_title: Cinema Paradiso
 year: 1988
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

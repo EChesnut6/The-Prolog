@@ -3,7 +3,8 @@ title: Judgment at Nuremberg
 slug: judgment-at-nuremberg
 tmdb_title: Judgment at Nuremberg
 year: 1961
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

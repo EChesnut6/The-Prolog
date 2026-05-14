@@ -3,7 +3,8 @@ title: The Sound of Music
 slug: the-sound-of-music
 tmdb_title: The Sound of Music
 year: 1965
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

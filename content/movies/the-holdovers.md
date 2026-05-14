@@ -3,7 +3,8 @@ title: The Holdovers
 slug: the-holdovers
 tmdb_title: The Holdovers
 year: 2023
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

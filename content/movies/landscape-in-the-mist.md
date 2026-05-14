@@ -3,7 +3,8 @@ title: Landscape in the Mist
 slug: landscape-in-the-mist
 tmdb_title: Landscape in the Mist
 year: 1988
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -24,7 +24,8 @@ def main() -> None:
     year = args.year or _prompt_required("Year")
     slug = args.slug or _slugify(title)
     tmdb_title = args.tmdb_title or title
-    vibe = args.vibe or _prompt_required("Vibe score")
+    enjoyment_rating = args.enjoyment_rating or _prompt_required("Enjoyment rating")
+    filmmaking_rating = args.filmmaking_rating or _prompt_required("Filmmaking rating")
     teaser = args.teaser or _prompt_required("Teaser")
     specs = _prompt_specs() if args.prompt_specs else {}
     reviewed = "true" if args.reviewed else "false"
@@ -40,7 +41,8 @@ def main() -> None:
             slug=slug,
             tmdb_title=tmdb_title,
             year=year,
-            vibe=vibe,
+            enjoyment_rating=enjoyment_rating,
+            filmmaking_rating=filmmaking_rating,
             reviewed=reviewed,
             teaser=teaser,
             specs=specs,
@@ -56,7 +58,8 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--year", help="Release year.")
     parser.add_argument("--slug", help="Review slug and Markdown filename.")
     parser.add_argument("--tmdb-title", help="TMDB search title. Defaults to --title.")
-    parser.add_argument("--vibe", help="Vibe score to display on the site.")
+    parser.add_argument("--enjoyment-rating", help="Enjoyment/fun rating to display on the site.")
+    parser.add_argument("--filmmaking-rating", help="Filmmaking quality rating to display on the site.")
     parser.add_argument("--teaser", help="Short homepage and hero teaser.")
     parser.add_argument("--reviewed", action="store_true", help="Mark this draft as visible on the homepage.")
     parser.add_argument(
@@ -97,7 +100,8 @@ def _render_review_template(
     slug: str,
     tmdb_title: str,
     year: str,
-    vibe: str,
+    enjoyment_rating: str,
+    filmmaking_rating: str,
     reviewed: str,
     teaser: str,
     specs: dict[str, str],
@@ -110,7 +114,8 @@ title: {title}
 slug: {slug}
 tmdb_title: {tmdb_title}
 year: {year}
-vibe: {vibe}
+enjoyment_rating: {enjoyment_rating}
+filmmaking_rating: {filmmaking_rating}
 reviewed: {reviewed}
 teaser: {teaser}
 {spec_lines}---

@@ -3,7 +3,8 @@ title: Sherlock Jr.
 slug: sherlock-jr
 tmdb_title: Sherlock Jr.
 year: 1924
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

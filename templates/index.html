@@ -2,7 +2,7 @@
   <div>
     <p class="eyebrow">Pre-Flight Checklist</p>
     <h1>Appreciate the artistic intent before the film starts.</h1>
-    <p class="lede">Spoiler-light context, curated vibe checks, historical notes, and visual references for your next watch.</p>
+    <p class="lede">Spoiler-light context, enjoyment notes, filmmaking quality, historical notes, and visual references for your next watch.</p>
   </div>
 </section>
 
@@ -14,7 +14,7 @@
   </div>
   <div class="search-panel">
     <label for="movie-search">Search movies</label>
-    <input id="movie-search" type="search" placeholder="Search title, year, director, or note" autocomplete="off">
+    <input id="movie-search" type="search" placeholder="Search title, director, year, or keywords" autocomplete="off">
     <p id="search-status" aria-live="polite"></p>
   </div>
   <div class="movie-grid" id="movie-grid">
@@ -30,6 +30,14 @@
   <p>The Prolog bridges raw trivia and post-viewing criticism with concise pre-watch context, personal notes, TMDB metadata, and references that help cinephiles notice the craft without giving away the film.</p>
 </section>
 
+<section class="section-shell attribution-band" aria-labelledby="tmdb-heading">
+  <div class="section-heading">
+    <p class="eyebrow">Movie data</p>
+    <h2 id="tmdb-heading">Powered in part by TMDB.</h2>
+  </div>
+  <p>Poster art, directors, release dates, runtime, genres, and fallback ratings are enriched through <a href="https://www.themoviedb.org/?language=en-US">The Movie Database</a>.</p>
+</section>
+
 <script>
   const movieSearch = document.querySelector("#movie-search");
   const movieCards = Array.from(document.querySelectorAll(".movie-card"));
@@ -41,9 +49,19 @@
 
     movieCards.forEach((card) => {{
       const isReviewed = card.dataset.reviewed === "true";
-      const matches = !query || card.dataset.search.includes(query);
+      const titleMatch = card.dataset.title.includes(query);
+      const directorMatch = card.dataset.director.includes(query);
+      const yearMatch = card.dataset.year.includes(query);
+      const keywordMatch = card.dataset.keywords.includes(query);
+      const matches = !query || titleMatch || directorMatch || yearMatch || keywordMatch;
       const shouldShow = query ? matches : isReviewed;
       card.hidden = !shouldShow;
+      if (query && shouldShow) {{
+        const rank = titleMatch ? 1 : directorMatch ? 2 : yearMatch ? 3 : 4;
+        card.style.order = String(rank);
+      }} else {{
+        card.style.order = "";
+      }}
       if (shouldShow) visible += 1;
     }});
 

@@ -3,7 +3,8 @@ title: Mary and Max
 slug: mary-and-max
 tmdb_title: Mary and Max
 year: 2009
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Nostalgia
 slug: nostalgia
 tmdb_title: Nostalgia
 year: 1983
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

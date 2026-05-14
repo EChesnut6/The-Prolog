@@ -3,7 +3,8 @@ title: The Human Condition I: No Greater Love
 slug: the-human-condition-i-no-greater-love
 tmdb_title: The Human Condition I: No Greater Love
 year: 1959
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

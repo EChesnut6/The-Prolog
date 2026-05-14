@@ -3,7 +3,8 @@ title: Stalker
 slug: stalker
 tmdb_title: Stalker
 year: 1979
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

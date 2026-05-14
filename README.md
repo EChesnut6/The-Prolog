@@ -56,6 +56,8 @@ Optional structured technical spec fields can be added to front matter:
 
 ```text
 reviewed: false
+enjoyment_rating: 8
+filmmaking_rating: 9
 letterboxd_score: 4.5/5
 imdb_score: 8.7/10
 aspect_ratio: 2.39:1

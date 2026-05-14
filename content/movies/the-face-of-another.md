@@ -3,7 +3,8 @@ title: The Face of Another
 slug: the-face-of-another
 tmdb_title: The Face of Another
 year: 1966
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

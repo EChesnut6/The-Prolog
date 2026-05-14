@@ -3,7 +3,8 @@ title: Scenes from a Marriage
 slug: scenes-from-a-marriage
 tmdb_title: Scenes from a Marriage
 year: 1974
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

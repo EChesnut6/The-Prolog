@@ -3,7 +3,8 @@ title: The Celebration
 slug: the-celebration
 tmdb_title: The Celebration
 year: 1998
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

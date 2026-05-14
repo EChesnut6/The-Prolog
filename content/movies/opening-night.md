@@ -3,7 +3,8 @@ title: Opening Night
 slug: opening-night
 tmdb_title: Opening Night
 year: 1977
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

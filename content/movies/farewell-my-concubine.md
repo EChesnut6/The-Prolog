@@ -3,7 +3,8 @@ title: Farewell My Concubine
 slug: farewell-my-concubine
 tmdb_title: Farewell My Concubine
 year: 1993
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

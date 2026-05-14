@@ -3,7 +3,8 @@ title: Z
 slug: z
 tmdb_title: Z
 year: 1969
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

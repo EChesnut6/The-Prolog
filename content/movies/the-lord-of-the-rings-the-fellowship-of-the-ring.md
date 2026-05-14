@@ -3,7 +3,8 @@ title: The Lord of the Rings: The Fellowship of the Ring
 slug: the-lord-of-the-rings-the-fellowship-of-the-ring
 tmdb_title: The Lord of the Rings: The Fellowship of the Ring
 year: 2001
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

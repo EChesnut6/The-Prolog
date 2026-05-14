@@ -3,7 +3,8 @@ title: Good Will Hunting
 slug: good-will-hunting
 tmdb_title: Good Will Hunting
 year: 1997
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

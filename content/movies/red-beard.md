@@ -3,7 +3,8 @@ title: Red Beard
 slug: red-beard
 tmdb_title: Red Beard
 year: 1965
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

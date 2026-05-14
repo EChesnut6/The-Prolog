@@ -3,7 +3,8 @@ title: Grave of the Fireflies
 slug: grave-of-the-fireflies
 tmdb_title: Grave of the Fireflies
 year: 1988
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

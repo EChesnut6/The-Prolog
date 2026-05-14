@@ -3,7 +3,8 @@ title: Late Spring
 slug: late-spring
 tmdb_title: Late Spring
 year: 1949
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

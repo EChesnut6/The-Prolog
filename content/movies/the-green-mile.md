@@ -3,7 +3,8 @@ title: The Green Mile
 slug: the-green-mile
 tmdb_title: The Green Mile
 year: 1999
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

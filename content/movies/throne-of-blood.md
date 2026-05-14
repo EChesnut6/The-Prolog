@@ -3,7 +3,8 @@ title: Throne of Blood
 slug: throne-of-blood
 tmdb_title: Throne of Blood
 year: 1957
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

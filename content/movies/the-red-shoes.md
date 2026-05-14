@@ -3,7 +3,8 @@ title: The Red Shoes
 slug: the-red-shoes
 tmdb_title: The Red Shoes
 year: 1948
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

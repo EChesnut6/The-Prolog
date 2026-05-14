@@ -3,7 +3,8 @@ title: Do the Right Thing
 slug: do-the-right-thing
 tmdb_title: Do the Right Thing
 year: 1989
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

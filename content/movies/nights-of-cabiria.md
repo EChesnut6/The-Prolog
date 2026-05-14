@@ -3,7 +3,8 @@ title: Nights of Cabiria
 slug: nights-of-cabiria
 tmdb_title: Nights of Cabiria
 year: 1957
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

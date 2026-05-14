@@ -3,7 +3,8 @@ title: Dune: Part Two
 slug: dune-part-two
 tmdb_title: Dune: Part Two
 year: 2024
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Nirvanna the Band the Show the Movie
 slug: nirvanna-the-band-the-show-the-movie
 tmdb_title: Nirvanna the Band the Show the Movie
 year: 2025
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

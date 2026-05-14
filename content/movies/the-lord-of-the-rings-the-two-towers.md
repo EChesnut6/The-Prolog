@@ -3,7 +3,8 @@ title: The Lord of the Rings: The Two Towers
 slug: the-lord-of-the-rings-the-two-towers
 tmdb_title: The Lord of the Rings: The Two Towers
 year: 2002
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

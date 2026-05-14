@@ -3,7 +3,8 @@ title: Parasite
 slug: parasite
 tmdb_title: Parasite
 year: 2019
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

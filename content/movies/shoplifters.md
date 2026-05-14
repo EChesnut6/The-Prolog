@@ -3,7 +3,8 @@ title: Shoplifters
 slug: shoplifters
 tmdb_title: Shoplifters
 year: 2018
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

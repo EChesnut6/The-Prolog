@@ -3,7 +3,8 @@ title: The Sacrifice
 slug: the-sacrifice
 tmdb_title: The Sacrifice
 year: 1986
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

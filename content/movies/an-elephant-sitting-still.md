@@ -3,7 +3,8 @@ title: An Elephant Sitting Still
 slug: an-elephant-sitting-still
 tmdb_title: An Elephant Sitting Still
 year: 2018
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

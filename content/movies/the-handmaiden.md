@@ -3,7 +3,8 @@ title: The Handmaiden
 slug: the-handmaiden
 tmdb_title: The Handmaiden
 year: 2016
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

@@ -3,7 +3,8 @@ title: Fail Safe
 slug: fail-safe
 tmdb_title: Fail Safe
 year: 1964
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

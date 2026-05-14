@@ -3,7 +3,8 @@ title: Psycho
 slug: psycho
 tmdb_title: Psycho
 year: 1960
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

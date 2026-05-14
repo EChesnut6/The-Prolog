@@ -3,7 +3,8 @@ title: The Lord of the Rings: The Return of the King
 slug: the-lord-of-the-rings-the-return-of-the-king
 tmdb_title: The Lord of the Rings: The Return of the King
 year: 2003
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

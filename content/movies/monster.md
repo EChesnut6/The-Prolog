@@ -3,7 +3,8 @@ title: Monster
 slug: monster
 tmdb_title: Monster
 year: 2023
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

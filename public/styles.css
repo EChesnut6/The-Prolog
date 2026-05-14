@@ -147,6 +147,11 @@ img {
   font: inherit;
 }
 
+.search-panel input::-webkit-search-cancel-button {
+  cursor: pointer;
+  filter: sepia(1) saturate(6) hue-rotate(350deg) brightness(1.15);
+}
+
 .search-panel input:focus {
   border-color: var(--accent);
   outline: 2px solid rgba(213, 155, 50, 0.25);
@@ -235,15 +240,25 @@ img {
   text-transform: uppercase;
 }
 
-.about-band {
+.about-band,
+.attribution-band {
   max-width: 760px;
 }
 
 .about-band p,
+.attribution-band p,
 .prose p {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.8;
+}
+
+.attribution-band a {
+  color: var(--accent-soft);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .movie-hero {
@@ -321,7 +336,7 @@ img {
   color: var(--muted);
 }
 
-.vibe-check {
+.rating-check {
   display: inline-flex;
   align-items: center;
   gap: 16px;
@@ -332,14 +347,14 @@ img {
   border-radius: 8px;
 }
 
-.vibe-check span {
+.rating-check span {
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-.vibe-check strong {
+.rating-check strong {
   color: var(--accent-soft);
   font-size: 1.4rem;
 }

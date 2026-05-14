@@ -3,7 +3,8 @@ title: Secrets & Lies
 slug: secrets-lies
 tmdb_title: Secrets & Lies
 year: 1996
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

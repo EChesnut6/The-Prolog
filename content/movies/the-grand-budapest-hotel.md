@@ -3,7 +3,8 @@ title: The Grand Budapest Hotel
 slug: the-grand-budapest-hotel
 tmdb_title: The Grand Budapest Hotel
 year: 2014
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

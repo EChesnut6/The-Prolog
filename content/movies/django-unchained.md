@@ -3,7 +3,8 @@ title: Django Unchained
 slug: django-unchained
 tmdb_title: Django Unchained
 year: 2012
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

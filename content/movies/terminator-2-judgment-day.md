@@ -3,7 +3,8 @@ title: Terminator 2: Judgment Day
 slug: terminator-2-judgment-day
 tmdb_title: Terminator 2: Judgment Day
 year: 1991
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

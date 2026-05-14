@@ -3,7 +3,8 @@ title: The Voice of Hind Rajab
 slug: the-voice-of-hind-rajab
 tmdb_title: The Voice of Hind Rajab
 year: 2025
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

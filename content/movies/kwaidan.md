@@ -3,7 +3,8 @@ title: Kwaidan
 slug: kwaidan
 tmdb_title: Kwaidan
 year: 1964
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

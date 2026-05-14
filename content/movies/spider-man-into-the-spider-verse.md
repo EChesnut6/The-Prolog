@@ -3,7 +3,8 @@ title: Spider-Man: Into the Spider-Verse
 slug: spider-man-into-the-spider-verse
 tmdb_title: Spider-Man: Into the Spider-Verse
 year: 2018
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

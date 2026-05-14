@@ -3,7 +3,8 @@ title: Ugetsu
 slug: ugetsu
 tmdb_title: Ugetsu
 year: 1953
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

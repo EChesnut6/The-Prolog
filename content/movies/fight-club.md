@@ -3,7 +3,8 @@ title: Fight Club
 slug: fight-club
 tmdb_title: Fight Club
 year: 1999
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

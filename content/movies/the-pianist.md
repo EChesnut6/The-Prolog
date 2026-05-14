@@ -3,7 +3,8 @@ title: The Pianist
 slug: the-pianist
 tmdb_title: The Pianist
 year: 2002
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

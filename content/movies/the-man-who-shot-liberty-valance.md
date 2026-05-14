@@ -3,7 +3,8 @@ title: The Man Who Shot Liberty Valance
 slug: the-man-who-shot-liberty-valance
 tmdb_title: The Man Who Shot Liberty Valance
 year: 1962
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

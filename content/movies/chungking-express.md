@@ -3,7 +3,8 @@ title: Chungking Express
 slug: chungking-express
 tmdb_title: Chungking Express
 year: 1994
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

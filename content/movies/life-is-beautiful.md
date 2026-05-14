@@ -3,7 +3,8 @@ title: Life Is Beautiful
 slug: life-is-beautiful
 tmdb_title: Life Is Beautiful
 year: 1997
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

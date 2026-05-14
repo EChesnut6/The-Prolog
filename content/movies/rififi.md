@@ -3,7 +3,8 @@ title: Rififi
 slug: rififi
 tmdb_title: Rififi
 year: 1955
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

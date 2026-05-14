@@ -3,7 +3,8 @@ title: Inglourious Basterds
 slug: inglourious-basterds
 tmdb_title: Inglourious Basterds
 year: 2009
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

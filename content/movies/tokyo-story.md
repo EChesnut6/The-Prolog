@@ -3,7 +3,8 @@ title: Tokyo Story
 slug: tokyo-story
 tmdb_title: Tokyo Story
 year: 1953
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---

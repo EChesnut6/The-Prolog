@@ -3,7 +3,8 @@ title: We All Loved Each Other So Much
 slug: we-all-loved-each-other-so-much
 tmdb_title: We All Loved Each Other So Much
 year: 1974
-vibe: TBD
+enjoyment_rating: TBD
+filmmaking_rating: TBD
 reviewed: false
 teaser: Draft pre-flight checklist template.
 ---
