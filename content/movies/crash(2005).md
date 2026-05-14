@@ -1,0 +1,26 @@
+---
+  title: Crash
+  slug: crash
+  tmdb_title: Crash
+  year: 2005
+  vibe: 5
+  teaser: I'm 13 and this is deep
+  ---
+
+  ## Primer
+
+  Spoiler-light context for someone before watching.
+
+  ## Technical Footnotes
+
+  - Aspect ratio, format, sound, production note, useful viewing lens, etc.
+
+  ## Review
+
+  Your full critique.
+
+  ## Gallery
+
+  - Visual reference
+  - Production still idea
+  - Related artwork or image category

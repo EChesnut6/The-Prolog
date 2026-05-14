@@ -19,7 +19,7 @@ TMDB_API_BASE = "https://api.themoviedb.org/3"
 TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w780"
 
 
-def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str]:
+def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str | list[str] | float | int]:
     load_dotenv()
     api_key = os.getenv("TMDB_API_KEY")
     if not api_key or requests is None:
@@ -33,9 +33,13 @@ def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str]:
     poster_path = movie.get("poster_path") or details.get("poster_path") or ""
 
     return {
+        "tmdb_id": movie["id"],
         "poster_url": f"{TMDB_IMAGE_BASE}{poster_path}" if poster_path else "",
         "release_date": movie.get("release_date", "") or details.get("release_date", ""),
         "director": _director_from_details(details),
+        "runtime": details.get("runtime", ""),
+        "genres": [genre["name"] for genre in details.get("genres", []) if genre.get("name")],
+        "vote_average": details.get("vote_average", ""),
     }
 
 

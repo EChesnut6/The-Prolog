@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 from pathlib import Path
 
 
@@ -14,8 +15,10 @@ class MovieContent:
     teaser: str
     primer: str
     technical_footnotes: list[str]
+    technical_specs: dict[str, str]
     review: str
     gallery: list[str]
+    source_hash: str
 
 
 def load_movies(content_dir: Path) -> list[MovieContent]:
@@ -40,8 +43,10 @@ def load_movie(path: Path) -> MovieContent:
         teaser=metadata.get("teaser", ""),
         primer=_markdown_paragraphs(sections.get("Primer", "")),
         technical_footnotes=_markdown_list(sections.get("Technical Footnotes", "")),
+        technical_specs=_technical_specs(metadata),
         review=_markdown_paragraphs(sections.get("Review", "")),
         gallery=_markdown_list(sections.get("Gallery", "")),
+        source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
     )
 
 
@@ -104,6 +109,22 @@ def _inline_markdown(text: str) -> str:
     )
 
 
+def _technical_specs(metadata: dict[str, str]) -> dict[str, str]:
+    labels = {
+        "aspect_ratio": "Aspect ratio",
+        "visual_texture": "Visual texture",
+        "sound_world": "Sound world",
+        "format": "Format",
+        "camera_lens": "Camera/lens",
+        "technical_notes": "Technical notes",
+    }
+    return {
+        label: metadata[key]
+        for key, label in labels.items()
+        if metadata.get(key)
+    }
+
+
 def _slugify(value: str) -> str:
     allowed = []
     previous_dash = False
@@ -115,4 +136,3 @@ def _slugify(value: str) -> str:
             allowed.append("-")
             previous_dash = True
     return "".join(allowed).strip("-")
-

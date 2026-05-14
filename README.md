@@ -28,13 +28,36 @@ The site still builds without a key. It will use local placeholder metadata and 
 python3 src/build.py
 ```
 
+Builds use `.tmdb-cache.json` to avoid repeated TMDB API calls for unchanged reviews. To force fresh metadata:
+
+```sh
+python3 src/build.py --refresh-metadata
+```
+
 Open `public/index.html` in a browser to view the generated site.
 
 ## Add A Movie
 
-Create a new Markdown file in `content/movies/` using the sample file as a guide. The generator expects front matter plus these sections:
+Create a draft with the CLI:
+
+```sh
+python3 src/new_review.py --prompt-specs
+```
+
+Or create a new Markdown file in `content/movies/` using an existing review as a guide. The generator expects front matter plus these sections:
 
 - `Primer`
 - `Technical Footnotes`
 - `Review`
 - `Gallery`
+
+Optional structured technical spec fields can be added to front matter:
+
+```text
+aspect_ratio: 2.39:1
+visual_texture: High-contrast digital photography
+sound_world: Practical engine noise and sparse score
+format: Digital
+camera_lens: Long-lens urban scale
+technical_notes: Any concise note worth surfacing as metadata
+```
