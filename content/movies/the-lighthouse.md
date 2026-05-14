@@ -9,7 +9,15 @@ teaser: A stormy chamber piece about labor, myth, isolation, and power.
 
 ## Primer
 
-Go in expecting a two-hander built around repetition, authority, folklore, and bodily discomfort. The film borrows from maritime labor history, old sailor superstition, and late-19th-century visual culture without requiring you to identify every reference.
+You can go into this movie knowing nothing or everything, it's still confusing.
+howerver, to make your viewing mor interesting its important to point out some references upfront.
+
+There are key visual references to many pueces of aet including Hypnosis by schrodinger??? and that painting of Prometheus.
+the move has many references to greek mythology and the odessy, having some familiarity with some of the lore might be helpful.
+specifically, the character of proteus, a shapeshifter who must be grappled with and conquered. you will also note the great question and importance of what is true. 
+to steal from a post on reddit, grappling with proteus is an allegory for grappling with truth. 
+
+the vibe of the movie is incredibly surreal, tense
 
 ## Technical Footnotes
 
