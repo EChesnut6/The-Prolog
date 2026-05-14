@@ -27,6 +27,7 @@ def main() -> None:
     vibe = args.vibe or _prompt_required("Vibe score")
     teaser = args.teaser or _prompt_required("Teaser")
     specs = _prompt_specs() if args.prompt_specs else {}
+    reviewed = "true" if args.reviewed else "false"
 
     path = CONTENT_DIR / f"{slug}.md"
     if path.exists() and not args.force:
@@ -40,6 +41,7 @@ def main() -> None:
             tmdb_title=tmdb_title,
             year=year,
             vibe=vibe,
+            reviewed=reviewed,
             teaser=teaser,
             specs=specs,
         ),
@@ -56,6 +58,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--tmdb-title", help="TMDB search title. Defaults to --title.")
     parser.add_argument("--vibe", help="Vibe score to display on the site.")
     parser.add_argument("--teaser", help="Short homepage and hero teaser.")
+    parser.add_argument("--reviewed", action="store_true", help="Mark this draft as visible on the homepage.")
     parser.add_argument(
         "--prompt-specs",
         action="store_true",
@@ -95,6 +98,7 @@ def _render_review_template(
     tmdb_title: str,
     year: str,
     vibe: str,
+    reviewed: str,
     teaser: str,
     specs: dict[str, str],
 ) -> str:
@@ -107,6 +111,7 @@ slug: {slug}
 tmdb_title: {tmdb_title}
 year: {year}
 vibe: {vibe}
+reviewed: {reviewed}
 teaser: {teaser}
 {spec_lines}---
 

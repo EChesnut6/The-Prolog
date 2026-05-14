@@ -1,11 +1,9 @@
-optimize page creation (api)
-- should be able to determine which files have been added/edited so that way don't have spend time and api calls building them again
-
-optimize page creation (stats)
-- need to determine which stats are possible to get and use (ex. already gets director, technical specs?)
-
-optimize page creation (writing)
-- is there a better way to write out my reviews rather than in vscode?
-
+Add search for movies
+Add metadata flag for "reviewed" if a movie still has the template
+    it shouldn't be visible unless searched
+Too many movies on the main page, break it up
+Remove letterboxd ranking, it doesn't matter
+Remove TMDB ID from movie info page
+Consider getting letterboxd score rather than using TMDB,
+    if can't use letterboxd, use imdb score instead, if that doesn't work, then Tmdb works
 Need to add the movie db recognition to homescreen
-codex resume 019e232e-cd6e-7041-9c7b-bddd56de1a6b

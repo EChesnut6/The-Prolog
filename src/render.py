@@ -14,6 +14,7 @@ def render_site(
     metadata_by_slug: dict[str, dict[str, str]],
     templates_dir: Path,
     output_dir: Path,
+    root_index: Path,
 ) -> None:
     reviews_dir = output_dir / "reviews"
     reviews_dir.mkdir(parents=True, exist_ok=True)
@@ -28,7 +29,7 @@ def render_site(
         (reviews_dir / f"{movie.slug}.html").write_text(page, encoding="utf-8")
 
     index = render_index(base_template, index_template, movies, metadata_by_slug)
-    (output_dir / "index.html").write_text(index, encoding="utf-8")
+    root_index.write_text(index, encoding="utf-8")
 
 
 def render_movie(
@@ -37,6 +38,7 @@ def render_movie(
     movie: MovieContent,
     metadata: dict[str, Any],
 ) -> str:
+    metadata = {**metadata, **_score_metadata(movie)}
     movie_data = asdict(movie)
     for key in ("title", "year", "vibe", "teaser"):
         movie_data[key] = escape(str(movie_data[key]))
@@ -45,6 +47,8 @@ def render_movie(
             "poster_url": escape(str(metadata.get("poster_url", "../assets/placeholders/poster-placeholder.svg"))),
             "release_date": escape(str(metadata.get("release_date", movie.year))),
             "director": escape(str(metadata.get("director", "Director unavailable"))),
+            "movie_badges": _render_movie_badges(movie),
+            "letterboxd_note": _render_letterboxd_note(movie),
             "movie_details": _render_movie_details(metadata),
             "technical_footnotes": _render_list(movie.technical_footnotes),
             "technical_specs": _render_specs(movie.technical_specs),
@@ -57,7 +61,7 @@ def render_movie(
         title=f"{movie.title} | The Prolog",
         content=content,
         css_path="../styles.css",
-        home_path="../index.html",
+        home_path="../../index.html",
     )
 
 
@@ -68,8 +72,13 @@ def render_index(
     metadata_by_slug: dict[str, dict[str, Any]],
 ) -> str:
     movie_cards = "\n".join(_render_movie_card(movie, metadata_by_slug.get(movie.slug, {})) for movie in movies)
-    content = index_template.format(movie_cards=movie_cards)
-    return _wrap_page(base_template, title="The Prolog", content=content, css_path="styles.css", home_path="index.html")
+    reviewed_count = sum(1 for movie in movies if movie.reviewed)
+    content = index_template.format(
+        movie_cards=movie_cards,
+        reviewed_count=reviewed_count,
+        total_count=len(movies),
+    )
+    return _wrap_page(base_template, title="The Prolog", content=content, css_path="public/styles.css", home_path="index.html")
 
 
 def _wrap_page(base_template: str, title: str, content: str, css_path: str, home_path: str) -> str:
@@ -77,25 +86,74 @@ def _wrap_page(base_template: str, title: str, content: str, css_path: str, home
 
 
 def _render_movie_card(movie: MovieContent, metadata: dict[str, Any]) -> str:
+    metadata = {**metadata, **_score_metadata(movie)}
     poster_url = escape(str(metadata.get("poster_url") or "assets/placeholders/poster-placeholder.svg"))
     director = escape(str(metadata.get("director") or "Director unavailable"))
     title = escape(movie.title)
-    teaser = escape(movie.teaser)
+    teaser = _card_teaser(movie)
     year = escape(movie.year)
     vibe = escape(movie.vibe)
+    kicker = _card_kicker(movie, vibe)
+    reviewed = "true" if movie.reviewed else "false"
+    status = "Reviewed" if movie.reviewed else "Template"
+    hidden = "" if movie.reviewed else " hidden"
+    search_text = escape(" ".join([movie.title, movie.year, metadata.get("director", ""), movie.teaser]).lower())
     return f"""
-<article class="movie-card">
-  <a href="reviews/{movie.slug}.html">
+<article class="movie-card" data-reviewed="{reviewed}" data-search="{search_text}"{hidden}>
+  <a href="public/reviews/{movie.slug}.html">
     <img class="movie-card__poster" src="{poster_url}" alt="{title} poster">
     <div class="movie-card__copy">
-      <span class="movie-card__kicker">Vibe {vibe}/10</span>
+      <span class="movie-card__kicker">{kicker}</span>
       <h2>{title}</h2>
       <p class="movie-card__meta">{year} · Directed by {director}</p>
+      <p class="movie-card__status">{status}</p>
       <p>{teaser}</p>
     </div>
   </a>
 </article>
 """.strip()
+
+
+def _score_metadata(movie: MovieContent) -> dict[str, str]:
+    reverse_labels = {
+        "Letterboxd score": "letterboxd_score",
+        "IMDb score": "imdb_score",
+    }
+    return {
+        reverse_labels[label]: value
+        for label, value in movie.scores.items()
+        if label in reverse_labels
+    }
+
+
+def _card_kicker(movie: MovieContent, vibe: str) -> str:
+    if movie.reviewed and vibe and vibe.upper() != "TBD":
+        return f"Vibe {vibe}/10"
+    return "Pre-flight template"
+
+
+def _card_teaser(movie: MovieContent) -> str:
+    if movie.letterboxd_rank and movie.teaser.startswith("Draft review template"):
+        return "Primer and review draft ready for this ranked title."
+    return escape(movie.teaser)
+
+
+def _render_movie_badges(movie: MovieContent) -> str:
+    badges = []
+    if movie.vibe and movie.vibe.upper() != "TBD":
+        badges.append(
+            f"""
+<div class="vibe-check" aria-label="Vibe check score {escape(movie.vibe)} out of 10">
+  <span>Vibe Check</span>
+  <strong>{escape(movie.vibe)}/10</strong>
+</div>
+""".strip()
+        )
+    return "\n".join(badges)
+
+
+def _render_letterboxd_note(movie: MovieContent) -> str:
+    return ""
 
 
 def _render_list(items: list[str]) -> str:
@@ -110,11 +168,20 @@ def _render_movie_details(metadata: dict[str, Any]) -> str:
         details.append(("Runtime", f"{metadata['runtime']} min"))
     if metadata.get("genres"):
         details.append(("Genres", ", ".join(str(genre) for genre in metadata["genres"])))
-    if metadata.get("vote_average"):
-        details.append(("TMDB rating", f"{float(metadata['vote_average']):.1f}/10"))
-    if metadata.get("tmdb_id"):
-        details.append(("TMDB id", str(metadata["tmdb_id"])))
+    rating = _rating_detail(metadata)
+    if rating:
+        details.append(rating)
     return _render_definition_list(details)
+
+
+def _rating_detail(metadata: dict[str, Any]) -> tuple[str, str] | None:
+    if metadata.get("letterboxd_score"):
+        return ("Letterboxd score", str(metadata["letterboxd_score"]))
+    if metadata.get("imdb_score"):
+        return ("IMDb score", str(metadata["imdb_score"]))
+    if metadata.get("vote_average"):
+        return ("TMDB rating", f"{float(metadata['vote_average']):.1f}/10")
+    return None
 
 
 def _render_specs(specs: dict[str, str]) -> str:

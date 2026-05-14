@@ -6,3 +6,8 @@ Core Value: Curated "Vibe Checks," historical context, and artistic references (
 Architecture: A Python-based static site generator that pulls data from the TMDB API, merges it with your personal reviews/context notes, and outputs clean HTML/CSS files for GitHub Pages.
 
 Security: API keys remain strictly local, ensuring zero exposure to the public web.
+
+
+## IMPORTANT
+
+Due to the nature of this project, the index html needs to be in the root

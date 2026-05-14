@@ -1,17 +1,23 @@
 <section class="home-hero">
   <div>
-    <p class="eyebrow">Spoiler-light movie context</p>
-    <h1>Learn the context of your next watch.</h1>
-    <p class="lede">Go in knowing a touch more than nothing and a little less than a trailer.</p>
+    <p class="eyebrow">Pre-Flight Checklist</p>
+    <h1>Appreciate the artistic intent before the film starts.</h1>
+    <p class="lede">Spoiler-light context, curated vibe checks, historical notes, and visual references for your next watch.</p>
   </div>
 </section>
 
 <section class="section-shell" aria-labelledby="latest-reviews">
   <div class="section-heading">
-    <p class="eyebrow">Pre-flight checklist</p>
-    <h2 id="latest-reviews">Reviews and primers</h2>
+    <p class="eyebrow">Movie queue</p>
+    <h2 id="latest-reviews">Pre-flight checklists and reviews</h2>
+    <p>{reviewed_count} reviewed pages are visible by default. Search across {total_count} total movie pages to pull up draft templates.</p>
   </div>
-  <div class="movie-grid">
+  <div class="search-panel">
+    <label for="movie-search">Search movies</label>
+    <input id="movie-search" type="search" placeholder="Search title, year, director, or note" autocomplete="off">
+    <p id="search-status" aria-live="polite"></p>
+  </div>
+  <div class="movie-grid" id="movie-grid">
     {movie_cards}
   </div>
 </section>
@@ -21,6 +27,31 @@
     <p class="eyebrow">The point</p>
     <h2 id="about-heading">Artistic intent without spoiler fog.</h2>
   </div>
-  <p>The Prolog bridges raw trivia and post-viewing criticism with curated vibe checks, historical context, and visual references for cinema enthusiasts.</p>
+  <p>The Prolog bridges raw trivia and post-viewing criticism with concise pre-watch context, personal notes, TMDB metadata, and references that help cinephiles notice the craft without giving away the film.</p>
 </section>
 
+<script>
+  const movieSearch = document.querySelector("#movie-search");
+  const movieCards = Array.from(document.querySelectorAll(".movie-card"));
+  const searchStatus = document.querySelector("#search-status");
+
+  function updateMovieCards() {{
+    const query = movieSearch.value.trim().toLowerCase();
+    let visible = 0;
+
+    movieCards.forEach((card) => {{
+      const isReviewed = card.dataset.reviewed === "true";
+      const matches = !query || card.dataset.search.includes(query);
+      const shouldShow = query ? matches : isReviewed;
+      card.hidden = !shouldShow;
+      if (shouldShow) visible += 1;
+    }});
+
+    searchStatus.textContent = query
+      ? `${{visible}} result${{visible === 1 ? "" : "s"}} across reviews and templates.`
+      : `${{visible}} reviewed page${{visible === 1 ? "" : "s"}} shown.`;
+  }}
+
+  movieSearch.addEventListener("input", updateMovieCards);
+  updateMovieCards();
+</script>

@@ -17,6 +17,7 @@ except ImportError:  # pragma: no cover - exercised only before dependencies are
 
 TMDB_API_BASE = "https://api.themoviedb.org/3"
 TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w780"
+OMDB_API_BASE = "https://www.omdbapi.com/"
 
 
 def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str | list[str] | float | int]:
@@ -31,9 +32,13 @@ def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str | list[str
 
     details = _movie_details(api_key, movie["id"])
     poster_path = movie.get("poster_path") or details.get("poster_path") or ""
+    imdb_id = details.get("external_ids", {}).get("imdb_id", "")
+    imdb_score = _imdb_score(imdb_id)
 
     return {
         "tmdb_id": movie["id"],
+        "imdb_id": imdb_id,
+        "imdb_score": imdb_score,
         "poster_url": f"{TMDB_IMAGE_BASE}{poster_path}" if poster_path else "",
         "release_date": movie.get("release_date", "") or details.get("release_date", ""),
         "director": _director_from_details(details),
@@ -57,7 +62,7 @@ def _search_movie(api_key: str, title: str, year: str) -> dict[str, Any]:
 def _movie_details(api_key: str, movie_id: int) -> dict[str, Any]:
     response = requests.get(
         f"{TMDB_API_BASE}/movie/{movie_id}",
-        params={"api_key": api_key, "append_to_response": "credits"},
+        params={"api_key": api_key, "append_to_response": "credits,external_ids"},
         timeout=10,
     )
     response.raise_for_status()
@@ -68,3 +73,14 @@ def _director_from_details(details: dict[str, Any]) -> str:
     crew = details.get("credits", {}).get("crew", [])
     directors = [person["name"] for person in crew if person.get("job") == "Director"]
     return ", ".join(directors)
+
+
+def _imdb_score(imdb_id: str) -> str:
+    omdb_key = os.getenv("OMDB_API_KEY")
+    if not omdb_key or not imdb_id or requests is None:
+        return ""
+
+    response = requests.get(OMDB_API_BASE, params={"apikey": omdb_key, "i": imdb_id}, timeout=10)
+    response.raise_for_status()
+    rating = response.json().get("imdbRating", "")
+    return f"{rating}/10" if rating and rating != "N/A" else ""

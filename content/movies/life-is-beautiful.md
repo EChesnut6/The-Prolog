@@ -1,0 +1,27 @@
+---
+title: Life Is Beautiful
+slug: life-is-beautiful
+tmdb_title: Life Is Beautiful
+year: 1997
+vibe: TBD
+reviewed: false
+teaser: Draft pre-flight checklist template.
+---
+
+## Primer
+
+Add spoiler-light context for someone before watching.
+
+## Technical Footnotes
+
+- Add technical notes worth noticing before or during the watch.
+
+## Review
+
+Write the full critique here.
+
+## Gallery
+
+- Visual reference
+- Production still idea
+- Related artwork or image category

@@ -22,6 +22,7 @@ from src.tmdb import fetch_movie_metadata
 CONTENT_DIR = ROOT / "content" / "movies"
 TEMPLATES_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "public"
+ROOT_INDEX = ROOT / "index.html"
 ASSETS_DIR = ROOT / "assets"
 METADATA_CACHE = ROOT / ".tmdb-cache.json"
 
@@ -60,8 +61,8 @@ def main() -> None:
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     _copy_assets()
-    render_site(movies, metadata_by_slug, TEMPLATES_DIR, OUTPUT_DIR)
-    print(f"Built {len(movies)} movie page(s) in {OUTPUT_DIR}")
+    render_site(movies, metadata_by_slug, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX)
+    print(f"Built {len(movies)} movie page(s) in {OUTPUT_DIR} and {ROOT_INDEX}")
 
 
 def _copy_assets() -> None:

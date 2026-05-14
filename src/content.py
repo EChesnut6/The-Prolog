@@ -13,9 +13,13 @@ class MovieContent:
     year: str
     vibe: str
     teaser: str
+    reviewed: bool
+    letterboxd_rank: str
+    letterboxd_source: str
     primer: str
     technical_footnotes: list[str]
     technical_specs: dict[str, str]
+    scores: dict[str, str]
     review: str
     gallery: list[str]
     source_hash: str
@@ -23,7 +27,7 @@ class MovieContent:
 
 def load_movies(content_dir: Path) -> list[MovieContent]:
     movies = [load_movie(path) for path in sorted(content_dir.glob("*.md"))]
-    return sorted(movies, key=lambda movie: (movie.title.lower(), movie.year))
+    return sorted(movies, key=lambda movie: (not movie.reviewed, movie.title.lower(), movie.year))
 
 
 def load_movie(path: Path) -> MovieContent:
@@ -41,9 +45,13 @@ def load_movie(path: Path) -> MovieContent:
         year=metadata.get("year", ""),
         vibe=metadata.get("vibe", ""),
         teaser=metadata.get("teaser", ""),
+        reviewed=_reviewed(metadata, sections),
+        letterboxd_rank=metadata.get("letterboxd_rank", ""),
+        letterboxd_source=metadata.get("letterboxd_source", ""),
         primer=_markdown_paragraphs(sections.get("Primer", "")),
         technical_footnotes=_markdown_list(sections.get("Technical Footnotes", "")),
         technical_specs=_technical_specs(metadata),
+        scores=_scores(metadata),
         review=_markdown_paragraphs(sections.get("Review", "")),
         gallery=_markdown_list(sections.get("Gallery", "")),
         source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
@@ -123,6 +131,38 @@ def _technical_specs(metadata: dict[str, str]) -> dict[str, str]:
         for key, label in labels.items()
         if metadata.get(key)
     }
+
+
+def _scores(metadata: dict[str, str]) -> dict[str, str]:
+    labels = {
+        "letterboxd_score": "Letterboxd score",
+        "imdb_score": "IMDb score",
+    }
+    return {
+        label: metadata[key]
+        for key, label in labels.items()
+        if metadata.get(key)
+    }
+
+
+def _reviewed(metadata: dict[str, str], sections: dict[str, str]) -> bool:
+    if "reviewed" in metadata:
+        return metadata["reviewed"].strip().lower() in {"1", "true", "yes", "y"}
+
+    template_markers = (
+        "Draft review template",
+        "Draft pre-flight checklist template",
+        "Add spoiler-light context",
+        "Write the full critique here.",
+    )
+    content = "\n".join(
+        [
+            metadata.get("teaser", ""),
+            sections.get("Primer", ""),
+            sections.get("Review", ""),
+        ]
+    )
+    return not any(marker in content for marker in template_markers)
 
 
 def _slugify(value: str) -> str:
