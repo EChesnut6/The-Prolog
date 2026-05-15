@@ -10,7 +10,7 @@
   <div class="section-heading">
     <p class="eyebrow">Movie queue</p>
     <h2 id="latest-reviews">Pre-flight checklists and reviews</h2>
-    <p>{reviewed_count} reviewed pages are visible by default. Search across {total_count} total movie pages to pull up draft templates.</p>
+    <p>{{ reviewed_count }} reviewed pages are visible by default. Search across {{ total_count }} total movie pages to pull up draft templates.</p>
   </div>
   <div class="search-panel">
     <label for="movie-search">Search movies</label>
@@ -18,7 +18,27 @@
     <p id="search-status" aria-live="polite"></p>
   </div>
   <div class="movie-grid" id="movie-grid">
-    {movie_cards}
+    {% for card in movie_cards %}
+    <article class="movie-card" 
+             data-reviewed="{{ card.reviewed_attr }}" 
+             data-title="{{ card.movie.title | lower }}" 
+             data-director="{{ card.director | lower }}" 
+             data-year="{{ card.movie.year | lower }}" 
+             data-keywords="{{ card.search_keywords }}"
+             {{ card.hidden_attr }}>
+      <a href="public/reviews/{{ card.movie.slug }}.html">
+        <img class="movie-card__poster" src="{{ card.poster_url }}" alt="{{ card.movie.title }} poster">
+        <div class="movie-card__copy">
+          <span class="movie-card__kicker">{{ card.kicker }}</span>
+          <h2>{{ card.movie.title }}</h2>
+          <p class="movie-card__meta">{{ card.movie.year }} · Directed by {{ card.director }}</p>
+          {% if card.tagline %}
+          <p class="movie-card__tagline"><em>{{ card.tagline }}</em></p>
+          {% endif %}
+        </div>
+      </a>
+    </article>
+    {% endfor %}
   </div>
 </section>
 
@@ -43,11 +63,11 @@
   const movieCards = Array.from(document.querySelectorAll(".movie-card"));
   const searchStatus = document.querySelector("#search-status");
 
-  function updateMovieCards() {{
+  function updateMovieCards() {
     const query = movieSearch.value.trim().toLowerCase();
     let visible = 0;
 
-    movieCards.forEach((card) => {{
+    movieCards.forEach((card) => {
       const isReviewed = card.dataset.reviewed === "true";
       const titleMatch = card.dataset.title.includes(query);
       const directorMatch = card.dataset.director.includes(query);
@@ -56,19 +76,19 @@
       const matches = !query || titleMatch || directorMatch || yearMatch || keywordMatch;
       const shouldShow = query ? matches : isReviewed;
       card.hidden = !shouldShow;
-      if (query && shouldShow) {{
+      if (query && shouldShow) {
         const rank = titleMatch ? 1 : directorMatch ? 2 : yearMatch ? 3 : 4;
         card.style.order = String(rank);
-      }} else {{
+      } else {
         card.style.order = "";
-      }}
+      }
       if (shouldShow) visible += 1;
-    }});
+    });
 
     searchStatus.textContent = query
-      ? `${{visible}} result${{visible === 1 ? "" : "s"}} across reviews and templates.`
-      : `${{visible}} reviewed page${{visible === 1 ? "" : "s"}} shown.`;
-  }}
+      ? `${visible} result${visible === 1 ? "" : "s"} across reviews and templates.`
+      : `${visible} reviewed page${visible === 1 ? "" : "s"} shown.`;
+  }
 
   movieSearch.addEventListener("input", updateMovieCards);
   updateMovieCards();

@@ -26,7 +26,6 @@ def main() -> None:
     tmdb_title = args.tmdb_title or title
     enjoyment_rating = args.enjoyment_rating or _prompt_required("Enjoyment rating")
     filmmaking_rating = args.filmmaking_rating or _prompt_required("Filmmaking rating")
-    teaser = args.teaser or _prompt_required("Teaser")
     specs = _prompt_specs() if args.prompt_specs else {}
     reviewed = "true" if args.reviewed else "false"
 
@@ -44,7 +43,6 @@ def main() -> None:
             enjoyment_rating=enjoyment_rating,
             filmmaking_rating=filmmaking_rating,
             reviewed=reviewed,
-            teaser=teaser,
             specs=specs,
         ),
         encoding="utf-8",
@@ -60,7 +58,6 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--tmdb-title", help="TMDB search title. Defaults to --title.")
     parser.add_argument("--enjoyment-rating", help="Enjoyment/fun rating to display on the site.")
     parser.add_argument("--filmmaking-rating", help="Filmmaking quality rating to display on the site.")
-    parser.add_argument("--teaser", help="Short homepage and hero teaser.")
     parser.add_argument("--reviewed", action="store_true", help="Mark this draft as visible on the homepage.")
     parser.add_argument(
         "--prompt-specs",
@@ -103,7 +100,6 @@ def _render_review_template(
     enjoyment_rating: str,
     filmmaking_rating: str,
     reviewed: str,
-    teaser: str,
     specs: dict[str, str],
 ) -> str:
     spec_lines = "".join(f"{key}: {value}\n" for key, value in specs.items())
@@ -117,7 +113,6 @@ year: {year}
 enjoyment_rating: {enjoyment_rating}
 filmmaking_rating: {filmmaking_rating}
 reviewed: {reviewed}
-teaser: {teaser}
 {spec_lines}---
 
 ## Primer

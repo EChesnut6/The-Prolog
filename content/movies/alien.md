@@ -3,15 +3,16 @@ title: Alien
 slug: alien
 tmdb_title: Alien
 year: 1979
-enjoyment_rating: TBD
-filmmaking_rating: TBD
+enjoyment_rating: 9
+filmmaking_rating: 10
 reviewed: true
-teaser: Draft pre-flight checklist template.
+teaser: I can change this to whatever
 ---
 
 ## Primer
 
 Dude she wins I can't believe it!!!!
+Does adding to this and therefore editing fix???
 
 ## Technical Footnotes
 

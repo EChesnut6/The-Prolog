@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 from pathlib import Path
+import markdown
 
 
 @dataclass(frozen=True)
@@ -13,7 +14,7 @@ class MovieContent:
     year: str
     enjoyment_rating: str
     filmmaking_rating: str
-    teaser: str
+    tagline: str
     reviewed: bool
     letterboxd_rank: str
     letterboxd_source: str
@@ -46,15 +47,15 @@ def load_movie(path: Path) -> MovieContent:
         year=metadata.get("year", ""),
         enjoyment_rating=metadata.get("enjoyment_rating", ""),
         filmmaking_rating=metadata.get("filmmaking_rating", ""),
-        teaser=metadata.get("teaser", ""),
+        tagline=metadata.get("tagline", ""),
         reviewed=_reviewed(metadata, sections),
         letterboxd_rank=metadata.get("letterboxd_rank", ""),
         letterboxd_source=metadata.get("letterboxd_source", ""),
-        primer=_markdown_paragraphs(sections.get("Primer", "")),
+        primer=markdown.markdown(sections.get("Primer", "")),
         technical_footnotes=_markdown_list(sections.get("Technical Footnotes", "")),
         technical_specs=_technical_specs(metadata),
         scores=_scores(metadata),
-        review=_markdown_paragraphs(sections.get("Review", "")),
+        review=markdown.markdown(sections.get("Review", "")),
         gallery=_markdown_list(sections.get("Gallery", "")),
         source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
     )
@@ -97,27 +98,14 @@ def _split_sections(body: str) -> dict[str, str]:
     return {heading: "\n".join(lines).strip() for heading, lines in sections.items()}
 
 
-def _markdown_paragraphs(markdown: str) -> str:
-    paragraphs = [paragraph.strip() for paragraph in markdown.split("\n\n") if paragraph.strip()]
-    return "\n".join(f"<p>{_inline_markdown(paragraph)}</p>" for paragraph in paragraphs)
-
-
-def _markdown_list(markdown: str) -> list[str]:
+def _markdown_list(md_text: str) -> list[str]:
     items: list[str] = []
-    for line in markdown.splitlines():
+    for line in md_text.splitlines():
         stripped = line.strip()
         if stripped.startswith("- "):
-            items.append(_inline_markdown(stripped[2:]))
+            # Convert inline markdown within list items
+            items.append(markdown.markdown(stripped[2:]).removeprefix("<p>").removesuffix("</p>"))
     return items
-
-
-def _inline_markdown(text: str) -> str:
-    return (
-        text.replace("&", "&amp;")
-        .replace("<", "&lt;")
-        .replace(">", "&gt;")
-        .replace('"', "&quot;")
-    )
 
 
 def _technical_specs(metadata: dict[str, str]) -> dict[str, str]:
@@ -149,6 +137,7 @@ def _scores(metadata: dict[str, str]) -> dict[str, str]:
 
 
 def _reviewed(metadata: dict[str, str], sections: dict[str, str]) -> bool:
+    # Explicit override takes precedence
     if "reviewed" in metadata:
         return metadata["reviewed"].strip().lower() in {"1", "true", "yes", "y"}
 

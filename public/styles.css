@@ -188,6 +188,12 @@ img {
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.movie-card[data-reviewed="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 
 .movie-card a {
@@ -224,18 +230,16 @@ img {
   line-height: 1.55;
 }
 
+.movie-card__tagline {
+  margin: 4px 0 10px;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+}
+
 .movie-card__kicker,
 .movie-card__meta {
   color: var(--accent-soft);
   font-size: 0.82rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.movie-card__status {
-  margin: 0;
-  color: var(--accent-soft);
-  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -289,11 +293,18 @@ img {
   font-weight: 700;
 }
 
+.movie-tagline {
+  margin: 12px 0 0;
+  font-size: 1.15rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .movie-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 24px 0 4px;
+  margin-top: 24px;
 }
 
 .source-note {
@@ -357,6 +368,67 @@ img {
 .rating-check strong {
   color: var(--accent-soft);
   font-size: 1.4rem;
+}
+
+.spoiler-warning {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: min(100% - 32px, var(--max-width));
+  margin: 0 auto;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.spoiler-warning hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid var(--accent);
+  opacity: 0.3;
+}
+
+.review-details {
+  overflow: hidden;
+}
+
+.review-section {
+  border-top: none !important;
+}
+
+.review-details summary {
+  padding: 0 0 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.review-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-details summary:hover .reveal-hint {
+  color: var(--accent);
+}
+
+.review-summary-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.reveal-hint {
+  margin-top: 12px;
+  color: var(--accent-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+
+.review-content {
+  padding: 16px 0 32px;
 }
 
 .primer-layout {

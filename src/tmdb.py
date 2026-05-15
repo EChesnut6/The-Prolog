@@ -5,15 +5,13 @@ from typing import Any
 
 try:
     import requests
-except ImportError:  # pragma: no cover - exercised only before dependencies are installed.
+except ImportError:
     requests = None
 
-try:
-    from dotenv import load_dotenv
-except ImportError:  # pragma: no cover - exercised only before dependencies are installed.
-    def load_dotenv() -> None:
-        return None
+from dotenv import load_dotenv
 
+# Load once at module level
+load_dotenv()
 
 TMDB_API_BASE = "https://api.themoviedb.org/3"
 TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w780"
@@ -21,7 +19,6 @@ OMDB_API_BASE = "https://www.omdbapi.com/"
 
 
 def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str | list[str] | float | int]:
-    load_dotenv()
     api_key = os.getenv("TMDB_API_KEY")
     if not api_key or requests is None:
         return {}
@@ -45,6 +42,7 @@ def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str | list[str
         "runtime": details.get("runtime", ""),
         "genres": [genre["name"] for genre in details.get("genres", []) if genre.get("name")],
         "vote_average": details.get("vote_average", ""),
+        "tagline": details.get("tagline", ""),
     }
 
 
