@@ -257,9 +257,16 @@ img {
   line-height: 1.8;
 }
 
-.attribution-band a {
+.lede a,
+.section-heading a,
+.about-band a,
+.attribution-band a,
+.prose a,
+.footnotes a,
+.reference-list a,
+.source-note a {
   color: var(--accent-soft);
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;

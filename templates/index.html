@@ -29,7 +29,6 @@
       <a href="public/reviews/{{ card.movie.slug }}.html">
         <img class="movie-card__poster" src="{{ card.poster_url }}" alt="{{ card.movie.title }} poster">
         <div class="movie-card__copy">
-          <span class="movie-card__kicker">{{ card.kicker }}</span>
           <h2>{{ card.movie.title }}</h2>
           <p class="movie-card__meta">{{ card.movie.year }} · Directed by {{ card.director }}</p>
           {% if card.tagline %}

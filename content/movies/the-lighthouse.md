@@ -4,11 +4,13 @@ slug: the-lighthouse
 tmdb_title: The Lighthouse
 year: 2019
 enjoyment_rating: 9
-filmmaking_rating: 9
+filmmaking_rating: 10
 teaser: A stormy chamber piece about labor, myth, isolation, and power.
 ---
 
 ## Primer
+
+
 
 You can go into this movie knowing nothing or everything, it's still confusing.
 howerver, to make your viewing mor interesting its important to point out some references upfront.
