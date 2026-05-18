@@ -25,11 +25,15 @@ class MovieContent:
     review: str
     gallery: list[str]
     source_hash: str
+    last_modified: float
 
 
 def load_movies(content_dir: Path) -> list[MovieContent]:
-    movies = [load_movie(path) for path in sorted(content_dir.glob("*.md"))]
-    return sorted(movies, key=lambda movie: (not movie.reviewed, movie.title.lower(), movie.year))
+    movies = [load_movie(path) for path in content_dir.glob("*.md")]
+    return sorted(
+        movies,
+        key=lambda movie: (not movie.reviewed, -movie.last_modified, movie.title.lower()),
+    )
 
 
 def load_movie(path: Path) -> MovieContent:
@@ -58,6 +62,7 @@ def load_movie(path: Path) -> MovieContent:
         review=markdown.markdown(sections.get("Review", "")),
         gallery=_markdown_list(sections.get("Gallery", "")),
         source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
+        last_modified=path.stat().st_mtime,
     )
 
 

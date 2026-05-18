@@ -11,6 +11,7 @@ teaser: I'm Batman
 ## Primer
 
 Here's all the important stuff I want to say.
+Updated
 
 ## Technical Footnotes
 

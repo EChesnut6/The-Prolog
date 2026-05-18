@@ -21,7 +21,7 @@ As for things you should know, this movie has a little sci-fi going on and is pu
 
 ## Review
 
-Write the full critique here.
+The first 2/3rds are really good.
 
 ## Gallery
 
