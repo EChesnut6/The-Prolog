@@ -21,7 +21,10 @@ As for things you should know, this movie has a little sci-fi going on and is pu
 
 ## Review
 
-The first 2/3rds are really good.
+##### This review is incomplete and therefore shit
+As you can tell by my ratings of this, I generally liked this movie. I found the hard switch between the moods to be interesting. I liked the character of David as a complex protagonist. 
+
+The ending, and really the last 3rd, of the movie is where ideas thrive. That's not to say that the first 2/3rds don't have pleanty to analyze and go over, but relative the the final act, they lack discussion. 
 
 ## Gallery
 
