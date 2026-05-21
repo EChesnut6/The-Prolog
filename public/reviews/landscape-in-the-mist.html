@@ -6,14 +6,81 @@
     <title>Landscape in the Mist | The Prolog</title>
     <link rel="stylesheet" href="../styles.css">
   </head>
-  <body>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
     <header class="site-header">
-      <a class="site-logo" href="../../index.html">The Prolog</a>
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">May 19, 2026</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="../../index.html">Reviews</a>
-        <a href="../../index.html#about">About</a>
+        <div class="nav-container">
+          <a href="../../search.html">Movies</a>
+          <a href="../coming-soon.html">Collections</a>
+          <a href="../coming-soon.html">Greats</a>
+        </div>
       </nav>
     </header>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const sunIcon = themeToggle.querySelector('.sun-icon');
+      const moonIcon = themeToggle.querySelector('.moon-icon');
+
+      function updateIcons(theme) {
+        if (theme === 'dark-mode') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      }
+
+      // Initialize icons
+      updateIcons(document.body.className);
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark-mode');
+        const newTheme = isDark ? 'light-mode' : 'dark-mode';
+        document.body.className = newTheme;
+        localStorage.setItem('theme', newTheme);
+        updateIcons(newTheme);
+      });
+    </script>
     <main>
       <section class="movie-hero">
   <div class="poster-frame">
@@ -33,7 +100,7 @@
           <dt>Genres</dt><dd>Drama</dd>
         
         
-          <dt>IMDb score</dt><dd>7.9/10</dd>
+          <dt>TMDB rating</dt><dd>7.6/10</dd>
         
       </dl>
     </div>
@@ -99,8 +166,13 @@
 </section>
     </main>
     <footer class="site-footer">
-      <p>Context before the curtain rises.</p>
-      <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+          <p>&copy; 2026 The Prolog. All rights reserved.</p>
+          <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

@@ -1,0 +1,43 @@
+<div class="coming-soon-container">
+  <section class="coming-soon-hero">
+    <p class="eyebrow">Work in progress</p>
+    <h1>This section is under construction.</h1>
+    <p class="lede">I'm currently curating content and designing the layout for this part of The Prolog. Check back soon for new reviews and collections.</p>
+    <a href="{{ home_path }}" class="back-home">← Back to Reviews</a>
+  </section>
+</div>
+
+<style>
+  .coming-soon-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .coming-soon-hero h1 {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    margin: 0 0 24px;
+  }
+  .coming-soon-hero .lede {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .back-home {
+    display: inline-block;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 12px 24px;
+    transition: all 0.2s;
+  }
+  .back-home:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+</style>

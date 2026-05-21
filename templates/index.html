@@ -1,94 +1,97 @@
-<section class="home-hero">
-  <div>
-    <p class="eyebrow">Pre-Flight Checklist</p>
-    <h1>Appreciate the artistic intent before the film starts.</h1>
-    <p class="lede">Spoiler-light context, enjoyment notes, filmmaking quality, historical notes, and visual references for your next watch.</p>
-  </div>
-</section>
-
-<section class="section-shell" aria-labelledby="latest-reviews">
-  <div class="section-heading">
-    <p class="eyebrow">Movie queue</p>
-    <h2 id="latest-reviews">Pre-flight checklists and reviews</h2>
-    <p>{{ reviewed_count }} reviewed pages are visible by default. Search across {{ total_count }} total movie pages to pull up draft templates.</p>
-  </div>
-  <div class="search-panel">
-    <label for="movie-search">Search movies</label>
-    <input id="movie-search" type="search" placeholder="Search title, director, year, or keywords" autocomplete="off">
-    <p id="search-status" aria-live="polite"></p>
-  </div>
-  <div class="movie-grid" id="movie-grid">
-    {% for card in movie_cards %}
-    <article class="movie-card" 
-             data-reviewed="{{ card.reviewed_attr }}" 
-             data-title="{{ card.movie.title | lower }}" 
-             data-director="{{ card.director | lower }}" 
-             data-year="{{ card.movie.year | lower }}" 
-             data-keywords="{{ card.search_keywords }}"
-             {{ card.hidden_attr }}>
-      <a href="public/reviews/{{ card.movie.slug }}.html">
-        <img class="movie-card__poster" src="{{ card.poster_url }}" alt="{{ card.movie.title }} poster">
-        <div class="movie-card__copy">
-          <h2>{{ card.movie.title }}</h2>
-          <p class="movie-card__meta">{{ card.movie.year }} · Directed by {{ card.director }}</p>
-          {% if card.tagline %}
-          <p class="movie-card__tagline"><em>{{ card.tagline }}</em></p>
-          {% endif %}
+<div class="ebert-container">
+  <!-- Random Teaser Hero -->
+  {% if random_teaser %}
+  <section class="random-teaser{% if random_teaser.backdrop_url %} has-backdrop{% endif %}" 
+           {% if random_teaser.backdrop_url %}style="background-image: url('{{ random_teaser.backdrop_url }}');"{% endif %}>
+    <div class="teaser-content">
+      <div class="teaser-copy">
+        <p class="eyebrow">Featured Review</p>
+        <h1><a href="public/reviews/{{ random_teaser.movie.slug }}.html">{{ random_teaser.movie.title }}</a></h1>
+        <p class="teaser-meta">{{ random_teaser.movie.year }} · Directed by {{ random_teaser.director }}</p>
+        {% if random_teaser.tagline %}
+        <p class="teaser-tagline">"{{ random_teaser.tagline }}"</p>
+        {% endif %}
+        <div class="teaser-primer">
+          {{ random_teaser.movie.primer | safe | truncate(300) }}
         </div>
-      </a>
-    </article>
-    {% endfor %}
+        <a href="public/reviews/{{ random_teaser.movie.slug }}.html" class="read-more">Read the full checklist →</a>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <div class="main-content-grid">
+    <div class="content-left">
+      <!-- New Reviews Grid -->
+      <section class="section-block">
+        <h2 class="section-title">New Reviews</h2>
+        <div class="reviews-grid">
+          {% for card in new_reviews %}
+          <article class="mini-card">
+            <a href="public/reviews/{{ card.movie.slug }}.html">
+              <img src="{{ card.poster_url }}" alt="{{ card.movie.title }} poster">
+              <div class="mini-card__copy">
+                <h3>{{ card.movie.title }} <span class="review-icon" title="Reviewed">★</span></h3>
+                <p class="mini-card__meta">{{ card.movie.year }}</p>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Masterpieces Section -->
+      {% if great_movies %}
+      <section class="section-block masterpieces-section">
+        <h2 class="section-title">Masterpieces</h2>
+        <div class="masterpieces-grid">
+          {% for card in great_movies[:3] %}
+          <article class="masterpiece-card">
+            <a href="public/reviews/{{ card.movie.slug }}.html">
+              <div class="masterpiece-image">
+                <img src="{{ card.poster_url }}" alt="{{ card.movie.title }} poster">
+              </div>
+              <div class="masterpiece-copy">
+                <h3>{{ card.movie.title }} <span class="review-icon" title="Reviewed">★</span></h3>
+                <p>{{ card.movie.year }} · {{ card.director }}</p>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+
+    <aside class="content-sidebar">
+
+      <!-- Latest Reviews List -->
+      <div class="sidebar-block">
+        <h3 class="sidebar-title">Latest Reviews</h3>
+        <ul class="latest-list">
+          {% for card in latest_sidebar %}
+          <li>
+            <a href="public/reviews/{{ card.movie.slug }}.html">
+              <span class="latest-title">{{ card.movie.title }}</span>
+              <span class="latest-meta">{{ card.movie.year }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Collections -->
+      <div class="sidebar-block">
+        <h3 class="sidebar-title">Collections</h3>
+        <ul class="collections-list">
+          <li><a href="#">Criterion Collection</a></li>
+          <li><a href="#">Best of the 70s</a></li>
+          <li><a href="#">Film Noir Essentials</a></li>
+          <li><a href="#">Modern Classics</a></li>
+        </ul>
+      </div>
+    </aside>
   </div>
-</section>
 
-<section class="section-shell about-band" id="about" aria-labelledby="about-heading">
-  <div class="section-heading">
-    <p class="eyebrow">The point</p>
-    <h2 id="about-heading">Artistic intent without spoiler fog.</h2>
-  </div>
-  <p>The Prolog bridges raw trivia and post-viewing criticism with concise pre-watch context, personal notes, TMDB metadata, and references that help cinephiles notice the craft without giving away the film.</p>
-</section>
+</div>
 
-<section class="section-shell attribution-band" aria-labelledby="tmdb-heading">
-  <div class="section-heading">
-    <p class="eyebrow">Movie data</p>
-    <h2 id="tmdb-heading">Powered in part by TMDB.</h2>
-  </div>
-  <p>Poster art, directors, release dates, runtime, genres, and fallback ratings are enriched through <a href="https://www.themoviedb.org/?language=en-US">The Movie Database</a>.</p>
-</section>
-
-<script>
-  const movieSearch = document.querySelector("#movie-search");
-  const movieCards = Array.from(document.querySelectorAll(".movie-card"));
-  const searchStatus = document.querySelector("#search-status");
-
-  function updateMovieCards() {
-    const query = movieSearch.value.trim().toLowerCase();
-    let visible = 0;
-
-    movieCards.forEach((card) => {
-      const isReviewed = card.dataset.reviewed === "true";
-      const titleMatch = card.dataset.title.includes(query);
-      const directorMatch = card.dataset.director.includes(query);
-      const yearMatch = card.dataset.year.includes(query);
-      const keywordMatch = card.dataset.keywords.includes(query);
-      const matches = !query || titleMatch || directorMatch || yearMatch || keywordMatch;
-      const shouldShow = query ? matches : isReviewed;
-      card.hidden = !shouldShow;
-      if (query && shouldShow) {
-        const rank = titleMatch ? 1 : directorMatch ? 2 : yearMatch ? 3 : 4;
-        card.style.order = String(rank);
-      } else {
-        card.style.order = "";
-      }
-      if (shouldShow) visible += 1;
-    });
-
-    searchStatus.textContent = query
-      ? `${visible} result${visible === 1 ? "" : "s"} across reviews and templates.`
-      : `${visible} reviewed page${visible === 1 ? "" : "s"} shown.`;
-  }
-
-  movieSearch.addEventListener("input", updateMovieCards);
-  updateMovieCards();
-</script>

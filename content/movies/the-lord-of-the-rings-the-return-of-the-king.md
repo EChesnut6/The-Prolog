@@ -1,17 +1,17 @@
 ---
-title: The Lord of the Rings: The Return of the King
+title: The Lord of the Rings The Return of the King
 slug: the-lord-of-the-rings-the-return-of-the-king
-tmdb_title: The Lord of the Rings: The Return of the King
+tmdb_title: The Lord of the Rings The Return of the King
 year: 2003
 enjoyment_rating: TBD
 filmmaking_rating: TBD
-reviewed: false
+reviewed: True
 teaser: Draft pre-flight checklist template.
 ---
 
 ## Primer
 
-Add spoiler-light context for someone before watching.
+Here I am writing a review, does this still not work????
 
 ## Technical Footnotes
 
@@ -19,7 +19,7 @@ Add spoiler-light context for someone before watching.
 
 ## Review
 
-Write the full critique here.
+Here is my full review for this movie
 
 ## Gallery
 
