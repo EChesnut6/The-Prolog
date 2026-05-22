@@ -7,6 +7,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from src.content import MovieContent
+from src.utils import SCORE_FIELDS
 
 import datetime
 
@@ -191,10 +192,7 @@ def render_search(
 
 
 def _score_metadata(movie: MovieContent) -> dict[str, str]:
-    reverse_labels = {
-        "Letterboxd score": "letterboxd_score",
-        "IMDb score": "imdb_score",
-    }
+    reverse_labels = {v: k for k, v in SCORE_FIELDS.items()}
     return {
         reverse_labels[label]: value
         for label, value in movie.scores.items()
