@@ -5,7 +5,6 @@ tmdb_title: The Dark Knight
 year: 2008
 enjoyment_rating: 10
 filmmaking_rating: 10
-teaser: I'm Batman
 ---
 
 ## Primer

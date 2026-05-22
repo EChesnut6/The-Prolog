@@ -8,6 +8,8 @@ from typing import Any
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from src.content import MovieContent
 
+import datetime
+
 
 def render_site(
     movies: list[MovieContent],
@@ -72,10 +74,11 @@ def render_movie(
     content = movie_template.render(**movie_data)
     return base_template.render(
         title=f"{movie.title} | The Prolog",
+        date= datetime.date.today(),
         content=content,
         css_path="../styles.css",
         home_path="../../index.html",
-        search_path="../../search.html",
+        search_path="../search.html",
         coming_soon_path="../coming-soon.html",
     )
 
@@ -134,10 +137,11 @@ def render_index(
     )
     return base_template.render(
         title="The Prolog",
+        date= datetime.date.today(),
         content=content,
         css_path="public/styles.css",
         home_path="index.html",
-        search_path="search.html",
+        search_path="public/search.html",
         coming_soon_path="public/coming-soon.html"
     )
 
@@ -149,10 +153,11 @@ def render_coming_soon(
     content = coming_soon_template.render(home_path="../index.html")
     return base_template.render(
         title="Coming Soon | The Prolog",
+        date= datetime.date.today(),
         content=content,
         css_path="styles.css",
         home_path="../index.html",
-        search_path="../search.html",
+        search_path="search.html",
         coming_soon_path="coming-soon.html"
     )
 
@@ -168,7 +173,7 @@ def render_search(
         movie_cards_data.append({
             "movie": movie,
             "metadata": metadata,
-            "poster_url": metadata.get("poster_url") or "public/assets/placeholders/poster-placeholder.svg",
+            "poster_url": metadata.get("poster_url") or "assets/placeholders/poster-placeholder.svg",
             "director": metadata.get("director") or "Director unavailable",
             "search_keywords": " ".join(_search_keywords(movie, metadata)).lower()
         })
@@ -176,11 +181,12 @@ def render_search(
     content = search_template.render(movie_cards=movie_cards_data)
     return base_template.render(
         title="Search Movies | The Prolog",
+        date= datetime.date.today(),
         content=content,
-        css_path="public/styles.css",
-        home_path="index.html",
+        css_path="styles.css",
+        home_path="../index.html",
         search_path="search.html",
-        coming_soon_path="public/coming-soon.html"
+        coming_soon_path="coming-soon.html"
     )
 
 

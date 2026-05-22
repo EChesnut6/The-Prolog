@@ -6,30 +6,39 @@
 }
 
 body.light-mode {
-  --bg: #fdfcf9;
-  --text: #1a1a1a;
-  --text-muted: #555;
+  --bg: #fff8f0;
+  --text: #1e1e24;
+  --text-muted: rgba(30, 30, 36, 0.68);
   --muted: var(--text-muted);
-  --line: #e5e7eb;
-  --header-bg: #fff;
-  --card-bg: #fff;
+  --line: rgba(30, 30, 36, 0.16);
+  --header-bg: #fff8f0;
+  --card-bg: #fff8f0;
   --panel: var(--card-bg);
-  --panel-strong: #f3f4f6;
+  --panel-strong: rgba(30, 30, 36, 0.06);
+  --accent: #92140c;
+  --accent-ring: rgba(146, 20, 12, 0.12);
   --accent-soft: var(--accent);
 }
 
 body.dark-mode {
-  --bg: #121212;
-  --text: #e5e7eb;
-  --text-muted: #9ca3af;
+  /* --bg: #121110; */
+  --bg: #1e1e24;
+  /* --text: #f4f4f6; */
+  --text: #fff8f0;
+  --text-muted: rgba(244, 244, 246, 0.68);
   --muted: var(--text-muted);
-  --line: #2d2d2d;
-  --header-bg: #1a1a1a;
-  --card-bg: #1a1a1a;
+  --line: rgba(244, 244, 246, 0.16);
+  /* --header-bg: #121110; */
+  --header-bg: #1e1e24;
+  /* --card-bg: #121110; */
+  --card-bg: #1e1e24;
   --panel: var(--card-bg);
-  --panel-strong: #242424;
-  /* --accent-soft: #ef4444; */
-  --accent-soft: #b91c1c;
+  --panel-strong: rgba(244, 244, 246, 0.08);
+  /* --accent: #ff6b61; */
+  /* --accent: #0c8992;  */
+  --accent: #92140c;
+  --accent-ring: rgba(255, 107, 97, 0.18);
+  --accent-soft: var(--accent);
 }
 
 * {
@@ -37,7 +46,7 @@ body.dark-mode {
 }
 
 html {
-  background: #fdfcf9;
+  background: #fff8f0;
   font-family: var(--sans);
   scroll-behavior: smooth;
 }
@@ -475,14 +484,14 @@ img {
 
 .beer-button {
   background: var(--accent);
-  color: #fff !important;
-  padding: 8px 16px;
+  color: #FFF !important;
+  padding: 20px 16px;
   border-radius: 4px;
   font-weight: 700;
 }
 
 .beer-button:hover {
-  background: #991b1b;
+  background: var(--accent-soft);
   min-height: 100%;
   grid-template-rows: auto 1fr;
 }
@@ -670,8 +679,8 @@ img {
   display: flex;
   align-items: center;
   gap: 24px;
-  width: min(100% - 32px, var(--max-width));
-  margin: 0 auto;
+  width: 100%;
+  margin: 32px 0;
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 800;
@@ -732,6 +741,16 @@ img {
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 36px;
   align-items: start;
+  padding: 56px 0;
+}
+
+.section-shell {
+  padding: 56px 0;
+}
+
+.prose {
+  max-width: 760px;
+  width: 100%;
 }
 
 .footnotes {

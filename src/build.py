@@ -23,7 +23,7 @@ CONTENT_DIR = ROOT / "content" / "movies"
 TEMPLATES_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "public"
 ROOT_INDEX = ROOT / "index.html"
-ROOT_SEARCH = ROOT / "search.html"
+ROOT_SEARCH = OUTPUT_DIR / "search.html"
 ASSETS_DIR = ROOT / "assets"
 METADATA_CACHE = ROOT / ".tmdb-cache.json"
 

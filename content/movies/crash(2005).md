@@ -5,7 +5,6 @@
   year: 2005
   enjoyment_rating: 5
   filmmaking_rating: 5
-  teaser: I'm 13 and this is deep
   ---
 
   ## Primer

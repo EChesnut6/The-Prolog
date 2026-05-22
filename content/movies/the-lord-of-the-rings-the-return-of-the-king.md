@@ -6,7 +6,6 @@ year: 2003
 enjoyment_rating: TBD
 filmmaking_rating: TBD
 reviewed: True
-teaser: Draft pre-flight checklist template.
 ---
 
 ## Primer

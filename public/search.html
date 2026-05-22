@@ -16,10 +16,10 @@
     <header class="site-header">
       <div class="header-top">
         <div class="header-top__left">
-          <span class="header-date">May 19, 2026</span>
+          <span class="header-date">2026-05-21</span>
         </div>
         <div class="header-logo-container">
-          <a class="site-logo" href="index.html">The Prolog</a>
+          <a class="site-logo" href="../index.html">The Prolog</a>
         </div>
         <div class="header-top__right">
           <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
@@ -49,8 +49,8 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <div class="nav-container">
           <a href="search.html">Movies</a>
-          <a href="public/coming-soon.html">Collections</a>
-          <a href="public/coming-soon.html">Greats</a>
+          <a href="coming-soon.html">Collections</a>
+          <a href="coming-soon.html">Greats</a>
         </div>
       </nav>
     </header>
@@ -146,7 +146,7 @@
 .dedicated-search-bar input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.1);
+  box-shadow: 0 0 0 4px var(--accent-ring);
 }
 
 .dedicated-search-bar .search-icon {
@@ -237,12 +237,42 @@
   const movies = [
     
     {
+      title: "Alien",
+      slug: "alien",
+      year: "1979",
+      director: "Ridley Scott",
+      poster: "https://image.tmdb.org/t/p/w780/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
+      keywords: "horror science fiction",
+      reviewed: true
+    },
+    
+    {
+      title: "Crash",
+      slug: "crash",
+      year: "2005",
+      director: "Paul Haggis",
+      poster: "https://image.tmdb.org/t/p/w780/86BdPC6RDX88NC880pLidKn2LCj.jpg",
+      keywords: "drama",
+      reviewed: true
+    },
+    
+    {
       title: "The Dark Knight",
       slug: "the-dark-knight",
       year: "2008",
       director: "Christopher Nolan",
       poster: "https://image.tmdb.org/t/p/w780/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
       keywords: "action crime thriller",
+      reviewed: true
+    },
+    
+    {
+      title: "The Lighthouse",
+      slug: "the-lighthouse",
+      year: "2019",
+      director: "Robert Eggers",
+      poster: "https://image.tmdb.org/t/p/w780/f1tIYarTbkBdIT1aW0gzelDwknv.jpg",
+      keywords: "drama fantasy thriller",
       reviewed: true
     },
     
@@ -277,131 +307,101 @@
     },
     
     {
-      title: "Crash",
-      slug: "crash",
-      year: "2005",
-      director: "Paul Haggis",
-      poster: "https://image.tmdb.org/t/p/w780/86BdPC6RDX88NC880pLidKn2LCj.jpg",
-      keywords: "drama",
-      reviewed: true
-    },
-    
-    {
-      title: "The Lighthouse",
-      slug: "the-lighthouse",
-      year: "2019",
-      director: "Robert Eggers",
-      poster: "https://image.tmdb.org/t/p/w780/f1tIYarTbkBdIT1aW0gzelDwknv.jpg",
-      keywords: "drama fantasy thriller",
-      reviewed: true
-    },
-    
-    {
-      title: "Alien",
-      slug: "alien",
-      year: "1979",
-      director: "Ridley Scott",
-      poster: "https://image.tmdb.org/t/p/w780/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
-      keywords: "horror science fiction",
-      reviewed: true
-    },
-    
-    {
-      title: "12 Angry Men",
-      slug: "12-angry-men",
-      year: "1957",
-      director: "Sidney Lumet",
-      poster: "https://image.tmdb.org/t/p/w780/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
-      keywords: "drama",
+      title: "Se7en",
+      slug: "se7en",
+      year: "1995",
+      director: "David Fincher",
+      poster: "https://image.tmdb.org/t/p/w780/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg",
+      keywords: "crime mystery thriller",
       reviewed: false
     },
     
     {
-      title: "Z",
-      slug: "z",
-      year: "1969",
-      director: "Costa-Gavras",
-      poster: "https://image.tmdb.org/t/p/w780/dFAJyFNgvOv24f2RQyI9KDxjGr3.jpg",
-      keywords: "thriller crime drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Yojimbo",
-      slug: "yojimbo",
-      year: "1961",
+      title: "Seven Samurai",
+      slug: "seven-samurai",
+      year: "1954",
       director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/tN7kYPjRhDolpui9sc9Eq9n5b2O.jpg",
-      keywords: "drama thriller",
+      poster: "https://image.tmdb.org/t/p/w780/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg",
+      keywords: "action drama",
       reviewed: false
     },
     
     {
-      title: "Yi Yi",
-      slug: "yi-yi",
-      year: "2000",
-      director: "Edward Yang",
-      poster: "https://image.tmdb.org/t/p/w780/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Woman in the Dunes",
-      slug: "woman-in-the-dunes",
+      title: "Fail Safe",
+      slug: "fail-safe",
       year: "1964",
-      director: "Hiroshi Teshigahara",
-      poster: "https://image.tmdb.org/t/p/w780/xiBr3bIT2xpbuIKo5bLK7ebP4O1.jpg",
-      keywords: "drama thriller",
+      director: "Sidney Lumet",
+      poster: "https://image.tmdb.org/t/p/w780/qrsj5hort5xkLOKw9NyraGMnlVP.jpg",
+      keywords: "thriller drama war",
       reviewed: false
     },
     
     {
-      title: "Witness for the Prosecution",
-      slug: "witness-for-the-prosecution",
-      year: "1957",
-      director: "Billy Wilder",
-      poster: "https://image.tmdb.org/t/p/w780/bCj4EfuehAlgBwVd3diyWyhuuau.jpg",
-      keywords: "drama mystery crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Winter Light",
-      slug: "winter-light",
-      year: "1963",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/wDxrEssdjFWYwIZLbr06RQNcg1q.jpg",
+      title: "Secrets &amp; Lies",
+      slug: "secrets-lies",
+      year: "1996",
+      director: "Mike Leigh",
+      poster: "https://image.tmdb.org/t/p/w780/zQBuRQ3hrLhkEsXcxteUxuxLrvs.jpg",
       keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "Wings of Desire",
-      slug: "wings-of-desire",
-      year: "1987",
-      director: "Wim Wenders",
-      poster: "https://image.tmdb.org/t/p/w780/iZQs2vUeCzvS1KfZJ6uYNCGJBBV.jpg",
-      keywords: "drama fantasy romance",
+      title: "A Matter of Life and Death",
+      slug: "a-matter-of-life-and-death",
+      year: "1946",
+      director: "Emeric Pressburger, Michael Powell",
+      poster: "https://image.tmdb.org/t/p/w780/H74LWKnhOeIFSk9gNjBcPjIov3.jpg",
+      keywords: "romance fantasy drama comedy",
       reviewed: false
     },
     
     {
-      title: "Wild Strawberries",
-      slug: "wild-strawberries",
-      year: "1957",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/iyTD2QnySNMPUPE3IedZQipSWfz.jpg",
-      keywords: "drama",
+      title: "A Woman Under the Influence",
+      slug: "a-woman-under-the-influence",
+      year: "1974",
+      director: "John Cassavetes",
+      poster: "https://image.tmdb.org/t/p/w780/6EJ4JoTxnH1QmGTE9pPzgtW1cLW.jpg",
+      keywords: "drama romance",
       reviewed: false
     },
     
     {
-      title: "Who&#39;s Afraid of Virginia Woolf?",
-      slug: "who-s-afraid-of-virginia-woolf",
-      year: "1966",
-      director: "Mike Nichols",
-      poster: "https://image.tmdb.org/t/p/w780/wF7ihB5V5gSm6zxjv3ZhHOpgREI.jpg",
+      title: "Son of the White Mare",
+      slug: "son-of-the-white-mare",
+      year: "1981",
+      director: "Marcell Jankovics",
+      poster: "https://image.tmdb.org/t/p/w780/cYYYIfBFG5nszjDk5xea4MQHyDS.jpg",
+      keywords: "adventure animation fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Three Colours: Red",
+      slug: "three-colours-red",
+      year: "1994",
+      director: "Krzysztof Kieślowski",
+      poster: "https://image.tmdb.org/t/p/w780/JHmsBiX1tjCKqAul1lzC20WcAW.jpg",
+      keywords: "drama mystery romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Interstellar",
+      slug: "interstellar",
+      year: "2014",
+      director: "Christopher Nolan",
+      poster: "https://image.tmdb.org/t/p/w780/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
+      keywords: "adventure drama science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "La Haine",
+      slug: "la-haine",
+      year: "1995",
+      director: "Mathieu Kassovitz",
+      poster: "https://image.tmdb.org/t/p/w780/8rgPyWjYZhsphSSxbXguMnhN7H0.jpg",
       keywords: "drama",
       reviewed: false
     },
@@ -417,62 +417,92 @@
     },
     
     {
-      title: "Where Is the Friend&#39;s House?",
-      slug: "where-is-the-friend-s-house",
-      year: "1987",
-      director: "Abbas Kiarostami",
-      poster: "https://image.tmdb.org/t/p/w780/2rTW4s1kgvoqVs0Kv8ARle1SrkF.jpg",
-      keywords: "drama adventure",
+      title: "Howl&#39;s Moving Castle",
+      slug: "howl-s-moving-castle",
+      year: "2004",
+      director: "Hayao Miyazaki",
+      poster: "https://image.tmdb.org/t/p/w780/13kOl2v0nD2OLbVSHnHk8GUFEhO.jpg",
+      keywords: "fantasy animation adventure",
       reviewed: false
     },
     
     {
-      title: "Werckmeister Harmonies",
-      slug: "werckmeister-harmonies",
-      year: "2000",
-      director: "Béla Tarr",
-      poster: "https://image.tmdb.org/t/p/w780/ix3pquGqTkCW86UbVTdRcrhGEFm.jpg",
+      title: "The Shawshank Redemption",
+      slug: "the-shawshank-redemption",
+      year: "1994",
+      director: "Frank Darabont",
+      poster: "https://image.tmdb.org/t/p/w780/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+      keywords: "drama crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Quo Vadis, Aida?",
+      slug: "quo-vadis-aida",
+      year: "2020",
+      director: "Jasmila Žbanić",
+      poster: "https://image.tmdb.org/t/p/w780/eQy2Tgvmx0FkK8vMMqMW4aX5UXQ.jpg",
+      keywords: "war drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Chungking Express",
+      slug: "chungking-express",
+      year: "1994",
+      director: "Wong Kar-Wai",
+      poster: "https://image.tmdb.org/t/p/w780/43I9DcNoCzpyzK8JCkJYpHqHqGG.jpg",
+      keywords: "drama comedy romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Malcolm X",
+      slug: "malcolm-x",
+      year: "1992",
+      director: "Spike Lee",
+      poster: "https://image.tmdb.org/t/p/w780/o2s9ow0uRRm1BcF3teznk5twd90.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "La Dolce Vita",
+      slug: "la-dolce-vita",
+      year: "1960",
+      director: "Federico Fellini",
+      poster: "https://image.tmdb.org/t/p/w780/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg",
+      keywords: "comedy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Il Sorpasso",
+      slug: "il-sorpasso",
+      year: "1962",
+      director: "Dino Risi",
+      poster: "https://image.tmdb.org/t/p/w780/4h1ckrJQVcQYjeOkqS8i9BqZ9MI.jpg",
+      keywords: "drama comedy adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Mommy",
+      slug: "mommy",
+      year: "2014",
+      director: "Xavier Dolan",
+      poster: "https://image.tmdb.org/t/p/w780/uPDP0cHGOpkr47rdCdHWo4CyiPj.jpg",
       keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "We All Loved Each Other So Much",
-      slug: "we-all-loved-each-other-so-much",
-      year: "1974",
-      director: "Ettore Scola",
-      poster: "https://image.tmdb.org/t/p/w780/zGGWYpiKNwjpKxelPxOMqJnUgDs.jpg",
-      keywords: "drama comedy",
-      reviewed: false
-    },
-    
-    {
-      title: "Vada Chennai",
-      slug: "vada-chennai",
-      year: "2018",
-      director: "Vetrimaaran",
-      poster: "https://image.tmdb.org/t/p/w780/4Pa7SriYtq4BdoS2BAPm6w66vLi.jpg",
-      keywords: "action crime drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Underground",
-      slug: "underground",
-      year: "1995",
-      director: "Emir Kusturica",
-      poster: "https://image.tmdb.org/t/p/w780/h8N6y13t4VusrDdH5PzTkwvBvgN.jpg",
-      keywords: "comedy drama war",
-      reviewed: false
-    },
-    
-    {
-      title: "Umberto D.",
-      slug: "umberto-d",
-      year: "1952",
-      director: "Vittorio De Sica",
-      poster: "https://image.tmdb.org/t/p/w780/5I7SYsNQmZRZpQ2MAarIQYU9vaX.jpg",
-      keywords: "drama",
+      title: "Azur &amp; Asmar: The Princes&#39; Quest",
+      slug: "azur-asmar-the-princes-quest",
+      year: "2006",
+      director: "Michel Ocelot",
+      poster: "https://image.tmdb.org/t/p/w780/hkjdx0FbNGOt5QDD18jt0ZkPiHQ.jpg",
+      keywords: "animation family",
       reviewed: false
     },
     
@@ -487,12 +517,142 @@
     },
     
     {
-      title: "Twin Peaks: Fire Walk with Me",
-      slug: "twin-peaks-fire-walk-with-me",
-      year: "1992",
-      director: "David Lynch",
-      poster: "https://image.tmdb.org/t/p/w780/mxsGXqetGnirf99qapYd5MMY1VL.jpg",
-      keywords: "drama mystery horror",
+      title: "All That Jazz",
+      slug: "all-that-jazz",
+      year: "1979",
+      director: "Bob Fosse",
+      poster: "https://image.tmdb.org/t/p/w780/culCEdj4srLljefgn4XKd6k3C5t.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Incendies",
+      slug: "incendies",
+      year: "2010",
+      director: "Denis Villeneuve",
+      poster: "https://image.tmdb.org/t/p/w780/yH6DAQVgbyj72S66gN4WWVoTjuf.jpg",
+      keywords: "drama war mystery",
+      reviewed: false
+    },
+    
+    {
+      title: "Who&#39;s Afraid of Virginia Woolf?",
+      slug: "who-s-afraid-of-virginia-woolf",
+      year: "1966",
+      director: "Mike Nichols",
+      poster: "https://image.tmdb.org/t/p/w780/wF7ihB5V5gSm6zxjv3ZhHOpgREI.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Red Beard",
+      slug: "red-beard",
+      year: "1965",
+      director: "Akira Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/iYNH3Re0JSypoYaWvZtERUnNaJL.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Nostalgia",
+      slug: "nostalgia",
+      year: "1983",
+      director: "Andrei Tarkovsky",
+      poster: "https://image.tmdb.org/t/p/w780/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Sansho the Bailiff",
+      slug: "sansho-the-bailiff",
+      year: "1954",
+      director: "Kenji Mizoguchi",
+      poster: "https://image.tmdb.org/t/p/w780/cOBsWxFtEoqXIPx4JZP5E7g1WEo.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Singin&#39; in the Rain",
+      slug: "singin-in-the-rain",
+      year: "1952",
+      director: "Stanley Donen, Gene Kelly",
+      poster: "https://image.tmdb.org/t/p/w780/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
+      keywords: "comedy romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Still Walking",
+      slug: "still-walking",
+      year: "2008",
+      director: "Hirokazu Kore-eda",
+      poster: "https://image.tmdb.org/t/p/w780/4Are9oV8HjZQWnEajk9LYFxRWom.jpg",
+      keywords: "drama family",
+      reviewed: false
+    },
+    
+    {
+      title: "The Great Dictator",
+      slug: "the-great-dictator",
+      year: "1940",
+      director: "Charlie Chaplin",
+      poster: "https://image.tmdb.org/t/p/w780/1QpO9wo7JWecZ4NiBuu625FiY1j.jpg",
+      keywords: "comedy war",
+      reviewed: false
+    },
+    
+    {
+      title: "The Wages of Fear",
+      slug: "the-wages-of-fear",
+      year: "1953",
+      director: "Henri-Georges Clouzot",
+      poster: "https://image.tmdb.org/t/p/w780/sNOvIp4X0fmCMfgEs2ww5IyMgFm.jpg",
+      keywords: "drama thriller adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Late Spring",
+      slug: "late-spring",
+      year: "1949",
+      director: "Yasujirō Ozu",
+      poster: "https://image.tmdb.org/t/p/w780/iNtRSY2AGjW1VDXDR79bKsNUdus.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Once Upon a Time in the West",
+      slug: "once-upon-a-time-in-the-west",
+      year: "1968",
+      director: "Sergio Leone",
+      poster: "https://image.tmdb.org/t/p/w780/qbYgqOczabWNn2XKwgMtVrntD6P.jpg",
+      keywords: "drama western",
+      reviewed: false
+    },
+    
+    {
+      title: "Persona",
+      slug: "persona",
+      year: "1966",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/yPTntWP9Wvew8vHN0jB7Z1EvEUN.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Best Years of Our Lives",
+      slug: "the-best-years-of-our-lives",
+      year: "1946",
+      director: "William Wyler",
+      poster: "https://image.tmdb.org/t/p/w780/gd5EoAU4MM57sW3vlWxJ0NMM8cV.jpg",
+      keywords: "drama romance war",
       reviewed: false
     },
     
@@ -502,6 +662,1116 @@
       year: "1953",
       director: "Yasujirō Ozu",
       poster: "https://image.tmdb.org/t/p/w780/g2YbTYKpY7N2yDSk7BfXZ18I5QV.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "4 Months, 3 Weeks and 2 Days",
+      slug: "4-months-3-weeks-and-2-days",
+      year: "2007",
+      director: "Cristian Mungiu",
+      poster: "https://image.tmdb.org/t/p/w780/acEtvzFPeOQwbzRWncjRLenhnKV.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "GoodFellas",
+      slug: "goodfellas",
+      year: "1990",
+      director: "Martin Scorsese",
+      poster: "https://image.tmdb.org/t/p/w780/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg",
+      keywords: "drama crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Vada Chennai",
+      slug: "vada-chennai",
+      year: "2018",
+      director: "Vetrimaaran",
+      poster: "https://image.tmdb.org/t/p/w780/4Pa7SriYtq4BdoS2BAPm6w66vLi.jpg",
+      keywords: "action crime drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Human Condition I: No Greater Love",
+      slug: "the-human-condition-i-no-greater-love",
+      year: "1959",
+      director: "Masaki Kobayashi",
+      poster: "https://image.tmdb.org/t/p/w780/q7godavx5XEbeVxEeqi4pmiOKdI.jpg",
+      keywords: "war drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Mary and Max",
+      slug: "mary-and-max",
+      year: "2009",
+      director: "Adam Elliot",
+      poster: "https://image.tmdb.org/t/p/w780/ebmsM382m9IClLUzKYY2U5biFwM.jpg",
+      keywords: "animation comedy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Lord of the Rings: The Two Towers",
+      slug: "the-lord-of-the-rings-the-two-towers",
+      year: "2002",
+      director: "Peter Jackson",
+      poster: "https://image.tmdb.org/t/p/w780/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
+      keywords: "adventure fantasy action",
+      reviewed: false
+    },
+    
+    {
+      title: "There Will Be Blood",
+      slug: "there-will-be-blood",
+      year: "2007",
+      director: "Paul Thomas Anderson",
+      poster: "https://image.tmdb.org/t/p/w780/fa0RDkAlCec0STeMNAhPaF89q6U.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Tampopo",
+      slug: "tampopo",
+      year: "1985",
+      director: "Jūzō Itami",
+      poster: "https://image.tmdb.org/t/p/w780/ArYdSuX3zY9fMsE4LqmBl7xJq5R.jpg",
+      keywords: "comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "It&#39;s a Wonderful Life",
+      slug: "it-s-a-wonderful-life",
+      year: "1946",
+      director: "Frank Capra",
+      poster: "https://image.tmdb.org/t/p/w780/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg",
+      keywords: "drama family fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Perfect Days",
+      slug: "perfect-days",
+      year: "2023",
+      director: "Wim Wenders",
+      poster: "https://image.tmdb.org/t/p/w780/mjEk5Wwx6TYVqw29zSaUHclMIgp.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Casablanca",
+      slug: "casablanca",
+      year: "1942",
+      director: "Michael Curtiz",
+      poster: "https://image.tmdb.org/t/p/w780/lGCEKlJo2CnWydQj7aamY7s1S7Q.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Memories of Murder",
+      slug: "memories-of-murder",
+      year: "2003",
+      director: "Bong Joon Ho",
+      poster: "https://image.tmdb.org/t/p/w780/dsEoTJKM1s5OVDkS2P2JdoTxo4K.jpg",
+      keywords: "crime drama thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "Landscape in the Mist",
+      slug: "landscape-in-the-mist",
+      year: "1988",
+      director: "Theo Angelopoulos",
+      poster: "https://image.tmdb.org/t/p/w780/icNqzWxjwXuD6FSRtTWNj8sa5B1.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Grand Budapest Hotel",
+      slug: "the-grand-budapest-hotel",
+      year: "2014",
+      director: "Wes Anderson",
+      poster: "https://image.tmdb.org/t/p/w780/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+      keywords: "comedy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Amadeus",
+      slug: "amadeus",
+      year: "1984",
+      director: "Miloš Forman",
+      poster: "https://image.tmdb.org/t/p/w780/gQRfiyfGvr1az0quaYyMram3Aqt.jpg",
+      keywords: "history music drama",
+      reviewed: false
+    },
+    
+    {
+      title: "12 Angry Men",
+      slug: "12-angry-men",
+      year: "1957",
+      director: "Sidney Lumet",
+      poster: "https://image.tmdb.org/t/p/w780/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Holdovers",
+      slug: "the-holdovers",
+      year: "2023",
+      director: "Alexander Payne",
+      poster: "https://image.tmdb.org/t/p/w780/VHSzNBTwxV8vh7wylo7O9CLdac.jpg",
+      keywords: "drama comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "The Cremator",
+      slug: "the-cremator",
+      year: "1969",
+      director: "Juraj Herz",
+      poster: "https://image.tmdb.org/t/p/w780/9or2Jzw9HOE4gp9niwXBkZdpTVx.jpg",
+      keywords: "horror drama comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "Kwaidan",
+      slug: "kwaidan",
+      year: "1964",
+      director: "Masaki Kobayashi",
+      poster: "https://image.tmdb.org/t/p/w780/t9UMfViYl47SdZZatKQ1JKjjCgs.jpg",
+      keywords: "horror fantasy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Good, the Bad and the Ugly",
+      slug: "the-good-the-bad-and-the-ugly",
+      year: "1966",
+      director: "Sergio Leone",
+      poster: "https://image.tmdb.org/t/p/w780/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
+      keywords: "western",
+      reviewed: false
+    },
+    
+    {
+      title: "One Flew Over the Cuckoo&#39;s Nest",
+      slug: "one-flew-over-the-cuckoo-s-nest",
+      year: "1975",
+      director: "Miloš Forman",
+      poster: "https://image.tmdb.org/t/p/w780/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Godfather Part II",
+      slug: "the-godfather-part-ii",
+      year: "1974",
+      director: "Francis Ford Coppola",
+      poster: "https://image.tmdb.org/t/p/w780/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg",
+      keywords: "drama crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Cinema Paradiso",
+      slug: "cinema-paradiso",
+      year: "1988",
+      director: "Giuseppe Tornatore",
+      poster: "https://image.tmdb.org/t/p/w780/gCI2AeMV4IHSewhJkzsur5MEp6R.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Fantastic Mr. Fox",
+      slug: "fantastic-mr-fox",
+      year: "2009",
+      director: "Wes Anderson",
+      poster: "https://image.tmdb.org/t/p/w780/euZyZb6iGreujYKrGyZHRddhUYh.jpg",
+      keywords: "adventure animation comedy family",
+      reviewed: false
+    },
+    
+    {
+      title: "Children of Men",
+      slug: "children-of-men",
+      year: "2006",
+      director: "Alfonso Cuarón",
+      poster: "https://image.tmdb.org/t/p/w780/k9IAS4TehZFcKi4HVByxZNPfqex.jpg",
+      keywords: "science fiction thriller action",
+      reviewed: false
+    },
+    
+    {
+      title: "The Ascent",
+      slug: "the-ascent",
+      year: "1977",
+      director: "Larisa Shepitko",
+      poster: "https://image.tmdb.org/t/p/w780/hJOju5XZfmq4Lg5dPa8IPVY3mDt.jpg",
+      keywords: "drama war history",
+      reviewed: false
+    },
+    
+    {
+      title: "Marcel the Shell with Shoes On",
+      slug: "marcel-the-shell-with-shoes-on",
+      year: "2021",
+      director: "Dean Fleischer Camp",
+      poster: "https://image.tmdb.org/t/p/w780/jaYmP4Ct8YLnxWAW2oYkUjeXtzm.jpg",
+      keywords: "animation comedy drama family",
+      reviewed: false
+    },
+    
+    {
+      title: "A Moment of Innocence",
+      slug: "a-moment-of-innocence",
+      year: "1996",
+      director: "Mohsen Makhmalbaf",
+      poster: "https://image.tmdb.org/t/p/w780/jBgImBSOFUJg8voD7xbLqS1s1tf.jpg",
+      keywords: "drama comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "The Father",
+      slug: "the-father",
+      year: "2020",
+      director: "Florian Zeller",
+      poster: "https://image.tmdb.org/t/p/w780/pr3bEQ517uMb5loLvjFQi8uLAsp.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Pianist",
+      slug: "the-pianist",
+      year: "2002",
+      director: "Roman Polanski",
+      poster: "https://image.tmdb.org/t/p/w780/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg",
+      keywords: "drama war",
+      reviewed: false
+    },
+    
+    {
+      title: "Barry Lyndon",
+      slug: "barry-lyndon",
+      year: "1975",
+      director: "Stanley Kubrick",
+      poster: "https://image.tmdb.org/t/p/w780/A0byHUHMwZ7dtBQtfZ44QIgDbjo.jpg",
+      keywords: "drama romance war history",
+      reviewed: false
+    },
+    
+    {
+      title: "The Treasure of the Sierra Madre",
+      slug: "the-treasure-of-the-sierra-madre",
+      year: "1948",
+      director: "John Huston",
+      poster: "https://image.tmdb.org/t/p/w780/pWcst7zVbi8Z8W6GFrdNE7HHRxL.jpg",
+      keywords: "adventure drama western",
+      reviewed: false
+    },
+    
+    {
+      title: "Neon Genesis Evangelion: The End of Evangelion",
+      slug: "neon-genesis-evangelion-the-end-of-evangelion",
+      year: "1997",
+      director: "Kazuya Tsurumaki, Hideaki Anno",
+      poster: "https://image.tmdb.org/t/p/w780/j6G24dqI4WgUtChhWjfnI4lnmiK.jpg",
+      keywords: "animation science fiction drama fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Nobody Knows",
+      slug: "nobody-knows",
+      year: "2004",
+      director: "Hirokazu Kore-eda",
+      poster: "https://image.tmdb.org/t/p/w780/kDUUdWrbBBVqzSmm27pHFJcTvCU.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Witness for the Prosecution",
+      slug: "witness-for-the-prosecution",
+      year: "1957",
+      director: "Billy Wilder",
+      poster: "https://image.tmdb.org/t/p/w780/bCj4EfuehAlgBwVd3diyWyhuuau.jpg",
+      keywords: "drama mystery crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Some Like It Hot",
+      slug: "some-like-it-hot",
+      year: "1959",
+      director: "Billy Wilder",
+      poster: "https://image.tmdb.org/t/p/w780/hVIKyTK13AvOGv7ICmJjK44DTzp.jpg",
+      keywords: "comedy romance crime",
+      reviewed: false
+    },
+    
+    {
+      title: "The Handmaiden",
+      slug: "the-handmaiden",
+      year: "2016",
+      director: "Park Chan-wook",
+      poster: "https://image.tmdb.org/t/p/w780/dLlH4aNHdnmf62umnInL8xPlPzw.jpg",
+      keywords: "thriller drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Modern Times",
+      slug: "modern-times",
+      year: "1936",
+      director: "Charlie Chaplin",
+      poster: "https://image.tmdb.org/t/p/w780/7uoiKOEjxBBW0AgDGQWrlfGQ90w.jpg",
+      keywords: "comedy drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "I&#39;m Still Here",
+      slug: "i-m-still-here",
+      year: "2024",
+      director: "Walter Salles",
+      poster: "https://image.tmdb.org/t/p/w780/gZnsMbhCvhzAQlKaVpeFRHYjGyb.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "The 400 Blows",
+      slug: "the-400-blows",
+      year: "1959",
+      director: "François Truffaut",
+      poster: "https://image.tmdb.org/t/p/w780/12PuU23kkDLvTd0nb8hMlE3oShB.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Children of Paradise",
+      slug: "children-of-paradise",
+      year: "1945",
+      director: "Marcel Carné",
+      poster: "https://image.tmdb.org/t/p/w780/yiy9stl1jjVhW44ypkWMFDT8Ix3.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "The Tale of The Princess Kaguya",
+      slug: "the-tale-of-the-princess-kaguya",
+      year: "2013",
+      director: "Isao Takahata",
+      poster: "https://image.tmdb.org/t/p/w780/cQidJuA546OSSXKWXoiCeINDxuj.jpg",
+      keywords: "animation drama fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "The Man Who Shot Liberty Valance",
+      slug: "the-man-who-shot-liberty-valance",
+      year: "1962",
+      director: "John Ford",
+      poster: "https://image.tmdb.org/t/p/w780/4C1R0LEivLjbv3swAzJfzh0tzXl.jpg",
+      keywords: "western",
+      reviewed: false
+    },
+    
+    {
+      title: "All About Eve",
+      slug: "all-about-eve",
+      year: "1950",
+      director: "Joseph L. Mankiewicz",
+      poster: "https://image.tmdb.org/t/p/w780/blBzZaatPWVuWpXEnPscMA4Xp6m.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Wings of Desire",
+      slug: "wings-of-desire",
+      year: "1987",
+      director: "Wim Wenders",
+      poster: "https://image.tmdb.org/t/p/w780/iZQs2vUeCzvS1KfZJ6uYNCGJBBV.jpg",
+      keywords: "drama fantasy romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Schindler&#39;s List",
+      slug: "schindler-s-list",
+      year: "1993",
+      director: "Steven Spielberg",
+      poster: "https://image.tmdb.org/t/p/w780/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+      keywords: "drama history war",
+      reviewed: false
+    },
+    
+    {
+      title: "Chinatown",
+      slug: "chinatown",
+      year: "1974",
+      director: "Roman Polanski",
+      poster: "https://image.tmdb.org/t/p/w780/kZRSP3FmOcq0xnBulqpUQngJUXY.jpg",
+      keywords: "crime mystery thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "The Voice of Hind Rajab",
+      slug: "the-voice-of-hind-rajab",
+      year: "2025",
+      director: "Kaouther Ben Hania",
+      poster: "https://image.tmdb.org/t/p/w780/q7M8kQB46T11vmDMD6E239jsqTz.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Dead Poets Society",
+      slug: "dead-poets-society",
+      year: "1989",
+      director: "Peter Weir",
+      poster: "https://image.tmdb.org/t/p/w780/erzbMlcNHOdx24AXOcn2ZKA7R1q.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Ran",
+      slug: "ran",
+      year: "1985",
+      director: "Akira Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/dGgiXMWDcS5aJTBEFu7bmaQPNox.jpg",
+      keywords: "action drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "It&#39;s Such a Beautiful Day",
+      slug: "it-s-such-a-beautiful-day",
+      year: "2012",
+      director: "Don Hertzfeldt",
+      poster: "https://image.tmdb.org/t/p/w780/hop0dsM4nxyNENGhBhpJWTCJ5rS.jpg",
+      keywords: "animation comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "Le Trou",
+      slug: "le-trou",
+      year: "1960",
+      director: "Jacques Becker",
+      poster: "https://image.tmdb.org/t/p/w780/xyZhiOz5NHVBUKlpioxjwajy7pm.jpg",
+      keywords: "drama thriller crime",
+      reviewed: false
+    },
+    
+    {
+      title: "The Hunt",
+      slug: "the-hunt",
+      year: "2012",
+      director: "Thomas Vinterberg",
+      poster: "https://image.tmdb.org/t/p/w780/jkixsXzRh28q3PCqFoWcf7unghT.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Kes",
+      slug: "kes",
+      year: "1969",
+      director: "Ken Loach",
+      poster: "https://image.tmdb.org/t/p/w780/r1FMq75irhsQBVGjXhPU4xA9SDo.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Empire Strikes Back",
+      slug: "the-empire-strikes-back",
+      year: "1980",
+      director: "Irvin Kershner",
+      poster: "https://image.tmdb.org/t/p/w780/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg",
+      keywords: "adventure action science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "Eternity and a Day",
+      slug: "eternity-and-a-day",
+      year: "1998",
+      director: "Theo Angelopoulos",
+      poster: "https://image.tmdb.org/t/p/w780/wH8sfLJCqNjsIw8zkXpvxdSzj60.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "An Elephant Sitting Still",
+      slug: "an-elephant-sitting-still",
+      year: "2018",
+      director: "Hu Bo",
+      poster: "https://image.tmdb.org/t/p/w780/3qr9wpaa5dA7AGr5ndgYiioavIn.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Battle of Algiers",
+      slug: "the-battle-of-algiers",
+      year: "1966",
+      director: "Gillo Pontecorvo",
+      poster: "https://image.tmdb.org/t/p/w780/2p3AFtOHFvP6OeVMqlnL1zLKOqL.jpg",
+      keywords: "drama war history",
+      reviewed: false
+    },
+    
+    {
+      title: "Ritual",
+      slug: "ritual",
+      year: "2000",
+      director: "Hideaki Anno",
+      poster: "https://image.tmdb.org/t/p/w780/h88yVKhgPAaPNEllDqsuhpQOJeL.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Dune: Part Two",
+      slug: "dune-part-two",
+      year: "2024",
+      director: "Denis Villeneuve",
+      poster: "https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+      keywords: "science fiction adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Grave of the Fireflies",
+      slug: "grave-of-the-fireflies",
+      year: "1988",
+      director: "Isao Takahata",
+      poster: "https://image.tmdb.org/t/p/w780/k9tv1rXZbOhH7eiCk378x61kNQ1.jpg",
+      keywords: "animation drama war",
+      reviewed: false
+    },
+    
+    {
+      title: "Autumn Sonata",
+      slug: "autumn-sonata",
+      year: "1978",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/6beNbtCXv3GkzHkxkGYf38ib7v8.jpg",
+      keywords: "drama music",
+      reviewed: false
+    },
+    
+    {
+      title: "Yi Yi",
+      slug: "yi-yi",
+      year: "2000",
+      director: "Edward Yang",
+      poster: "https://image.tmdb.org/t/p/w780/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Sweet Smell of Success",
+      slug: "sweet-smell-of-success",
+      year: "1957",
+      director: "Alexander Mackendrick",
+      poster: "https://image.tmdb.org/t/p/w780/akzvV8JasNrgEl5iAP9K6zPHGJe.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Seventh Seal",
+      slug: "the-seventh-seal",
+      year: "1957",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/wcZ21zrOsy0b52AfAF50XpTiv75.jpg",
+      keywords: "fantasy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Celebration",
+      slug: "the-celebration",
+      year: "1998",
+      director: "Thomas Vinterberg",
+      poster: "https://image.tmdb.org/t/p/w780/2LRzNq41yrY8EjCnD1S8sCCPvKk.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Heat",
+      slug: "heat",
+      year: "1995",
+      director: "Michael Mann",
+      poster: "https://image.tmdb.org/t/p/w780/e09dLw1Ljtccd2P4NsuUvVtS5du.jpg",
+      keywords: "crime drama action",
+      reviewed: false
+    },
+    
+    {
+      title: "The Lord of the Rings: The Fellowship of the Ring",
+      slug: "the-lord-of-the-rings-the-fellowship-of-the-ring",
+      year: "2001",
+      director: "Peter Jackson",
+      poster: "https://image.tmdb.org/t/p/w780/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+      keywords: "adventure fantasy action",
+      reviewed: false
+    },
+    
+    {
+      title: "Brief Encounter",
+      slug: "brief-encounter",
+      year: "1945",
+      director: "David Lean",
+      poster: "https://image.tmdb.org/t/p/w780/jC9EwLJcGhYMSQAHu2LxkKN5v7O.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "In the Mood for Love",
+      slug: "in-the-mood-for-love",
+      year: "2000",
+      director: "Wong Kar-Wai",
+      poster: "https://image.tmdb.org/t/p/w780/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Project Hail Mary",
+      slug: "project-hail-mary",
+      year: "2026",
+      director: "Phil Lord, Christopher Miller",
+      poster: "https://image.tmdb.org/t/p/w780/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
+      keywords: "science fiction adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "The Elephant Man",
+      slug: "the-elephant-man",
+      year: "1980",
+      director: "David Lynch",
+      poster: "https://image.tmdb.org/t/p/w780/u0wpPYjuSt8DIe1Y3Vapnh8jcKE.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Life, and Nothing More…",
+      slug: "life-and-nothing-more",
+      year: "1992",
+      director: "Abbas Kiarostami",
+      poster: "https://image.tmdb.org/t/p/w780/100CuZjqxtcbDvZ5qPsoi1VEU5n.jpg",
+      keywords: "drama adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Metropolis",
+      slug: "metropolis",
+      year: "1927",
+      director: "Fritz Lang",
+      poster: "https://image.tmdb.org/t/p/w780/kr9wXRN23zLuWJIelahas1mtnYj.jpg",
+      keywords: "drama science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "The Apartment",
+      slug: "the-apartment",
+      year: "1960",
+      director: "Billy Wilder",
+      poster: "https://image.tmdb.org/t/p/w780/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg",
+      keywords: "comedy drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Taste of Cherry",
+      slug: "taste-of-cherry",
+      year: "1997",
+      director: "Abbas Kiarostami",
+      poster: "https://image.tmdb.org/t/p/w780/u6GYH4HyR0BVwpqFuTOc2g4KB1L.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Chainsaw Man – The Movie: Reze Arc",
+      slug: "chainsaw-man-the-movie-reze-arc",
+      year: "2025",
+      director: "Tatsuya Yoshihara",
+      poster: "https://image.tmdb.org/t/p/w780/pHyxb2RV5wLlboAwm9ZJ9qTVEDw.jpg",
+      keywords: "animation action romance fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Puella Magi Madoka Magica the Movie Part III: Rebellion",
+      slug: "puella-magi-madoka-magica-the-movie-part-iii-rebellion",
+      year: "2013",
+      director: "Yukihiro Miyamoto, Akiyuki Shinbo",
+      poster: "https://image.tmdb.org/t/p/w780/68cts97TtCXcAlimoAHrHlQUNfn.jpg",
+      keywords: "mystery animation fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Harakiri",
+      slug: "harakiri",
+      year: "1962",
+      director: "Masaki Kobayashi",
+      poster: "https://image.tmdb.org/t/p/w780/3nPwMd3KviJWaHzG9fZCqlwWMas.jpg",
+      keywords: "action drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Mirror",
+      slug: "mirror",
+      year: "1975",
+      director: "Andrei Tarkovsky",
+      poster: "https://image.tmdb.org/t/p/w780/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Everything Everywhere All at Once",
+      slug: "everything-everywhere-all-at-once",
+      year: "2022",
+      director: "Daniel Scheinert, Daniel Kwan",
+      poster: "https://image.tmdb.org/t/p/w780/u68AjlvlutfEIcpmbYpKcdi09ut.jpg",
+      keywords: "action adventure science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "Fight Club",
+      slug: "fight-club",
+      year: "1999",
+      director: "David Fincher",
+      poster: "https://image.tmdb.org/t/p/w780/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg",
+      keywords: "drama thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "Werckmeister Harmonies",
+      slug: "werckmeister-harmonies",
+      year: "2000",
+      director: "Béla Tarr",
+      poster: "https://image.tmdb.org/t/p/w780/ix3pquGqTkCW86UbVTdRcrhGEFm.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Wild Strawberries",
+      slug: "wild-strawberries",
+      year: "1957",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/iyTD2QnySNMPUPE3IedZQipSWfz.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Love Exposure",
+      slug: "love-exposure",
+      year: "2008",
+      director: "Sion Sono",
+      poster: "https://image.tmdb.org/t/p/w780/3QSGUdzG374H7pOxIdKNBpeLEUk.jpg",
+      keywords: "action comedy drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Life Is Beautiful",
+      slug: "life-is-beautiful",
+      year: "1997",
+      director: "Roberto Benigni",
+      poster: "https://image.tmdb.org/t/p/w780/6tEJnof1DKWPnl5lzkjf0FVv7oB.jpg",
+      keywords: "comedy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Interstella 5555: The 5tory of the 5ecret 5tar 5ystem",
+      slug: "interstella-5555-the-5tory-of-the-5ecret-5tar-5ystem",
+      year: "2003",
+      director: "Kazuhisa Takenouchi, Leiji Matsumoto, Hirotoshi Rissen, Daisuke Nishio",
+      poster: "https://image.tmdb.org/t/p/w780/n0K6mjU8aVnag2mi93FuvJsjZi.jpg",
+      keywords: "animation science fiction music adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Akira",
+      slug: "akira",
+      year: "1988",
+      director: "Katsuhiro Otomo",
+      poster: "https://image.tmdb.org/t/p/w780/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
+      keywords: "animation science fiction action",
+      reviewed: false
+    },
+    
+    {
+      title: "Psycho",
+      slug: "psycho",
+      year: "1960",
+      director: "Alfred Hitchcock",
+      poster: "https://image.tmdb.org/t/p/w780/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg",
+      keywords: "horror thriller mystery",
+      reviewed: false
+    },
+    
+    {
+      title: "Ace in the Hole",
+      slug: "ace-in-the-hole",
+      year: "1951",
+      director: "Billy Wilder",
+      poster: "https://image.tmdb.org/t/p/w780/gPVPzHEsJBX02HtBtIQgYnfeqNQ.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Face of Another",
+      slug: "the-face-of-another",
+      year: "1966",
+      director: "Hiroshi Teshigahara",
+      poster: "https://image.tmdb.org/t/p/w780/eUnFdf1Mf1b8AD3ChMPOCUfTBDQ.jpg",
+      keywords: "drama science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "Rear Window",
+      slug: "rear-window",
+      year: "1954",
+      director: "Alfred Hitchcock",
+      poster: "https://image.tmdb.org/t/p/w780/ILVF0eJxHMddjxeQhswFtpMtqx.jpg",
+      keywords: "thriller mystery drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Mulholland Drive",
+      slug: "mulholland-drive",
+      year: "2001",
+      director: "David Lynch",
+      poster: "https://image.tmdb.org/t/p/w780/x7A59t6ySylr1L7aubOQEA480vM.jpg",
+      keywords: "thriller drama mystery",
+      reviewed: false
+    },
+    
+    {
+      title: "Paper Moon",
+      slug: "paper-moon",
+      year: "1973",
+      director: "Peter Bogdanovich",
+      poster: "https://image.tmdb.org/t/p/w780/7fZZwQYFV3hN2KBPI0Y1BlvzF2T.jpg",
+      keywords: "comedy crime drama",
+      reviewed: false
+    },
+    
+    {
+      title: "A Special Day",
+      slug: "a-special-day",
+      year: "1977",
+      director: "Ettore Scola",
+      poster: "https://image.tmdb.org/t/p/w780/jzRn7N1mFowkQ5IkUkfWoxXJtYU.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Das Boot",
+      slug: "das-boot",
+      year: "1981",
+      director: "Wolfgang Petersen",
+      poster: "https://image.tmdb.org/t/p/w780/u8FhQPncOAkwcei2OI9orPWhV6K.jpg",
+      keywords: "drama history war",
+      reviewed: false
+    },
+    
+    {
+      title: "A Separation",
+      slug: "a-separation",
+      year: "2011",
+      director: "Asghar Farhadi",
+      poster: "https://image.tmdb.org/t/p/w780/xQadpnoLokxzN3hRpCPbBGpxsiz.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Rififi",
+      slug: "rififi",
+      year: "1955",
+      director: "Jules Dassin",
+      poster: "https://image.tmdb.org/t/p/w780/heVdAFNZUxXVmO6jiJcEHCvI5lK.jpg",
+      keywords: "crime thriller drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Opening Night",
+      slug: "opening-night",
+      year: "1977",
+      director: "John Cassavetes",
+      poster: "https://image.tmdb.org/t/p/w780/5i1331f4Q2sNHUp9X3BOwWPS2Gg.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Throne of Blood",
+      slug: "throne-of-blood",
+      year: "1957",
+      director: "Akira Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/zaZFMNxJST0TtPd68yF7fNt1he8.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "A Brighter Summer Day",
+      slug: "a-brighter-summer-day",
+      year: "1991",
+      director: "Edward Yang",
+      poster: "https://image.tmdb.org/t/p/w780/3l8fOAwiN3N5n3hHnZ51eog7Zu2.jpg",
+      keywords: "crime drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "How to Make Millions Before Grandma Dies",
+      slug: "how-to-make-millions-before-grandma-dies",
+      year: "2024",
+      director: "Pat Boonnitipat",
+      poster: "https://image.tmdb.org/t/p/w780/9Xa0Grd2jq2lM2gqcoTB4F9TjMd.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Inglourious Basterds",
+      slug: "inglourious-basterds",
+      year: "2009",
+      director: "Quentin Tarantino",
+      poster: "https://image.tmdb.org/t/p/w780/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg",
+      keywords: "drama thriller war",
+      reviewed: false
+    },
+    
+    {
+      title: "Nirvanna the Band the Show the Movie",
+      slug: "nirvanna-the-band-the-show-the-movie",
+      year: "2025",
+      director: "Matt Johnson",
+      poster: "https://image.tmdb.org/t/p/w780/sm5TGX8WbnCd9Uo26cLyTxVwA1n.jpg",
+      keywords: "comedy science fiction adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Where Is the Friend&#39;s House?",
+      slug: "where-is-the-friend-s-house",
+      year: "1987",
+      director: "Abbas Kiarostami",
+      poster: "https://image.tmdb.org/t/p/w780/2rTW4s1kgvoqVs0Kv8ARle1SrkF.jpg",
+      keywords: "drama adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Kamikaze Girls",
+      slug: "kamikaze-girls",
+      year: "2004",
+      director: "Tetsuya Nakashima",
+      poster: "https://image.tmdb.org/t/p/w780/fpmFgBElC7bDSHJwtmfJnYFyMqw.jpg",
+      keywords: "comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "Satantango",
+      slug: "satantango",
+      year: "1994",
+      director: "Béla Tarr",
+      poster: "https://image.tmdb.org/t/p/w780/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Prestige",
+      slug: "the-prestige",
+      year: "2006",
+      director: "Christopher Nolan",
+      poster: "https://image.tmdb.org/t/p/w780/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg",
+      keywords: "drama mystery science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "The Green Mile",
+      slug: "the-green-mile",
+      year: "1999",
+      director: "Frank Darabont",
+      poster: "https://image.tmdb.org/t/p/w780/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg",
+      keywords: "fantasy drama crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Time of the Gypsies",
+      slug: "time-of-the-gypsies",
+      year: "1988",
+      director: "Emir Kusturica",
+      poster: "https://image.tmdb.org/t/p/w780/av6K9MX0jNNFAH6NZVrVV2DMAOA.jpg",
+      keywords: "drama crime fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Umberto D.",
+      slug: "umberto-d",
+      year: "1952",
+      director: "Vittorio De Sica",
+      poster: "https://image.tmdb.org/t/p/w780/5I7SYsNQmZRZpQ2MAarIQYU9vaX.jpg",
       keywords: "drama",
       reviewed: false
     },
@@ -517,252 +1787,102 @@
     },
     
     {
-      title: "To Be or Not to Be",
-      slug: "to-be-or-not-to-be",
-      year: "1942",
-      director: "Ernst Lubitsch",
-      poster: "https://image.tmdb.org/t/p/w780/dDQRpEoyjHT4fzw9cNklIvZuXYg.jpg",
-      keywords: "comedy war romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Time of the Gypsies",
-      slug: "time-of-the-gypsies",
-      year: "1988",
-      director: "Emir Kusturica",
-      poster: "https://image.tmdb.org/t/p/w780/av6K9MX0jNNFAH6NZVrVV2DMAOA.jpg",
-      keywords: "drama crime fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Throne of Blood",
-      slug: "throne-of-blood",
-      year: "1957",
+      title: "Dersu Uzala",
+      slug: "dersu-uzala",
+      year: "1975",
       director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/zaZFMNxJST0TtPd68yF7fNt1he8.jpg",
-      keywords: "drama history",
+      poster: "https://image.tmdb.org/t/p/w780/bIOrDQ3Gg68k3qJAnRU7nIZr0BW.jpg",
+      keywords: "adventure drama",
       reviewed: false
     },
     
     {
-      title: "Three Colours: Red",
-      slug: "three-colours-red",
-      year: "1994",
-      director: "Krzysztof Kieślowski",
-      poster: "https://image.tmdb.org/t/p/w780/JHmsBiX1tjCKqAul1lzC20WcAW.jpg",
-      keywords: "drama mystery romance",
-      reviewed: false
-    },
-    
-    {
-      title: "There Will Be Blood",
-      slug: "there-will-be-blood",
-      year: "2007",
-      director: "Paul Thomas Anderson",
-      poster: "https://image.tmdb.org/t/p/w780/fa0RDkAlCec0STeMNAhPaF89q6U.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Young Girls of Rochefort",
-      slug: "the-young-girls-of-rochefort",
-      year: "1967",
-      director: "Jacques Demy",
-      poster: "https://image.tmdb.org/t/p/w780/jtxhyGaYhurH6KsjvP1jV3dDypz.jpg",
-      keywords: "romance comedy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Wages of Fear",
-      slug: "the-wages-of-fear",
-      year: "1953",
-      director: "Henri-Georges Clouzot",
-      poster: "https://image.tmdb.org/t/p/w780/sNOvIp4X0fmCMfgEs2ww5IyMgFm.jpg",
-      keywords: "drama thriller adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "The Voice of Hind Rajab",
-      slug: "the-voice-of-hind-rajab",
-      year: "2025",
-      director: "Kaouther Ben Hania",
-      poster: "https://image.tmdb.org/t/p/w780/q7M8kQB46T11vmDMD6E239jsqTz.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "The Treasure of the Sierra Madre",
-      slug: "the-treasure-of-the-sierra-madre",
-      year: "1948",
-      director: "John Huston",
-      poster: "https://image.tmdb.org/t/p/w780/pWcst7zVbi8Z8W6GFrdNE7HHRxL.jpg",
-      keywords: "adventure drama western",
-      reviewed: false
-    },
-    
-    {
-      title: "The Thing",
-      slug: "the-thing",
-      year: "1982",
-      director: "John Carpenter",
-      poster: "https://image.tmdb.org/t/p/w780/tzGY49kseSE9QAKk47uuDGwnSCu.jpg",
-      keywords: "horror mystery science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "The Tale of The Princess Kaguya",
-      slug: "the-tale-of-the-princess-kaguya",
-      year: "2013",
-      director: "Isao Takahata",
-      poster: "https://image.tmdb.org/t/p/w780/cQidJuA546OSSXKWXoiCeINDxuj.jpg",
-      keywords: "animation drama fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "The Sound of Music",
-      slug: "the-sound-of-music",
-      year: "1965",
-      director: "Robert Wise",
-      poster: "https://image.tmdb.org/t/p/w780/c6CrUZypAsBCaRWX0M3RVRDbhNS.jpg",
-      keywords: "drama family music romance",
-      reviewed: false
-    },
-    
-    {
-      title: "The Silence of the Lambs",
-      slug: "the-silence-of-the-lambs",
-      year: "1991",
-      director: "Jonathan Demme",
-      poster: "https://image.tmdb.org/t/p/w780/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
-      keywords: "crime thriller drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Shawshank Redemption",
-      slug: "the-shawshank-redemption",
-      year: "1994",
-      director: "Frank Darabont",
-      poster: "https://image.tmdb.org/t/p/w780/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+      title: "City of God",
+      slug: "city-of-god",
+      year: "2002",
+      director: "Fernando Meirelles",
+      poster: "https://image.tmdb.org/t/p/w780/k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg",
       keywords: "drama crime",
       reviewed: false
     },
     
     {
-      title: "The Seventh Seal",
-      slug: "the-seventh-seal",
-      year: "1957",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/wcZ21zrOsy0b52AfAF50XpTiv75.jpg",
-      keywords: "fantasy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Secret in Their Eyes",
-      slug: "the-secret-in-their-eyes",
-      year: "2009",
-      director: "Juan José Campanella",
-      poster: "https://image.tmdb.org/t/p/w780/dkeAwfZzwL3WvToydE3CXiY80E0.jpg",
-      keywords: "mystery thriller drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Sacrifice",
-      slug: "the-sacrifice",
-      year: "1986",
-      director: "Andrei Tarkovsky",
-      poster: "https://image.tmdb.org/t/p/w780/8JMh27z075ZHbFE85XYkdXF2QkK.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Red Shoes",
-      slug: "the-red-shoes",
-      year: "1948",
-      director: "Michael Powell, Emeric Pressburger",
-      poster: "https://image.tmdb.org/t/p/w780/vPvpBWFWDvEXuQBkoYgA6A89GVp.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "The Prestige",
-      slug: "the-prestige",
+      title: "The Departed",
+      slug: "the-departed",
       year: "2006",
-      director: "Christopher Nolan",
-      poster: "https://image.tmdb.org/t/p/w780/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg",
-      keywords: "drama mystery science fiction",
+      director: "Martin Scorsese",
+      poster: "https://image.tmdb.org/t/p/w780/nT97ifVT2J1yMQmeq20Qblg61T.jpg",
+      keywords: "drama thriller crime",
       reviewed: false
     },
     
     {
-      title: "The Pianist",
-      slug: "the-pianist",
-      year: "2002",
-      director: "Roman Polanski",
-      poster: "https://image.tmdb.org/t/p/w780/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg",
-      keywords: "drama war",
+      title: "Perfect Blue",
+      slug: "perfect-blue",
+      year: "1997",
+      director: "Satoshi Kon",
+      poster: "https://image.tmdb.org/t/p/w780/6WTiOCfDPP8XV4jqfloiVWf7KHq.jpg",
+      keywords: "animation thriller",
       reviewed: false
     },
     
     {
-      title: "The Passion of Joan of Arc",
-      slug: "the-passion-of-joan-of-arc",
-      year: "1928",
-      director: "Carl Theodor Dreyer",
-      poster: "https://image.tmdb.org/t/p/w780/tAgV9yxY6AC1bsPt3qJJQpD4s8.jpg",
+      title: "Pather Panchali",
+      slug: "pather-panchali",
+      year: "1955",
+      director: "Satyajit Ray",
+      poster: "https://image.tmdb.org/t/p/w780/frZj5djlU9hFEjMcL21RJZVuG5O.jpg",
       keywords: "drama history",
       reviewed: false
     },
     
     {
-      title: "The Night of the Hunter",
-      slug: "the-night-of-the-hunter",
-      year: "1955",
-      director: "Charles Laughton",
-      poster: "https://image.tmdb.org/t/p/w780/rBka0nFWiHxabHRLr0KfIA8Yiaq.jpg",
-      keywords: "crime drama thriller",
+      title: "Scenes from a Marriage",
+      slug: "scenes-from-a-marriage",
+      year: "1974",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/ArKEdvJesIktFX8OAhcdKAOLl6I.jpg",
+      keywords: "drama romance",
       reviewed: false
     },
     
     {
-      title: "The Man Who Shot Liberty Valance",
-      slug: "the-man-who-shot-liberty-valance",
-      year: "1962",
-      director: "John Ford",
-      poster: "https://image.tmdb.org/t/p/w780/4C1R0LEivLjbv3swAzJfzh0tzXl.jpg",
-      keywords: "western",
+      title: "Winter Light",
+      slug: "winter-light",
+      year: "1963",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/wDxrEssdjFWYwIZLbr06RQNcg1q.jpg",
+      keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "The Lord of the Rings: The Two Towers",
-      slug: "the-lord-of-the-rings-the-two-towers",
-      year: "2002",
-      director: "Peter Jackson",
-      poster: "https://image.tmdb.org/t/p/w780/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg",
-      keywords: "adventure fantasy action",
+      title: "Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",
+      slug: "jeanne-dielman-23-quai-du-commerce-1080-bruxelles",
+      year: "1975",
+      director: "Chantal Akerman",
+      poster: "https://image.tmdb.org/t/p/w780/fqfSu8Y1YSVFkoCJyiTXI6woYma.jpg",
+      keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "The Lord of the Rings: The Fellowship of the Ring",
-      slug: "the-lord-of-the-rings-the-fellowship-of-the-ring",
-      year: "2001",
-      director: "Peter Jackson",
-      poster: "https://image.tmdb.org/t/p/w780/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
-      keywords: "adventure fantasy action",
+      title: "Spider-Man: Into the Spider-Verse",
+      slug: "spider-man-into-the-spider-verse",
+      year: "2018",
+      director: "Bob Persichetti, Peter Ramsey, Rodney Rothman",
+      poster: "https://image.tmdb.org/t/p/w780/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+      keywords: "animation action adventure science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "Double Indemnity",
+      slug: "double-indemnity",
+      year: "1944",
+      director: "Billy Wilder",
+      poster: "https://image.tmdb.org/t/p/w780/rVNYZZgfhwqVMMWlBmxOfWqnwCj.jpg",
+      keywords: "crime thriller",
       reviewed: false
     },
     
@@ -777,6 +1897,396 @@
     },
     
     {
+      title: "Apur Sansar",
+      slug: "apur-sansar",
+      year: "1959",
+      director: "Satyajit Ray",
+      poster: "https://image.tmdb.org/t/p/w780/6Tz1Q69o2n3Zwb0ZffzPL0nFt2T.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Oldboy",
+      slug: "oldboy",
+      year: "2003",
+      director: "Park Chan-wook",
+      poster: "https://image.tmdb.org/t/p/w780/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
+      keywords: "drama thriller mystery action",
+      reviewed: false
+    },
+    
+    {
+      title: "Princess Mononoke",
+      slug: "princess-mononoke",
+      year: "1997",
+      director: "Hayao Miyazaki",
+      poster: "https://image.tmdb.org/t/p/w780/cMYCDADoLKLbB83g4WnJegaZimC.jpg",
+      keywords: "adventure fantasy animation",
+      reviewed: false
+    },
+    
+    {
+      title: "Sorcerer",
+      slug: "sorcerer",
+      year: "1977",
+      director: "William Friedkin",
+      poster: "https://image.tmdb.org/t/p/w780/xDQWVAxQPflZPrnXznfJZ2cyYxp.jpg",
+      keywords: "thriller adventure drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Twin Peaks: Fire Walk with Me",
+      slug: "twin-peaks-fire-walk-with-me",
+      year: "1992",
+      director: "David Lynch",
+      poster: "https://image.tmdb.org/t/p/w780/mxsGXqetGnirf99qapYd5MMY1VL.jpg",
+      keywords: "drama mystery horror",
+      reviewed: false
+    },
+    
+    {
+      title: "We All Loved Each Other So Much",
+      slug: "we-all-loved-each-other-so-much",
+      year: "1974",
+      director: "Ettore Scola",
+      poster: "https://image.tmdb.org/t/p/w780/zGGWYpiKNwjpKxelPxOMqJnUgDs.jpg",
+      keywords: "drama comedy",
+      reviewed: false
+    },
+    
+    {
+      title: "Ikiru",
+      slug: "ikiru",
+      year: "1952",
+      director: "Akira Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/dgNTS4EQDDVfkzJI5msKuHu2Ei3.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Stalker",
+      slug: "stalker",
+      year: "1979",
+      director: "Andrei Tarkovsky",
+      poster: "https://image.tmdb.org/t/p/w780/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg",
+      keywords: "science fiction drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Funeral Parade of Roses",
+      slug: "funeral-parade-of-roses",
+      year: "1969",
+      director: "Toshio Matsumoto",
+      poster: "https://image.tmdb.org/t/p/w780/7cRQ6rSGajW2soWDr3voEN2rgYO.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Anatomy of a Murder",
+      slug: "anatomy-of-a-murder",
+      year: "1959",
+      director: "Otto Preminger",
+      poster: "https://image.tmdb.org/t/p/w780/b2G1QSAwtBv9luhEwErIgSRaU92.jpg",
+      keywords: "crime drama mystery",
+      reviewed: false
+    },
+    
+    {
+      title: "The Godfather",
+      slug: "the-godfather",
+      year: "1972",
+      director: "Francis Ford Coppola",
+      poster: "https://image.tmdb.org/t/p/w780/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+      keywords: "drama crime",
+      reviewed: false
+    },
+    
+    {
+      title: "The Night of the Hunter",
+      slug: "the-night-of-the-hunter",
+      year: "1955",
+      director: "Charles Laughton",
+      poster: "https://image.tmdb.org/t/p/w780/rBka0nFWiHxabHRLr0KfIA8Yiaq.jpg",
+      keywords: "crime drama thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "The Bridge on the River Kwai",
+      slug: "the-bridge-on-the-river-kwai",
+      year: "1957",
+      director: "David Lean",
+      poster: "https://image.tmdb.org/t/p/w780/7paXMt2e3Tr5dLmEZOGgFEn2Vo7.jpg",
+      keywords: "drama history war",
+      reviewed: false
+    },
+    
+    {
+      title: "Parasite",
+      slug: "parasite",
+      year: "2019",
+      director: "Bong Joon Ho",
+      poster: "https://image.tmdb.org/t/p/w780/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+      keywords: "comedy thriller drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Fall",
+      slug: "the-fall",
+      year: "2006",
+      director: "Tarsem Singh",
+      poster: "https://image.tmdb.org/t/p/w780/vIU6fiyTWa56OXK9nwxK9tDVR6G.jpg",
+      keywords: "adventure fantasy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Spirited Away",
+      slug: "spirited-away",
+      year: "2001",
+      director: "Hayao Miyazaki",
+      poster: "https://image.tmdb.org/t/p/w780/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      keywords: "animation family fantasy",
+      reviewed: false
+    },
+    
+    {
+      title: "Swing Girls",
+      slug: "swing-girls",
+      year: "2004",
+      director: "Shinobu Yaguchi",
+      poster: "https://image.tmdb.org/t/p/w780/u7lAziuBxlX4DQQzuPHDRoOwtDx.jpg",
+      keywords: "comedy music",
+      reviewed: false
+    },
+    
+    {
+      title: "M",
+      slug: "m",
+      year: "1931",
+      director: "Fritz Lang",
+      poster: "https://image.tmdb.org/t/p/w780/bTdZk3q2DWpBRnLiaaItKFWOVhI.jpg",
+      keywords: "drama thriller crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Rocco and His Brothers",
+      slug: "rocco-and-his-brothers",
+      year: "1960",
+      director: "Luchino Visconti",
+      poster: "https://image.tmdb.org/t/p/w780/pngL8AraChIDOiWnKF2o3S9kJzJ.jpg",
+      keywords: "drama romance crime",
+      reviewed: false
+    },
+    
+    {
+      title: "The Secret in Their Eyes",
+      slug: "the-secret-in-their-eyes",
+      year: "2009",
+      director: "Juan José Campanella",
+      poster: "https://image.tmdb.org/t/p/w780/dkeAwfZzwL3WvToydE3CXiY80E0.jpg",
+      keywords: "mystery thriller drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Portrait of a Lady on Fire",
+      slug: "portrait-of-a-lady-on-fire",
+      year: "2019",
+      director: "Céline Sciamma",
+      poster: "https://image.tmdb.org/t/p/w780/2LquGwEhbg3soxSCs9VNyh5VJd9.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Farewell My Concubine",
+      slug: "farewell-my-concubine",
+      year: "1993",
+      director: "Chen Kaige",
+      poster: "https://image.tmdb.org/t/p/w780/f54hNIiHNINw3JiUJB2XaQl5wCN.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Passion of Joan of Arc",
+      slug: "the-passion-of-joan-of-arc",
+      year: "1928",
+      director: "Carl Theodor Dreyer",
+      poster: "https://image.tmdb.org/t/p/w780/tAgV9yxY6AC1bsPt3qJJQpD4s8.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Do the Right Thing",
+      slug: "do-the-right-thing",
+      year: "1989",
+      director: "Spike Lee",
+      poster: "https://image.tmdb.org/t/p/w780/63rmSDPahrH7C1gEFYzRuIBAN9W.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "The Silence of the Lambs",
+      slug: "the-silence-of-the-lambs",
+      year: "1991",
+      director: "Jonathan Demme",
+      poster: "https://image.tmdb.org/t/p/w780/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+      keywords: "crime thriller drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Woman in the Dunes",
+      slug: "woman-in-the-dunes",
+      year: "1964",
+      director: "Hiroshi Teshigahara",
+      poster: "https://image.tmdb.org/t/p/w780/xiBr3bIT2xpbuIKo5bLK7ebP4O1.jpg",
+      keywords: "drama thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "Andrei Rublev",
+      slug: "andrei-rublev",
+      year: "1966",
+      director: "Andrei Tarkovsky",
+      poster: "https://image.tmdb.org/t/p/w780/910xRIUmNJrWH2hkQifBJtoPp5R.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Aparajito",
+      slug: "aparajito",
+      year: "1956",
+      director: "Satyajit Ray",
+      poster: "https://image.tmdb.org/t/p/w780/qvR2Qs42WHwCEcuwhQnterU3gVY.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "A Man Escaped",
+      slug: "a-man-escaped",
+      year: "1956",
+      director: "Robert Bresson",
+      poster: "https://image.tmdb.org/t/p/w780/gkoZ8fFib24zhB2DKpjQ09SK9FU.jpg",
+      keywords: "drama thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "Dog Day Afternoon",
+      slug: "dog-day-afternoon",
+      year: "1975",
+      director: "Sidney Lumet",
+      poster: "https://image.tmdb.org/t/p/w780/mavrhr0ig2aCRR8d48yaxtD5aMQ.jpg",
+      keywords: "crime drama thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "Terminator 2: Judgment Day",
+      slug: "terminator-2-judgment-day",
+      year: "1991",
+      director: "James Cameron",
+      poster: "https://image.tmdb.org/t/p/w780/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg",
+      keywords: "action thriller science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "Sing Sing",
+      slug: "sing-sing",
+      year: "2023",
+      director: "Greg Kwedar",
+      poster: "https://image.tmdb.org/t/p/w780/s0TPyI8QlMiktEiq3JVhea0zFhM.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "2001: A Space Odyssey",
+      slug: "2001-a-space-odyssey",
+      year: "1968",
+      director: "Stanley Kubrick",
+      poster: "https://image.tmdb.org/t/p/w780/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg",
+      keywords: "science fiction mystery adventure",
+      reviewed: false
+    },
+    
+    {
+      title: "Judgment at Nuremberg",
+      slug: "judgment-at-nuremberg",
+      year: "1961",
+      director: "Stanley Kramer",
+      poster: "https://image.tmdb.org/t/p/w780/b6vYatvui1EXeFYfpDX4rcbueuP.jpg",
+      keywords: "drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "No Country for Old Men",
+      slug: "no-country-for-old-men",
+      year: "2007",
+      director: "Joel Coen, Ethan Coen",
+      poster: "https://image.tmdb.org/t/p/w780/6d5XOczc226jECq0LIX0siKtgHR.jpg",
+      keywords: "crime thriller western",
+      reviewed: false
+    },
+    
+    {
+      title: "I Am Cuba",
+      slug: "i-am-cuba",
+      year: "1964",
+      director: "Mikheil Kalatozishvili",
+      poster: "https://image.tmdb.org/t/p/w780/qQxv27Lae6Uph7iOEzyZ5BOZxJh.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Eternal Sunshine of the Spotless Mind",
+      slug: "eternal-sunshine-of-the-spotless-mind",
+      year: "2004",
+      director: "Michel Gondry",
+      poster: "https://image.tmdb.org/t/p/w780/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg",
+      keywords: "science fiction drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Paris, Texas",
+      slug: "paris-texas",
+      year: "1984",
+      director: "Wim Wenders",
+      poster: "https://image.tmdb.org/t/p/w780/sP27Qm4THyRZyHjHYMfIDtJP6YE.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Lawrence of Arabia",
+      slug: "lawrence-of-arabia",
+      year: "1962",
+      director: "David Lean",
+      poster: "https://image.tmdb.org/t/p/w780/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg",
+      keywords: "adventure history war",
+      reviewed: false
+    },
+    
+    {
       title: "The Iron Giant",
       slug: "the-iron-giant",
       year: "1999",
@@ -787,12 +2297,172 @@
     },
     
     {
-      title: "The Hunt",
-      slug: "the-hunt",
-      year: "2012",
-      director: "Thomas Vinterberg",
-      poster: "https://image.tmdb.org/t/p/w780/jkixsXzRh28q3PCqFoWcf7unghT.jpg",
+      title: "Sunset Boulevard",
+      slug: "sunset-boulevard",
+      year: "1950",
+      director: "Billy Wilder",
+      poster: "https://image.tmdb.org/t/p/w780/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg",
       keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Come and See",
+      slug: "come-and-see",
+      year: "1985",
+      director: "Elem Klimov",
+      poster: "https://image.tmdb.org/t/p/w780/qNbMsKVzigERgJUbwf8pKyZogpb.jpg",
+      keywords: "drama war",
+      reviewed: false
+    },
+    
+    {
+      title: "The Sound of Music",
+      slug: "the-sound-of-music",
+      year: "1965",
+      director: "Robert Wise",
+      poster: "https://image.tmdb.org/t/p/w780/c6CrUZypAsBCaRWX0M3RVRDbhNS.jpg",
+      keywords: "drama family music romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Saving Private Ryan",
+      slug: "saving-private-ryan",
+      year: "1998",
+      director: "Steven Spielberg",
+      poster: "https://image.tmdb.org/t/p/w780/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
+      keywords: "war drama history",
+      reviewed: false
+    },
+    
+    {
+      title: "Before Sunrise",
+      slug: "before-sunrise",
+      year: "1995",
+      director: "Richard Linklater",
+      poster: "https://image.tmdb.org/t/p/w780/kf1Jb1c2JAOqjuzA3H4oDM263uB.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Prisoners",
+      slug: "prisoners",
+      year: "2013",
+      director: "Denis Villeneuve",
+      poster: "https://image.tmdb.org/t/p/w780/jsS3a3ep2KyBVmmiwaz3LvK49b1.jpg",
+      keywords: "drama thriller crime",
+      reviewed: false
+    },
+    
+    {
+      title: "Good Will Hunting",
+      slug: "good-will-hunting",
+      year: "1997",
+      director: "Gus Van Sant",
+      poster: "https://image.tmdb.org/t/p/w780/z2FnLKpFi1HPO7BEJxdkv6hpJSU.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "8½",
+      slug: "8½",
+      year: "1963",
+      director: "Federico Fellini",
+      poster: "https://image.tmdb.org/t/p/w780/23VIf7zNxAgaXwIlvzd3IvOd9sY.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "La Notte",
+      slug: "la-notte",
+      year: "1961",
+      director: "Michelangelo Antonioni",
+      poster: "https://image.tmdb.org/t/p/w780/xkd7wPJSIC76scBRHCFZ85uOH5d.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "Ordet",
+      slug: "ordet",
+      year: "1955",
+      director: "Carl Theodor Dreyer",
+      poster: "https://image.tmdb.org/t/p/w780/c9Oef9uQEuadZlnvv8hphRmTIgx.jpg",
+      keywords: "drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Apocalypse Now",
+      slug: "apocalypse-now",
+      year: "1979",
+      director: "Francis Ford Coppola",
+      poster: "https://image.tmdb.org/t/p/w780/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+      keywords: "drama war",
+      reviewed: false
+    },
+    
+    {
+      title: "The Young Girls of Rochefort",
+      slug: "the-young-girls-of-rochefort",
+      year: "1967",
+      director: "Jacques Demy",
+      poster: "https://image.tmdb.org/t/p/w780/jtxhyGaYhurH6KsjvP1jV3dDypz.jpg",
+      keywords: "romance comedy drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Cure",
+      slug: "cure",
+      year: "1997",
+      director: "Kiyoshi Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/yTRrqIGusJuzG5Pe3iFQTnHg1Ps.jpg",
+      keywords: "crime thriller horror mystery",
+      reviewed: false
+    },
+    
+    {
+      title: "Before Sunset",
+      slug: "before-sunset",
+      year: "2004",
+      director: "Richard Linklater",
+      poster: "https://image.tmdb.org/t/p/w780/4sW5XH9ZfYXpvFzev00S1IGAEbg.jpg",
+      keywords: "drama romance",
+      reviewed: false
+    },
+    
+    {
+      title: "High and Low",
+      slug: "high-and-low",
+      year: "1963",
+      director: "Akira Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/tgNjemQPG96uIezpiUiXFcer5ga.jpg",
+      keywords: "drama crime thriller",
+      reviewed: false
+    },
+    
+    {
+      title: "Army of Shadows",
+      slug: "army-of-shadows",
+      year: "1969",
+      director: "Jean-Pierre Melville",
+      poster: "https://image.tmdb.org/t/p/w780/aqNZWM9bspt8zaDvVRIRiWxRVJ7.jpg",
+      keywords: "war drama thriller history",
+      reviewed: false
+    },
+    
+    {
+      title: "I Swear",
+      slug: "i-swear",
+      year: "2025",
+      director: "Kirk Jones",
+      poster: "https://image.tmdb.org/t/p/w780/vUwyhNWBKkSwK8ELvEeBRwV724h.jpg",
+      keywords: "drama history",
       reviewed: false
     },
     
@@ -817,172 +2487,82 @@
     },
     
     {
-      title: "The Human Condition I: No Greater Love",
-      slug: "the-human-condition-i-no-greater-love",
-      year: "1959",
-      director: "Masaki Kobayashi",
-      poster: "https://image.tmdb.org/t/p/w780/q7godavx5XEbeVxEeqi4pmiOKdI.jpg",
-      keywords: "war drama history",
+      title: "The Red Shoes",
+      slug: "the-red-shoes",
+      year: "1948",
+      director: "Emeric Pressburger, Michael Powell",
+      poster: "https://image.tmdb.org/t/p/w780/vPvpBWFWDvEXuQBkoYgA6A89GVp.jpg",
+      keywords: "drama romance",
       reviewed: false
     },
     
     {
-      title: "The Holdovers",
-      slug: "the-holdovers",
-      year: "2023",
-      director: "Alexander Payne",
-      poster: "https://image.tmdb.org/t/p/w780/VHSzNBTwxV8vh7wylo7O9CLdac.jpg",
-      keywords: "drama comedy",
+      title: "Django Unchained",
+      slug: "django-unchained",
+      year: "2012",
+      director: "Quentin Tarantino",
+      poster: "https://image.tmdb.org/t/p/w780/mhf63wOnaLCnzxeHgngTH98WaVh.jpg",
+      keywords: "drama western",
       reviewed: false
     },
     
     {
-      title: "The Handmaiden",
-      slug: "the-handmaiden",
-      year: "2016",
-      director: "Park Chan-wook",
-      poster: "https://image.tmdb.org/t/p/w780/dLlH4aNHdnmf62umnInL8xPlPzw.jpg",
-      keywords: "thriller drama romance",
+      title: "Sherlock Jr.",
+      slug: "sherlock-jr",
+      year: "1924",
+      director: "Buster Keaton",
+      poster: "https://image.tmdb.org/t/p/w780/1G9r3rqtbFAQuyWKOZm4Y5J5s7Q.jpg",
+      keywords: "action comedy mystery",
       reviewed: false
     },
     
     {
-      title: "The Green Mile",
-      slug: "the-green-mile",
-      year: "1999",
-      director: "Frank Darabont",
-      poster: "https://image.tmdb.org/t/p/w780/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg",
-      keywords: "fantasy drama crime",
+      title: "Fanny and Alexander",
+      slug: "fanny-and-alexander",
+      year: "1982",
+      director: "Ingmar Bergman",
+      poster: "https://image.tmdb.org/t/p/w780/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg",
+      keywords: "fantasy drama mystery",
       reviewed: false
     },
     
     {
-      title: "The Great Dictator",
-      slug: "the-great-dictator",
-      year: "1940",
-      director: "Charlie Chaplin",
-      poster: "https://image.tmdb.org/t/p/w780/1QpO9wo7JWecZ4NiBuu625FiY1j.jpg",
-      keywords: "comedy war",
-      reviewed: false
-    },
-    
-    {
-      title: "The Grand Budapest Hotel",
-      slug: "the-grand-budapest-hotel",
-      year: "2014",
-      director: "Wes Anderson",
-      poster: "https://image.tmdb.org/t/p/w780/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
-      keywords: "comedy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Good, the Bad and the Ugly",
-      slug: "the-good-the-bad-and-the-ugly",
-      year: "1966",
-      director: "Sergio Leone",
-      poster: "https://image.tmdb.org/t/p/w780/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
-      keywords: "western",
-      reviewed: false
-    },
-    
-    {
-      title: "The Godfather",
-      slug: "the-godfather",
-      year: "1972",
-      director: "Francis Ford Coppola",
-      poster: "https://image.tmdb.org/t/p/w780/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-      keywords: "drama crime",
-      reviewed: false
-    },
-    
-    {
-      title: "The Godfather Part II",
-      slug: "the-godfather-part-ii",
-      year: "1974",
-      director: "Francis Ford Coppola",
-      poster: "https://image.tmdb.org/t/p/w780/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg",
-      keywords: "drama crime",
-      reviewed: false
-    },
-    
-    {
-      title: "The First Slam Dunk",
-      slug: "the-first-slam-dunk",
-      year: "2022",
-      director: "Takehiko Inoue",
-      poster: "https://image.tmdb.org/t/p/w780/7i3EBXY87HdHagCoFbmjHQ8DlkG.jpg",
-      keywords: "animation comedy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "The Father",
-      slug: "the-father",
-      year: "2020",
-      director: "Florian Zeller",
-      poster: "https://image.tmdb.org/t/p/w780/pr3bEQ517uMb5loLvjFQi8uLAsp.jpg",
+      title: "Network",
+      slug: "network",
+      year: "1976",
+      director: "Sidney Lumet",
+      poster: "https://image.tmdb.org/t/p/w780/qZomlHsaALUtkFeMDwdYmwS2Pbo.jpg",
       keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "The Fall",
-      slug: "the-fall",
-      year: "2006",
-      director: "Tarsem Singh",
-      poster: "https://image.tmdb.org/t/p/w780/vIU6fiyTWa56OXK9nwxK9tDVR6G.jpg",
-      keywords: "adventure fantasy drama",
+      title: "Nights of Cabiria",
+      slug: "nights-of-cabiria",
+      year: "1957",
+      director: "Federico Fellini",
+      poster: "https://image.tmdb.org/t/p/w780/xF4oCG3PLNbcrtPZbqB3BtkIbKg.jpg",
+      keywords: "drama comedy",
       reviewed: false
     },
     
     {
-      title: "The Face of Another",
-      slug: "the-face-of-another",
-      year: "1966",
-      director: "Hiroshi Teshigahara",
-      poster: "https://image.tmdb.org/t/p/w780/eUnFdf1Mf1b8AD3ChMPOCUfTBDQ.jpg",
-      keywords: "drama science fiction",
+      title: "Evangelion: 3.0+1.0 Thrice Upon a Time",
+      slug: "evangelion-3-0-1-0-thrice-upon-a-time",
+      year: "2021",
+      director: "Kazuya Tsurumaki, Mahiro Maeda, Katsuichi Nakayama, Hideaki Anno",
+      poster: "https://image.tmdb.org/t/p/w780/md5wZRRj8biHrGtyitgBZo7674t.jpg",
+      keywords: "animation action science fiction drama",
       reviewed: false
     },
     
     {
-      title: "The Empire Strikes Back",
-      slug: "the-empire-strikes-back",
-      year: "1980",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
-      title: "The Elephant Man",
-      slug: "the-elephant-man",
-      year: "1980",
-      director: "David Lynch",
-      poster: "https://image.tmdb.org/t/p/w780/u0wpPYjuSt8DIe1Y3Vapnh8jcKE.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "The Departed",
-      slug: "the-departed",
-      year: "2006",
-      director: "Martin Scorsese",
-      poster: "https://image.tmdb.org/t/p/w780/nT97ifVT2J1yMQmeq20Qblg61T.jpg",
-      keywords: "drama thriller crime",
-      reviewed: false
-    },
-    
-    {
-      title: "The Cremator",
-      slug: "the-cremator",
-      year: "1969",
-      director: "Juraj Herz",
-      poster: "https://image.tmdb.org/t/p/w780/9or2Jzw9HOE4gp9niwXBkZdpTVx.jpg",
-      keywords: "horror drama comedy",
+      title: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+      slug: "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb",
+      year: "1964",
+      director: "Stanley Kubrick",
+      poster: "https://image.tmdb.org/t/p/w780/6x7MzQ6BOMlRzam1StcmPO9v61g.jpg",
+      keywords: "comedy war",
       reviewed: false
     },
     
@@ -997,241 +2577,51 @@
     },
     
     {
-      title: "The Celebration",
-      slug: "the-celebration",
-      year: "1998",
-      director: "Thomas Vinterberg",
-      poster: "https://image.tmdb.org/t/p/w780/2LRzNq41yrY8EjCnD1S8sCCPvKk.jpg",
-      keywords: "drama",
+      title: "Underground",
+      slug: "underground",
+      year: "1995",
+      director: "Emir Kusturica",
+      poster: "https://image.tmdb.org/t/p/w780/h8N6y13t4VusrDdH5PzTkwvBvgN.jpg",
+      keywords: "comedy drama war",
       reviewed: false
     },
     
     {
-      title: "The Bridge on the River Kwai",
-      slug: "the-bridge-on-the-river-kwai",
-      year: "1957",
-      director: "David Lean",
-      poster: "https://image.tmdb.org/t/p/w780/7paXMt2e3Tr5dLmEZOGgFEn2Vo7.jpg",
-      keywords: "drama history war",
-      reviewed: false
-    },
-    
-    {
-      title: "The Best Years of Our Lives",
-      slug: "the-best-years-of-our-lives",
-      year: "1946",
-      director: "William Wyler",
-      poster: "https://image.tmdb.org/t/p/w780/gd5EoAU4MM57sW3vlWxJ0NMM8cV.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "The Battle of Algiers",
-      slug: "the-battle-of-algiers",
-      year: "1966",
-      director: "Gillo Pontecorvo",
-      poster: "https://image.tmdb.org/t/p/w780/2p3AFtOHFvP6OeVMqlnL1zLKOqL.jpg",
-      keywords: "drama war history",
-      reviewed: false
-    },
-    
-    {
-      title: "The Ascent",
-      slug: "the-ascent",
-      year: "1977",
-      director: "Larisa Shepitko",
-      poster: "https://image.tmdb.org/t/p/w780/hJOju5XZfmq4Lg5dPa8IPVY3mDt.jpg",
-      keywords: "drama war history",
-      reviewed: false
-    },
-    
-    {
-      title: "The Apartment",
-      slug: "the-apartment",
-      year: "1960",
-      director: "Billy Wilder",
-      poster: "https://image.tmdb.org/t/p/w780/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg",
+      title: "City Lights",
+      slug: "city-lights",
+      year: "1931",
+      director: "Charlie Chaplin",
+      poster: "https://image.tmdb.org/t/p/w780/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg",
       keywords: "comedy drama romance",
       reviewed: false
     },
     
     {
-      title: "The 400 Blows",
-      slug: "the-400-blows",
-      year: "1959",
-      director: "François Truffaut",
-      poster: "https://image.tmdb.org/t/p/w780/12PuU23kkDLvTd0nb8hMlE3oShB.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Terminator 2: Judgment Day",
-      slug: "terminator-2-judgment-day",
-      year: "1991",
-      director: "James Cameron",
-      poster: "https://image.tmdb.org/t/p/w780/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg",
-      keywords: "action thriller science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "Taste of Cherry",
-      slug: "taste-of-cherry",
-      year: "1997",
+      title: "Close-Up",
+      slug: "close-up",
+      year: "1990",
       director: "Abbas Kiarostami",
-      poster: "https://image.tmdb.org/t/p/w780/u6GYH4HyR0BVwpqFuTOc2g4KB1L.jpg",
-      keywords: "drama",
+      poster: "https://image.tmdb.org/t/p/w780/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
+      keywords: "crime drama",
       reviewed: false
     },
     
     {
-      title: "Tampopo",
-      slug: "tampopo",
-      year: "1985",
-      director: "Jūzō Itami",
-      poster: "https://image.tmdb.org/t/p/w780/ArYdSuX3zY9fMsE4LqmBl7xJq5R.jpg",
-      keywords: "comedy",
+      title: "The First Slam Dunk",
+      slug: "the-first-slam-dunk",
+      year: "2022",
+      director: "Takehiko Inoue",
+      poster: "https://image.tmdb.org/t/p/w780/7i3EBXY87HdHagCoFbmjHQ8DlkG.jpg",
+      keywords: "animation comedy drama",
       reviewed: false
     },
     
     {
-      title: "Swing Girls",
-      slug: "swing-girls",
-      year: "2004",
-      director: "Shinobu Yaguchi",
-      poster: "https://image.tmdb.org/t/p/w780/u7lAziuBxlX4DQQzuPHDRoOwtDx.jpg",
-      keywords: "comedy music",
-      reviewed: false
-    },
-    
-    {
-      title: "Sweet Smell of Success",
-      slug: "sweet-smell-of-success",
-      year: "1957",
-      director: "Alexander Mackendrick",
-      poster: "https://image.tmdb.org/t/p/w780/akzvV8JasNrgEl5iAP9K6zPHGJe.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Sunset Boulevard",
-      slug: "sunset-boulevard",
-      year: "1950",
-      director: "Billy Wilder",
-      poster: "https://image.tmdb.org/t/p/w780/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Still Walking",
-      slug: "still-walking",
-      year: "2008",
-      director: "Hirokazu Kore-eda",
-      poster: "https://image.tmdb.org/t/p/w780/4Are9oV8HjZQWnEajk9LYFxRWom.jpg",
-      keywords: "drama family",
-      reviewed: false
-    },
-    
-    {
-      title: "Stalker",
-      slug: "stalker",
-      year: "1979",
-      director: "Andrei Tarkovsky",
-      poster: "https://image.tmdb.org/t/p/w780/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg",
-      keywords: "science fiction drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Spirited Away",
-      slug: "spirited-away",
-      year: "2001",
-      director: "Hayao Miyazaki",
-      poster: "https://image.tmdb.org/t/p/w780/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
-      keywords: "animation family fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Spider-Man: Into the Spider-Verse",
-      slug: "spider-man-into-the-spider-verse",
-      year: "2018",
-      director: "Bob Persichetti, Peter Ramsey, Rodney Rothman",
-      poster: "https://image.tmdb.org/t/p/w780/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
-      keywords: "animation action adventure science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "Spider-Man: Across the Spider-Verse",
-      slug: "spider-man-across-the-spider-verse",
-      year: "2023",
-      director: "Kemp Powers, Justin K. Thompson, Joaquim Dos Santos",
-      poster: "https://image.tmdb.org/t/p/w780/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
-      keywords: "animation action adventure science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "Sorcerer",
-      slug: "sorcerer",
-      year: "1977",
-      director: "William Friedkin",
-      poster: "https://image.tmdb.org/t/p/w780/xDQWVAxQPflZPrnXznfJZ2cyYxp.jpg",
-      keywords: "thriller adventure drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Song of the Sea",
-      slug: "song-of-the-sea",
-      year: "2014",
-      director: "Tomm Moore",
-      poster: "https://image.tmdb.org/t/p/w780/16LQC6zpqB0l74mVWb93a2oMFnX.jpg",
-      keywords: "family animation fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Son of the White Mare",
-      slug: "son-of-the-white-mare",
-      year: "1981",
-      director: "Marcell Jankovics",
-      poster: "https://image.tmdb.org/t/p/w780/cYYYIfBFG5nszjDk5xea4MQHyDS.jpg",
-      keywords: "adventure animation fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Some Like It Hot",
-      slug: "some-like-it-hot",
-      year: "1959",
-      director: "Billy Wilder",
-      poster: "https://image.tmdb.org/t/p/w780/hVIKyTK13AvOGv7ICmJjK44DTzp.jpg",
-      keywords: "comedy romance crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Singin&#39; in the Rain",
-      slug: "singin-in-the-rain",
-      year: "1952",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/w03EiJVHP8Un77boQeE7hg9DVdU.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
-      title: "Sing Sing",
-      slug: "sing-sing",
-      year: "2023",
-      director: "Greg Kwedar",
-      poster: "https://image.tmdb.org/t/p/w780/s0TPyI8QlMiktEiq3JVhea0zFhM.jpg",
+      title: "Central Station",
+      slug: "central-station",
+      year: "1998",
+      director: "Walter Salles",
+      poster: "https://image.tmdb.org/t/p/w780/zJvp7XjQ2LhPbDVYhFXyucs40vR.jpg",
       keywords: "drama",
       reviewed: false
     },
@@ -1247,546 +2637,6 @@
     },
     
     {
-      title: "Sherlock Jr.",
-      slug: "sherlock-jr",
-      year: "1924",
-      director: "Buster Keaton",
-      poster: "https://image.tmdb.org/t/p/w780/1G9r3rqtbFAQuyWKOZm4Y5J5s7Q.jpg",
-      keywords: "action comedy mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "Seven Samurai",
-      slug: "seven-samurai",
-      year: "1954",
-      director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg",
-      keywords: "action drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Secrets &amp; Lies",
-      slug: "secrets-lies",
-      year: "1996",
-      director: "Mike Leigh",
-      poster: "https://image.tmdb.org/t/p/w780/zQBuRQ3hrLhkEsXcxteUxuxLrvs.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Se7en",
-      slug: "se7en",
-      year: "1995",
-      director: "David Fincher",
-      poster: "https://image.tmdb.org/t/p/w780/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg",
-      keywords: "crime mystery thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Schindler&#39;s List",
-      slug: "schindler-s-list",
-      year: "1993",
-      director: "Steven Spielberg",
-      poster: "https://image.tmdb.org/t/p/w780/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
-      keywords: "drama history war",
-      reviewed: false
-    },
-    
-    {
-      title: "Scenes from a Marriage",
-      slug: "scenes-from-a-marriage",
-      year: "1974",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/ArKEdvJesIktFX8OAhcdKAOLl6I.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Saving Private Ryan",
-      slug: "saving-private-ryan",
-      year: "1998",
-      director: "Steven Spielberg",
-      poster: "https://image.tmdb.org/t/p/w780/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
-      keywords: "war drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Satantango",
-      slug: "satantango",
-      year: "1994",
-      director: "Béla Tarr",
-      poster: "https://image.tmdb.org/t/p/w780/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Sansho the Bailiff",
-      slug: "sansho-the-bailiff",
-      year: "1954",
-      director: "Kenji Mizoguchi",
-      poster: "https://image.tmdb.org/t/p/w780/cOBsWxFtEoqXIPx4JZP5E7g1WEo.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Rocco and His Brothers",
-      slug: "rocco-and-his-brothers",
-      year: "1960",
-      director: "Luchino Visconti",
-      poster: "https://image.tmdb.org/t/p/w780/pngL8AraChIDOiWnKF2o3S9kJzJ.jpg",
-      keywords: "drama romance crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Ritual",
-      slug: "ritual",
-      year: "2000",
-      director: "Hideaki Anno",
-      poster: "https://image.tmdb.org/t/p/w780/h88yVKhgPAaPNEllDqsuhpQOJeL.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Rififi",
-      slug: "rififi",
-      year: "1955",
-      director: "Jules Dassin",
-      poster: "https://image.tmdb.org/t/p/w780/heVdAFNZUxXVmO6jiJcEHCvI5lK.jpg",
-      keywords: "crime thriller drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Red Beard",
-      slug: "red-beard",
-      year: "1965",
-      director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/iYNH3Re0JSypoYaWvZtERUnNaJL.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Rear Window",
-      slug: "rear-window",
-      year: "1954",
-      director: "Alfred Hitchcock",
-      poster: "https://image.tmdb.org/t/p/w780/ILVF0eJxHMddjxeQhswFtpMtqx.jpg",
-      keywords: "thriller mystery drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Ran",
-      slug: "ran",
-      year: "1985",
-      director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/dGgiXMWDcS5aJTBEFu7bmaQPNox.jpg",
-      keywords: "action drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Raise the Red Lantern",
-      slug: "raise-the-red-lantern",
-      year: "1991",
-      director: "Zhang Yimou",
-      poster: "https://image.tmdb.org/t/p/w780/j6MGZpg55cTqlHHwahBtzI2qQg1.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Quo Vadis, Aida?",
-      slug: "quo-vadis-aida",
-      year: "2020",
-      director: "Jasmila Žbanić",
-      poster: "https://image.tmdb.org/t/p/w780/eQy2Tgvmx0FkK8vMMqMW4aX5UXQ.jpg",
-      keywords: "war drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Puella Magi Madoka Magica the Movie Part III: Rebellion",
-      slug: "puella-magi-madoka-magica-the-movie-part-iii-rebellion",
-      year: "2013",
-      director: "Yukihiro Miyamoto, Akiyuki Shinbo",
-      poster: "https://image.tmdb.org/t/p/w780/68cts97TtCXcAlimoAHrHlQUNfn.jpg",
-      keywords: "mystery animation fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Psycho",
-      slug: "psycho",
-      year: "1960",
-      director: "Alfred Hitchcock",
-      poster: "https://image.tmdb.org/t/p/w780/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg",
-      keywords: "horror thriller mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "Project Hail Mary",
-      slug: "project-hail-mary",
-      year: "2026",
-      director: "Phil Lord, Christopher Miller",
-      poster: "https://image.tmdb.org/t/p/w780/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
-      keywords: "science fiction adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "Prisoners",
-      slug: "prisoners",
-      year: "2013",
-      director: "Denis Villeneuve",
-      poster: "https://image.tmdb.org/t/p/w780/jsS3a3ep2KyBVmmiwaz3LvK49b1.jpg",
-      keywords: "drama thriller crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Princess Mononoke",
-      slug: "princess-mononoke",
-      year: "1997",
-      director: "Hayao Miyazaki",
-      poster: "https://image.tmdb.org/t/p/w780/cMYCDADoLKLbB83g4WnJegaZimC.jpg",
-      keywords: "adventure fantasy animation",
-      reviewed: false
-    },
-    
-    {
-      title: "Portrait of a Lady on Fire",
-      slug: "portrait-of-a-lady-on-fire",
-      year: "2019",
-      director: "Céline Sciamma",
-      poster: "https://image.tmdb.org/t/p/w780/2LquGwEhbg3soxSCs9VNyh5VJd9.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Persona",
-      slug: "persona",
-      year: "1966",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/yPTntWP9Wvew8vHN0jB7Z1EvEUN.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Perfect Days",
-      slug: "perfect-days",
-      year: "2023",
-      director: "Wim Wenders",
-      poster: "https://image.tmdb.org/t/p/w780/mjEk5Wwx6TYVqw29zSaUHclMIgp.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Perfect Blue",
-      slug: "perfect-blue",
-      year: "1997",
-      director: "Satoshi Kon",
-      poster: "https://image.tmdb.org/t/p/w780/6WTiOCfDPP8XV4jqfloiVWf7KHq.jpg",
-      keywords: "animation thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Paths of Glory",
-      slug: "paths-of-glory",
-      year: "1957",
-      director: "Stanley Kubrick",
-      poster: "https://image.tmdb.org/t/p/w780/tJXwtzOSNUC8dxJfrdvkNtGrrgW.jpg",
-      keywords: "war drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Pather Panchali",
-      slug: "pather-panchali",
-      year: "1955",
-      director: "Satyajit Ray",
-      poster: "https://image.tmdb.org/t/p/w780/frZj5djlU9hFEjMcL21RJZVuG5O.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Paris, Texas",
-      slug: "paris-texas",
-      year: "1984",
-      director: "Wim Wenders",
-      poster: "https://image.tmdb.org/t/p/w780/sP27Qm4THyRZyHjHYMfIDtJP6YE.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Parasite",
-      slug: "parasite",
-      year: "2019",
-      director: "Bong Joon Ho",
-      poster: "https://image.tmdb.org/t/p/w780/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
-      keywords: "comedy thriller drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Paper Moon",
-      slug: "paper-moon",
-      year: "1973",
-      director: "Peter Bogdanovich",
-      poster: "https://image.tmdb.org/t/p/w780/7fZZwQYFV3hN2KBPI0Y1BlvzF2T.jpg",
-      keywords: "comedy crime drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Ordet",
-      slug: "ordet",
-      year: "1955",
-      director: "Carl Theodor Dreyer",
-      poster: "https://image.tmdb.org/t/p/w780/c9Oef9uQEuadZlnvv8hphRmTIgx.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Opening Night",
-      slug: "opening-night",
-      year: "1977",
-      director: "John Cassavetes",
-      poster: "https://image.tmdb.org/t/p/w780/5i1331f4Q2sNHUp9X3BOwWPS2Gg.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "One Flew Over the Cuckoo&#39;s Nest",
-      slug: "one-flew-over-the-cuckoo-s-nest",
-      year: "1975",
-      director: "Miloš Forman",
-      poster: "https://image.tmdb.org/t/p/w780/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Once Upon a Time in the West",
-      slug: "once-upon-a-time-in-the-west",
-      year: "1968",
-      director: "Sergio Leone",
-      poster: "https://image.tmdb.org/t/p/w780/qbYgqOczabWNn2XKwgMtVrntD6P.jpg",
-      keywords: "drama western",
-      reviewed: false
-    },
-    
-    {
-      title: "Oldboy",
-      slug: "oldboy",
-      year: "2003",
-      director: "Park Chan-wook",
-      poster: "https://image.tmdb.org/t/p/w780/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
-      keywords: "drama thriller mystery action",
-      reviewed: false
-    },
-    
-    {
-      title: "Nostalgia",
-      slug: "nostalgia",
-      year: "1983",
-      director: "Andrei Tarkovsky",
-      poster: "https://image.tmdb.org/t/p/w780/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Nobody Knows",
-      slug: "nobody-knows",
-      year: "2004",
-      director: "Hirokazu Kore-eda",
-      poster: "https://image.tmdb.org/t/p/w780/kDUUdWrbBBVqzSmm27pHFJcTvCU.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "No Country for Old Men",
-      slug: "no-country-for-old-men",
-      year: "2007",
-      director: "Joel Coen, Ethan Coen",
-      poster: "https://image.tmdb.org/t/p/w780/6d5XOczc226jECq0LIX0siKtgHR.jpg",
-      keywords: "crime thriller western",
-      reviewed: false
-    },
-    
-    {
-      title: "Nirvanna the Band the Show the Movie",
-      slug: "nirvanna-the-band-the-show-the-movie",
-      year: "2025",
-      director: "Matt Johnson",
-      poster: "https://image.tmdb.org/t/p/w780/sm5TGX8WbnCd9Uo26cLyTxVwA1n.jpg",
-      keywords: "comedy science fiction adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "Nights of Cabiria",
-      slug: "nights-of-cabiria",
-      year: "1957",
-      director: "Federico Fellini",
-      poster: "https://image.tmdb.org/t/p/w780/xF4oCG3PLNbcrtPZbqB3BtkIbKg.jpg",
-      keywords: "drama comedy",
-      reviewed: false
-    },
-    
-    {
-      title: "Network",
-      slug: "network",
-      year: "1976",
-      director: "Sidney Lumet",
-      poster: "https://image.tmdb.org/t/p/w780/qZomlHsaALUtkFeMDwdYmwS2Pbo.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Neon Genesis Evangelion: The End of Evangelion",
-      slug: "neon-genesis-evangelion-the-end-of-evangelion",
-      year: "1997",
-      director: "Kazuya Tsurumaki, Hideaki Anno",
-      poster: "https://image.tmdb.org/t/p/w780/j6G24dqI4WgUtChhWjfnI4lnmiK.jpg",
-      keywords: "animation science fiction drama fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Mulholland Drive",
-      slug: "mulholland-drive",
-      year: "2001",
-      director: "David Lynch",
-      poster: "https://image.tmdb.org/t/p/w780/x7A59t6ySylr1L7aubOQEA480vM.jpg",
-      keywords: "thriller drama mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "Monster",
-      slug: "monster",
-      year: "2023",
-      director: "Hirokazu Kore-eda",
-      poster: "https://image.tmdb.org/t/p/w780/kvUJUyUGOhEoiWWNH04IXoExPE2.jpg",
-      keywords: "mystery thriller drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Mommy",
-      slug: "mommy",
-      year: "2014",
-      director: "Xavier Dolan",
-      poster: "https://image.tmdb.org/t/p/w780/uPDP0cHGOpkr47rdCdHWo4CyiPj.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Modern Times",
-      slug: "modern-times",
-      year: "1936",
-      director: "Charlie Chaplin",
-      poster: "https://image.tmdb.org/t/p/w780/7uoiKOEjxBBW0AgDGQWrlfGQ90w.jpg",
-      keywords: "comedy drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Mishima: A Life in Four Chapters",
-      slug: "mishima-a-life-in-four-chapters",
-      year: "1985",
-      director: "Paul Schrader",
-      poster: "https://image.tmdb.org/t/p/w780/4kIXsE4SwUjO0eUqpolsHNO5GLH.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Mirror",
-      slug: "mirror",
-      year: "1975",
-      director: "Andrei Tarkovsky",
-      poster: "https://image.tmdb.org/t/p/w780/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Metropolis",
-      slug: "metropolis",
-      year: "1927",
-      director: "Fritz Lang",
-      poster: "https://image.tmdb.org/t/p/w780/kr9wXRN23zLuWJIelahas1mtnYj.jpg",
-      keywords: "drama science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "Memories of Murder",
-      slug: "memories-of-murder",
-      year: "2003",
-      director: "Bong Joon Ho",
-      poster: "https://image.tmdb.org/t/p/w780/dsEoTJKM1s5OVDkS2P2JdoTxo4K.jpg",
-      keywords: "crime drama thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Mary and Max",
-      slug: "mary-and-max",
-      year: "2009",
-      director: "Adam Elliot",
-      poster: "https://image.tmdb.org/t/p/w780/ebmsM382m9IClLUzKYY2U5biFwM.jpg",
-      keywords: "animation comedy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Marcel the Shell with Shoes On",
-      slug: "marcel-the-shell-with-shoes-on",
-      year: "2021",
-      director: "Dean Fleischer Camp",
-      poster: "https://image.tmdb.org/t/p/w780/jaYmP4Ct8YLnxWAW2oYkUjeXtzm.jpg",
-      keywords: "animation comedy drama family",
-      reviewed: false
-    },
-    
-    {
-      title: "Malcolm X",
-      slug: "malcolm-x",
-      year: "1992",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/o2s9ow0uRRm1BcF3teznk5twd90.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
       title: "Macario",
       slug: "macario",
       year: "1960",
@@ -1797,702 +2647,12 @@
     },
     
     {
-      title: "M",
-      slug: "m",
-      year: "1931",
-      director: "Fritz Lang",
-      poster: "https://image.tmdb.org/t/p/w780/bTdZk3q2DWpBRnLiaaItKFWOVhI.jpg",
-      keywords: "drama thriller crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Love Exposure",
-      slug: "love-exposure",
-      year: "2008",
-      director: "Sion Sono",
-      poster: "https://image.tmdb.org/t/p/w780/3QSGUdzG374H7pOxIdKNBpeLEUk.jpg",
-      keywords: "action comedy drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Look Back",
-      slug: "look-back",
-      year: "2024",
-      director: "Kiyotaka Oshiyama",
-      poster: "https://image.tmdb.org/t/p/w780/4f2EcNkp1Mvp9wE5w7HKxcmACWg.jpg",
-      keywords: "animation drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Life Is Beautiful",
-      slug: "life-is-beautiful",
-      year: "1997",
-      director: "Roberto Benigni",
-      poster: "https://image.tmdb.org/t/p/w780/6tEJnof1DKWPnl5lzkjf0FVv7oB.jpg",
-      keywords: "comedy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Life, and Nothing More…",
-      slug: "life-and-nothing-more",
-      year: "1992",
-      director: "Abbas Kiarostami",
-      poster: "https://image.tmdb.org/t/p/w780/100CuZjqxtcbDvZ5qPsoi1VEU5n.jpg",
-      keywords: "drama adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "Le Trou",
-      slug: "le-trou",
-      year: "1960",
-      director: "Jacques Becker",
-      poster: "https://image.tmdb.org/t/p/w780/xyZhiOz5NHVBUKlpioxjwajy7pm.jpg",
-      keywords: "drama thriller crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Lawrence of Arabia",
-      slug: "lawrence-of-arabia",
-      year: "1962",
-      director: "David Lean",
-      poster: "https://image.tmdb.org/t/p/w780/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg",
-      keywords: "adventure history war",
-      reviewed: false
-    },
-    
-    {
-      title: "Late Spring",
-      slug: "late-spring",
-      year: "1949",
-      director: "Yasujirō Ozu",
-      poster: "https://image.tmdb.org/t/p/w780/iNtRSY2AGjW1VDXDR79bKsNUdus.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Landscape in the Mist",
-      slug: "landscape-in-the-mist",
-      year: "1988",
-      director: "Theo Angelopoulos",
-      poster: "https://image.tmdb.org/t/p/w780/icNqzWxjwXuD6FSRtTWNj8sa5B1.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "La Notte",
-      slug: "la-notte",
-      year: "1961",
-      director: "Michelangelo Antonioni",
-      poster: "https://image.tmdb.org/t/p/w780/xkd7wPJSIC76scBRHCFZ85uOH5d.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "La Haine",
-      slug: "la-haine",
-      year: "1995",
-      director: "Mathieu Kassovitz",
-      poster: "https://image.tmdb.org/t/p/w780/8rgPyWjYZhsphSSxbXguMnhN7H0.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "La Dolce Vita",
-      slug: "la-dolce-vita",
-      year: "1960",
-      director: "Federico Fellini",
-      poster: "https://image.tmdb.org/t/p/w780/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg",
-      keywords: "comedy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Kwaidan",
-      slug: "kwaidan",
-      year: "1964",
-      director: "Masaki Kobayashi",
-      poster: "https://image.tmdb.org/t/p/w780/t9UMfViYl47SdZZatKQ1JKjjCgs.jpg",
-      keywords: "horror fantasy drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Kes",
-      slug: "kes",
-      year: "1969",
-      director: "Ken Loach",
-      poster: "https://image.tmdb.org/t/p/w780/r1FMq75irhsQBVGjXhPU4xA9SDo.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Kamikaze Girls",
-      slug: "kamikaze-girls",
-      year: "2004",
-      director: "Tetsuya Nakashima",
-      poster: "https://image.tmdb.org/t/p/w780/fpmFgBElC7bDSHJwtmfJnYFyMqw.jpg",
-      keywords: "comedy",
-      reviewed: false
-    },
-    
-    {
-      title: "Judgment at Nuremberg",
-      slug: "judgment-at-nuremberg",
-      year: "1961",
-      director: "Stanley Kramer",
-      poster: "https://image.tmdb.org/t/p/w780/b6vYatvui1EXeFYfpDX4rcbueuP.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Jeanne Dielman, 23, quai du Commerce, 1080 Bruxelles",
-      slug: "jeanne-dielman-23-quai-du-commerce-1080-bruxelles",
-      year: "1975",
-      director: "Chantal Akerman",
-      poster: "https://image.tmdb.org/t/p/w780/fqfSu8Y1YSVFkoCJyiTXI6woYma.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "It&#39;s Such a Beautiful Day",
-      slug: "it-s-such-a-beautiful-day",
-      year: "2012",
-      director: "Don Hertzfeldt",
-      poster: "https://image.tmdb.org/t/p/w780/hop0dsM4nxyNENGhBhpJWTCJ5rS.jpg",
-      keywords: "animation comedy",
-      reviewed: false
-    },
-    
-    {
-      title: "It&#39;s a Wonderful Life",
-      slug: "it-s-a-wonderful-life",
-      year: "1946",
-      director: "Frank Capra",
-      poster: "https://image.tmdb.org/t/p/w780/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg",
-      keywords: "drama family fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Interstellar",
-      slug: "interstellar",
-      year: "2014",
-      director: "Christopher Nolan",
-      poster: "https://image.tmdb.org/t/p/w780/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
-      keywords: "adventure drama science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "Interstella 5555: The 5tory of the 5ecret 5tar 5ystem",
-      slug: "interstella-5555-the-5tory-of-the-5ecret-5tar-5ystem",
-      year: "2003",
-      director: "Kazuhisa Takenouchi, Leiji Matsumoto, Hirotoshi Rissen, Daisuke Nishio",
-      poster: "https://image.tmdb.org/t/p/w780/n0K6mjU8aVnag2mi93FuvJsjZi.jpg",
-      keywords: "animation science fiction music adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "Inglourious Basterds",
-      slug: "inglourious-basterds",
-      year: "2009",
-      director: "Quentin Tarantino",
-      poster: "https://image.tmdb.org/t/p/w780/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg",
-      keywords: "drama thriller war",
-      reviewed: false
-    },
-    
-    {
-      title: "Incendies",
-      slug: "incendies",
-      year: "2010",
-      director: "Denis Villeneuve",
-      poster: "https://image.tmdb.org/t/p/w780/yH6DAQVgbyj72S66gN4WWVoTjuf.jpg",
-      keywords: "drama war mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "In the Mood for Love",
-      slug: "in-the-mood-for-love",
-      year: "2000",
-      director: "Wong Kar-Wai",
-      poster: "https://image.tmdb.org/t/p/w780/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Il Sorpasso",
-      slug: "il-sorpasso",
-      year: "1962",
-      director: "Dino Risi",
-      poster: "https://image.tmdb.org/t/p/w780/4h1ckrJQVcQYjeOkqS8i9BqZ9MI.jpg",
-      keywords: "drama comedy adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "Ikiru",
-      slug: "ikiru",
-      year: "1952",
-      director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/dgNTS4EQDDVfkzJI5msKuHu2Ei3.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "I Swear",
-      slug: "i-swear",
-      year: "2025",
-      director: "Kirk Jones",
-      poster: "https://image.tmdb.org/t/p/w780/vUwyhNWBKkSwK8ELvEeBRwV724h.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "I&#39;m Still Here",
-      slug: "i-m-still-here",
-      year: "2024",
-      director: "Walter Salles",
-      poster: "https://image.tmdb.org/t/p/w780/gZnsMbhCvhzAQlKaVpeFRHYjGyb.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "I Am Cuba",
-      slug: "i-am-cuba",
-      year: "1964",
-      director: "Mikheil Kalatozishvili",
-      poster: "https://image.tmdb.org/t/p/w780/qQxv27Lae6Uph7iOEzyZ5BOZxJh.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Howl&#39;s Moving Castle",
-      slug: "howl-s-moving-castle",
-      year: "2004",
-      director: "Hayao Miyazaki",
-      poster: "https://image.tmdb.org/t/p/w780/13kOl2v0nD2OLbVSHnHk8GUFEhO.jpg",
-      keywords: "fantasy animation adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "How to Make Millions Before Grandma Dies",
-      slug: "how-to-make-millions-before-grandma-dies",
-      year: "2024",
-      director: "Pat Boonnitipat",
-      poster: "https://image.tmdb.org/t/p/w780/9Xa0Grd2jq2lM2gqcoTB4F9TjMd.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "High and Low",
-      slug: "high-and-low",
-      year: "1963",
-      director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/tgNjemQPG96uIezpiUiXFcer5ga.jpg",
-      keywords: "drama crime thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Heat",
-      slug: "heat",
-      year: "1995",
-      director: "Michael Mann",
-      poster: "https://image.tmdb.org/t/p/w780/e09dLw1Ljtccd2P4NsuUvVtS5du.jpg",
-      keywords: "crime drama action",
-      reviewed: false
-    },
-    
-    {
-      title: "Harakiri",
-      slug: "harakiri",
-      year: "1962",
-      director: "Masaki Kobayashi",
-      poster: "https://image.tmdb.org/t/p/w780/3nPwMd3KviJWaHzG9fZCqlwWMas.jpg",
-      keywords: "action drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Grave of the Fireflies",
-      slug: "grave-of-the-fireflies",
-      year: "1988",
-      director: "Isao Takahata",
-      poster: "https://image.tmdb.org/t/p/w780/k9tv1rXZbOhH7eiCk378x61kNQ1.jpg",
-      keywords: "animation drama war",
-      reviewed: false
-    },
-    
-    {
-      title: "GoodFellas",
-      slug: "goodfellas",
-      year: "1990",
-      director: "Martin Scorsese",
-      poster: "https://image.tmdb.org/t/p/w780/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg",
-      keywords: "drama crime",
-      reviewed: false
-    },
-    
-    {
-      title: "Good Will Hunting",
-      slug: "good-will-hunting",
-      year: "1997",
-      director: "Gus Van Sant",
-      poster: "https://image.tmdb.org/t/p/w780/z2FnLKpFi1HPO7BEJxdkv6hpJSU.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Funeral Parade of Roses",
-      slug: "funeral-parade-of-roses",
-      year: "1969",
-      director: "Toshio Matsumoto",
-      poster: "https://image.tmdb.org/t/p/w780/7cRQ6rSGajW2soWDr3voEN2rgYO.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Fight Club",
-      slug: "fight-club",
-      year: "1999",
-      director: "David Fincher",
-      poster: "https://image.tmdb.org/t/p/w780/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg",
-      keywords: "drama thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Farewell My Concubine",
-      slug: "farewell-my-concubine",
-      year: "1993",
-      director: "Chen Kaige",
-      poster: "https://image.tmdb.org/t/p/w780/f54hNIiHNINw3JiUJB2XaQl5wCN.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Fantastic Mr. Fox",
-      slug: "fantastic-mr-fox",
-      year: "2009",
-      director: "Wes Anderson",
-      poster: "https://image.tmdb.org/t/p/w780/euZyZb6iGreujYKrGyZHRddhUYh.jpg",
-      keywords: "adventure animation comedy family",
-      reviewed: false
-    },
-    
-    {
-      title: "Fanny and Alexander",
-      slug: "fanny-and-alexander",
+      title: "The Thing",
+      slug: "the-thing",
       year: "1982",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg",
-      keywords: "fantasy drama mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "Fail Safe",
-      slug: "fail-safe",
-      year: "1964",
-      director: "Sidney Lumet",
-      poster: "https://image.tmdb.org/t/p/w780/qrsj5hort5xkLOKw9NyraGMnlVP.jpg",
-      keywords: "thriller drama war",
-      reviewed: false
-    },
-    
-    {
-      title: "Everything Everywhere All at Once",
-      slug: "everything-everywhere-all-at-once",
-      year: "2022",
-      director: "Daniel Scheinert, Daniel Kwan",
-      poster: "https://image.tmdb.org/t/p/w780/u68AjlvlutfEIcpmbYpKcdi09ut.jpg",
-      keywords: "action adventure science fiction",
-      reviewed: false
-    },
-    
-    {
-      title: "Evangelion: 3.0+1.0 Thrice Upon a Time",
-      slug: "evangelion-3-0-1-0-thrice-upon-a-time",
-      year: "2021",
-      director: "Kazuya Tsurumaki, Mahiro Maeda, Katsuichi Nakayama, Hideaki Anno",
-      poster: "https://image.tmdb.org/t/p/w780/md5wZRRj8biHrGtyitgBZo7674t.jpg",
-      keywords: "animation action science fiction drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Eternity and a Day",
-      slug: "eternity-and-a-day",
-      year: "1998",
-      director: "Theo Angelopoulos",
-      poster: "https://image.tmdb.org/t/p/w780/wH8sfLJCqNjsIw8zkXpvxdSzj60.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Eternal Sunshine of the Spotless Mind",
-      slug: "eternal-sunshine-of-the-spotless-mind",
-      year: "2004",
-      director: "Michel Gondry",
-      poster: "https://image.tmdb.org/t/p/w780/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg",
-      keywords: "science fiction drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Dune: Part Two",
-      slug: "dune-part-two",
-      year: "2024",
-      director: "Denis Villeneuve",
-      poster: "https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
-      keywords: "science fiction adventure",
-      reviewed: false
-    },
-    
-    {
-      title: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
-      slug: "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb",
-      year: "1964",
-      director: "Stanley Kubrick",
-      poster: "https://image.tmdb.org/t/p/w780/6x7MzQ6BOMlRzam1StcmPO9v61g.jpg",
-      keywords: "comedy war",
-      reviewed: false
-    },
-    
-    {
-      title: "Double Indemnity",
-      slug: "double-indemnity",
-      year: "1944",
-      director: "Billy Wilder",
-      poster: "https://image.tmdb.org/t/p/w780/rVNYZZgfhwqVMMWlBmxOfWqnwCj.jpg",
-      keywords: "crime thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Dog Day Afternoon",
-      slug: "dog-day-afternoon",
-      year: "1975",
-      director: "Sidney Lumet",
-      poster: "https://image.tmdb.org/t/p/w780/mavrhr0ig2aCRR8d48yaxtD5aMQ.jpg",
-      keywords: "crime drama thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Do the Right Thing",
-      slug: "do-the-right-thing",
-      year: "1989",
-      director: "Spike Lee",
-      poster: "https://image.tmdb.org/t/p/w780/63rmSDPahrH7C1gEFYzRuIBAN9W.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Django Unchained",
-      slug: "django-unchained",
-      year: "2012",
-      director: "Quentin Tarantino",
-      poster: "https://image.tmdb.org/t/p/w780/7oWY8VDWW7thTzWh3OKYRkWUlD5.jpg",
-      keywords: "drama western",
-      reviewed: false
-    },
-    
-    {
-      title: "Dersu Uzala",
-      slug: "dersu-uzala",
-      year: "1975",
-      director: "Akira Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/bIOrDQ3Gg68k3qJAnRU7nIZr0BW.jpg",
-      keywords: "adventure drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Dead Poets Society",
-      slug: "dead-poets-society",
-      year: "1989",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/erzbMlcNHOdx24AXOcn2ZKA7R1q.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
-      title: "Das Boot",
-      slug: "das-boot",
-      year: "1981",
-      director: "Wolfgang Petersen",
-      poster: "https://image.tmdb.org/t/p/w780/u8FhQPncOAkwcei2OI9orPWhV6K.jpg",
-      keywords: "drama history war",
-      reviewed: false
-    },
-    
-    {
-      title: "Cure",
-      slug: "cure",
-      year: "1997",
-      director: "Kiyoshi Kurosawa",
-      poster: "https://image.tmdb.org/t/p/w780/yTRrqIGusJuzG5Pe3iFQTnHg1Ps.jpg",
-      keywords: "crime thriller horror mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "Come and See",
-      slug: "come-and-see",
-      year: "1985",
-      director: "Elem Klimov",
-      poster: "https://image.tmdb.org/t/p/w780/qNbMsKVzigERgJUbwf8pKyZogpb.jpg",
-      keywords: "drama war",
-      reviewed: false
-    },
-    
-    {
-      title: "Close-Up",
-      slug: "close-up",
-      year: "1990",
-      director: "Abbas Kiarostami",
-      poster: "https://image.tmdb.org/t/p/w780/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg",
-      keywords: "crime drama",
-      reviewed: false
-    },
-    
-    {
-      title: "City of God",
-      slug: "city-of-god",
-      year: "2002",
-      director: "Fernando Meirelles",
-      poster: "https://image.tmdb.org/t/p/w780/k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg",
-      keywords: "drama crime",
-      reviewed: false
-    },
-    
-    {
-      title: "City Lights",
-      slug: "city-lights",
-      year: "1931",
-      director: "Charlie Chaplin",
-      poster: "https://image.tmdb.org/t/p/w780/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg",
-      keywords: "comedy drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Cinema Paradiso",
-      slug: "cinema-paradiso",
-      year: "1988",
-      director: "Giuseppe Tornatore",
-      poster: "https://image.tmdb.org/t/p/w780/gCI2AeMV4IHSewhJkzsur5MEp6R.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Chungking Express",
-      slug: "chungking-express",
-      year: "1994",
-      director: "Wong Kar-Wai",
-      poster: "https://image.tmdb.org/t/p/w780/43I9DcNoCzpyzK8JCkJYpHqHqGG.jpg",
-      keywords: "drama comedy romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Chinatown",
-      slug: "chinatown",
-      year: "1974",
-      director: "Roman Polanski",
-      poster: "https://image.tmdb.org/t/p/w780/kZRSP3FmOcq0xnBulqpUQngJUXY.jpg",
-      keywords: "crime mystery thriller",
-      reviewed: false
-    },
-    
-    {
-      title: "Children of Paradise",
-      slug: "children-of-paradise",
-      year: "1945",
-      director: "Marcel Carné",
-      poster: "https://image.tmdb.org/t/p/w780/yiy9stl1jjVhW44ypkWMFDT8Ix3.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Children of Men",
-      slug: "children-of-men",
-      year: "2006",
-      director: "Alfonso Cuarón",
-      poster: "https://image.tmdb.org/t/p/w780/k9IAS4TehZFcKi4HVByxZNPfqex.jpg",
-      keywords: "science fiction thriller action",
-      reviewed: false
-    },
-    
-    {
-      title: "Chainsaw Man – The Movie: Reze Arc",
-      slug: "chainsaw-man-the-movie-reze-arc",
-      year: "2025",
-      director: "Tatsuya Yoshihara",
-      poster: "https://image.tmdb.org/t/p/w780/pHyxb2RV5wLlboAwm9ZJ9qTVEDw.jpg",
-      keywords: "animation action romance fantasy",
-      reviewed: false
-    },
-    
-    {
-      title: "Central Station",
-      slug: "central-station",
-      year: "1998",
-      director: "Walter Salles",
-      poster: "https://image.tmdb.org/t/p/w780/zJvp7XjQ2LhPbDVYhFXyucs40vR.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Casablanca",
-      slug: "casablanca",
-      year: "1942",
-      director: "Michael Curtiz",
-      poster: "https://image.tmdb.org/t/p/w780/lGCEKlJo2CnWydQj7aamY7s1S7Q.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "Brief Encounter",
-      slug: "brief-encounter",
-      year: "1945",
-      director: "David Lean",
-      poster: "https://image.tmdb.org/t/p/w780/jC9EwLJcGhYMSQAHu2LxkKN5v7O.jpg",
-      keywords: "drama romance",
+      director: "John Carpenter",
+      poster: "https://image.tmdb.org/t/p/w780/tzGY49kseSE9QAKk47uuDGwnSCu.jpg",
+      keywords: "horror mystery science fiction",
       reviewed: false
     },
     
@@ -2507,272 +2667,122 @@
     },
     
     {
-      title: "Before Sunset",
-      slug: "before-sunset",
-      year: "2004",
-      director: "Richard Linklater",
-      poster: "https://image.tmdb.org/t/p/w780/4sW5XH9ZfYXpvFzev00S1IGAEbg.jpg",
-      keywords: "drama romance",
+      title: "To Be or Not to Be",
+      slug: "to-be-or-not-to-be",
+      year: "1942",
+      director: "Ernst Lubitsch",
+      poster: "https://image.tmdb.org/t/p/w780/dDQRpEoyjHT4fzw9cNklIvZuXYg.jpg",
+      keywords: "comedy war romance",
       reviewed: false
     },
     
     {
-      title: "Before Sunrise",
-      slug: "before-sunrise",
-      year: "1995",
-      director: "Richard Linklater",
-      poster: "https://image.tmdb.org/t/p/w780/kf1Jb1c2JAOqjuzA3H4oDM263uB.jpg",
-      keywords: "drama romance",
+      title: "Look Back",
+      slug: "look-back",
+      year: "2024",
+      director: "Kiyotaka Oshiyama",
+      poster: "https://image.tmdb.org/t/p/w780/4f2EcNkp1Mvp9wE5w7HKxcmACWg.jpg",
+      keywords: "animation drama",
       reviewed: false
     },
     
     {
-      title: "Barry Lyndon",
-      slug: "barry-lyndon",
-      year: "1975",
-      director: "Stanley Kubrick",
-      poster: "https://image.tmdb.org/t/p/w780/A0byHUHMwZ7dtBQtfZ44QIgDbjo.jpg",
-      keywords: "drama romance war history",
+      title: "Raise the Red Lantern",
+      slug: "raise-the-red-lantern",
+      year: "1991",
+      director: "Zhang Yimou",
+      poster: "https://image.tmdb.org/t/p/w780/j6MGZpg55cTqlHHwahBtzI2qQg1.jpg",
+      keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "Azur &amp; Asmar: The Princes&#39; Quest",
-      slug: "azur-asmar-the-princes-quest",
-      year: "2006",
-      director: "Michel Ocelot",
-      poster: "https://image.tmdb.org/t/p/w780/hkjdx0FbNGOt5QDD18jt0ZkPiHQ.jpg",
-      keywords: "animation family",
+      title: "Spider-Man: Across the Spider-Verse",
+      slug: "spider-man-across-the-spider-verse",
+      year: "2023",
+      director: "Kemp Powers, Justin K. Thompson, Joaquim Dos Santos",
+      poster: "https://image.tmdb.org/t/p/w780/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+      keywords: "animation action adventure science fiction",
       reviewed: false
     },
     
     {
-      title: "Autumn Sonata",
-      slug: "autumn-sonata",
-      year: "1978",
-      director: "Ingmar Bergman",
-      poster: "https://image.tmdb.org/t/p/w780/6beNbtCXv3GkzHkxkGYf38ib7v8.jpg",
-      keywords: "drama music",
-      reviewed: false
-    },
-    
-    {
-      title: "Army of Shadows",
-      slug: "army-of-shadows",
+      title: "Z",
+      slug: "z",
       year: "1969",
-      director: "Jean-Pierre Melville",
-      poster: "https://image.tmdb.org/t/p/w780/aqNZWM9bspt8zaDvVRIRiWxRVJ7.jpg",
-      keywords: "war drama thriller history",
+      director: "Costa-Gavras",
+      poster: "https://image.tmdb.org/t/p/w780/dFAJyFNgvOv24f2RQyI9KDxjGr3.jpg",
+      keywords: "thriller crime drama",
       reviewed: false
     },
     
     {
-      title: "Apur Sansar",
-      slug: "apur-sansar",
-      year: "1959",
-      director: "Satyajit Ray",
-      poster: "https://image.tmdb.org/t/p/w780/6Tz1Q69o2n3Zwb0ZffzPL0nFt2T.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Apocalypse Now",
-      slug: "apocalypse-now",
-      year: "1979",
-      director: "Francis Ford Coppola",
-      poster: "https://image.tmdb.org/t/p/w780/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
-      keywords: "drama war",
-      reviewed: false
-    },
-    
-    {
-      title: "Aparajito",
-      slug: "aparajito",
-      year: "1956",
-      director: "Satyajit Ray",
-      poster: "https://image.tmdb.org/t/p/w780/qvR2Qs42WHwCEcuwhQnterU3gVY.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Andrei Rublev",
-      slug: "andrei-rublev",
-      year: "1966",
-      director: "Andrei Tarkovsky",
-      poster: "https://image.tmdb.org/t/p/w780/910xRIUmNJrWH2hkQifBJtoPp5R.jpg",
-      keywords: "drama history",
-      reviewed: false
-    },
-    
-    {
-      title: "Anatomy of a Murder",
-      slug: "anatomy-of-a-murder",
-      year: "1959",
-      director: "Otto Preminger",
-      poster: "https://image.tmdb.org/t/p/w780/b2G1QSAwtBv9luhEwErIgSRaU92.jpg",
-      keywords: "crime drama mystery",
-      reviewed: false
-    },
-    
-    {
-      title: "An Elephant Sitting Still",
-      slug: "an-elephant-sitting-still",
-      year: "2018",
-      director: "Hu Bo",
-      poster: "https://image.tmdb.org/t/p/w780/3qr9wpaa5dA7AGr5ndgYiioavIn.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Amadeus",
-      slug: "amadeus",
-      year: "1984",
-      director: "Miloš Forman",
-      poster: "https://image.tmdb.org/t/p/w780/gQRfiyfGvr1az0quaYyMram3Aqt.jpg",
-      keywords: "history music drama",
-      reviewed: false
-    },
-    
-    {
-      title: "All That Jazz",
-      slug: "all-that-jazz",
-      year: "1979",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/culCEdj4srLljefgn4XKd6k3C5t.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
-      title: "All About Eve",
-      slug: "all-about-eve",
-      year: "1950",
-      director: "Joseph L. Mankiewicz",
-      poster: "https://image.tmdb.org/t/p/w780/blBzZaatPWVuWpXEnPscMA4Xp6m.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "Akira",
-      slug: "akira",
-      year: "1988",
-      director: "Katsuhiro Otomo",
-      poster: "https://image.tmdb.org/t/p/w780/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
-      keywords: "animation science fiction action",
-      reviewed: false
-    },
-    
-    {
-      title: "Ace in the Hole",
-      slug: "ace-in-the-hole",
-      year: "1951",
-      director: "Billy Wilder",
-      poster: "https://image.tmdb.org/t/p/w780/gPVPzHEsJBX02HtBtIQgYnfeqNQ.jpg",
-      keywords: "drama",
-      reviewed: false
-    },
-    
-    {
-      title: "A Woman Under the Influence",
-      slug: "a-woman-under-the-influence",
-      year: "1974",
-      director: "John Cassavetes",
-      poster: "https://image.tmdb.org/t/p/w780/6EJ4JoTxnH1QmGTE9pPzgtW1cLW.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "A Special Day",
-      slug: "a-special-day",
-      year: "1977",
-      director: "Ettore Scola",
-      poster: "https://image.tmdb.org/t/p/w780/jzRn7N1mFowkQ5IkUkfWoxXJtYU.jpg",
-      keywords: "drama romance",
-      reviewed: false
-    },
-    
-    {
-      title: "A Separation",
-      slug: "a-separation",
-      year: "2011",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/xQadpnoLokxzN3hRpCPbBGpxsiz.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
-      title: "A Moment of Innocence",
-      slug: "a-moment-of-innocence",
-      year: "1996",
-      director: "Mohsen Makhmalbaf",
-      poster: "https://image.tmdb.org/t/p/w780/jBgImBSOFUJg8voD7xbLqS1s1tf.jpg",
-      keywords: "drama comedy",
-      reviewed: false
-    },
-    
-    {
-      title: "A Matter of Life and Death",
-      slug: "a-matter-of-life-and-death",
-      year: "1946",
-      director: "Director unavailable",
-      poster: "https://image.tmdb.org/t/p/w780/H74LWKnhOeIFSk9gNjBcPjIov3.jpg",
-      keywords: "",
-      reviewed: false
-    },
-    
-    {
-      title: "A Man Escaped",
-      slug: "a-man-escaped",
-      year: "1956",
-      director: "Robert Bresson",
-      poster: "https://image.tmdb.org/t/p/w780/gkoZ8fFib24zhB2DKpjQ09SK9FU.jpg",
+      title: "Yojimbo",
+      slug: "yojimbo",
+      year: "1961",
+      director: "Akira Kurosawa",
+      poster: "https://image.tmdb.org/t/p/w780/tN7kYPjRhDolpui9sc9Eq9n5b2O.jpg",
       keywords: "drama thriller",
       reviewed: false
     },
     
     {
-      title: "A Brighter Summer Day",
-      slug: "a-brighter-summer-day",
-      year: "1991",
-      director: "Edward Yang",
-      poster: "https://image.tmdb.org/t/p/w780/3l8fOAwiN3N5n3hHnZ51eog7Zu2.jpg",
-      keywords: "crime drama romance",
+      title: "Song of the Sea",
+      slug: "song-of-the-sea",
+      year: "2014",
+      director: "Tomm Moore",
+      poster: "https://image.tmdb.org/t/p/w780/16LQC6zpqB0l74mVWb93a2oMFnX.jpg",
+      keywords: "family animation fantasy",
       reviewed: false
     },
     
     {
-      title: "8½",
-      slug: "8½",
-      year: "1963",
-      director: "Federico Fellini",
-      poster: "https://image.tmdb.org/t/p/w780/23VIf7zNxAgaXwIlvzd3IvOd9sY.jpg",
+      title: "Mishima: A Life in Four Chapters",
+      slug: "mishima-a-life-in-four-chapters",
+      year: "1985",
+      director: "Paul Schrader",
+      poster: "https://image.tmdb.org/t/p/w780/4kIXsE4SwUjO0eUqpolsHNO5GLH.jpg",
       keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "4 Months, 3 Weeks and 2 Days",
-      slug: "4-months-3-weeks-and-2-days",
-      year: "2007",
-      director: "Cristian Mungiu",
-      poster: "https://image.tmdb.org/t/p/w780/acEtvzFPeOQwbzRWncjRLenhnKV.jpg",
+      title: "The Sacrifice",
+      slug: "the-sacrifice",
+      year: "1986",
+      director: "Andrei Tarkovsky",
+      poster: "https://image.tmdb.org/t/p/w780/8JMh27z075ZHbFE85XYkdXF2QkK.jpg",
       keywords: "drama",
       reviewed: false
     },
     
     {
-      title: "2001: A Space Odyssey",
-      slug: "2001-a-space-odyssey",
-      year: "1968",
+      title: "Monster",
+      slug: "monster",
+      year: "2023",
+      director: "Hirokazu Kore-eda",
+      poster: "https://image.tmdb.org/t/p/w780/kvUJUyUGOhEoiWWNH04IXoExPE2.jpg",
+      keywords: "mystery thriller drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Paths of Glory",
+      slug: "paths-of-glory",
+      year: "1957",
       director: "Stanley Kubrick",
-      poster: "https://image.tmdb.org/t/p/w780/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg",
-      keywords: "science fiction mystery adventure",
+      poster: "https://image.tmdb.org/t/p/w780/p7OHwomA8UOhe3EhckF2IetBTh9.jpg",
+      keywords: "war drama",
+      reviewed: false
+    },
+    
+    {
+      title: "Open Your Eyes",
+      slug: "open-your-eyes",
+      year: "1997",
+      director: "Alejandro Amenábar",
+      poster: "https://image.tmdb.org/t/p/w780/1NkQNM5bw3U7n3RCba8JKnb61Ds.jpg",
+      keywords: "drama thriller science fiction",
       reviewed: false
     },
     
@@ -2823,7 +2833,7 @@
 
     resultsGrid.innerHTML = pageItems.map(m => `
       <article class="mini-card">
-        <a href="public/reviews/${m.slug}.html">
+        <a href="reviews/${m.slug}.html">
           <img src="${m.poster}" alt="${m.title} poster">
           <div class="mini-card__copy">
             <h3>
@@ -2868,7 +2878,6 @@
       <div class="footer-container">
         <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
         <div class="footer-bottom">
-          <p>&copy; 2026 The Prolog. All rights reserved.</p>
           <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
         </div>
       </div>

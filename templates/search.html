@@ -62,7 +62,7 @@
 .dedicated-search-bar input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.1);
+  box-shadow: 0 0 0 4px var(--accent-ring);
 }
 
 .dedicated-search-bar .search-icon {
@@ -209,7 +209,7 @@
 
     resultsGrid.innerHTML = pageItems.map(m => `
       <article class="mini-card">
-        <a href="public/reviews/${m.slug}.html">
+        <a href="reviews/${m.slug}.html">
           <img src="${m.poster}" alt="${m.title} poster">
           <div class="mini-card__copy">
             <h3>

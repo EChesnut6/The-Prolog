@@ -56,6 +56,7 @@ def load_movie(path: Path) -> MovieContent:
         letterboxd_rank=metadata.get("letterboxd_rank", ""),
         letterboxd_source=metadata.get("letterboxd_source", ""),
         primer=markdown.markdown(sections.get("Primer", "")),
+        # primer=markdown.markdown(sections.get("Pre-View", "")),
         technical_footnotes=_markdown_list(sections.get("Technical Footnotes", "")),
         technical_specs=_technical_specs(metadata),
         scores=_scores(metadata),

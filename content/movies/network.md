@@ -6,7 +6,6 @@ year: 1976
 enjoyment_rating: TBD
 filmmaking_rating: TBD
 reviewed: false
-teaser: Draft pre-flight checklist template.
 ---
 
 ## Primer
