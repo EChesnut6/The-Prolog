@@ -1,15 +1,15 @@
 ---
-  title: Crash
-  slug: crash
-  tmdb_title: Crash
-  year: 2005
-  enjoyment_rating: 5
-  filmmaking_rating: 5
-  ---
+title: Crash
+slug: crash
+tmdb_title: Crash
+year: 2005
+enjoyment_rating: 5
+filmmaking_rating: 5
+---
 
-  ## Primer
+## Primer
 
-  Spoiler-light context for someone before watching.
+Spoiler-light context for someone before watching.
   If I edit this will it add the thing?
 
   ## Technical Footnotes
@@ -25,3 +25,7 @@
   - Visual reference
   - Production still idea
   - Related artwork or image category
+
+## Review
+
+Write the full critique here.

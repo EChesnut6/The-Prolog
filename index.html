@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="header-top">
         <div class="header-top__left">
-          <span class="header-date">2026-05-21</span>
+          <span class="header-date">2026-05-25</span>
         </div>
         <div class="header-logo-container">
           <a class="site-logo" href="index.html">The Prolog</a>
@@ -55,51 +55,27 @@
       </nav>
     </header>
 
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-
-      function updateIcons(theme) {
-        if (theme === 'dark-mode') {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        } else {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        }
-      }
-
-      // Initialize icons
-      updateIcons(document.body.className);
-
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark-mode');
-        const newTheme = isDark ? 'light-mode' : 'dark-mode';
-        document.body.className = newTheme;
-        localStorage.setItem('theme', newTheme);
-        updateIcons(newTheme);
-      });
-    </script>
+    <script src="public/assets/js/theme-toggle.js" defer></script>
     <main>
       <div class="ebert-container">
   <!-- Random Teaser Hero -->
   
   <section class="random-teaser has-backdrop" 
-           style="background-image: url('https://image.tmdb.org/t/p/w1280/wwLufumafJojc59hgIamHyJSTO9.jpg');">
+           style="background-image: url('https://image.tmdb.org/t/p/w1280/sYLzRuEcwSz0L1Z92wQNrETHU9O.jpg');">
     <div class="teaser-content">
       <div class="teaser-copy">
         <p class="eyebrow">Featured Review</p>
-        <h1><a href="public/reviews/vanilla-sky.html">Vanilla Sky</a></h1>
-        <p class="teaser-meta">2001 · Directed by Cameron Crowe</p>
+        <h1><a href="public/reviews/the-lighthouse.html">The Lighthouse</a></h1>
+        <p class="teaser-meta">2019 · Directed by Robert Eggers</p>
         
-        <p class="teaser-tagline">"LoveHateDreamsLifeWorkPlayFriendshipSex."</p>
+        <p class="teaser-tagline">"There is enchantment in the light."</p>
         
         <div class="teaser-primer">
-          <h5>Remix</h5>
-<p>I'll mention that this is actually a remake of the spanish movie titled "Open your eyes." However, the director Cameron Crowe considers his version more of a remix rather than a true remake. The director of the spanish version, Alejandro Amenábar, also considers them to be the...
+          <p>You can go into this movie knowing nothing or everything, it's still confusing.
+howerver, to make your viewing mor interesting its important to point out some references upfront.</p>
+<p>There are key visual references to many pueces of aet including Hypnosis by schrodinger??? and that...
         </div>
-        <a href="public/reviews/vanilla-sky.html" class="read-more">Read the full checklist →</a>
+        <a href="public/reviews/the-lighthouse.html" class="read-more">Read the full checklist →</a>
       </div>
     </div>
   </section>
@@ -113,21 +89,31 @@
         <div class="reviews-grid">
           
           <article class="mini-card">
-            <a href="public/reviews/alien.html">
-              <img src="https://image.tmdb.org/t/p/w780/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg" alt="Alien poster">
+            <a href="public/reviews/vanilla-sky.html">
+              <img src="https://image.tmdb.org/t/p/w780/cAh2pCiNPftsY3aSqJuIOde7uWr.jpg" alt="Vanilla Sky poster">
               <div class="mini-card__copy">
-                <h3>Alien <span class="review-icon" title="Reviewed">★</span></h3>
-                <p class="mini-card__meta">1979</p>
+                <h3>Vanilla Sky <span class="review-icon" title="Reviewed">★</span></h3>
+                <p class="mini-card__meta">2001</p>
               </div>
             </a>
           </article>
           
           <article class="mini-card">
-            <a href="public/reviews/crash.html">
-              <img src="https://image.tmdb.org/t/p/w780/86BdPC6RDX88NC880pLidKn2LCj.jpg" alt="Crash poster">
+            <a href="public/reviews/the-lost-boys.html">
+              <img src="https://image.tmdb.org/t/p/w780/nH1lvyQvfbL5GKScTtT6zkIvDEn.jpg" alt="The Lost Boys poster">
               <div class="mini-card__copy">
-                <h3>Crash <span class="review-icon" title="Reviewed">★</span></h3>
-                <p class="mini-card__meta">2005</p>
+                <h3>The Lost Boys <span class="review-icon" title="Reviewed">★</span></h3>
+                <p class="mini-card__meta">1987</p>
+              </div>
+            </a>
+          </article>
+          
+          <article class="mini-card">
+            <a href="public/reviews/alien.html">
+              <img src="https://image.tmdb.org/t/p/w780/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg" alt="Alien poster">
+              <div class="mini-card__copy">
+                <h3>Alien <span class="review-icon" title="Reviewed">★</span></h3>
+                <p class="mini-card__meta">1979</p>
               </div>
             </a>
           </article>
@@ -142,16 +128,6 @@
             </a>
           </article>
           
-          <article class="mini-card">
-            <a href="public/reviews/the-lighthouse.html">
-              <img src="https://image.tmdb.org/t/p/w780/f1tIYarTbkBdIT1aW0gzelDwknv.jpg" alt="The Lighthouse poster">
-              <div class="mini-card__copy">
-                <h3>The Lighthouse <span class="review-icon" title="Reviewed">★</span></h3>
-                <p class="mini-card__meta">2019</p>
-              </div>
-            </a>
-          </article>
-          
         </div>
       </section>
 
@@ -160,6 +136,18 @@
       <section class="section-block masterpieces-section">
         <h2 class="section-title">Masterpieces</h2>
         <div class="masterpieces-grid">
+          
+          <article class="masterpiece-card">
+            <a href="public/reviews/vanilla-sky.html">
+              <div class="masterpiece-image">
+                <img src="https://image.tmdb.org/t/p/w780/cAh2pCiNPftsY3aSqJuIOde7uWr.jpg" alt="Vanilla Sky poster">
+              </div>
+              <div class="masterpiece-copy">
+                <h3>Vanilla Sky <span class="review-icon" title="Reviewed">★</span></h3>
+                <p>2001 · Cameron Crowe</p>
+              </div>
+            </a>
+          </article>
           
           <article class="masterpiece-card">
             <a href="public/reviews/alien.html">
@@ -185,18 +173,6 @@
             </a>
           </article>
           
-          <article class="masterpiece-card">
-            <a href="public/reviews/the-lighthouse.html">
-              <div class="masterpiece-image">
-                <img src="https://image.tmdb.org/t/p/w780/f1tIYarTbkBdIT1aW0gzelDwknv.jpg" alt="The Lighthouse poster">
-              </div>
-              <div class="masterpiece-copy">
-                <h3>The Lighthouse <span class="review-icon" title="Reviewed">★</span></h3>
-                <p>2019 · Robert Eggers</p>
-              </div>
-            </a>
-          </article>
-          
         </div>
       </section>
       
@@ -210,16 +186,23 @@
         <ul class="latest-list">
           
           <li>
-            <a href="public/reviews/alien.html">
-              <span class="latest-title">Alien</span>
-              <span class="latest-meta">1979</span>
+            <a href="public/reviews/vanilla-sky.html">
+              <span class="latest-title">Vanilla Sky</span>
+              <span class="latest-meta">2001</span>
             </a>
           </li>
           
           <li>
-            <a href="public/reviews/crash.html">
-              <span class="latest-title">Crash</span>
-              <span class="latest-meta">2005</span>
+            <a href="public/reviews/the-lost-boys.html">
+              <span class="latest-title">The Lost Boys</span>
+              <span class="latest-meta">1987</span>
+            </a>
+          </li>
+          
+          <li>
+            <a href="public/reviews/alien.html">
+              <span class="latest-title">Alien</span>
+              <span class="latest-meta">1979</span>
             </a>
           </li>
           
@@ -241,20 +224,6 @@
             <a href="public/reviews/the-lord-of-the-rings-the-return-of-the-king.html">
               <span class="latest-title">The Lord of the Rings The Return of the King</span>
               <span class="latest-meta">2003</span>
-            </a>
-          </li>
-          
-          <li>
-            <a href="public/reviews/vanilla-sky.html">
-              <span class="latest-title">Vanilla Sky</span>
-              <span class="latest-meta">2001</span>
-            </a>
-          </li>
-          
-          <li>
-            <a href="public/reviews/the-lost-boys.html">
-              <span class="latest-title">The Lost Boys</span>
-              <span class="latest-meta">1987</span>
             </a>
           </li>
           
@@ -281,7 +250,6 @@
       <div class="footer-container">
         <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
         <div class="footer-bottom">
-          <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
         </div>
       </div>
     </footer>

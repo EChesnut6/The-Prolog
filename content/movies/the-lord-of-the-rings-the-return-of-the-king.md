@@ -12,16 +12,6 @@ reviewed: True
 
 Here I am writing a review, does this still not work????
 
-## Technical Footnotes
-
-- Add technical notes worth noticing before or during the watch.
-
 ## Review
 
 Here is my full review for this movie
-
-## Gallery
-
-- Visual reference
-- Production still idea
-- Related artwork or image category

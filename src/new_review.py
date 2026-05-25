@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from src.utils import slugify, TECHNICAL_SPEC_FIELDS, render_review_template
+from src.utils import slugify, render_review_template
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,7 +21,6 @@ def main() -> None:
     tmdb_title = args.tmdb_title or title
     enjoyment_rating = args.enjoyment_rating or _prompt_required("Enjoyment rating")
     filmmaking_rating = args.filmmaking_rating or _prompt_required("Filmmaking rating")
-    specs = _prompt_specs() if args.prompt_specs else {}
     reviewed = "true" if args.reviewed else "false"
 
     path = CONTENT_DIR / f"{slug}.md"
@@ -38,7 +37,6 @@ def main() -> None:
             enjoyment_rating=enjoyment_rating,
             filmmaking_rating=filmmaking_rating,
             reviewed=reviewed,
-            specs=specs,
         ),
         encoding="utf-8",
     )
@@ -54,11 +52,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--enjoyment-rating", help="Enjoyment/fun rating to display on the site.")
     parser.add_argument("--filmmaking-rating", help="Filmmaking quality rating to display on the site.")
     parser.add_argument("--reviewed", action="store_true", help="Mark this draft as visible on the homepage.")
-    parser.add_argument(
-        "--prompt-specs",
-        action="store_true",
-        help="Prompt for optional structured technical specs.",
-    )
+
     parser.add_argument("--force", action="store_true", help="Overwrite an existing draft with the same slug.")
     return parser.parse_args()
 
@@ -77,13 +71,7 @@ def _prompt(label: str, default: str = "") -> str:
     return value or default
 
 
-def _prompt_specs() -> dict[str, str]:
-    specs = {}
-    for key, label in TECHNICAL_SPEC_FIELDS.items():
-        value = _prompt(label)
-        if value:
-            specs[key] = value
-    return specs
+
 
 
 

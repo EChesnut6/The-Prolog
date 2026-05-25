@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="header-top">
         <div class="header-top__left">
-          <span class="header-date">2026-05-21</span>
+          <span class="header-date">2026-05-25</span>
         </div>
         <div class="header-logo-container">
           <a class="site-logo" href="../../index.html">The Prolog</a>
@@ -55,125 +55,154 @@
       </nav>
     </header>
 
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-
-      function updateIcons(theme) {
-        if (theme === 'dark-mode') {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        } else {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        }
-      }
-
-      // Initialize icons
-      updateIcons(document.body.className);
-
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark-mode');
-        const newTheme = isDark ? 'light-mode' : 'dark-mode';
-        document.body.className = newTheme;
-        localStorage.setItem('theme', newTheme);
-        updateIcons(newTheme);
-      });
-    </script>
+    <script src="../assets/js/theme-toggle.js" defer></script>
     <main>
-      <div class="ebert-container">
-  <section class="movie-hero">
-    <div class="poster-frame">
+      <!-- Movie Background Image (Banner) -->
+<div class="movie-banner" style="background-image: url('https://image.tmdb.org/t/p/w1280/2ErRbysPsXusEzerMh2y3Hc5TuF.jpg');"></div>
+
+<div class="movie-detail-container ebert-container">
+  
+  <!-- Unified Top Identity Section -->
+  <div class="movie-identity-section">
+    <!-- Movie Poster -->
+    <div class="movie-poster-box">
       <img src="https://image.tmdb.org/t/p/w780/4kIXsE4SwUjO0eUqpolsHNO5GLH.jpg" alt="Mishima: A Life in Four Chapters poster">
     </div>
-    <div class="movie-hero__copy">
-      <p class="eyebrow">Movie review and context</p>
-      <h1>Mishima: A Life in Four Chapters</h1>
-      <p class="movie-meta">1985-09-20 · Directed by Paul Schrader</p>
-      
-      <p class="movie-tagline"><em>On November 25, 1970, Japan&#39;s most celebrated writer, Yukio Mishima, shocked the world.</em></p>
-      
-      <div class="movie-facts" aria-label="Movie database details">
-        <dl>
-          
-            <dt>Runtime</dt><dd>121 min</dd>
-          
-          
-            <dt>Genres</dt><dd>Drama</dd>
-          
-          
-            <dt>IMDb score</dt><dd>7.9/10</dd>
-          
-        </dl>
+    
+    <!-- Box 1: Title, Year, Director, Tagline -->
+    <div class="outline-box title-box">
+      <h1 class="movie-title">Mishima: A Life in Four Chapters</h1>
+      <div class="movie-core-meta">
+        <span class="movie-year">1985</span>
+        <span class="meta-dot">•</span>
+        <span class="movie-director">Directed by <strong>Paul Schrader</strong></span>
       </div>
-      <div class="movie-badges">
-        
-        
-      </div>
+      
+      <p class="movie-tagline">“On November 25, 1970, Japan&#39;s most celebrated writer, Yukio Mishima, shocked the world.”</p>
+      
     </div>
-  </section>
-
-  <section class="primer-layout" aria-labelledby="primer-heading">
-    <article class="prose">
-      <p class="eyebrow">The Primer</p>
-      <h2 id="primer-heading">What to know before watching</h2>
-      <p>Add spoiler-light context for someone before watching.</p>
-    </article>
-    <aside class="footnotes" aria-labelledby="footnotes-heading">
-      <h2 id="footnotes-heading">Technical Footnotes</h2>
-      <ul>
-        
-          <li>Add technical notes worth noticing before or during the watch.</li>
-        
-      </ul>
-      
-    </aside>
-  </section>
-
-  <div class="spoiler-warning">
-    <hr>
-    <span>Spoilers below</span>
-    <hr>
   </div>
-
-  <section class="section-shell prose review-section" aria-labelledby="review-heading">
-    <details class="review-details">
-      <summary>
-        <div class="review-summary-inner">
-          <p class="eyebrow">The Review</p>
-          <h2 id="review-heading">Full critique</h2>
-          <span class="reveal-hint">Click to reveal review</span>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Focal Point) -->
+    <div class="movie-grid-left">
+      <!-- The Pre-View -->
+      <section class="movie-section prose preview-section" aria-labelledby="preview-heading">
+        <p class="eyebrow">The Pre-View</p>
+        <h2 id="preview-heading">What to know before watching</h2>
+        <div class="preview-content">
+          <p>Add spoiler-light context for someone before watching.</p>
         </div>
-      </summary>
-      <div class="review-content">
-        <p>Write the full critique here.</p>
+      </section>
+      
+      <!-- Spoilers below divider -->
+      <div class="spoiler-warning">
+        <hr>
+        <span>Spoilers below</span>
+        <hr>
       </div>
-    </details>
-  </section>
-
-  <section class="section-shell" aria-labelledby="gallery-heading">
-    <div class="section-heading">
-      <p class="eyebrow">Gallery</p>
-      <h2 id="gallery-heading">Visual references</h2>
+      
+      <!-- The Review -->
+      <section class="movie-section prose review-section" aria-labelledby="review-heading">
+        <details class="review-details">
+          <summary>
+            <div class="review-summary-inner">
+              <p class="eyebrow">The Review</p>
+              <h2 id="review-heading">Full critique</h2>
+              <span class="reveal-hint">Click to reveal review</span>
+            </div>
+          </summary>
+          <div class="review-content">
+            <p>Write the full critique here.</p>
+          </div>
+        </details>
+      </section>
     </div>
-    <ul class="reference-list">
+    
+    <!-- Right Column (Sidebar) -->
+    <div class="movie-grid-right">
+      <!-- Box 2: Specs & Scores -->
+      <div class="outline-box specs-box">
+        <div class="spec-group">
+          <div class="spec-row">
+            <span class="spec-label">Writer</span>
+            <span class="spec-val">N/A</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Run Time</span>
+            <span class="spec-val">121 min</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Genre</span>
+            <span class="spec-val">Drama</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Stars</span>
+            <span class="spec-val">N/A</span>
+          </div>
+        </div>
+        
+        <div class="scores-group">
+          <h3>My Scores</h3>
+          <div class="movie-badges">
+            
+            
+            
+            <p class="empty-note">No ratings yet</p>
+            
+          </div>
+        </div>
+      </div>
       
-        <li>Visual reference</li>
-      
-        <li>Production still idea</li>
-      
-        <li>Related artwork or image category</li>
-      
-    </ul>
-  </section>
+      <!-- Box 3: More Like This -->
+      <div class="outline-box related-box">
+        <h3>More like this</h3>
+        <div class="related-list">
+          
+          <a href="../reviews/the-lost-boys.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/nH1lvyQvfbL5GKScTtT6zkIvDEn.jpg" alt="The Lost Boys poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">The Lost Boys</span>
+              <span class="related-year">1987</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/the-lighthouse.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/f1tIYarTbkBdIT1aW0gzelDwknv.jpg" alt="The Lighthouse poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">The Lighthouse</span>
+              <span class="related-year">2019</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/alien.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg" alt="Alien poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Alien</span>
+              <span class="related-year">1979</span>
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
     </main>
     <footer class="site-footer">
       <div class="footer-container">
         <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
         <div class="footer-bottom">
-          <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
         </div>
       </div>
     </footer>

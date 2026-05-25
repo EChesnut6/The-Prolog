@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import time
 from typing import Any
 
 try:
@@ -42,6 +43,8 @@ def fetch_movie_metadata(title: str, year: str = "") -> dict[str, str | list[str
         "backdrop_url": f"https://image.tmdb.org/t/p/w1280{movie.get('backdrop_path')}" if movie.get("backdrop_path") else "",
         "release_date": movie.get("release_date", "") or details.get("release_date", ""),
         "director": _director_from_details(details),
+        "writer": _writer_from_details(details),
+        "cast": _cast_from_details(details),
         "runtime": details.get("runtime", ""),
         "genres": [genre["name"] for genre in details.get("genres", []) if genre.get("name")],
         "vote_average": details.get("vote_average", ""),
@@ -57,7 +60,6 @@ def _search_movie(api_key: str, title: str, year: str) -> dict[str, Any]:
     response = requests.get(f"{TMDB_API_BASE}/search/movie", params=params, timeout=10)
     if response.status_code == 429:
         print("TMDB rate limit hit. Sleeping...")
-        import time
         time.sleep(1)
         return _search_movie(api_key, title, year)
     
@@ -95,6 +97,23 @@ def _director_from_details(details: dict[str, Any]) -> str:
     crew = details.get("credits", {}).get("crew", [])
     directors = [person["name"] for person in crew if person.get("job") == "Director"]
     return ", ".join(directors)
+
+
+def _writer_from_details(details: dict[str, Any]) -> str:
+    crew = details.get("credits", {}).get("crew", [])
+    writers = [person["name"] for person in crew if person.get("job") in ("Writer", "Screenplay", "Author", "Novel", "Writing")]
+    seen = set()
+    unique_writers = []
+    for w in writers:
+        if w not in seen:
+            seen.add(w)
+            unique_writers.append(w)
+    return ", ".join(unique_writers[:3])
+
+
+def _cast_from_details(details: dict[str, Any]) -> list[str]:
+    cast = details.get("credits", {}).get("cast", [])
+    return [person["name"] for person in cast[:5] if person.get("name")]
 
 
 def _imdb_score(imdb_id: str) -> str:

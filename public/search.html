@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="header-top">
         <div class="header-top__left">
-          <span class="header-date">2026-05-21</span>
+          <span class="header-date">2026-05-25</span>
         </div>
         <div class="header-logo-container">
           <a class="site-logo" href="../index.html">The Prolog</a>
@@ -55,32 +55,7 @@
       </nav>
     </header>
 
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-
-      function updateIcons(theme) {
-        if (theme === 'dark-mode') {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        } else {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        }
-      }
-
-      // Initialize icons
-      updateIcons(document.body.className);
-
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark-mode');
-        const newTheme = isDark ? 'light-mode' : 'dark-mode';
-        document.body.className = newTheme;
-        localStorage.setItem('theme', newTheme);
-        updateIcons(newTheme);
-      });
-    </script>
+    <script src="assets/js/theme-toggle.js" defer></script>
     <main>
       <div class="search-page-container">
   <header class="search-header">
@@ -229,12 +204,27 @@
 </style>
 
 <script>
-  const searchInput = document.querySelector("#dedicated-movie-search");
-  const resultsGrid = document.querySelector("#dedicated-results-grid");
-  const statusText = document.querySelector("#dedicated-search-status");
-  const paginationControls = document.querySelector("#pagination-controls");
-
-  const movies = [
+  window.movies = [
+    
+    {
+      title: "Vanilla Sky",
+      slug: "vanilla-sky",
+      year: "2001",
+      director: "Cameron Crowe",
+      poster: "https://image.tmdb.org/t/p/w780/cAh2pCiNPftsY3aSqJuIOde7uWr.jpg",
+      keywords: "mystery romance science fiction",
+      reviewed: true
+    },
+    
+    {
+      title: "The Lost Boys",
+      slug: "the-lost-boys",
+      year: "1987",
+      director: "Joel Schumacher",
+      poster: "https://image.tmdb.org/t/p/w780/nH1lvyQvfbL5GKScTtT6zkIvDEn.jpg",
+      keywords: "horror comedy thriller drama romance",
+      reviewed: true
+    },
     
     {
       title: "Alien",
@@ -243,16 +233,6 @@
       director: "Ridley Scott",
       poster: "https://image.tmdb.org/t/p/w780/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
       keywords: "horror science fiction",
-      reviewed: true
-    },
-    
-    {
-      title: "Crash",
-      slug: "crash",
-      year: "2005",
-      director: "Paul Haggis",
-      poster: "https://image.tmdb.org/t/p/w780/86BdPC6RDX88NC880pLidKn2LCj.jpg",
-      keywords: "drama",
       reviewed: true
     },
     
@@ -283,26 +263,6 @@
       director: "Peter Jackson",
       poster: "https://image.tmdb.org/t/p/w780/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
       keywords: "adventure fantasy action",
-      reviewed: true
-    },
-    
-    {
-      title: "Vanilla Sky",
-      slug: "vanilla-sky",
-      year: "2001",
-      director: "Cameron Crowe",
-      poster: "https://image.tmdb.org/t/p/w780/cAh2pCiNPftsY3aSqJuIOde7uWr.jpg",
-      keywords: "mystery romance science fiction",
-      reviewed: true
-    },
-    
-    {
-      title: "The Lost Boys",
-      slug: "the-lost-boys",
-      year: "1987",
-      director: "Joel Schumacher",
-      poster: "https://image.tmdb.org/t/p/w780/nH1lvyQvfbL5GKScTtT6zkIvDEn.jpg",
-      keywords: "horror comedy thriller drama romance",
       reviewed: true
     },
     
@@ -350,7 +310,7 @@
       title: "A Matter of Life and Death",
       slug: "a-matter-of-life-and-death",
       year: "1946",
-      director: "Emeric Pressburger, Michael Powell",
+      director: "Michael Powell, Emeric Pressburger",
       poster: "https://image.tmdb.org/t/p/w780/H74LWKnhOeIFSk9gNjBcPjIov3.jpg",
       keywords: "romance fantasy drama comedy",
       reviewed: false
@@ -1167,6 +1127,16 @@
     },
     
     {
+      title: "Open Your Eyes",
+      slug: "open-your-eyes",
+      year: "1997",
+      director: "Alejandro Amenábar",
+      poster: "https://image.tmdb.org/t/p/w780/1NkQNM5bw3U7n3RCba8JKnb61Ds.jpg",
+      keywords: "drama thriller science fiction",
+      reviewed: false
+    },
+    
+    {
       title: "It&#39;s Such a Beautiful Day",
       slug: "it-s-such-a-beautiful-day",
       year: "2012",
@@ -1573,6 +1543,16 @@
       director: "Hiroshi Teshigahara",
       poster: "https://image.tmdb.org/t/p/w780/eUnFdf1Mf1b8AD3ChMPOCUfTBDQ.jpg",
       keywords: "drama science fiction",
+      reviewed: false
+    },
+    
+    {
+      title: "Crash",
+      slug: "crash",
+      year: "2005",
+      director: "Paul Haggis",
+      poster: "https://image.tmdb.org/t/p/w780/86BdPC6RDX88NC880pLidKn2LCj.jpg",
+      keywords: "drama",
       reviewed: false
     },
     
@@ -2490,7 +2470,7 @@
       title: "The Red Shoes",
       slug: "the-red-shoes",
       year: "1948",
-      director: "Emeric Pressburger, Michael Powell",
+      director: "Michael Powell, Emeric Pressburger",
       poster: "https://image.tmdb.org/t/p/w780/vPvpBWFWDvEXuQBkoYgA6A89GVp.jpg",
       keywords: "drama romance",
       reviewed: false
@@ -2700,7 +2680,7 @@
       title: "Spider-Man: Across the Spider-Verse",
       slug: "spider-man-across-the-spider-verse",
       year: "2023",
-      director: "Kemp Powers, Justin K. Thompson, Joaquim Dos Santos",
+      director: "Justin K. Thompson, Kemp Powers, Joaquim Dos Santos",
       poster: "https://image.tmdb.org/t/p/w780/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
       keywords: "animation action adventure science fiction",
       reviewed: false
@@ -2776,109 +2756,14 @@
       reviewed: false
     },
     
-    {
-      title: "Open Your Eyes",
-      slug: "open-your-eyes",
-      year: "1997",
-      director: "Alejandro Amenábar",
-      poster: "https://image.tmdb.org/t/p/w780/1NkQNM5bw3U7n3RCba8JKnb61Ds.jpg",
-      keywords: "drama thriller science fiction",
-      reviewed: false
-    },
-    
   ];
-
-  let currentPage = 1;
-  const pageSize = 40;
-  let currentMatches = [...movies];
-
-  function renderPagination(totalItems) {
-    const totalPages = Math.ceil(totalItems / pageSize);
-    if (totalPages <= 1) {
-      paginationControls.innerHTML = "";
-      return;
-    }
-
-    let html = `
-      <button class="page-button" ${currentPage === 1 ? 'disabled' : ''} onclick="goToPage(${currentPage - 1})">Previous</button>
-      <span class="page-info">Page ${currentPage} of ${totalPages}</span>
-      <button class="page-button" ${currentPage === totalPages ? 'disabled' : ''} onclick="goToPage(${currentPage + 1})">Next</button>
-    `;
-    
-    paginationControls.innerHTML = html;
-  }
-
-  window.goToPage = function(page) {
-    currentPage = page;
-    renderResults(currentMatches, false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  function renderResults(matches, resetPagination = true) {
-    if (resetPagination) {
-      currentPage = 1;
-      currentMatches = matches;
-    }
-
-    if (matches.length === 0) {
-      resultsGrid.innerHTML = '<div class="no-results">No movies found matching your search.</div>';
-      statusText.textContent = "No results found";
-      paginationControls.innerHTML = "";
-      return;
-    }
-
-    const start = (currentPage - 1) * pageSize;
-    const end = start + pageSize;
-    const pageItems = matches.slice(start, end);
-
-    resultsGrid.innerHTML = pageItems.map(m => `
-      <article class="mini-card">
-        <a href="reviews/${m.slug}.html">
-          <img src="${m.poster}" alt="${m.title} poster">
-          <div class="mini-card__copy">
-            <h3>
-              ${m.title}
-              ${m.reviewed ? '<span class="review-icon" title="Reviewed">★</span>' : ''}
-            </h3>
-            <p class="mini-card__meta">${m.year} · ${m.director}</p>
-          </div>
-        </a>
-      </article>
-    `).join("");
-    
-    statusText.textContent = `${matches.length} movie${matches.length === 1 ? "" : "s"} found`;
-    renderPagination(matches.length);
-  }
-
-  function performSearch() {
-    const query = searchInput.value.trim().toLowerCase();
-    
-    if (!query) {
-      renderResults(movies);
-      statusText.textContent = "Showing all movies";
-      return;
-    }
-
-    // Filter by Title first, then Director as requested
-    const titleMatches = movies.filter(m => m.title.toLowerCase().includes(query));
-    const directorMatches = movies.filter(m => 
-      !titleMatches.includes(m) && m.director.toLowerCase().includes(query)
-    );
-
-    renderResults([...titleMatches, ...directorMatches]);
-  }
-
-  searchInput.addEventListener("input", performSearch);
-  
-  // Initial render
-  renderResults(movies);
 </script>
+<script src="assets/js/search-controller.js" defer></script>
     </main>
     <footer class="site-footer">
       <div class="footer-container">
         <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
         <div class="footer-bottom">
-          <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
         </div>
       </div>
     </footer>

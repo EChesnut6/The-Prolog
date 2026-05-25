@@ -1,13 +1,5 @@
 from __future__ import annotations
 
-TECHNICAL_SPEC_FIELDS = {
-    "aspect_ratio": "Aspect ratio",
-    "visual_texture": "Visual texture",
-    "sound_world": "Sound world",
-    "format": "Format",
-    "camera_lens": "Camera/lens",
-    "technical_notes": "Technical notes",
-}
 
 SCORE_FIELDS = {
     "letterboxd_score": "Letterboxd score",
@@ -38,10 +30,7 @@ def render_review_template(
     filmmaking_rating: str = "TBD",
     reviewed: str = "false",
     teaser: str = "",
-    specs: dict[str, str] | None = None,
 ) -> str:
-    if specs is None:
-        specs = {}
 
     front_matter = [
         f"title: {title}",
@@ -54,18 +43,9 @@ def render_review_template(
     ]
     if teaser:
         front_matter.append(f"teaser: {teaser}")
-    if specs:
-        spec_lines = "".join(f"{key}: {value}\n" for key, value in specs.items())
-        front_matter.append(spec_lines.rstrip())
+
 
     front_matter_str = "\n".join(front_matter)
-
-    if not specs:
-        technical_footnotes = "- Add technical notes worth noticing before or during the watch."
-    else:
-        technical_footnotes = "\n".join(
-            f"- {TECHNICAL_SPEC_FIELDS[key]}: {value}" for key, value in specs.items()
-        )
 
     return f"""---
 {front_matter_str}
@@ -75,17 +55,7 @@ def render_review_template(
 
 Add spoiler-light context for someone before watching.
 
-## Technical Footnotes
-
-{technical_footnotes}
-
 ## Review
 
 Write the full critique here.
-
-## Gallery
-
-- Visual reference
-- Production still idea
-- Related artwork or image category
 """

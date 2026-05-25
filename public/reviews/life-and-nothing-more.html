@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="header-top">
         <div class="header-top__left">
-          <span class="header-date">2026-05-21</span>
+          <span class="header-date">2026-05-25</span>
         </div>
         <div class="header-logo-container">
           <a class="site-logo" href="../../index.html">The Prolog</a>
@@ -55,125 +55,154 @@
       </nav>
     </header>
 
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-
-      function updateIcons(theme) {
-        if (theme === 'dark-mode') {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        } else {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        }
-      }
-
-      // Initialize icons
-      updateIcons(document.body.className);
-
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark-mode');
-        const newTheme = isDark ? 'light-mode' : 'dark-mode';
-        document.body.className = newTheme;
-        localStorage.setItem('theme', newTheme);
-        updateIcons(newTheme);
-      });
-    </script>
+    <script src="../assets/js/theme-toggle.js" defer></script>
     <main>
-      <div class="ebert-container">
-  <section class="movie-hero">
-    <div class="poster-frame">
+      <!-- Movie Background Image (Banner) -->
+<div class="movie-banner" style="background-image: url('https://image.tmdb.org/t/p/w1280/1UpTTMg5l7KQPRdveydtP2EBv8D.jpg');"></div>
+
+<div class="movie-detail-container ebert-container">
+  
+  <!-- Unified Top Identity Section -->
+  <div class="movie-identity-section">
+    <!-- Movie Poster -->
+    <div class="movie-poster-box">
       <img src="https://image.tmdb.org/t/p/w780/100CuZjqxtcbDvZ5qPsoi1VEU5n.jpg" alt="Life, and Nothing More… poster">
     </div>
-    <div class="movie-hero__copy">
-      <p class="eyebrow">Movie review and context</p>
-      <h1>Life, and Nothing More…</h1>
-      <p class="movie-meta">1992-10-21 · Directed by Abbas Kiarostami</p>
-      
-      <p class="movie-tagline"><em>The Earth moved, we didn&#39;t!</em></p>
-      
-      <div class="movie-facts" aria-label="Movie database details">
-        <dl>
-          
-            <dt>Runtime</dt><dd>95 min</dd>
-          
-          
-            <dt>Genres</dt><dd>Drama, Adventure</dd>
-          
-          
-            <dt>IMDb score</dt><dd>7.9/10</dd>
-          
-        </dl>
+    
+    <!-- Box 1: Title, Year, Director, Tagline -->
+    <div class="outline-box title-box">
+      <h1 class="movie-title">Life, and Nothing More…</h1>
+      <div class="movie-core-meta">
+        <span class="movie-year">1992</span>
+        <span class="meta-dot">•</span>
+        <span class="movie-director">Directed by <strong>Abbas Kiarostami</strong></span>
       </div>
-      <div class="movie-badges">
-        
-        
-      </div>
+      
+      <p class="movie-tagline">“The Earth moved, we didn&#39;t!”</p>
+      
     </div>
-  </section>
-
-  <section class="primer-layout" aria-labelledby="primer-heading">
-    <article class="prose">
-      <p class="eyebrow">The Primer</p>
-      <h2 id="primer-heading">What to know before watching</h2>
-      <p>Add spoiler-light context for someone before watching.</p>
-    </article>
-    <aside class="footnotes" aria-labelledby="footnotes-heading">
-      <h2 id="footnotes-heading">Technical Footnotes</h2>
-      <ul>
-        
-          <li>Add technical notes worth noticing before or during the watch.</li>
-        
-      </ul>
-      
-    </aside>
-  </section>
-
-  <div class="spoiler-warning">
-    <hr>
-    <span>Spoilers below</span>
-    <hr>
   </div>
-
-  <section class="section-shell prose review-section" aria-labelledby="review-heading">
-    <details class="review-details">
-      <summary>
-        <div class="review-summary-inner">
-          <p class="eyebrow">The Review</p>
-          <h2 id="review-heading">Full critique</h2>
-          <span class="reveal-hint">Click to reveal review</span>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Focal Point) -->
+    <div class="movie-grid-left">
+      <!-- The Pre-View -->
+      <section class="movie-section prose preview-section" aria-labelledby="preview-heading">
+        <p class="eyebrow">The Pre-View</p>
+        <h2 id="preview-heading">What to know before watching</h2>
+        <div class="preview-content">
+          <p>Add spoiler-light context for someone before watching.</p>
         </div>
-      </summary>
-      <div class="review-content">
-        <p>Write the full critique here.</p>
+      </section>
+      
+      <!-- Spoilers below divider -->
+      <div class="spoiler-warning">
+        <hr>
+        <span>Spoilers below</span>
+        <hr>
       </div>
-    </details>
-  </section>
-
-  <section class="section-shell" aria-labelledby="gallery-heading">
-    <div class="section-heading">
-      <p class="eyebrow">Gallery</p>
-      <h2 id="gallery-heading">Visual references</h2>
+      
+      <!-- The Review -->
+      <section class="movie-section prose review-section" aria-labelledby="review-heading">
+        <details class="review-details">
+          <summary>
+            <div class="review-summary-inner">
+              <p class="eyebrow">The Review</p>
+              <h2 id="review-heading">Full critique</h2>
+              <span class="reveal-hint">Click to reveal review</span>
+            </div>
+          </summary>
+          <div class="review-content">
+            <p>Write the full critique here.</p>
+          </div>
+        </details>
+      </section>
     </div>
-    <ul class="reference-list">
+    
+    <!-- Right Column (Sidebar) -->
+    <div class="movie-grid-right">
+      <!-- Box 2: Specs & Scores -->
+      <div class="outline-box specs-box">
+        <div class="spec-group">
+          <div class="spec-row">
+            <span class="spec-label">Writer</span>
+            <span class="spec-val">N/A</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Run Time</span>
+            <span class="spec-val">95 min</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Genre</span>
+            <span class="spec-val">Drama, Adventure</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Stars</span>
+            <span class="spec-val">N/A</span>
+          </div>
+        </div>
+        
+        <div class="scores-group">
+          <h3>My Scores</h3>
+          <div class="movie-badges">
+            
+            
+            
+            <p class="empty-note">No ratings yet</p>
+            
+          </div>
+        </div>
+      </div>
       
-        <li>Visual reference</li>
-      
-        <li>Production still idea</li>
-      
-        <li>Related artwork or image category</li>
-      
-    </ul>
-  </section>
+      <!-- Box 3: More Like This -->
+      <div class="outline-box related-box">
+        <h3>More like this</h3>
+        <div class="related-list">
+          
+          <a href="../reviews/where-is-the-friend-s-house.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/2rTW4s1kgvoqVs0Kv8ARle1SrkF.jpg" alt="Where Is the Friend&#39;s House? poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Where Is the Friend&#39;s House?</span>
+              <span class="related-year">1987</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/close-up.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/m9HG2N9ZKCmNN9qOHJTNyy18wn3.jpg" alt="Close-Up poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Close-Up</span>
+              <span class="related-year">1990</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/taste-of-cherry.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/u6GYH4HyR0BVwpqFuTOc2g4KB1L.jpg" alt="Taste of Cherry poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Taste of Cherry</span>
+              <span class="related-year">1997</span>
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
     </main>
     <footer class="site-footer">
       <div class="footer-container">
         <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
         <div class="footer-bottom">
-          <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
         </div>
       </div>
     </footer>

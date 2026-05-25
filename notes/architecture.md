@@ -86,21 +86,13 @@ Supported optional fields include:
 - `letterboxd_source`
 - `letterboxd_score`
 - `imdb_score`
-- `aspect_ratio`
-- `visual_texture`
-- `sound_world`
-- `format`
-- `camera_lens`
-- `technical_notes`
 
 The parser in `src/content.py` converts each file into a `MovieContent` dataclass. It calculates a source hash for cache freshness and uses file modification time for sorting.
 
 Current rendered sections:
 
 - `Primer`: spoiler-light context shown before the review (rendered under "The Primer").
-- `Technical Footnotes`: bullet list rendered beside the primer content.
 - `Review`: full critique hidden behind a spoiler reveal.
-- `Gallery`: bullet list of visual references.
 
 Note: The naming mismatch between `Primer` (used in templates, the CLI generator, and readme references) and `Pre-View` (previously used in the parser) has been resolved. The parser in [content.py](file:///Users/elichesnut/documents/github/the-prolog/src/content.py) reads the `Primer` section from the markdown files.
 
@@ -194,12 +186,10 @@ Search currently matches:
 
 The page also includes pagination with a default page size of 40 results.
 
-## Draft And Review Creation
-
 New movie files can be created through:
 
 ```sh
-python3 src/new_review.py --prompt-specs
+python3 src/new_review.py
 ```
 
 The CLI can also run non-interactively:

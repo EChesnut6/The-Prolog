@@ -5,7 +5,7 @@ import hashlib
 from pathlib import Path
 import markdown
 
-from src.utils import slugify, TECHNICAL_SPEC_FIELDS, SCORE_FIELDS
+from src.utils import slugify, SCORE_FIELDS
 
 
 @dataclass(frozen=True)
@@ -21,13 +21,12 @@ class MovieContent:
     letterboxd_rank: str
     letterboxd_source: str
     primer: str
-    technical_footnotes: list[str]
-    technical_specs: dict[str, str]
     scores: dict[str, str]
     review: str
-    gallery: list[str]
     source_hash: str
     last_modified: float
+    writer: str
+    cast: list[str]
 
 
 def load_movies(content_dir: Path) -> list[MovieContent]:
@@ -58,13 +57,12 @@ def load_movie(path: Path) -> MovieContent:
         letterboxd_rank=metadata.get("letterboxd_rank", ""),
         letterboxd_source=metadata.get("letterboxd_source", ""),
         primer=markdown.markdown(sections.get("Primer", "")),
-        technical_footnotes=_markdown_list(sections.get("Technical Footnotes", "")),
-        technical_specs=_technical_specs(metadata),
         scores=_scores(metadata),
         review=markdown.markdown(sections.get("Review", "")),
-        gallery=_markdown_list(sections.get("Gallery", "")),
         source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
         last_modified=path.stat().st_mtime,
+        writer=metadata.get("writer", ""),
+        cast=[c.strip() for c in metadata.get("cast", "").split(",") if c.strip()] if metadata.get("cast") else [],
     )
 
 
@@ -114,13 +112,6 @@ def _markdown_list(md_text: str) -> list[str]:
             items.append(markdown.markdown(stripped[2:]).removeprefix("<p>").removesuffix("</p>"))
     return items
 
-
-def _technical_specs(metadata: dict[str, str]) -> dict[str, str]:
-    return {
-        label: metadata[key]
-        for key, label in TECHNICAL_SPEC_FIELDS.items()
-        if metadata.get(key)
-    }
 
 
 def _scores(metadata: dict[str, str]) -> dict[str, str]:

@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="header-top">
         <div class="header-top__left">
-          <span class="header-date">2026-05-21</span>
+          <span class="header-date">2026-05-25</span>
         </div>
         <div class="header-logo-container">
           <a class="site-logo" href="../../index.html">The Prolog</a>
@@ -55,125 +55,154 @@
       </nav>
     </header>
 
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const sunIcon = themeToggle.querySelector('.sun-icon');
-      const moonIcon = themeToggle.querySelector('.moon-icon');
-
-      function updateIcons(theme) {
-        if (theme === 'dark-mode') {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        } else {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        }
-      }
-
-      // Initialize icons
-      updateIcons(document.body.className);
-
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark-mode');
-        const newTheme = isDark ? 'light-mode' : 'dark-mode';
-        document.body.className = newTheme;
-        localStorage.setItem('theme', newTheme);
-        updateIcons(newTheme);
-      });
-    </script>
+    <script src="../assets/js/theme-toggle.js" defer></script>
     <main>
-      <div class="ebert-container">
-  <section class="movie-hero">
-    <div class="poster-frame">
+      <!-- Movie Background Image (Banner) -->
+<div class="movie-banner" style="background-image: url('https://image.tmdb.org/t/p/w1280/lvSB0bnLzuxwrfTlI2l13gctWRn.jpg');"></div>
+
+<div class="movie-detail-container ebert-container">
+  
+  <!-- Unified Top Identity Section -->
+  <div class="movie-identity-section">
+    <!-- Movie Poster -->
+    <div class="movie-poster-box">
       <img src="https://image.tmdb.org/t/p/w780/4Are9oV8HjZQWnEajk9LYFxRWom.jpg" alt="Still Walking poster">
     </div>
-    <div class="movie-hero__copy">
-      <p class="eyebrow">Movie review and context</p>
-      <h1>Still Walking</h1>
-      <p class="movie-meta">2008-06-28 · Directed by Hirokazu Kore-eda</p>
-      
-      <p class="movie-tagline"><em>EVEN WHEN PEOPLE DIE, THEY DON’T REALLY GO AWAY.</em></p>
-      
-      <div class="movie-facts" aria-label="Movie database details">
-        <dl>
-          
-            <dt>Runtime</dt><dd>114 min</dd>
-          
-          
-            <dt>Genres</dt><dd>Drama, Family</dd>
-          
-          
-            <dt>IMDb score</dt><dd>7.9/10</dd>
-          
-        </dl>
+    
+    <!-- Box 1: Title, Year, Director, Tagline -->
+    <div class="outline-box title-box">
+      <h1 class="movie-title">Still Walking</h1>
+      <div class="movie-core-meta">
+        <span class="movie-year">2008</span>
+        <span class="meta-dot">•</span>
+        <span class="movie-director">Directed by <strong>Hirokazu Kore-eda</strong></span>
       </div>
-      <div class="movie-badges">
-        
-        
-      </div>
+      
+      <p class="movie-tagline">“EVEN WHEN PEOPLE DIE, THEY DON’T REALLY GO AWAY.”</p>
+      
     </div>
-  </section>
-
-  <section class="primer-layout" aria-labelledby="primer-heading">
-    <article class="prose">
-      <p class="eyebrow">The Primer</p>
-      <h2 id="primer-heading">What to know before watching</h2>
-      <p>Add spoiler-light context for someone before watching.</p>
-    </article>
-    <aside class="footnotes" aria-labelledby="footnotes-heading">
-      <h2 id="footnotes-heading">Technical Footnotes</h2>
-      <ul>
-        
-          <li>Add technical notes worth noticing before or during the watch.</li>
-        
-      </ul>
-      
-    </aside>
-  </section>
-
-  <div class="spoiler-warning">
-    <hr>
-    <span>Spoilers below</span>
-    <hr>
   </div>
-
-  <section class="section-shell prose review-section" aria-labelledby="review-heading">
-    <details class="review-details">
-      <summary>
-        <div class="review-summary-inner">
-          <p class="eyebrow">The Review</p>
-          <h2 id="review-heading">Full critique</h2>
-          <span class="reveal-hint">Click to reveal review</span>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Focal Point) -->
+    <div class="movie-grid-left">
+      <!-- The Pre-View -->
+      <section class="movie-section prose preview-section" aria-labelledby="preview-heading">
+        <p class="eyebrow">The Pre-View</p>
+        <h2 id="preview-heading">What to know before watching</h2>
+        <div class="preview-content">
+          <p>Add spoiler-light context for someone before watching.</p>
         </div>
-      </summary>
-      <div class="review-content">
-        <p>Write the full critique here.</p>
+      </section>
+      
+      <!-- Spoilers below divider -->
+      <div class="spoiler-warning">
+        <hr>
+        <span>Spoilers below</span>
+        <hr>
       </div>
-    </details>
-  </section>
-
-  <section class="section-shell" aria-labelledby="gallery-heading">
-    <div class="section-heading">
-      <p class="eyebrow">Gallery</p>
-      <h2 id="gallery-heading">Visual references</h2>
+      
+      <!-- The Review -->
+      <section class="movie-section prose review-section" aria-labelledby="review-heading">
+        <details class="review-details">
+          <summary>
+            <div class="review-summary-inner">
+              <p class="eyebrow">The Review</p>
+              <h2 id="review-heading">Full critique</h2>
+              <span class="reveal-hint">Click to reveal review</span>
+            </div>
+          </summary>
+          <div class="review-content">
+            <p>Write the full critique here.</p>
+          </div>
+        </details>
+      </section>
     </div>
-    <ul class="reference-list">
+    
+    <!-- Right Column (Sidebar) -->
+    <div class="movie-grid-right">
+      <!-- Box 2: Specs & Scores -->
+      <div class="outline-box specs-box">
+        <div class="spec-group">
+          <div class="spec-row">
+            <span class="spec-label">Writer</span>
+            <span class="spec-val">N/A</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Run Time</span>
+            <span class="spec-val">114 min</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Genre</span>
+            <span class="spec-val">Drama, Family</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Stars</span>
+            <span class="spec-val">N/A</span>
+          </div>
+        </div>
+        
+        <div class="scores-group">
+          <h3>My Scores</h3>
+          <div class="movie-badges">
+            
+            
+            
+            <p class="empty-note">No ratings yet</p>
+            
+          </div>
+        </div>
+      </div>
       
-        <li>Visual reference</li>
-      
-        <li>Production still idea</li>
-      
-        <li>Related artwork or image category</li>
-      
-    </ul>
-  </section>
+      <!-- Box 3: More Like This -->
+      <div class="outline-box related-box">
+        <h3>More like this</h3>
+        <div class="related-list">
+          
+          <a href="../reviews/nobody-knows.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/kDUUdWrbBBVqzSmm27pHFJcTvCU.jpg" alt="Nobody Knows poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Nobody Knows</span>
+              <span class="related-year">2004</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/shoplifters.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/4nfRUOv3LX5zLn98WS1WqVBk9E9.jpg" alt="Shoplifters poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Shoplifters</span>
+              <span class="related-year">2018</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/monster.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/kvUJUyUGOhEoiWWNH04IXoExPE2.jpg" alt="Monster poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Monster</span>
+              <span class="related-year">2023</span>
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
     </main>
     <footer class="site-footer">
       <div class="footer-container">
         <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
         <div class="footer-bottom">
-          <a href="https://venmo.com/eli-chesnut" class="beer-button" target="_blank" rel="noopener noreferrer">Buy me a beer</a>
         </div>
       </div>
     </footer>
