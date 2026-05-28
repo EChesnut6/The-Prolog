@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from src.utils import slugify, render_review_template
+from utils import slugify, render_review_template
 
 
 ROOT = Path(__file__).resolve().parents[1]
