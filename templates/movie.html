@@ -1,106 +1,133 @@
-<section class="movie-hero">
-  <div class="poster-frame">
-    <img src="{{ poster_url }}" alt="{{ title }} poster">
-  </div>
-  <div class="movie-hero__copy">
-    <p class="eyebrow">Movie review and context</p>
-    <h1>{{ title }}</h1>
-    <p class="movie-meta">{{ release_date }} · Directed by {{ director }}</p>
-    {% if tagline %}
-    <p class="movie-tagline"><em>{{ tagline }}</em></p>
-    {% endif %}
-    <div class="movie-facts" aria-label="Movie database details">
-      <dl>
-        {% if metadata.runtime %}
-          <dt>Runtime</dt><dd>{{ metadata.runtime }} min</dd>
-        {% endif %}
-        {% if metadata.genres %}
-          <dt>Genres</dt><dd>{{ metadata.genres | join(', ') }}</dd>
-        {% endif %}
-        {% if metadata.letterboxd_score %}
-          <dt>Letterboxd score</dt><dd>{{ metadata.letterboxd_score }}</dd>
-        {% elif metadata.imdb_score %}
-          <dt>IMDb score</dt><dd>{{ metadata.imdb_score }}</dd>
-        {% elif metadata.vote_average %}
-          <dt>TMDB rating</dt><dd>{{ metadata.vote_average | float | round(1) }}/10</dd>
-        {% endif %}
-      </dl>
+<!-- Movie Background Image (Banner) -->
+<div class="movie-banner" style="background-image: url('{{ backdrop_url }}');"></div>
+
+<div class="movie-detail-container ebert-container">
+  
+  <!-- Unified Top Identity Section -->
+  <div class="movie-identity-section">
+    <!-- Movie Poster -->
+    <div class="movie-poster-box">
+      <img src="{{ poster_url }}" alt="{{ title }} poster">
     </div>
-    <div class="movie-badges">
-      {% if enjoyment_rating and enjoyment_rating.upper() != "TBD" %}
-      <div class="rating-check" aria-label="Enjoyment rating {{ enjoyment_rating }} out of 10">
-        <span>Enjoyment</span>
-        <strong>{{ enjoyment_rating }}/10</strong>
+    
+    <!-- Box 1: Title, Year, Director, Tagline -->
+    <div class="outline-box title-box">
+      <h1 class="movie-title">{{ title }}</h1>
+      <div class="movie-core-meta">
+        <span class="movie-year">{{ release_date[:4] if release_date else year }}</span>
+        <span class="meta-dot">•</span>
+        <span class="movie-director">Directed by <strong>{{ director }}</strong></span>
       </div>
-      {% endif %}
-      {% if filmmaking_rating and filmmaking_rating.upper() != "TBD" %}
-      <div class="rating-check" aria-label="Filmmaking rating {{ filmmaking_rating }} out of 10">
-        <span>Filmmaking</span>
-        <strong>{{ filmmaking_rating }}/10</strong>
-      </div>
+      {% if tagline %}
+      <p class="movie-tagline">“{{ tagline }}”</p>
       {% endif %}
     </div>
   </div>
-</section>
-
-<section class="primer-layout" aria-labelledby="primer-heading">
-  <article class="prose">
-    <p class="eyebrow">The Primer</p>
-    <h2 id="primer-heading">What to know before watching</h2>
-    {{ primer | safe }}
-  </article>
-  <aside class="footnotes" aria-labelledby="footnotes-heading">
-    <h2 id="footnotes-heading">Technical Footnotes</h2>
-    <ul>
-      {% for item in technical_footnotes %}
-        <li>{{ item | safe }}</li>
-      {% else %}
-        <li>Details forthcoming.</li>
-      {% endfor %}
-    </ul>
-    {% if technical_specs %}
-    <div class="technical-specs" aria-label="Structured technical specs">
-      <dl>
-        {% for label, value in technical_specs.items() %}
-          <dt>{{ label }}</dt><dd>{{ value }}</dd>
-        {% endfor %}
-      </dl>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Focal Point) -->
+    <div class="movie-grid-left">
+      <!-- The Pre-View -->
+      <section class="movie-section prose preview-section" aria-labelledby="preview-heading">
+        <p class="eyebrow">The Pre-View</p>
+        <h2 id="preview-heading">What to know before watching</h2>
+        <div class="preview-content">
+          {{ primer | safe }}
+        </div>
+      </section>
+      
+      <!-- Spoilers below divider -->
+      <div class="spoiler-warning">
+        <hr>
+        <span>Spoilers below</span>
+        <hr>
+      </div>
+      
+      <!-- The Review -->
+      <section class="movie-section prose review-section" aria-labelledby="review-heading">
+        <details class="review-details">
+          <summary>
+            <div class="review-summary-inner">
+              <p class="eyebrow">The Review</p>
+              <h2 id="review-heading">Full critique</h2>
+              <span class="reveal-hint">Click to reveal review</span>
+            </div>
+          </summary>
+          <div class="review-content">
+            {{ review | safe }}
+          </div>
+        </details>
+      </section>
     </div>
-    {% endif %}
-  </aside>
-</section>
-
-<div class="spoiler-warning">
-  <hr>
-  <span>Spoilers below</span>
-  <hr>
+    
+    <!-- Right Column (Sidebar) -->
+    <div class="movie-grid-right">
+      <!-- Box 2: Specs & Scores -->
+      <div class="outline-box specs-box">
+        <div class="spec-group">
+          <div class="spec-row">
+            <span class="spec-label">Writer</span>
+            <span class="spec-val">{{ writer or "N/A" }}</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Run Time</span>
+            <span class="spec-val">{% if runtime %}{{ runtime }} min{% else %}N/A{% endif %}</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Genre</span>
+            <span class="spec-val">{% if genres %}{{ genres | join(', ') }}{% else %}N/A{% endif %}</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Stars</span>
+            <span class="spec-val">{% if cast %}{{ cast | join(', ') }}{% else %}N/A{% endif %}</span>
+          </div>
+        </div>
+        
+        <div class="scores-group">
+          <h3>My Scores</h3>
+          <div class="movie-badges">
+            {% if enjoyment_rating and enjoyment_rating.upper() != "TBD" %}
+            <div class="rating-check" aria-label="Enjoyment rating {{ enjoyment_rating }} out of 10">
+              <span>Enjoyment</span>
+              <strong>{{ enjoyment_rating }}/10</strong>
+            </div>
+            {% endif %}
+            {% if filmmaking_rating and filmmaking_rating.upper() != "TBD" %}
+            <div class="rating-check" aria-label="Filmmaking rating {{ filmmaking_rating }} out of 10">
+              <span>Filmmaking</span>
+              <strong>{{ filmmaking_rating }}/10</strong>
+            </div>
+            {% endif %}
+            {% if (not enjoyment_rating or enjoyment_rating.upper() == "TBD") and (not filmmaking_rating or filmmaking_rating.upper() == "TBD") %}
+            <p class="empty-note">No ratings yet</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Box 3: More Like This -->
+      <div class="outline-box related-box">
+        <h3>More like this</h3>
+        <div class="related-list">
+          {% for rel in similar_movies %}
+          <a href="../reviews/{{ rel.slug }}.html" class="related-card">
+            <div class="related-poster">
+              <img src="{{ rel.poster_url }}" alt="{{ rel.title }} poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">{{ rel.title }}</span>
+              <span class="related-year">{{ rel.year }}</span>
+            </div>
+          </a>
+          {% endfor %}
+          {% if not similar_movies %}
+          <p class="empty-note">No related movies found</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<section class="section-shell prose review-section" aria-labelledby="review-heading">
-  <details class="review-details">
-    <summary>
-      <div class="review-summary-inner">
-        <p class="eyebrow">The Review</p>
-        <h2 id="review-heading">Full critique</h2>
-        <span class="reveal-hint">Click to reveal review</span>
-      </div>
-    </summary>
-    <div class="review-content">
-      {{ review | safe }}
-    </div>
-  </details>
-</section>
-
-<section class="section-shell" aria-labelledby="gallery-heading">
-  <div class="section-heading">
-    <p class="eyebrow">Gallery</p>
-    <h2 id="gallery-heading">Visual references</h2>
-  </div>
-  <ul class="reference-list">
-    {% for item in gallery %}
-      <li>{{ item | safe }}</li>
-    {% else %}
-      <li>Details forthcoming.</li>
-    {% endfor %}
-  </ul>
-</section>

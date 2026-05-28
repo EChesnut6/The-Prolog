@@ -5,6 +5,8 @@ import hashlib
 from pathlib import Path
 import markdown
 
+from src.utils import slugify, SCORE_FIELDS
+
 
 @dataclass(frozen=True)
 class MovieContent:
@@ -19,13 +21,12 @@ class MovieContent:
     letterboxd_rank: str
     letterboxd_source: str
     primer: str
-    technical_footnotes: list[str]
-    technical_specs: dict[str, str]
     scores: dict[str, str]
     review: str
-    gallery: list[str]
     source_hash: str
     last_modified: float
+    writer: str
+    cast: list[str]
 
 
 def load_movies(content_dir: Path) -> list[MovieContent]:
@@ -42,7 +43,7 @@ def load_movie(path: Path) -> MovieContent:
     sections = _split_sections(body)
 
     title = metadata.get("title", path.stem.replace("-", " ").title())
-    slug = metadata.get("slug", _slugify(title))
+    slug = metadata.get("slug", slugify(title))
 
     return MovieContent(
         title=title,
@@ -56,13 +57,12 @@ def load_movie(path: Path) -> MovieContent:
         letterboxd_rank=metadata.get("letterboxd_rank", ""),
         letterboxd_source=metadata.get("letterboxd_source", ""),
         primer=markdown.markdown(sections.get("Primer", "")),
-        technical_footnotes=_markdown_list(sections.get("Technical Footnotes", "")),
-        technical_specs=_technical_specs(metadata),
         scores=_scores(metadata),
         review=markdown.markdown(sections.get("Review", "")),
-        gallery=_markdown_list(sections.get("Gallery", "")),
         source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
         last_modified=path.stat().st_mtime,
+        writer=metadata.get("writer", ""),
+        cast=[c.strip() for c in metadata.get("cast", "").split(",") if c.strip()] if metadata.get("cast") else [],
     )
 
 
@@ -113,30 +113,11 @@ def _markdown_list(md_text: str) -> list[str]:
     return items
 
 
-def _technical_specs(metadata: dict[str, str]) -> dict[str, str]:
-    labels = {
-        "aspect_ratio": "Aspect ratio",
-        "visual_texture": "Visual texture",
-        "sound_world": "Sound world",
-        "format": "Format",
-        "camera_lens": "Camera/lens",
-        "technical_notes": "Technical notes",
-    }
-    return {
-        label: metadata[key]
-        for key, label in labels.items()
-        if metadata.get(key)
-    }
-
 
 def _scores(metadata: dict[str, str]) -> dict[str, str]:
-    labels = {
-        "letterboxd_score": "Letterboxd score",
-        "imdb_score": "IMDb score",
-    }
     return {
         label: metadata[key]
-        for key, label in labels.items()
+        for key, label in SCORE_FIELDS.items()
         if metadata.get(key)
     }
 
@@ -162,14 +143,4 @@ def _reviewed(metadata: dict[str, str], sections: dict[str, str]) -> bool:
     return not any(marker in content for marker in template_markers)
 
 
-def _slugify(value: str) -> str:
-    allowed = []
-    previous_dash = False
-    for character in value.lower():
-        if character.isalnum():
-            allowed.append(character)
-            previous_dash = False
-        elif not previous_dash:
-            allowed.append("-")
-            previous_dash = True
-    return "".join(allowed).strip("-")
+

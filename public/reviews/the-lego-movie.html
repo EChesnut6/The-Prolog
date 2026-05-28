@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Lego Movie | The Prolog</title>
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-05-26</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="../coming-soon.html">Collections</a>
+          <a href="../coming-soon.html">Greats</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <!-- Movie Background Image (Banner) -->
+<div class="movie-banner" style="background-image: url('https://image.tmdb.org/t/p/w1280/6gI1dAkOaUQ6659OdRPsTLlsem5.jpg');"></div>
+
+<div class="movie-detail-container ebert-container">
+  
+  <!-- Unified Top Identity Section -->
+  <div class="movie-identity-section">
+    <!-- Movie Poster -->
+    <div class="movie-poster-box">
+      <img src="https://image.tmdb.org/t/p/w780/lbctonEnewCYZ4FYoTZhs8cidAl.jpg" alt="The Lego Movie poster">
+    </div>
+    
+    <!-- Box 1: Title, Year, Director, Tagline -->
+    <div class="outline-box title-box">
+      <h1 class="movie-title">The Lego Movie</h1>
+      <div class="movie-core-meta">
+        <span class="movie-year">2014</span>
+        <span class="meta-dot">•</span>
+        <span class="movie-director">Directed by <strong>Phil Lord, Christopher Miller</strong></span>
+      </div>
+      
+      <p class="movie-tagline">“The story of a nobody who saved everybody.”</p>
+      
+    </div>
+  </div>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Focal Point) -->
+    <div class="movie-grid-left">
+      <!-- The Pre-View -->
+      <section class="movie-section prose preview-section" aria-labelledby="preview-heading">
+        <p class="eyebrow">The Pre-View</p>
+        <h2 id="preview-heading">What to know before watching</h2>
+        <div class="preview-content">
+          <p>This movie is so much fucking fun. So many cool small details you could point out. For example, Jonnah Hill voices the Green Lantern and Channing Tatum voices Superman. Keep in mind this movie came out the same year as 22 Jump Street and 2 years after 21 Jump Street where they both co-star. The casting is 1000% on purpose and adds an extra layer of humor if you know this. The cast is insanely stacked, and while it's fair to not take this movie seriously, you are rewarded for doing so. This movie is fucking awesome.</p>
+        </div>
+      </section>
+      
+      <!-- Spoilers below divider -->
+      <div class="spoiler-warning">
+        <hr>
+        <span>Spoilers below</span>
+        <hr>
+      </div>
+      
+      <!-- The Review -->
+      <section class="movie-section prose review-section" aria-labelledby="review-heading">
+        <details class="review-details">
+          <summary>
+            <div class="review-summary-inner">
+              <p class="eyebrow">The Review</p>
+              <h2 id="review-heading">Full critique</h2>
+              <span class="reveal-hint">Click to reveal review</span>
+            </div>
+          </summary>
+          <div class="review-content">
+            <p>Write the full critique here.</p>
+          </div>
+        </details>
+      </section>
+    </div>
+    
+    <!-- Right Column (Sidebar) -->
+    <div class="movie-grid-right">
+      <!-- Box 2: Specs & Scores -->
+      <div class="outline-box specs-box">
+        <div class="spec-group">
+          <div class="spec-row">
+            <span class="spec-label">Writer</span>
+            <span class="spec-val">Phil Lord, Christopher Miller</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Run Time</span>
+            <span class="spec-val">100 min</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Genre</span>
+            <span class="spec-val">Animation, Family, Adventure, Comedy, Fantasy</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Stars</span>
+            <span class="spec-val">Chris Pratt, Elizabeth Banks, Will Ferrell, Morgan Freeman, Will Arnett</span>
+          </div>
+        </div>
+        
+        <div class="scores-group">
+          <h3>My Scores</h3>
+          <div class="movie-badges">
+            
+            <div class="rating-check" aria-label="Enjoyment rating 10 out of 10">
+              <span>Enjoyment</span>
+              <strong>10/10</strong>
+            </div>
+            
+            
+            <div class="rating-check" aria-label="Filmmaking rating 8 out of 10">
+              <span>Filmmaking</span>
+              <strong>8/10</strong>
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- Box 3: More Like This -->
+      <div class="outline-box related-box">
+        <h3>More like this</h3>
+        <div class="related-list">
+          
+          <a href="../reviews/fantastic-mr-fox.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/euZyZb6iGreujYKrGyZHRddhUYh.jpg" alt="Fantastic Mr. Fox poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Fantastic Mr. Fox</span>
+              <span class="related-year">2009</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/project-hail-mary.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/yihdXomYb5kTeSivtFndMy5iDmf.jpg" alt="Project Hail Mary poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Project Hail Mary</span>
+              <span class="related-year">2026</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/howl-s-moving-castle.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/13kOl2v0nD2OLbVSHnHk8GUFEhO.jpg" alt="Howl&#39;s Moving Castle poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Howl&#39;s Moving Castle</span>
+              <span class="related-year">2004</span>
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

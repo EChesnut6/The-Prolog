@@ -1,22 +1,9 @@
-roger ebert home screen
-- logo, space, sign up, search bar
-- Top navigation
-    - movie reviews
-    - great movies
-    - tv/streaming
-    - interviews
-    - collections
-    - festivals/awards
-    - contributors
-- random movie review teaser
-- new reviews grid
-- Article teaser
-- new articles grid
-- collections
-- latest reviews
-- two thumbs up
-- subscribe
-- bottom text
+No hover for ratings (enjoyment/filmaking)
+Spacer above spec block to move it lower based on pre-view length?
+Some way need to re-arange poster+title block
+  maybe add spec to the block and separate so it's clean but has more info and isn't too empty?
+  can also add collections block where lists collections that that movie is in
+Use credits to get writer and cast
 
-
-Determine what to steal and what to trash
+!!! URGENT !!!
+the new_review file is completely broken, need to fix asap

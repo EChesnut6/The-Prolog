@@ -1,9 +1,10 @@
-from __future__ import annotations
-
+import sys
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from src.utils import slugify, render_review_template
 CONTENT_DIR = ROOT / "content" / "movies"
 
 MOVIES = [
@@ -266,61 +267,28 @@ def main() -> None:
     skipped = 0
 
     for rank, title, year in MOVIES:
-        slug = _slugify(title)
+        slug = slugify(title)
         path = CONTENT_DIR / f"{slug}.md"
         if path.exists():
             skipped += 1
             continue
 
-        path.write_text(_template(title, slug, year), encoding="utf-8")
+        path.write_text(
+            render_review_template(
+                title=title,
+                slug=slug,
+                tmdb_title=title,
+                year=year,
+                teaser="Draft pre-flight checklist template.",
+            ),
+            encoding="utf-8",
+        )
         created += 1
 
     print(f"Created {created} template(s); skipped {skipped} existing file(s).")
 
 
-def _template(title: str, slug: str, year: str) -> str:
-    return f"""---
-title: {title}
-slug: {slug}
-tmdb_title: {title}
-year: {year}
-enjoyment_rating: TBD
-filmmaking_rating: TBD
-reviewed: false
-teaser: Draft pre-flight checklist template.
----
 
-## Primer
-
-Add spoiler-light context for someone before watching.
-
-## Technical Footnotes
-
-- Add technical notes worth noticing before or during the watch.
-
-## Review
-
-Write the full critique here.
-
-## Gallery
-
-- Visual reference
-- Production still idea
-- Related artwork or image category
-"""
-
-
-def _slugify(value: str) -> str:
-    allowed = []
-    previous_dash = False
-    for character in value.lower():
-        if character.isalnum():
-            allowed.append(character)
-            previous_dash = False
-        elif not previous_dash:
-            allowed.append("-")
-            previous_dash = True
-    return "".join(allowed).strip("-")
 
 
 if __name__ == "__main__":

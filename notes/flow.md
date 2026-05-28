@@ -28,19 +28,9 @@ To add your next review, the project flow is:
 
   Spoiler-light context for someone before watching.
 
-  ## Technical Footnotes
-
-  - Aspect ratio, format, sound, production note, useful viewing lens, etc.
-
   ## Review
 
   Your full critique.
-
-  ## Gallery
-
-  - Visual reference
-  - Production still idea
-  - Related artwork or image category
 
   4. Build the site:
 

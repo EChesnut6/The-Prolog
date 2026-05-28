@@ -23,6 +23,7 @@ CONTENT_DIR = ROOT / "content" / "movies"
 TEMPLATES_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "public"
 ROOT_INDEX = ROOT / "index.html"
+ROOT_SEARCH = OUTPUT_DIR / "search.html"
 ASSETS_DIR = ROOT / "assets"
 METADATA_CACHE = ROOT / ".tmdb-cache.json"
 
@@ -61,7 +62,7 @@ def main() -> None:
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     _copy_assets()
-    render_site(movies, metadata_by_slug, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX)
+    render_site(movies, metadata_by_slug, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX, ROOT_SEARCH)
     print(f"Built {len(movies)} movie page(s) in {OUTPUT_DIR} and {ROOT_INDEX}")
 
 
