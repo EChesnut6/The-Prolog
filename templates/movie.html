@@ -1,26 +1,31 @@
-<!-- Movie Background Image (Banner) -->
-<div class="movie-banner" style="background-image: url('{{ backdrop_url }}');"></div>
-
 <div class="movie-detail-container ebert-container">
   
   <!-- Unified Top Identity Section -->
-  <div class="movie-identity-section">
-    <!-- Movie Poster -->
-    <div class="movie-poster-box">
-      <img src="{{ poster_url }}" alt="{{ title }} poster">
+  <div class="movie-header-section">
+    <!-- Movie Background Image (Banner) -->
+    <div class="movie-banner" style="background-image: url('{{ backdrop_url }}');">
+      <div class="movie-banner-overlay"></div>
     </div>
-    
-    <!-- Box 1: Title, Year, Director, Tagline -->
-    <div class="outline-box title-box">
-      <h1 class="movie-title">{{ title }}</h1>
-      <div class="movie-core-meta">
-        <span class="movie-year">{{ release_date[:4] if release_date else year }}</span>
-        <span class="meta-dot">•</span>
-        <span class="movie-director">Directed by <strong>{{ director }}</strong></span>
+
+    <!-- Poster & Title Box Overlap Container -->
+    <div class="movie-header-content">
+      <!-- Movie Poster -->
+      <div class="movie-poster-box">
+        <img src="{{ poster_url }}" alt="{{ title }} poster">
       </div>
-      {% if tagline %}
-      <p class="movie-tagline">“{{ tagline }}”</p>
-      {% endif %}
+      
+      <!-- Box 1: Title, Year, Director, Tagline -->
+      <div class="outline-box title-box">
+        <h1 class="movie-title">{{ title }}</h1>
+        <div class="movie-core-meta">
+          <span class="movie-year">{{ release_date[:4] if release_date else year }}</span>
+          <span class="meta-dot">•</span>
+          <span class="movie-director">Directed by <strong>{{ director }}</strong></span>
+        </div>
+        {% if tagline %}
+        <p class="movie-tagline">“{{ tagline }}”</p>
+        {% endif %}
+      </div>
     </div>
   </div>
   
@@ -48,19 +53,43 @@
       
       <!-- The Review -->
       <section class="movie-section prose review-section" aria-labelledby="review-heading">
-        <details class="review-details">
-          <summary>
-            <div class="review-summary-inner">
-              <p class="eyebrow">The Review</p>
-              <h2 id="review-heading">Full critique</h2>
-              <span class="reveal-hint">Click to reveal review</span>
+        <p class="eyebrow">The Review</p>
+        <h2 id="review-heading">Full critique</h2>
+        
+        <div class="review-wrapper">
+          <!-- Spoiler Gate Card Overlay -->
+          <div class="spoiler-gate" id="spoiler-gate">
+            <div class="spoiler-gate-card">
+              <div class="spoiler-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </div>
+              <h3>Spoiler Protected</h3>
+              <p>This critique contains spoilers for <strong>{{ title }}</strong>.</p>
+              <button class="reveal-button" id="reveal-review-btn">Reveal Review</button>
             </div>
-          </summary>
-          <div class="review-content">
+          </div>
+          
+          <!-- Masked Critique Text -->
+          <div class="review-content review-masked" id="review-content">
             {{ review | safe }}
           </div>
-        </details>
+        </div>
       </section>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const btn = document.getElementById('reveal-review-btn');
+          const wrapper = document.querySelector('.review-wrapper');
+          if (btn && wrapper) {
+            btn.addEventListener('click', () => {
+              wrapper.classList.add('is-revealed');
+            });
+          }
+        });
+      </script>
     </div>
     
     <!-- Right Column (Sidebar) -->
@@ -68,22 +97,30 @@
       <!-- Box 2: Specs & Scores -->
       <div class="outline-box specs-box">
         <div class="spec-group">
+          {% if writer and writer != "N/A" %}
           <div class="spec-row">
             <span class="spec-label">Writer</span>
-            <span class="spec-val">{{ writer or "N/A" }}</span>
+            <span class="spec-val">{{ writer }}</span>
           </div>
+          {% endif %}
+          {% if runtime and runtime != "N/A" %}
           <div class="spec-row">
             <span class="spec-label">Run Time</span>
-            <span class="spec-val">{% if runtime %}{{ runtime }} min{% else %}N/A{% endif %}</span>
+            <span class="spec-val">{{ runtime }} min</span>
           </div>
+          {% endif %}
+          {% if genres %}
           <div class="spec-row">
             <span class="spec-label">Genre</span>
-            <span class="spec-val">{% if genres %}{{ genres | join(', ') }}{% else %}N/A{% endif %}</span>
+            <span class="spec-val">{{ genres | join(', ') }}</span>
           </div>
+          {% endif %}
+          {% if cast %}
           <div class="spec-row">
             <span class="spec-label">Stars</span>
-            <span class="spec-val">{% if cast %}{{ cast | join(', ') }}{% else %}N/A{% endif %}</span>
+            <span class="spec-val">{{ cast | join(', ') }}</span>
           </div>
+          {% endif %}
         </div>
         
         <div class="scores-group">
