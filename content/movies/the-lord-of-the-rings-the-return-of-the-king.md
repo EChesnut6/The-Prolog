@@ -5,7 +5,7 @@ tmdb_title: The Lord of the Rings The Return of the King
 year: 2003
 enjoyment_rating: TBD
 filmmaking_rating: TBD
-reviewed: True
+reviewed: false
 ---
 
 ## Primer

@@ -5,7 +5,7 @@ tmdb_title: Alien
 year: 1979
 enjoyment_rating: 9
 filmmaking_rating: 10
-reviewed: true
+reviewed: false
 ---
 
 ## Primer

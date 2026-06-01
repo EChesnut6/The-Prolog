@@ -1,7 +1,7 @@
 ---
-title: The Lord of the Rings: The Two Towers
+title: The Lord of the Rings The Two Towers
 slug: the-lord-of-the-rings-the-two-towers
-tmdb_title: The Lord of the Rings: The Two Towers
+tmdb_title: The Lord of the Rings The Two Towers
 year: 2002
 enjoyment_rating: TBD
 filmmaking_rating: TBD
