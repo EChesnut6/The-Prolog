@@ -19,8 +19,8 @@ def main() -> None:
     year = args.year or _prompt_required("Year")
     slug = args.slug or slugify(title)
     tmdb_title = args.tmdb_title or title
-    enjoyment_rating = args.enjoyment_rating or _prompt_required("Enjoyment rating")
-    filmmaking_rating = args.filmmaking_rating or _prompt_required("Filmmaking rating")
+    enjoyment_rating = args.enjoyment_rating or _prompt("Enjoyment rating", default="TBD")
+    filmmaking_rating = args.filmmaking_rating or _prompt("Filmmaking rating", default="TBD")
     reviewed = "true" if args.reviewed else "false"
 
     path = CONTENT_DIR / f"{slug}.md"
@@ -52,6 +52,11 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--enjoyment-rating", help="Enjoyment/fun rating to display on the site.")
     parser.add_argument("--filmmaking-rating", help="Filmmaking quality rating to display on the site.")
     parser.add_argument("--reviewed", action="store_true", help="Mark this draft as visible on the homepage.")
+    parser.add_argument(
+        "--prompt-specs",
+        action="store_true",
+        help="Prompt for details interactively (kept for compatibility with existing docs).",
+    )
 
     parser.add_argument("--force", action="store_true", help="Overwrite an existing draft with the same slug.")
     return parser.parse_args()
