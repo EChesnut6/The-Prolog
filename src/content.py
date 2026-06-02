@@ -5,7 +5,31 @@ import hashlib
 from pathlib import Path
 import markdown
 
+import re
+
 from src.utils import slugify, SCORE_FIELDS
+
+
+def convert_wiki_links(text: str) -> str:
+    # Pattern to match [[target]] or [[target|anchor]]
+    pattern = re.compile(r'\[\[([^\]|]+)(?:\|([^\]]+))?\]\]')
+    
+    def replace(match):
+        target = match.group(1).strip()
+        anchor = match.group(2)
+        
+        # If target has a file extension, strip it
+        clean_target = target.removesuffix(".md").removesuffix(".html")
+        slug = slugify(clean_target)
+        
+        if anchor is not None:
+            anchor_text = anchor.strip()
+        else:
+            anchor_text = target
+            
+        return f"[{anchor_text}]({slug}.md)"
+        
+    return pattern.sub(replace, text)
 
 
 @dataclass(frozen=True)
@@ -45,6 +69,9 @@ def load_movie(path: Path) -> MovieContent:
     title = metadata.get("title", path.stem.replace("-", " ").title())
     slug = metadata.get("slug", slugify(title))
 
+    primer_text = convert_wiki_links(sections.get("Primer", ""))
+    review_text = convert_wiki_links(sections.get("Review", ""))
+
     return MovieContent(
         title=title,
         slug=slug,
@@ -56,9 +83,9 @@ def load_movie(path: Path) -> MovieContent:
         reviewed=_reviewed(metadata, sections),
         letterboxd_rank=metadata.get("letterboxd_rank", ""),
         letterboxd_source=metadata.get("letterboxd_source", ""),
-        primer=markdown.markdown(sections.get("Primer", "")),
+        primer=markdown.markdown(primer_text),
         scores=_scores(metadata),
-        review=markdown.markdown(sections.get("Review", "")),
+        review=markdown.markdown(review_text),
         source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
         last_modified=path.stat().st_mtime,
         writer=metadata.get("writer", ""),
@@ -66,7 +93,7 @@ def load_movie(path: Path) -> MovieContent:
     )
 
 
-def _split_front_matter(raw: str, path: Path) -> tuple[dict[str, str], str]:
+def _split_front_matter(raw: str, path: Path) -> tuple[dict[str, Any], str]:
     if not raw.startswith("---\n"):
         raise ValueError(f"{path} must start with front matter delimited by ---")
 
@@ -75,14 +102,32 @@ def _split_front_matter(raw: str, path: Path) -> tuple[dict[str, str], str]:
     except ValueError as exc:
         raise ValueError(f"{path} has incomplete front matter") from exc
 
-    metadata: dict[str, str] = {}
+    metadata: dict[str, Any] = {}
+    current_key = None
     for line in front_matter.splitlines():
         if not line.strip():
             continue
+        # Support list items under a key
+        if line.strip().startswith("-") and current_key:
+            val = line.strip().lstrip("-").strip()
+            if not isinstance(metadata[current_key], list):
+                metadata[current_key] = []
+            metadata[current_key].append(val)
+            continue
+
         key, separator, value = line.partition(":")
         if not separator:
             raise ValueError(f"{path} has invalid front matter line: {line}")
-        metadata[key.strip()] = value.strip()
+        
+        key_str = key.strip()
+        val_str = value.strip()
+        
+        if not val_str:
+            metadata[key_str] = []
+            current_key = key_str
+        else:
+            metadata[key_str] = val_str
+            current_key = key_str
 
     return metadata, body.strip()
 
@@ -144,3 +189,40 @@ def _reviewed(metadata: dict[str, str], sections: dict[str, str]) -> bool:
 
 
 
+@dataclass(frozen=True)
+class CollectionContent:
+    title: str
+    slug: str
+    teaser: str
+    movies: list[str]
+    overview: str
+
+
+def load_collections(content_dir: Path) -> list[CollectionContent]:
+    if not content_dir.exists():
+        return []
+    collections = [load_collection(path) for path in content_dir.glob("*.md")]
+    return sorted(collections, key=lambda col: col.title.lower())
+
+
+def load_collection(path: Path) -> CollectionContent:
+    raw = path.read_text(encoding="utf-8")
+    metadata, body = _split_front_matter(raw, path)
+
+    title = metadata.get("title", path.stem.replace("-", " ").title())
+    slug = metadata.get("slug", slugify(title))
+    teaser = metadata.get("teaser", "")
+    movies = metadata.get("movies", [])
+    if isinstance(movies, str):
+        movies = [s.strip() for s in movies.split(",") if s.strip()]
+
+    overview_text = convert_wiki_links(body)
+    overview = markdown.markdown(overview_text)
+
+    return CollectionContent(
+        title=title,
+        slug=slug,
+        teaser=teaser,
+        movies=movies,
+        overview=overview,
+    )

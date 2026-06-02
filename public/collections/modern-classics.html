@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern Classics | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-06-01</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="ebert-container">
+  <header class="collection-header">
+    <a href="index.html" class="back-link" style="color: var(--accent); font-family: var(--sans); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; text-decoration: none; display: inline-block; margin-bottom: 16px;">← Back to Collections</a>
+    <h1>Modern Classics</h1>
+    <p class="lead">Contemporary cinema masterpieces that stand out for their exceptional direction and unique voices.</p>
+    <div class="collection-overview" style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">
+      <h2>Overview</h2>
+<p>A selection of outstanding contemporary films that have captured the imagination of modern audiences. These movies feature brilliant direction, strong screenplays, and unforgettable cinematography.</p>
+    </div>
+  </header>
+
+  <section class="collection-movies">
+    
+    <article class="collection-movie-item">
+      <a href="../reviews/the-lighthouse.html" style="display: flex; gap: 32px; width: 100%; text-decoration: none; color: inherit;">
+        <img class="collection-movie-item__poster" src="https://image.tmdb.org/t/p/w780/f1tIYarTbkBdIT1aW0gzelDwknv.jpg" alt="The Lighthouse poster">
+        <div class="collection-movie-item__copy">
+          <h2 style="font-family: var(--serif); font-size: 1.8rem; margin: 0 0 8px; color: var(--text);">The Lighthouse</h2>
+          <p class="movie-meta">2019 · Directed by Robert Eggers</p>
+          
+          <p class="tagline"><em>"There is enchantment in the light."</em></p>
+          
+          <div class="teaser"><p>You can go into this movie knowing nothing or everything, it's still confusing.
+howerver, to make your viewing mor interesting its important to point out some references upfront.</p>
+<p>There are key visual references to many pueces of aet including Hypnosis by schrodinger??? and that painting of Prometheus.
+the move has many references to...</div>
+          <span style="color: var(--accent); font-weight: 700; font-family: var(--sans); text-transform: uppercase; font-size: 0.85rem; display: inline-block; margin-top: auto;">Read Pre-flight Checklist →</span>
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-item">
+      <a href="../reviews/perfect-days.html" style="display: flex; gap: 32px; width: 100%; text-decoration: none; color: inherit;">
+        <img class="collection-movie-item__poster" src="https://image.tmdb.org/t/p/w780/mjEk5Wwx6TYVqw29zSaUHclMIgp.jpg" alt="Perfect Days poster">
+        <div class="collection-movie-item__copy">
+          <h2 style="font-family: var(--serif); font-size: 1.8rem; margin: 0 0 8px; color: var(--text);">Perfect Days</h2>
+          <p class="movie-meta">2023 · Directed by Wim Wenders</p>
+          
+          <p class="tagline"><em>"In a world of fleeting moments, find the beauty that lasts."</em></p>
+          
+          <div class="teaser"><p>Add spoiler-light context for someone before watching.</p></div>
+          <span style="color: var(--accent); font-weight: 700; font-family: var(--sans); text-transform: uppercase; font-size: 0.85rem; display: inline-block; margin-top: auto;">Read Pre-flight Checklist →</span>
+        </div>
+      </a>
+    </article>
+    
+  </section>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

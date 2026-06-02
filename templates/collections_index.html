@@ -1,0 +1,25 @@
+<div class="ebert-container">
+  <section class="section-block">
+    <h1 class="section-title" style="font-family: var(--serif); font-size: 3rem; margin: 0 0 16px; color: var(--text);">Curated Collections</h1>
+    <p class="lede" style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; max-width: 800px;">
+      Explore custom-tailored collections of films grouped by thematic link, historical movement, or artistic style.
+    </p>
+
+    <div class="collections-grid">
+      {% for col in collections %}
+      <article class="collection-card">
+        <a href="{{ col.slug }}.html">
+          <div class="collection-card__content">
+            <h3>{{ col.title }}</h3>
+            <p>{{ col.teaser }}</p>
+            <div class="meta">
+              <span>{{ col.movies | length }} Films</span>
+              <span>View Collection →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

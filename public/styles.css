@@ -1237,12 +1237,13 @@ blockquote p {
 
 .review-wrapper {
   position: relative;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: 16px;
   overflow: hidden;
   background: var(--panel);
   margin-top: 16px;
   min-height: 240px; /* Gives the container structure when locked */
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Masked review content (blurred preview) */
@@ -1261,6 +1262,10 @@ blockquote p {
 }
 
 /* Revealed review content state */
+.review-wrapper.is-revealed {
+  background: transparent;
+}
+
 .review-wrapper.is-revealed .review-masked {
   filter: blur(0);
   opacity: 1;
@@ -1268,6 +1273,7 @@ blockquote p {
   user-select: auto;
   max-height: 20000px; /* Allow expansion to full content length */
   overflow: visible;
+  padding: 16px 0 32px; /* Reset padding to align with standard prose layout */
 }
 
 /* Spoiler Gate Overlay */
@@ -1356,3 +1362,166 @@ body.dark-mode .spoiler-gate {
 .reveal-button:active {
   transform: translateY(0);
 }
+
+
+/* ==========================================================================
+   Collections and Greats Styles
+   ========================================================================== */
+
+.collections-grid,
+.greats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.collection-card,
+.great-movie-card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-card:hover,
+.great-movie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--accent-ring);
+  border-color: var(--accent);
+}
+
+.collection-card__content,
+.great-movie-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.collection-card h3,
+.great-movie-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.collection-card p,
+.great-movie-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.collection-card .meta,
+.great-movie-card .meta {
+  margin-top: auto;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Individual Collection Detail Styling */
+.collection-header {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+
+.collection-header h1 {
+  font-family: var(--serif);
+  font-size: 3rem;
+  margin: 0 0 16px;
+  color: var(--text);
+}
+
+.collection-header .lead {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 0 24px;
+}
+
+.collection-movies {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.collection-movie-item {
+  display: flex;
+  gap: 32px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 24px;
+  align-items: center;
+}
+
+.collection-movie-item__poster {
+  width: 140px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.collection-movie-item__copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-movie-item__copy h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+}
+
+.collection-movie-item__copy .movie-meta {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.collection-movie-item__copy .tagline {
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.collection-movie-item__copy .teaser {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+@media (max-width: 768px) {
+  .collection-movie-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .collection-movie-item__poster {
+    width: 120px;
+    height: 180px;
+  }
+}
+

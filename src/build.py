@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from src.content import load_movies
+from src.content import load_movies, load_collections
 from src.metadata_cache import (
     cache_entry_is_fresh,
     load_metadata_cache,
@@ -20,6 +20,7 @@ from src.tmdb import fetch_movie_metadata
 
 
 CONTENT_DIR = ROOT / "content" / "movies"
+COLLECTIONS_DIR = ROOT / "content" / "collections"
 TEMPLATES_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "public"
 ROOT_INDEX = ROOT / "index.html"
@@ -31,6 +32,7 @@ METADATA_CACHE = ROOT / ".tmdb-cache.json"
 def main() -> None:
     args = _parse_args()
     movies = load_movies(CONTENT_DIR)
+    collections = load_collections(COLLECTIONS_DIR)
     cache_path = args.metadata_cache
     cache = load_metadata_cache(cache_path)
     metadata_by_slug = {}
@@ -62,8 +64,8 @@ def main() -> None:
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     _copy_assets()
-    render_site(movies, metadata_by_slug, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX, ROOT_SEARCH)
-    print(f"Built {len(movies)} movie page(s) in {OUTPUT_DIR} and {ROOT_INDEX}")
+    render_site(movies, metadata_by_slug, collections, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX, ROOT_SEARCH)
+    print(f"Built {len(movies)} movie page(s) and {len(collections)} collection page(s) in {OUTPUT_DIR} and {ROOT_INDEX}")
 
 
 def _copy_assets() -> None:

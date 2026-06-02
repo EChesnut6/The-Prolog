@@ -1,0 +1,28 @@
+<div class="ebert-container">
+  <section class="section-block">
+    <h1 class="section-title" style="font-family: var(--serif); font-size: 3rem; margin: 0 0 16px; color: var(--text);">The Greats</h1>
+    <p class="lede" style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; max-width: 800px;">
+      The pinnacle of cinema. These masterpieces are selected automatically based on a weighted average of filmmaking quality (40%), personal enjoyment (40%), and IMDb consensus (20%).
+    </p>
+
+    <div class="greats-grid">
+      {% for card in great_movies %}
+      <article class="great-movie-card">
+        <a href="reviews/{{ card.movie.slug }}.html">
+          <img class="movie-card__poster" src="{{ card.poster_url }}" alt="{{ card.movie.title }} poster" style="width: 100%; aspect-ratio: 2/3; object-fit: cover;">
+          <div class="great-movie-card__content">
+            <h3>{{ card.movie.title }}</h3>
+            <p>{{ card.movie.year }} · Directed by {{ card.director }}</p>
+            {% if card.tagline %}
+            <p class="tagline" style="font-style: italic; color: var(--text-muted); font-size: 0.9rem;">"{{ card.tagline }}"</p>
+            {% endif %}
+            <div class="meta">
+              <span>Weighted Score: {{ card.weighted_score }}/10</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

@@ -10,7 +10,7 @@ reviewed: true
 
 ## Primer
 
-#### Essentials
+#### The Premise + Essentials
 Family moves to the fictional town of Santa Carla California. Older brother quickly finds himself enamered with a beautiful girl who has some less than ideal company of dirt bike riding group of guys, who, yes, are vampires. The younger brother meets a pair of brothers who run a comic shop on the pier as they warn him about the local dangers. The mom needs a job after her divorce which is when she meets some guy who owns a record/video store on the pier. Watch the [trailer](https://www.youtube.com/watch?v=Q786UsnOcsY) up till **1:06**. 
 
 #### Vibe
