@@ -1,0 +1,29 @@
+<div class="ebert-container">
+  <header class="collection-header">
+    <a href="index.html" class="back-link" style="color: var(--accent); font-family: var(--sans); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; text-decoration: none; display: inline-block; margin-bottom: 16px;">← Back to Collections</a>
+    <h1>{{ collection.title }}</h1>
+    <p class="lead">{{ collection.teaser }}</p>
+    <div class="collection-overview" style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">
+      {{ collection.overview | safe }}
+    </div>
+  </header>
+
+  <section class="collection-movies">
+    {% for item in movie_cards %}
+    <article class="collection-movie-item">
+      <a href="../reviews/{{ item.movie.slug }}.html" style="display: flex; gap: 32px; width: 100%; text-decoration: none; color: inherit;">
+        <img class="collection-movie-item__poster" src="{{ item.poster_url }}" alt="{{ item.movie.title }} poster">
+        <div class="collection-movie-item__copy">
+          <h2 style="font-family: var(--serif); font-size: 1.8rem; margin: 0 0 8px; color: var(--text);">{{ item.movie.title }}</h2>
+          <p class="movie-meta">{{ item.movie.year }} · Directed by {{ item.director }}</p>
+          {% if item.tagline %}
+          <p class="tagline"><em>"{{ item.tagline }}"</em></p>
+          {% endif %}
+          <div class="teaser">{{ item.movie.primer | safe | truncate(350) }}</div>
+          <span style="color: var(--accent); font-weight: 700; font-family: var(--sans); text-transform: uppercase; font-size: 0.85rem; display: inline-block; margin-top: auto;">Read Pre-flight Checklist →</span>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </section>
+</div>
