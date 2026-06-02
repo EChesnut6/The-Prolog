@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>21 Jump Street | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-06-01</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="../collections/index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="movie-detail-container ebert-container">
+  
+  <!-- Unified Top Identity Section -->
+  <div class="movie-header-section">
+    <!-- Movie Background Image (Banner) -->
+    <div class="movie-banner" style="background-image: url('https://image.tmdb.org/t/p/w1280/d1ACwtoBygLKkGjCq9LUXnmcki.jpg');">
+      <div class="movie-banner-overlay"></div>
+    </div>
+
+    <!-- Poster & Title Box Overlap Container -->
+    <div class="movie-header-content">
+      <!-- Movie Poster -->
+      <div class="movie-poster-box">
+        <img src="https://image.tmdb.org/t/p/w780/8v3Sqv9UcIUC4ebmpKWROqPBINZ.jpg" alt="21 Jump Street poster">
+      </div>
+      
+      <!-- Box 1: Title, Year, Director, Tagline -->
+      <div class="outline-box title-box">
+        <h1 class="movie-title">21 Jump Street</h1>
+        <div class="movie-core-meta">
+          <span class="movie-year">2012</span>
+          <span class="meta-dot">•</span>
+          <span class="movie-director">Directed by <strong>Phil Lord, Christopher Miller</strong></span>
+        </div>
+        
+        <p class="movie-tagline">“The only thing getting blown tonight is their cover.”</p>
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Focal Point) -->
+    <div class="movie-grid-left">
+      <!-- The Pre-View -->
+      <section class="movie-section prose preview-section" aria-labelledby="preview-heading">
+        <p class="eyebrow">The Pre-View</p>
+        <h2 id="preview-heading">What to know before watching</h2>
+        <div class="preview-content">
+          <p>Add spoiler-light context for someone before watching.</p>
+        </div>
+      </section>
+      
+      <!-- Spoilers below divider -->
+      <div class="spoiler-warning">
+        <hr>
+        <span>Spoilers below</span>
+        <hr>
+      </div>
+      
+      <!-- The Review -->
+      <section class="movie-section prose review-section" aria-labelledby="review-heading">
+        <p class="eyebrow">The Review</p>
+        <h2 id="review-heading">Full critique</h2>
+        
+        <div class="review-wrapper">
+          <!-- Spoiler Gate Card Overlay -->
+          <div class="spoiler-gate" id="spoiler-gate">
+            <div class="spoiler-gate-card">
+              <div class="spoiler-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </div>
+              <h3>Spoiler Protected</h3>
+              <p>This critique contains spoilers for <strong>21 Jump Street</strong>.</p>
+              <button class="reveal-button" id="reveal-review-btn">Reveal Review</button>
+            </div>
+          </div>
+          
+          <!-- Masked Critique Text -->
+          <div class="review-content review-masked" id="review-content">
+            <p>Write the full critique here.</p>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const btn = document.getElementById('reveal-review-btn');
+          const wrapper = document.querySelector('.review-wrapper');
+          if (btn && wrapper) {
+            btn.addEventListener('click', () => {
+              wrapper.classList.add('is-revealed');
+            });
+          }
+        });
+      </script>
+    </div>
+    
+    <!-- Right Column (Sidebar) -->
+    <div class="movie-grid-right">
+      <!-- Box 2: Specs & Scores -->
+      <div class="outline-box specs-box">
+        <div class="spec-group">
+          
+          <div class="spec-row">
+            <span class="spec-label">Writer</span>
+            <span class="spec-val">Michael Bacall</span>
+          </div>
+          
+          
+          <div class="spec-row">
+            <span class="spec-label">Run Time</span>
+            <span class="spec-val">109 min</span>
+          </div>
+          
+          
+          <div class="spec-row">
+            <span class="spec-label">Genre</span>
+            <span class="spec-val">Action, Comedy, Crime</span>
+          </div>
+          
+          
+          <div class="spec-row">
+            <span class="spec-label">Stars</span>
+            <span class="spec-val">Jonah Hill, Channing Tatum, Brie Larson, Dave Franco, Rob Riggle</span>
+          </div>
+          
+          
+          <div class="spec-row">
+            <span class="spec-label">IMDb</span>
+            <span class="spec-val">7.2/10</span>
+          </div>
+          
+        </div>
+        
+        <div class="scores-group">
+          <h3>My Scores</h3>
+          <div class="movie-badges">
+            
+            <div class="rating-check" aria-label="Enjoyment rating 9 out of 10">
+              <span>Enjoyment</span>
+              <strong>9/10</strong>
+            </div>
+            
+            
+            <div class="rating-check" aria-label="Filmmaking rating 6 out of 10">
+              <span>Filmmaking</span>
+              <strong>6/10</strong>
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- Box 2.5: More by this Director -->
+      
+      <div class="outline-box related-box">
+        <h3>More by Phil Lord, Christopher Miller</h3>
+        <div class="related-list">
+          
+          <a href="../reviews/the-lego-movie.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/lbctonEnewCYZ4FYoTZhs8cidAl.jpg" alt="The Lego Movie poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">The Lego Movie</span>
+              <span class="related-year">2014</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/project-hail-mary.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/yihdXomYb5kTeSivtFndMy5iDmf.jpg" alt="Project Hail Mary poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Project Hail Mary</span>
+              <span class="related-year">2026</span>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+      
+      
+      <!-- Box 3: More Like This -->
+      <div class="outline-box related-box">
+        <h3>More like this</h3>
+        <div class="related-list">
+          
+          <a href="../reviews/the-lego-movie.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/lbctonEnewCYZ4FYoTZhs8cidAl.jpg" alt="The Lego Movie poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">The Lego Movie</span>
+              <span class="related-year">2014</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/project-hail-mary.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/yihdXomYb5kTeSivtFndMy5iDmf.jpg" alt="Project Hail Mary poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Project Hail Mary</span>
+              <span class="related-year">2026</span>
+            </div>
+          </a>
+          
+          <a href="../reviews/transformers.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/1P7w3AImoEOWJX7nn3fdaKDfEQA.jpg" alt="Transformers poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Transformers</span>
+              <span class="related-year">2007</span>
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

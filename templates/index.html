@@ -81,15 +81,16 @@
       </div>
 
       <!-- Collections -->
+      {% if collections %}
       <div class="sidebar-block">
         <h3 class="sidebar-title">Collections</h3>
         <ul class="collections-list">
-          <li><a href="#">Criterion Collection</a></li>
-          <li><a href="#">Best of the 70s</a></li>
-          <li><a href="#">Film Noir Essentials</a></li>
-          <li><a href="#">Modern Classics</a></li>
+          {% for col in collections %}
+          <li><a href="public/collections/{{ col.slug }}.html">{{ col.title }}</a></li>
+          {% endfor %}
         </ul>
       </div>
+      {% endif %}
     </aside>
   </div>
 

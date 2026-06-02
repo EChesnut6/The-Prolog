@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import Any
 
 SCORE_FIELDS = {
     "letterboxd_score": "Letterboxd score",
@@ -59,3 +60,41 @@ Add spoiler-light context for someone before watching.
 
 Write the full critique here.
 """
+
+
+def get_weighted_score(movie_content: Any, metadata: dict[str, Any]) -> float | None:
+    ratings = []
+    weights = []
+
+    # 1. Enjoyment Rating (weight: 0.4)
+    try:
+        if movie_content.enjoyment_rating and movie_content.enjoyment_rating.strip().upper() != "TBD":
+            ratings.append(float(movie_content.enjoyment_rating))
+            weights.append(0.4)
+    except ValueError:
+        pass
+
+    # 2. Filmmaking Rating (weight: 0.4)
+    try:
+        if movie_content.filmmaking_rating and movie_content.filmmaking_rating.strip().upper() != "TBD":
+            ratings.append(float(movie_content.filmmaking_rating))
+            weights.append(0.4)
+    except ValueError:
+        pass
+
+    # 3. IMDb Score (weight: 0.2)
+    imdb_val = metadata.get("imdb_score") or movie_content.scores.get("IMDb score")
+    if imdb_val:
+        try:
+            # e.g., "8.5/10" -> 8.5
+            clean_val = str(imdb_val).split("/")[0].strip()
+            ratings.append(float(clean_val))
+            weights.append(0.2)
+        except ValueError:
+            pass
+
+    if not ratings:
+        return None
+
+    return sum(r * w for r, w in zip(ratings, weights)) / sum(weights)
+

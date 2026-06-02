@@ -121,6 +121,12 @@
             <span class="spec-val">{{ cast | join(', ') }}</span>
           </div>
           {% endif %}
+          {% if imdb_score %}
+          <div class="spec-row">
+            <span class="spec-label">IMDb</span>
+            <span class="spec-val">{{ imdb_score }}</span>
+          </div>
+          {% endif %}
         </div>
         
         <div class="scores-group">
@@ -144,6 +150,26 @@
           </div>
         </div>
       </div>
+      
+      <!-- Box 2.5: More by this Director -->
+      {% if director_movies %}
+      <div class="outline-box related-box">
+        <h3>More by {% if director and director != "Director unavailable" %}{{ director }}{% else %}this director{% endif %}</h3>
+        <div class="related-list">
+          {% for rel in director_movies %}
+          <a href="../reviews/{{ rel.slug }}.html" class="related-card">
+            <div class="related-poster">
+              <img src="{{ rel.poster_url }}" alt="{{ rel.title }} poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">{{ rel.title }}</span>
+              <span class="related-year">{{ rel.year }}</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
       
       <!-- Box 3: More Like This -->
       <div class="outline-box related-box">

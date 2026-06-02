@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Collections | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-06-01</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="ebert-container">
+  <section class="section-block">
+    <h1 class="section-title" style="font-family: var(--serif); font-size: 3rem; margin: 0 0 16px; color: var(--text);">Curated Collections</h1>
+    <p class="lede" style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; max-width: 800px;">
+      Explore custom-tailored collections of films grouped by thematic link, historical movement, or artistic style.
+    </p>
+
+    <div class="collections-grid">
+      
+      <article class="collection-card">
+        <a href="film-noir-essentials.html">
+          <div class="collection-card__content">
+            <h3>Film Noir Essentials</h3>
+            <p>Cynical heroes, dark shadows, and complex moral dilemmas that define the detective genre.</p>
+            <div class="meta">
+              <span>3 Films</span>
+              <span>View Collection →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      
+      <article class="collection-card">
+        <a href="modern-classics.html">
+          <div class="collection-card__content">
+            <h3>Modern Classics</h3>
+            <p>Contemporary cinema masterpieces that stand out for their exceptional direction and unique voices.</p>
+            <div class="meta">
+              <span>2 Films</span>
+              <span>View Collection →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      
+      <article class="collection-card">
+        <a href="modern-horror.html">
+          <div class="collection-card__content">
+            <h3>Modern Horror</h3>
+            <p>The best of modern horror</p>
+            <div class="meta">
+              <span>2 Films</span>
+              <span>View Collection →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      
+    </div>
+  </section>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

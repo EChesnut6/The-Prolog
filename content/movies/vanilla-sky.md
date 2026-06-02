@@ -19,12 +19,12 @@ David Aames, a young wealthy publishing tycoon in NYC, appears to have it all-ex
 
 ##### Remix
 
-*Vanilla Sky* is actually a remake of the Spanish movie *Abre los ojos* (Open Your Eyes), which came out in 1997. Cameron Crowe, the director of the former, considers his version more of a remix rather than a true remake. Alejandro Amenábar has also praised the work of Crowe, comparing them as,
+*Vanilla Sky* is actually a remake of the Spanish movie *Abre los ojos* ([[Open Your Eyes]]), which came out in 1997. Cameron Crowe, the director of the former, considers his version more of a remix rather than a true remake. Alejandro Amenábar has also praised the work of Crowe, comparing them as,
 
 > "the same song sung by very different voices, one more operatic while the other is rock and roll."
 > — Alejandro Amenábar
 
-A fun fact about *Abre los ojos* is that Penelope Cruz actually plays the same character, Sofia, in both. In the case that you've already seen *Open Your Eyes*, then you will perhaps have a deeper appreciation and notice a dialog between the two films which Crowe has mentioned in multiple interviews as being purposeful.
+A fun fact about *Abre los ojos* is that Penelope Cruz actually plays the same character, Sofia, in both. In the case that you've already seen [[open-your-eyes|Open Your Eyes]], then you will perhaps have a deeper appreciation and notice a dialog between the two films which Crowe has mentioned in multiple interviews as being purposeful.
 
 ##### Keep in Mind
 Pay special attention to the use of commercial music. Crowe has noted in interviews that the soundtrack was chosen specifically to comment directly on the characters' state as well as the film itself. Some songs are also used in an ironic sense, being turned on their head to juxtapose the current situation. Many of these songs were popular at the time or had been in the past, especially in commercials. Crowe loved the idea of using commercial and popular music in a nonconventional way.

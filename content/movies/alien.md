@@ -10,8 +10,7 @@ reviewed: false
 
 ## Primer
 
-Dude she wins I can't believe it!!!!
-Does adding to this and therefore editing fix???
+Null
 
 ## Review
 
