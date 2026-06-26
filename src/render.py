@@ -149,8 +149,9 @@ def render_movie(
 ) -> str:
     metadata = {**metadata, **_score_metadata(movie)}
     
-    similar_movies = _get_similar_movies(movie, metadata, all_movies)
     director_movies = _get_director_movies(movie, metadata, all_movies)
+    director_slugs = {dm["slug"] for dm in director_movies}
+    similar_movies = _get_similar_movies(movie, metadata, all_movies, exclude_slugs=director_slugs)
     
     movie_data = asdict(movie)
     movie_data.update(
@@ -434,6 +435,7 @@ def _get_similar_movies(
     current_metadata: dict[str, Any],
     all_movies: list[tuple[MovieContent, dict[str, Any]]],
     limit: int = 3,
+    exclude_slugs: set[str] | None = None,
 ) -> list[dict[str, Any]]:
     scored_movies = []
     current_genres = set(current_metadata.get("genres", []))
@@ -442,6 +444,8 @@ def _get_similar_movies(
 
     for other_movie, other_metadata in all_movies:
         if other_movie.slug == current_movie.slug:
+            continue
+        if exclude_slugs and other_movie.slug in exclude_slugs:
             continue
         
         score = 0

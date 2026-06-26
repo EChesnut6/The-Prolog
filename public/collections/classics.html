@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Classics | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-06-07</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="ebert-container">
+  <header class="collection-header">
+    <a href="index.html" class="back-link" style="color: var(--accent); font-family: var(--sans); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; text-decoration: none; display: inline-block; margin-bottom: 16px;">← Back to Collections</a>
+    <h1>Classics</h1>
+    <p class="lead">List of my favorite oldies that stand the test of timme</p>
+    <div class="collection-overview" style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">
+      <h2>Overview</h2>
+<p>Add the collection overview description here. Markdown is supported.</p>
+    </div>
+  </header>
+
+  <section class="collection-movies">
+    
+    <article class="collection-movie-item">
+      <a href="../reviews/the-apartment.html" style="display: flex; gap: 32px; width: 100%; text-decoration: none; color: inherit;">
+        <img class="collection-movie-item__poster" src="https://image.tmdb.org/t/p/w780/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg" alt="The Apartment poster">
+        <div class="collection-movie-item__copy">
+          <h2 style="font-family: var(--serif); font-size: 1.8rem; margin: 0 0 8px; color: var(--text);">The Apartment</h2>
+          <p class="movie-meta">1960 · Directed by Billy Wilder</p>
+          
+          <p class="tagline"><em>"Movie-wise, there has never been anything like it - laugh-wise, love-wise, or otherwise-wise!"</em></p>
+          
+          <div class="teaser"><h4>The Premise</h4>
+<p>A young Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but office politics and his own romantic hopes complicate matters.</p>
+<h4>Essentials</h4>
+<p>Unfortunately, I wasn't able to find a trailer that didn't spoil major plot points, which when I watched...</div>
+          <span style="color: var(--accent); font-weight: 700; font-family: var(--sans); text-transform: uppercase; font-size: 0.85rem; display: inline-block; margin-top: auto;">Read Pre-flight Checklist →</span>
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-item">
+      <a href="../reviews/casablanca.html" style="display: flex; gap: 32px; width: 100%; text-decoration: none; color: inherit;">
+        <img class="collection-movie-item__poster" src="https://image.tmdb.org/t/p/w780/lGCEKlJo2CnWydQj7aamY7s1S7Q.jpg" alt="Casablanca poster">
+        <div class="collection-movie-item__copy">
+          <h2 style="font-family: var(--serif); font-size: 1.8rem; margin: 0 0 8px; color: var(--text);">Casablanca</h2>
+          <p class="movie-meta">1942 · Directed by Michael Curtiz</p>
+          
+          <p class="tagline"><em>"They had a date with fate in Casablanca!"</em></p>
+          
+          <div class="teaser"><h4>The Premise</h4>
+<p>A cynical American club owner is reunited with his lost love and must decide wether to help her and her rebellion leading husband escape.</p>
+<h4>Essentials</h4>
+<p>This American guy named Richard (aka Rick) owns a really cool club in Casablanca in the year 1941. World War II is going wild and French Morocco is in a...</div>
+          <span style="color: var(--accent); font-weight: 700; font-family: var(--sans); text-transform: uppercase; font-size: 0.85rem; display: inline-block; margin-top: auto;">Read Pre-flight Checklist →</span>
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-item">
+      <a href="../reviews/double-indemnity.html" style="display: flex; gap: 32px; width: 100%; text-decoration: none; color: inherit;">
+        <img class="collection-movie-item__poster" src="https://image.tmdb.org/t/p/w780/rVNYZZgfhwqVMMWlBmxOfWqnwCj.jpg" alt="Double Indemnity poster">
+        <div class="collection-movie-item__copy">
+          <h2 style="font-family: var(--serif); font-size: 1.8rem; margin: 0 0 8px; color: var(--text);">Double Indemnity</h2>
+          <p class="movie-meta">1944 · Directed by Billy Wilder</p>
+          
+          <p class="tagline"><em>"It&#39;s love and murder at first sight!"</em></p>
+          
+          <div class="teaser"><p>Add spoiler-light context for someone before watching.</p></div>
+          <span style="color: var(--accent); font-weight: 700; font-family: var(--sans); text-transform: uppercase; font-size: 0.85rem; display: inline-block; margin-top: auto;">Read Pre-flight Checklist →</span>
+        </div>
+      </a>
+    </article>
+    
+  </section>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -60,6 +60,29 @@ python3 src/build.py --metadata-cache path/to/cache.json
 
 Open `index.html` in a browser to view the generated site. The root `index.html` and `search.html` are intentional for GitHub Pages; review pages are written under `public/reviews/`.
 
+## Manage Reviews (CLI Workflow Manager)
+
+To manage your writing process, list drafts, check status, edit ratings, preview text, and open movies in the **Texodus** editor, launch the interactive workflow manager:
+
+```sh
+python3 src/manage_reviews.py
+```
+
+You can also run commands non-interactively for quick updates:
+
+- **List reviews by status:** `python3 src/manage_reviews.py list --status draft`
+- **Check a review's details:** `python3 src/manage_reviews.py status perfect-blue`
+- **Open a review in Texodus:** `python3 src/manage_reviews.py open perfect-blue`
+- **Quickly print review content:** `python3 src/manage_reviews.py preview perfect-blue`
+- **Update ratings or toggle published status (and optionally auto-rebuild):**
+  ```sh
+  python3 src/manage_reviews.py update perfect-blue --enjoyment 9 --filmmaking 10 --reviewed true --rebuild
+  ```
+- **Create a new review:**
+  ```sh
+  python3 src/manage_reviews.py create --title "The Matrix" --year 1999 --rebuild
+  ```
+
 ## Add A Movie
 
 Create a draft with the CLI:

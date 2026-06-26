@@ -75,5 +75,43 @@ class TestMovieLinks(unittest.TestCase):
         self.assertIn('href="../coming-soon.html"', resolved_collection)
         self.assertIn('href="../reviews/casablanca.html"', resolved_collection)
 
+    def test_similar_movies_exclusion(self):
+        from src.render import _get_similar_movies
+        
+        class MockMovie:
+            def __init__(self, title, slug, year, reviewed=True):
+                self.title = title
+                self.slug = slug
+                self.year = year
+                self.reviewed = reviewed
+                
+        current_movie = MockMovie("Inception", "inception", "2010")
+        current_metadata = {"genres": ["Sci-Fi", "Action"], "director": "Christopher Nolan"}
+        
+        m1 = MockMovie("Interstellar", "interstellar", "2014")
+        m2 = MockMovie("Tenet", "tenet", "2020")
+        m3 = MockMovie("The Matrix", "the-matrix", "1999")
+        
+        all_movies = [
+            (m1, {"director": "Christopher Nolan", "genres": ["Sci-Fi", "Action"]}),
+            (m2, {"director": "Christopher Nolan", "genres": ["Sci-Fi", "Action"]}),
+            (m3, {"director": "Lana Wachowski", "genres": ["Sci-Fi", "Action"]}),
+        ]
+        
+        # Without exclusion, Interstellar and Tenet are the most similar because of same director
+        similar_no_exclude = _get_similar_movies(current_movie, current_metadata, all_movies, limit=3)
+        self.assertEqual(len(similar_no_exclude), 3)
+        self.assertEqual(similar_no_exclude[0]["slug"], "interstellar")
+        self.assertEqual(similar_no_exclude[1]["slug"], "tenet")
+        self.assertEqual(similar_no_exclude[2]["slug"], "the-matrix")
+        
+        # With exclusion of director movies (interstellar and tenet)
+        exclude_slugs = {"interstellar", "tenet"}
+        similar_with_exclude = _get_similar_movies(current_movie, current_metadata, all_movies, limit=3, exclude_slugs=exclude_slugs)
+        
+        # Now only The Matrix should be returned because Interstellar and Tenet are excluded
+        self.assertEqual(len(similar_with_exclude), 1)
+        self.assertEqual(similar_with_exclude[0]["slug"], "the-matrix")
+
 if __name__ == "__main__":
     unittest.main()
