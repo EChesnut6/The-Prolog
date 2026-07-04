@@ -7,15 +7,16 @@
 
     <div class="collections-grid">
       {% for col in collections %}
-      <article class="collection-card">
+      <article class="collection-card collection-card--horizontal">
         <a href="{{ col.slug }}.html">
+          {% if col.poster_url %}
+          <div class="collection-card__poster-wrapper">
+            <img class="collection-card__poster" src="{{ col.poster_url }}" alt="{{ col.title }} cover poster">
+          </div>
+          {% endif %}
           <div class="collection-card__content">
             <h3>{{ col.title }}</h3>
             <p>{{ col.teaser }}</p>
-            <div class="meta">
-              <span>{{ col.movies | length }} Films</span>
-              <span>View Collection →</span>
-            </div>
           </div>
         </a>
       </article>

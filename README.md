@@ -5,8 +5,10 @@ Appreciate the artistic intent of a film without spoilers.
 
 The Prolog is a local Python static site generator for spoiler-light pre-flight checklists, reviews, historical context, and visual references.
 
-- `content/movies/*.md` stores one movie per Markdown file. Each file has simple `---` front matter plus `Primer` and `Review` sections.
-- `src/content.py` parses movie files, derives review status, converts Markdown to HTML, and sorts reviewed movies ahead of draft templates.
+- `content/movies/*.md` stores movie reviews. Each file has simple `---` front matter plus `Primer` and `Review` sections.
+- `content/collections/*.md` stores movie collections.
+- `content/articles/*.md` stores journal articles and essays.
+- `src/content.py` parses movie reviews, collections, and articles, converting Markdown to HTML with auto-resolving wiki-links.
 - `src/tmdb.py` fetches TMDB metadata and optional OMDb IMDb ratings when API keys are available.
 - `src/metadata_cache.py` reads and writes `.tmdb-cache.json`; cache entries are refreshed when the source Markdown hash, TMDB title, or year changes.
 - `src/render.py` renders Jinja templates from `templates/` into static pages.
@@ -17,6 +19,9 @@ The build writes static HTML to:
 - Root `index.html` for the GitHub Pages homepage.
 - Root `search.html` for movie search.
 - `public/reviews/*.html` for individual movie pages.
+- `public/collections/*.html` for thematic movie collections.
+- `public/articles.html` for the articles search & listing directory page.
+- `public/articles/*.html` for individual journal articles & essays.
 - `public/coming-soon.html`.
 - `public/assets/` when a root `assets/` directory exists; otherwise templates fall back to placeholder asset paths.
 
@@ -60,28 +65,41 @@ python3 src/build.py --metadata-cache path/to/cache.json
 
 Open `index.html` in a browser to view the generated site. The root `index.html` and `search.html` are intentional for GitHub Pages; review pages are written under `public/reviews/`.
 
-## Manage Reviews (CLI Workflow Manager)
+## Manage Content (CLI Workflow Manager)
 
-To manage your writing process, list drafts, check status, edit ratings, preview text, and open movies in the **Texodus** editor, launch the interactive workflow manager:
+To manage your writing process, list drafts, check status, edit metadata, preview content, and open reviews/articles in the **Texodus** editor, launch the interactive content manager:
 
 ```sh
 python3 src/manage_reviews.py
 ```
 
-You can also run commands non-interactively for quick updates:
+You can also run commands non-interactively for quick updates by grouping them into `review`, `collection`, or `article` subparsers:
 
-- **List reviews by status:** `python3 src/manage_reviews.py list --status draft`
-- **Check a review's details:** `python3 src/manage_reviews.py status perfect-blue`
-- **Open a review in Texodus:** `python3 src/manage_reviews.py open perfect-blue`
-- **Quickly print review content:** `python3 src/manage_reviews.py preview perfect-blue`
+### Reviews
+- **List reviews by status:** `python3 src/manage_reviews.py review list --status draft`
+- **Check a review's details:** `python3 src/manage_reviews.py review status perfect-blue`
+- **Open a review in Texodus:** `python3 src/manage_reviews.py review open perfect-blue`
+- **Quickly print review content:** `python3 src/manage_reviews.py review preview perfect-blue`
 - **Update ratings or toggle published status (and optionally auto-rebuild):**
   ```sh
-  python3 src/manage_reviews.py update perfect-blue --enjoyment 9 --filmmaking 10 --reviewed true --rebuild
+  python3 src/manage_reviews.py review update perfect-blue --enjoyment 9 --filmmaking 10 --reviewed true --rebuild
   ```
 - **Create a new review:**
   ```sh
-  python3 src/manage_reviews.py create --title "The Matrix" --year 1999 --rebuild
+  python3 src/manage_reviews.py review create --title "The Matrix" --year 1999 --rebuild
   ```
+
+### Collections
+- **List all collections:** `python3 src/manage_reviews.py collection list`
+- **Check collection details and movie statuses:** `python3 src/manage_reviews.py collection status classics`
+- **Create a collection:** `python3 src/manage_reviews.py collection create --title "Noir Classics" --teaser "Drenched in rain." --movies "double-indemnity,chinatown" --rebuild`
+
+### Articles
+- **List all articles:** `python3 src/manage_reviews.py article list`
+- **Check article metadata status:** `python3 src/manage_reviews.py article status the-evolution-of-comedy`
+- **Open an article in Texodus:** `python3 src/manage_reviews.py article open the-evolution-of-comedy`
+- **Update article details:** `python3 src/manage_reviews.py article update the-evolution-of-comedy --author "Eli Chesnut" --rebuild`
+- **Create a new article:** `python3 src/manage_reviews.py article create --title "Visual Metaphors" --teaser "On modern framing." --rebuild`
 
 ## Add A Movie
 
@@ -123,6 +141,28 @@ filmmaking_rating: 9
 letterboxd_score: 4.5/5
 imdb_score: 8.7/10
 ```
+
+## Add An Article
+
+Create an article draft with the CLI:
+
+```sh
+python3 src/manage_reviews.py article create --title "Article Title" --teaser "Article Teaser" --rebuild
+```
+
+Or create a new Markdown file in `content/articles/` (e.g. `content/articles/my-essay.md`). The generator expects front matter with these fields:
+
+```yaml
+---
+title: My Essay Title
+slug: my-essay-slug
+teaser: A summary of this essay.
+author: Author Name
+date: YYYY-MM-DD
+---
+```
+
+You can use wiki-links inside the article body (e.g. `[[the-lighthouse]]` or `[[the-evolution-of-comedy]]`) to auto-resolve to links within the site.
 
 ## Letterboxd Templates
 

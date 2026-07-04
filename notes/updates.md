@@ -4,15 +4,14 @@ attention meter?
 some kind of vibe icon?
   NOT EMOJIS, something more artsy
 
-
-Articles
-- full articles about different topics
-- articles page (link in header)
-
 Add list of chosen fun facts?
+  I guess this could be grabbing stuff from imdb? don't think this is a good idea
 
 director/actor pages? 
   They show details about the person and more importantly all movies with them?
+  leaning towards just showing the movies their in and a link to imdb
+  could separate movies by ones I've reviewed and others
 
-manage cli
-- expanding the manage_reviews script to manage collections and articles
+Random image from movies for collections, if a movie poster is shown in one collection that poster shouldn't be shown for any other collections to make them all different
+
+links to articles

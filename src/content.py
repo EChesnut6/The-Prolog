@@ -32,6 +32,27 @@ def convert_wiki_links(text: str) -> str:
     return pattern.sub(replace, text)
 
 
+def _extract_premise_section(primer_text: str) -> str | None:
+    lines = primer_text.splitlines()
+    premise_lines = []
+    in_premise = False
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("#"):
+            if "premise" in stripped.lower():
+                in_premise = True
+                premise_lines.append(line)
+            elif in_premise:
+                break
+        else:
+            if in_premise:
+                premise_lines.append(line)
+                
+    if premise_lines:
+        return "\n".join(premise_lines).strip()
+    return None
+
+
 @dataclass(frozen=True)
 class MovieContent:
     title: str
@@ -51,6 +72,7 @@ class MovieContent:
     last_modified: float
     writer: str
     cast: list[str]
+    premise: str | None
 
 
 def load_movies(content_dir: Path) -> list[MovieContent]:
@@ -71,6 +93,7 @@ def load_movie(path: Path) -> MovieContent:
 
     primer_text = convert_wiki_links(sections.get("Primer", ""))
     review_text = convert_wiki_links(sections.get("Review", ""))
+    premise_raw = _extract_premise_section(primer_text)
 
     return MovieContent(
         title=title,
@@ -90,6 +113,7 @@ def load_movie(path: Path) -> MovieContent:
         last_modified=path.stat().st_mtime,
         writer=metadata.get("writer", ""),
         cast=[c.strip() for c in metadata.get("cast", "").split(",") if c.strip()] if metadata.get("cast") else [],
+        premise=markdown.markdown(premise_raw) if premise_raw else None,
     )
 
 
@@ -226,3 +250,52 @@ def load_collection(path: Path) -> CollectionContent:
         movies=movies,
         overview=overview,
     )
+
+
+@dataclass(frozen=True)
+class ArticleContent:
+    title: str
+    slug: str
+    teaser: str
+    author: str
+    date: str
+    body: str
+    source_hash: str
+    last_modified: float
+
+
+def load_articles(content_dir: Path) -> list[ArticleContent]:
+    if not content_dir.exists():
+        return []
+    articles = [load_article(path) for path in content_dir.glob("*.md")]
+    return sorted(
+        articles,
+        key=lambda art: (art.date or "", -art.last_modified, art.title.lower()),
+        reverse=True
+    )
+
+
+def load_article(path: Path) -> ArticleContent:
+    raw = path.read_text(encoding="utf-8")
+    metadata, body = _split_front_matter(raw, path)
+
+    title = metadata.get("title", path.stem.replace("-", " ").title())
+    slug = metadata.get("slug", slugify(title))
+    teaser = metadata.get("teaser", "")
+    author = metadata.get("author", metadata.get("writer", "Eli Chesnut"))
+    date_str = metadata.get("date", "")
+
+    body_text = convert_wiki_links(body)
+    body_html = markdown.markdown(body_text)
+
+    return ArticleContent(
+        title=title,
+        slug=slug,
+        teaser=teaser,
+        author=author,
+        date=str(date_str),
+        body=body_html,
+        source_hash=hashlib.sha256(raw.encode("utf-8")).hexdigest(),
+        last_modified=path.stat().st_mtime,
+    )
+

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hell Yeah Movies | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-07-03</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+          <a href="../articles.html">Articles</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="ebert-container">
+  <header class="collection-header">
+    <a href="index.html" class="back-link" style="color: var(--accent); font-family: var(--sans); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; text-decoration: none; display: inline-block; margin-bottom: 16px;">← Back to Collections</a>
+    <h1>Hell Yeah Movies</h1>
+    <p class="lead">Feel good awesome movies that make you want to scream fuck yea</p>
+    <div class="collection-overview" style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">
+      <h2>Overview</h2>
+<p>Here are some movies that are just so fucking hype. For some of the series I just put the one that makes you wanna say fuck yea the most, not that the others don't already make you want to say fuck yea.</p>
+    </div>
+  </header>
+
+  <section class="collection-movies-grid">
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/transformers.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/1P7w3AImoEOWJX7nn3fdaKDfEQA.jpg" alt="Transformers poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>Transformers</h3>
+          <p class="movie-meta">2007 · Michael Bay</p>
+          
+          <p class="tagline"><em>"Their war. Our world."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/dune-part-two.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>Dune: Part Two</h3>
+          <p class="movie-meta">2024 · Denis Villeneuve</p>
+          
+          <p class="tagline"><em>"Long live the fighters."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/goodfellas.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg" alt="GoodFellas poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>GoodFellas</h3>
+          <p class="movie-meta">1990 · Martin Scorsese</p>
+          
+          <p class="tagline"><em>"Three decades of life in the mafia."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/inglourious-basterds.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg" alt="Inglourious Basterds poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>Inglourious Basterds</h3>
+          <p class="movie-meta">2009 · Quentin Tarantino</p>
+          
+          <p class="tagline"><em>"Once upon a time in Nazi occupied France..."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/the-dark-knight.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>The Dark Knight</h3>
+          <p class="movie-meta">2008 · Christopher Nolan</p>
+          
+          <p class="tagline"><em>"Welcome to a world without rules."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/the-empire-strikes-back.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg" alt="The Empire Strikes Back poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>The Empire Strikes Back</h3>
+          <p class="movie-meta">1980 · Irvin Kershner</p>
+          
+          <p class="tagline"><em>"The Star Wars saga continues."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+    <article class="collection-movie-card">
+      <a href="../reviews/the-lord-of-the-rings-the-return-of-the-king.html">
+        <div class="collection-movie-card__poster-wrapper">
+          <img class="collection-movie-card__poster" src="https://image.tmdb.org/t/p/w780/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg" alt="The Lord of the Rings The Return of the King poster">
+        </div>
+        <div class="collection-movie-card__content">
+          <h3>The Lord of the Rings The Return of the King</h3>
+          <p class="movie-meta">2003 · Peter Jackson</p>
+          
+          <p class="tagline"><em>"The eye of the enemy is moving."</em></p>
+          
+        </div>
+      </a>
+    </article>
+    
+  </section>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

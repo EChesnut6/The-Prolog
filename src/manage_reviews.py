@@ -12,11 +12,12 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from src.content import load_movies, load_movie, MovieContent, load_collections, load_collection, CollectionContent
+from src.content import load_movies, load_movie, MovieContent, load_collections, load_collection, CollectionContent, load_articles, load_article, ArticleContent
 from src.utils import slugify, render_review_template
 
 CONTENT_DIR = ROOT / "content" / "movies"
 COLLECTIONS_DIR = ROOT / "content" / "collections"
+ARTICLES_DIR = ROOT / "content" / "articles"
 
 # Terminal Color Codes
 def color(text: str, color_code: str) -> str:
@@ -224,6 +225,89 @@ def update_collection_metadata_file(path: Path, updates: dict[str, Any]) -> bool
     except Exception as e:
         print(color(f"Error updating collection metadata: {e}", RED))
         return False
+
+
+# --- Article Helpers ---
+
+def load_all_articles() -> list[dict]:
+    cols = load_articles(ARTICLES_DIR)
+    articles = []
+    for col in cols:
+        path = ARTICLES_DIR / f"{col.slug}.md"
+        articles.append({
+            "article": col,
+            "path": path,
+            "last_modified": path.stat().st_mtime if path.exists() else 0.0
+        })
+    articles.sort(key=lambda a: a["article"].date or "", reverse=True)
+    return articles
+
+def update_article_metadata_file(path: Path, updates: dict[str, Any]) -> bool:
+    if not path.exists():
+        print(color(f"Error: File {path} does not exist.", RED))
+        return False
+    try:
+        raw = path.read_text(encoding="utf-8")
+        if not raw.startswith("---\n"):
+            print(color("Error: File does not start with YAML front matter (---).", RED))
+            return False
+            
+        parts = raw.split("---", 2)
+        if len(parts) < 3:
+            print(color("Error: Incomplete front matter delimiter.", RED))
+            return False
+            
+        front_matter_str = parts[1]
+        body = parts[2]
+        
+        # Parse existing front matter
+        metadata: dict[str, Any] = {}
+        current_key = None
+        for line in front_matter_str.splitlines():
+            if not line.strip():
+                continue
+            if line.strip().startswith("-") and current_key:
+                val = line.strip().lstrip("-").strip()
+                if not isinstance(metadata[current_key], list):
+                    metadata[current_key] = []
+                metadata[current_key].append(val)
+                continue
+
+            key, separator, value = line.partition(":")
+            if not separator:
+                continue
+            
+            key_str = key.strip()
+            val_str = value.strip()
+            
+            if not val_str:
+                metadata[key_str] = []
+                current_key = key_str
+            else:
+                metadata[key_str] = val_str
+                current_key = key_str
+                
+        # Apply updates
+        for k, v in updates.items():
+            metadata[k] = v
+            
+        # Serialize back to front matter
+        new_front_matter = []
+        for k, v in metadata.items():
+            if isinstance(v, list):
+                new_front_matter.append(f"{k}:")
+                for item in v:
+                    new_front_matter.append(f"  - {item}")
+            else:
+                new_front_matter.append(f"{k}: {v}")
+                
+        new_front_matter_str = "\n".join(new_front_matter)
+        path.write_text(f"---\n{new_front_matter_str}\n---{body}", encoding="utf-8")
+        return True
+    except Exception as e:
+        print(color(f"Error updating article metadata: {e}", RED))
+        return False
+
 
 # --- General System Helpers ---
 
@@ -928,6 +1012,249 @@ def run_collections_menu() -> None:
             print(color("Invalid choice. Try again.", RED))
             input("Press Enter to continue...")
 
+
+# --- Article Flows & Menus ---
+
+def select_article_from_list(articles: list[dict], title: str) -> dict | None:
+    if not articles:
+        print_title(title)
+        print("No articles found.")
+        input("\nPress Enter to return...")
+        return None
+
+    page_size = 10
+    total = len(articles)
+    num_pages = (total + page_size - 1) // page_size if total > 0 else 1
+    current_page = 0
+    
+    while True:
+        print_title(title)
+        start_idx = current_page * page_size
+        end_idx = min(start_idx + page_size, total)
+        
+        print(f"Page {current_page + 1} of {num_pages} ({total} articles total)")
+        print("-" * 60)
+        
+        page_arts = articles[start_idx:end_idx]
+        for i, item in enumerate(page_arts):
+            item_num = i + 1
+            art = item["article"]
+            print(f"[{item_num:2d}] {art.title}")
+            print(f"     Author: {art.author} | Date: {art.date}")
+            print(f"     Slug:   {art.slug}")
+            
+        print("-" * 60)
+        
+        nav_options = []
+        if current_page > 0:
+            nav_options.append("[P] Previous Page")
+        if current_page < num_pages - 1:
+            nav_options.append("[N] Next Page")
+        nav_options.append("[Q] Cancel")
+        print(" | ".join(nav_options))
+        
+        choice = input(color("\nSelection (number or letter): ", BOLD)).strip().lower()
+        if choice == 'q':
+            return None
+        elif choice == 'p' and current_page > 0:
+            current_page -= 1
+        elif choice == 'n' and current_page < num_pages - 1:
+            current_page += 1
+        else:
+            try:
+                idx = int(choice) - 1
+                if 0 <= idx < len(page_arts):
+                    return page_arts[idx]
+                else:
+                    print(color("Invalid selection index.", RED))
+                    input("Press Enter to continue...")
+            except ValueError:
+                print(color("Invalid option. Try again.", RED))
+                input("Press Enter to continue...")
+
+def handle_article_actions(art: ArticleContent, path: Path) -> bool:
+    while True:
+        art = load_article(path)
+        
+        print_title(f"MANAGE ARTICLE: {art.title}")
+        print(f"Slug:            {art.slug}")
+        print(f"Author:          {art.author}")
+        print(f"Date:            {art.date}")
+        print(f"File Path:       {path}")
+        print("-" * 60)
+        print("1. Open in Texodus")
+        print("2. Preview Article Body")
+        print("3. Edit Title / Author / Date / Teaser")
+        print("4. Rebuild static site")
+        print("5. Back to articles list")
+        print("-" * 60)
+        
+        choice = input(color("Selection: ", BOLD)).strip()
+        if choice == '1':
+            open_in_texodus(path)
+            input("\nPress Enter to return...")
+        elif choice == '2':
+            preview_article(art, path)
+            input("\nPress Enter to return...")
+        elif choice == '3':
+            edit_article_metadata_flow(art, path)
+        elif choice == '4':
+            rebuild_site()
+            input("\nPress Enter to return...")
+        elif choice == '5':
+            return True
+        else:
+            print(color("Invalid choice. Try again.", RED))
+            input("Press Enter to continue...")
+
+def edit_article_metadata_flow(art: ArticleContent, path: Path) -> None:
+    print_title(f"Edit Article Metadata: {art.title}")
+    new_title = input(f"New Title [{art.title}]: ").strip() or art.title
+    new_author = input(f"New Author [{art.author}]: ").strip() or art.author
+    new_date = input(f"New Date [{art.date}]: ").strip() or art.date
+    new_teaser = input(f"New Teaser [{art.teaser}]: ").strip() or art.teaser
+    
+    updates = {}
+    if new_title != art.title:
+        updates["title"] = new_title
+    if new_author != art.author:
+        updates["author"] = new_author
+    if new_date != art.date:
+        updates["date"] = new_date
+    if new_teaser != art.teaser:
+        updates["teaser"] = new_teaser
+        
+    if updates:
+        if update_article_metadata_file(path, updates):
+            print(color("Article metadata updated successfully.", GREEN))
+            rebuild_site()
+        else:
+            print(color("Failed to update article metadata.", RED))
+    else:
+        print("No changes made.")
+    input("\nPress Enter to continue...")
+
+def create_new_article_flow() -> bool:
+    print_title("Create a New Article")
+    title = input(color("Article Title (required): ", BOLD)).strip()
+    if not title:
+        print(color("Title is required. Cancelled.", RED))
+        input("Press Enter to continue...")
+        return False
+        
+    teaser = input(color("Teaser/Short Description (required): ", BOLD)).strip()
+    if not teaser:
+        print(color("Teaser is required. Cancelled.", RED))
+        input("Press Enter to continue...")
+        return False
+        
+    author = input(color("Author [Eli Chesnut]: ", BOLD)).strip() or "Eli Chesnut"
+    
+    # Default date to today
+    today_str = datetime.date.today().isoformat()
+    date_str = input(color(f"Date [{today_str}]: ", BOLD)).strip() or today_str
+    
+    slug = slugify(title)
+    path = ARTICLES_DIR / f"{slug}.md"
+    if path.exists():
+        print(color(f"Error: Article already exists at {path}", RED))
+        input("Press Enter to continue...")
+        return False
+
+    try:
+        ARTICLES_DIR.mkdir(parents=True, exist_ok=True)
+        content = f"""---
+title: {title}
+slug: {slug}
+teaser: {teaser}
+author: {author}
+date: {date_str}
+---
+
+Write your article here. Markdown is supported.
+"""
+        path.write_text(content, encoding="utf-8")
+        print(color(f"\nSuccessfully created new article: {path}", GREEN))
+        
+        open_now = input("Would you like to open it in Texodus now? (y/n) [y]: ").strip().lower()
+        if open_now in ("", "y", "yes"):
+            open_in_texodus(path)
+            
+        rebuild_site()
+        input("\nPress Enter to continue...")
+        return True
+    except Exception as e:
+        print(color(f"Error creating article: {e}", RED))
+        input("Press Enter to continue...")
+        return False
+
+def preview_article(art: ArticleContent, path: Path) -> None:
+    print_title(f"Article Preview: {art.title}")
+    print(f"Teaser: {art.teaser}")
+    print("-" * 60)
+    try:
+        raw = path.read_text(encoding="utf-8")
+        parts = raw.split("---", 2)
+        body = parts[2] if len(parts) >= 3 else raw
+        body_lines = body.strip().splitlines()
+        for line in body_lines[:25]:
+            print(line)
+        if len(body_lines) > 25:
+            print(color("...", DIM))
+    except Exception as e:
+        print(color(f"Error reading file for preview: {e}", RED))
+
+def run_articles_menu() -> None:
+    while True:
+        articles = load_all_articles()
+        
+        print_title("THE PROLOG - ARTICLE MANAGER")
+        print(f"1. Search / List All Articles ({len(articles)} articles)")
+        print(f"2. Create a New Article")
+        print(f"3. Back to Main Menu")
+        print("-" * 60)
+        
+        choice = input(color("Selection: ", BOLD)).strip()
+        if choice == '1':
+            query = input("Search query (optional, title or slug): ").strip()
+            matches = articles
+            if query:
+                matches = []
+                for a in articles:
+                    if query.lower() in a["article"].title.lower() or query.lower() in a["article"].slug.lower():
+                        matches.append(a)
+            selected = select_article_from_list(matches, f"Articles Search Results")
+            if selected:
+                handle_article_actions(selected["article"], selected["path"])
+        elif choice == '2':
+            create_new_article_flow()
+        elif choice == '3':
+            break
+        else:
+            print(color("Invalid choice. Try again.", RED))
+            input("Press Enter to continue...")
+
+def find_article_by_slug_or_title(slug_or_title: str, articles: list[dict]) -> dict | None:
+    for a in articles:
+        if a["article"].slug == slug_or_title:
+            return a
+    for a in articles:
+        if a["article"].title.lower() == slug_or_title.lower():
+            return a
+    matches = []
+    for a in articles:
+        if slug_or_title.lower() in a["article"].title.lower() or slug_or_title.lower() in a["article"].slug.lower():
+            matches.append(a)
+    if len(matches) == 1:
+        return matches[0]
+    elif len(matches) > 1:
+        print(color(f"Multiple matches found for '{slug_or_title}':", YELLOW))
+        for m in matches:
+            print(f"  - {m['article'].slug} ({m['article'].title})")
+        return None
+    return None
+
+
 # --- Main Interactive Loop ---
 
 def run_interactive() -> None:
@@ -935,8 +1262,9 @@ def run_interactive() -> None:
         print_title("THE PROLOG - MANAGEMENT CLI")
         print("1. Manage Reviews")
         print("2. Manage Collections")
-        print("3. Rebuild static site")
-        print("4. Exit")
+        print("3. Manage Articles")
+        print("4. Rebuild static site")
+        print("5. Exit")
         print("-" * 60)
         
         choice = input(color("Selection: ", BOLD)).strip()
@@ -945,9 +1273,11 @@ def run_interactive() -> None:
         elif choice == '2':
             run_collections_menu()
         elif choice == '3':
+            run_articles_menu()
+        elif choice == '4':
             rebuild_site()
             input("\nPress Enter to continue...")
-        elif choice == '4':
+        elif choice == '5':
             print(color("\nGoodbye!", GREEN))
             break
         else:
@@ -996,7 +1326,7 @@ def find_collection_by_slug_or_title(slug_or_title: str, collections: list[dict]
 
 def main() -> None:
     # Rewrite arguments for backward compatibility (legacy top-level review commands)
-    if len(sys.argv) > 1 and sys.argv[1] not in ("review", "collection", "-h", "--help"):
+    if len(sys.argv) > 1 and sys.argv[1] not in ("review", "collection", "article", "-h", "--help"):
         legacy_cmds = {"list", "status", "open", "update", "preview", "create"}
         if sys.argv[1] in legacy_cmds:
             sys.argv.insert(1, "review")
@@ -1080,6 +1410,45 @@ def main() -> None:
     c_create.add_argument("--slug", help="Collection slug (optional, generated from title if not set)")
     c_create.add_argument("--force", action="store_true", help="Overwrite existing collection")
     c_create.add_argument("--rebuild", action="store_true", help="Rebuild the site after creation")
+
+    # Article subparser group
+    article_parser = subparsers.add_parser("article", help="Manage journal articles")
+    article_subparsers = article_parser.add_subparsers(dest="subcommand", help="Article subcommand")
+    
+    # Article List
+    a_list = article_subparsers.add_parser("list", help="List articles")
+    a_list.add_argument("--search", help="Search term (title, author, or slug)")
+    
+    # Article Status
+    a_status = article_subparsers.add_parser("status", help="Get status of an article")
+    a_status.add_argument("slug_or_title", help="Article slug or title")
+    
+    # Article Open
+    a_open = article_subparsers.add_parser("open", help="Open an article in editor")
+    a_open.add_argument("slug_or_title", help="Article slug or title")
+    
+    # Article Update
+    a_update = article_subparsers.add_parser("update", help="Update article metadata")
+    a_update.add_argument("slug_or_title", help="Article slug or title")
+    a_update.add_argument("--title", help="Set article title")
+    a_update.add_argument("--author", help="Set article author")
+    a_update.add_argument("--date", help="Set article date (YYYY-MM-DD)")
+    a_update.add_argument("--teaser", help="Set article teaser")
+    a_update.add_argument("--rebuild", action="store_true", help="Rebuild the site after update")
+    
+    # Article Preview
+    a_preview = article_subparsers.add_parser("preview", help="Preview article content")
+    a_preview.add_argument("slug_or_title", help="Article slug or title")
+    
+    # Article Create
+    a_create = article_subparsers.add_parser("create", help="Create a new article")
+    a_create.add_argument("--title", required=True, help="Article title")
+    a_create.add_argument("--teaser", required=True, help="Article teaser")
+    a_create.add_argument("--author", default="Eli Chesnut", help="Article author")
+    a_create.add_argument("--date", help="Article date (YYYY-MM-DD)")
+    a_create.add_argument("--slug", help="Article slug (optional, generated from title if not set)")
+    a_create.add_argument("--force", action="store_true", help="Overwrite existing article")
+    a_create.add_argument("--rebuild", action="store_true", help="Rebuild the site after creation")
     
     args = parser.parse_args()
     
@@ -1336,6 +1705,116 @@ Add the collection overview description here. Markdown is supported.
                     rebuild_site()
             except Exception as e:
                 print(color(f"Error creating collection: {e}", RED))
+                sys.exit(1)
+
+    elif args.command == "article":
+        if args.subcommand is None:
+            article_parser.print_help()
+            sys.exit(0)
+            
+        articles = load_all_articles()
+        
+        if args.subcommand == "list":
+            filtered = articles
+            if args.search:
+                filtered = [a for a in articles if args.search.lower() in a["article"].title.lower() or args.search.lower() in a["article"].slug.lower() or args.search.lower() in a["article"].author.lower()]
+            for a in filtered:
+                art = a["article"]
+                print(f"{art.slug:<30} {art.date:<12} By {art.author:<20} {art.title}")
+                
+        elif args.subcommand in ("status", "open", "update", "preview"):
+            target = find_article_by_slug_or_title(args.slug_or_title, articles)
+            if not target:
+                print(color(f"Error: Article '{args.slug_or_title}' not found.", RED))
+                sys.exit(1)
+                
+            art = target["article"]
+            path = target["path"]
+            
+            if args.subcommand == "status":
+                print(f"Title:         {art.title}")
+                print(f"Slug:          {art.slug}")
+                print(f"Author:        {art.author}")
+                print(f"Date:          {art.date}")
+                print(f"Teaser:        {art.teaser}")
+                print(f"File Path:     {path}")
+                print(f"Last Modified: {datetime.datetime.fromtimestamp(target['last_modified']).strftime('%Y-%m-%d %H:%M:%S')}")
+                
+            elif args.subcommand == "open":
+                open_in_texodus(path)
+                
+            elif args.subcommand == "preview":
+                print(color(f"=== Article Preview: {art.title} ===", BOLD + ";" + BLUE))
+                print(f"Teaser: {art.teaser}")
+                print("-" * 60)
+                raw = path.read_text(encoding="utf-8")
+                parts = raw.split("---", 2)
+                body = parts[2] if len(parts) >= 3 else raw
+                body_lines = body.strip().splitlines()
+                for line in body_lines[:25]:
+                    print(line)
+                if len(body_lines) > 25:
+                    print(color("...", DIM))
+                    
+            elif args.subcommand == "update":
+                updates = {}
+                if args.title is not None:
+                    updates["title"] = args.title
+                if args.author is not None:
+                    updates["author"] = args.author
+                if args.date is not None:
+                    updates["date"] = args.date
+                if args.teaser is not None:
+                    updates["teaser"] = args.teaser
+                    
+                if not updates:
+                    print(color("No updates specified.", YELLOW))
+                    return
+                    
+                if update_article_metadata_file(path, updates):
+                    print(color(f"Successfully updated metadata for article '{art.title}'.", GREEN))
+                    if args.rebuild:
+                        rebuild_site()
+                else:
+                    sys.exit(1)
+                    
+        elif args.subcommand == "create":
+            title = args.title
+            teaser = args.teaser
+            author = args.author
+            date_str = args.date or datetime.date.today().isoformat()
+            
+            if not title:
+                print(color("Error: --title is required for article creation.", RED))
+                sys.exit(1)
+            if not teaser:
+                print(color("Error: --teaser is required for article creation.", RED))
+                sys.exit(1)
+                
+            slug = args.slug or slugify(title)
+            path = ARTICLES_DIR / f"{slug}.md"
+            if path.exists() and not args.force:
+                print(color(f"Error: Article already exists at {path}. Use --force to overwrite.", RED))
+                sys.exit(1)
+                
+            try:
+                ARTICLES_DIR.mkdir(parents=True, exist_ok=True)
+                content = f"""---
+title: {title}
+slug: {slug}
+teaser: {teaser}
+author: {author}
+date: {date_str}
+---
+
+Write your article here. Markdown is supported.
+"""
+                path.write_text(content, encoding="utf-8")
+                print(color(f"Successfully created article: {path}", GREEN))
+                if args.rebuild:
+                    rebuild_site()
+            except Exception as e:
+                print(color(f"Error creating article: {e}", RED))
                 sys.exit(1)
 
 if __name__ == "__main__":

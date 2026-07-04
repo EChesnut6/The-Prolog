@@ -10,7 +10,7 @@ reviewed: false
 
 ## Primer
 
-Add spoiler-light context for someone before watching.
+Unfortunately not a true story, but really cool
 
 ## Review
 

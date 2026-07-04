@@ -1,0 +1,146 @@
+<div class="search-page-container">
+  <header class="search-header">
+    <p class="eyebrow">The Prologue Journal</p>
+    <h1>Articles & Essays</h1>
+    <div class="dedicated-search-bar">
+      <input id="dedicated-article-search" type="search" placeholder="Search by title, author, or content..." autocomplete="off" autofocus>
+      <div class="search-icon">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="9" r="6"></circle>
+          <line x1="14" y1="14" x2="18" y2="18"></line>
+        </svg>
+      </div>
+    </div>
+    <p id="dedicated-search-status" class="search-status" aria-live="polite">Showing all articles</p>
+  </header>
+
+  <section class="search-results-section">
+    <div class="collections-grid" id="dedicated-results-grid">
+      <!-- Article cards will be injected here -->
+    </div>
+    <div id="pagination-controls" class="pagination-controls">
+      <!-- Pagination buttons will be injected here -->
+    </div>
+  </section>
+</div>
+
+<style>
+.search-page-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.search-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.search-header h1 {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  margin: 10px 0 30px;
+}
+
+.dedicated-search-bar {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dedicated-search-bar input {
+  width: 100%;
+  padding: 18px 24px 18px 56px;
+  font-size: 1.2rem;
+  border: 2px solid var(--line);
+  border-radius: 50px;
+  background: var(--card-bg);
+  color: var(--text);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.dedicated-search-bar input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-ring);
+}
+
+.dedicated-search-bar .search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.search-status {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Pagination Styles */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.page-button {
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.page-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--panel);
+}
+
+.page-button.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.page-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+</style>
+
+<script>
+  window.articles = [
+    {% for art in articles %}
+    {
+      title: "{{ art.title }}",
+      slug: "{{ art.slug }}",
+      teaser: "{{ art.teaser }}",
+      author: "{{ art.author }}",
+      date: "{{ art.date }}",
+      keywords: "{{ art.title.lower() }} {{ art.teaser.lower() }} {{ art.author.lower() }}"
+    },
+    {% endfor %}
+  ];
+</script>
+<script src="{{ articles_js_path }}" defer></script>

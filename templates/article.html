@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <h1><strong>{{ title }}</strong></h1>
-    <p>Written by: {{ author }}</p>
-    <div class="article-body">{{ body }}</div>
-</body>
-</html>
+<div class="movie-detail-container ebert-container article-detail-container">
+  <div class="outline-box" style="margin-top: 40px; padding: 48px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--line);">
+    <header class="article-header" style="margin-bottom: 40px; text-align: center;">
+      <p class="eyebrow" style="margin-bottom: 12px;">Journal Article</p>
+      <h1 style="font-family: var(--serif); font-size: 3rem; margin: 0 0 16px; line-height: 1.2; color: var(--text);">{{ title }}</h1>
+      <div style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-muted); display: flex; justify-content: center; gap: 16px; font-weight: 500;">
+        <span>By <strong>{{ author }}</strong></span>
+        <span>•</span>
+        <span>{{ date }}</span>
+      </div>
+    </header>
+    
+    <hr class="section-divider" style="margin: 32px 0;">
+
+    <div class="prose" style="font-size: 1.15rem; line-height: 1.8; color: var(--text); max-width: 760px; margin: 0 auto;">
+      {{ body | safe }}
+    </div>
+  </div>
+</div>

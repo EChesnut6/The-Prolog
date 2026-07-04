@@ -12,7 +12,11 @@
         <p class="teaser-tagline">"{{ random_teaser.tagline }}"</p>
         {% endif %}
         <div class="teaser-primer">
-          {{ random_teaser.movie.primer | safe | truncate(300) }}
+          {% if random_teaser.movie.premise %}
+            {{ random_teaser.movie.premise | safe }}
+          {% else %}
+            {{ random_teaser.movie.primer | safe | truncate(300) }}
+          {% endif %}
         </div>
         <a href="public/reviews/{{ random_teaser.movie.slug }}.html" class="read-more">Read the full checklist →</a>
       </div>
