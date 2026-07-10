@@ -1,0 +1,109 @@
+<div class="director-detail-container ebert-container">
+  
+  <!-- Director Header Section -->
+  <div class="director-header-section">
+    <div class="director-header-content">
+      <!-- Profile Picture -->
+      <div class="director-profile-box">
+        {% if profile_url %}
+        <img src="{{ profile_url }}" alt="{{ name }} profile">
+        {% else %}
+        <div class="director-avatar-placeholder">
+          <span>{{ name[0] }}</span>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Director Header Info -->
+      <div class="outline-box director-title-box">
+        <h1 class="director-name">{{ name }}</h1>
+        <div class="director-meta">
+          {% if birthday %}
+          <span class="meta-item"><strong>Born:</strong> {{ birthday }}{% if place_of_birth %} in {{ place_of_birth }}{% endif %}</span>
+          {% endif %}
+          {% if deathday %}
+          <span class="meta-dot">•</span>
+          <span class="meta-item"><strong>Died:</strong> {{ deathday }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Bio & Filmography) -->
+    <div class="movie-grid-left">
+      <!-- Biography -->
+      <section class="movie-section prose" aria-labelledby="bio-heading">
+        <p class="eyebrow">Biography</p>
+        <h2 id="bio-heading">About the Director</h2>
+        <div class="bio-content">
+          {% if biography %}
+          <p>{{ biography | replace('\n', '<br>') | safe }}</p>
+          {% else %}
+          <p class="empty-note">Biography is currently unavailable for {{ name }}.</p>
+          {% endif %}
+        </div>
+      </section>
+      
+      <!-- Complete Filmography -->
+      <section class="movie-section prose" aria-labelledby="filmography-heading">
+        <p class="eyebrow">Filmography</p>
+        <h2 id="filmography-heading">All Movies</h2>
+        
+        <div class="filmography-list">
+          {% for item in all_movies %}
+          <div class="filmography-row">
+            <div class="filmography-left">
+              <span class="filmography-year">{{ item.year }}</span>
+              <a href="../reviews/{{ item.slug }}.html" class="filmography-title">
+                {{ item.title }}
+              </a>
+              {% if not item.reviewed %}
+              <span class="draft-badge">Draft</span>
+              {% endif %}
+            </div>
+            <div class="filmography-right">
+              {% if item.weighted_score %}
+              <span class="filmography-score">Score: <strong>{{ "%.1f" | format(item.weighted_score) }}</strong>/10</span>
+              {% elif item.enjoyment_rating and item.enjoyment_rating.upper() != "TBD" %}
+              <span class="filmography-score">Enjoyment: <strong>{{ item.enjoyment_rating }}</strong>/10</span>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+    
+    <!-- Right Column (Featured / Top Movies Sidebar) -->
+    <div class="movie-grid-right">
+      <div class="outline-box related-box">
+        <h3>Top Movies</h3>
+        <p class="sidebar-subtitle">Highest rated movies on this site</p>
+        <div class="related-list">
+          {% for rel in top_movies %}
+          <a href="../reviews/{{ rel.slug }}.html" class="related-card">
+            <div class="related-poster">
+              <img src="{{ rel.poster_url }}" alt="{{ rel.title }} poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">{{ rel.title }}</span>
+              <span class="related-year">{{ rel.year }}</span>
+              {% if rel.weighted_score %}
+              <span class="related-score">★ {{ "%.1f" | format(rel.weighted_score) }}</span>
+              {% endif %}
+            </div>
+          </a>
+          {% endfor %}
+          {% if not top_movies %}
+          <p class="empty-note">No movies rated yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

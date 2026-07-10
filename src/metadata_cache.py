@@ -48,3 +48,27 @@ def make_cache_entry(movie: MovieContent, metadata: dict[str, Any]) -> dict[str,
         "year": movie.year,
         "metadata": metadata,
     }
+
+
+def load_directors_cache(path: Path) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+    if not isinstance(data, dict):
+        return {}
+
+    directors = data.get("directors", {})
+    return directors if isinstance(directors, dict) else {}
+
+
+def save_directors_cache(path: Path, cache: dict[str, dict[str, Any]]) -> None:
+    path.write_text(
+        json.dumps({"directors": cache}, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+

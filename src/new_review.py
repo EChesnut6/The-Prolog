@@ -1,13 +1,27 @@
 from __future__ import annotations
 
 import argparse
+import builtins
 from pathlib import Path
+import sys
 
 from utils import slugify, render_review_template
 
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT_DIR = ROOT / "content" / "movies"
+
+# Custom input function to support global q/quit to exit
+def input(prompt: str = "") -> str:
+    try:
+        val = builtins.input(prompt)
+        if val.strip().lower() in ("q", "quit"):
+            print("\nGoodbye!")
+            sys.exit(0)
+        return val
+    except (KeyboardInterrupt, EOFError):
+        print("\nGoodbye!")
+        sys.exit(0)
 
 
 
@@ -21,6 +35,7 @@ def main() -> None:
     tmdb_title = args.tmdb_title or title
     enjoyment_rating = args.enjoyment_rating or _prompt("Enjoyment rating", default="TBD")
     filmmaking_rating = args.filmmaking_rating or _prompt("Filmmaking rating", default="TBD")
+    attention_rating = args.attention_rating or _prompt("Attention rating (e.g. 80%)", default="TBD")
     reviewed = "true" if args.reviewed else "false"
 
     path = CONTENT_DIR / f"{slug}.md"
@@ -36,6 +51,7 @@ def main() -> None:
             year=year,
             enjoyment_rating=enjoyment_rating,
             filmmaking_rating=filmmaking_rating,
+            attention_rating=attention_rating,
             reviewed=reviewed,
         ),
         encoding="utf-8",
@@ -51,6 +67,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--tmdb-title", help="TMDB search title. Defaults to --title.")
     parser.add_argument("--enjoyment-rating", help="Enjoyment/fun rating to display on the site.")
     parser.add_argument("--filmmaking-rating", help="Filmmaking quality rating to display on the site.")
+    parser.add_argument("--attention-rating", help="Attention rating to display on the site (e.g. 80%).")
     parser.add_argument("--reviewed", action="store_true", help="Mark this draft as visible on the homepage.")
     parser.add_argument(
         "--prompt-specs",

@@ -5,6 +5,7 @@ tmdb_title: The Apartment
 year: 1960
 enjoyment_rating: 9
 filmmaking_rating: 9
+attention_rating: 90%
 reviewed: true
 ---
 

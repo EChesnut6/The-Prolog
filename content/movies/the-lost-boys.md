@@ -5,6 +5,7 @@ tmdb_title: The Lost Boys
 year: 1987
 enjoyment_rating: 8
 filmmaking_rating: 7
+attention_rating: 40%
 reviewed: true
 ---
 

@@ -5,6 +5,7 @@ tmdb_title: Obsession
 year: 2026
 enjoyment_rating: 9
 filmmaking_rating: 8
+attention_rating: 85%
 reviewed: true
 ---
 

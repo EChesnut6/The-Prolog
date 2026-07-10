@@ -5,6 +5,7 @@ tmdb_title: Casablanca
 year: 1942
 enjoyment_rating: 10
 filmmaking_rating: 10
+attention_rating: 95%
 reviewed: true
 ---
 

@@ -5,9 +5,13 @@ tmdb_title: The Lighthouse
 year: 2019
 enjoyment_rating: 9
 filmmaking_rating: 10
+reviewed: false
 ---
 
 ## Primer
+
+#### The Premise
+Two lighthouse workers start their shift on a desolate and isolated island.
 
 You can go into this movie knowing nothing or everything, it's still confusing.
 howerver, to make your viewing mor interesting its important to point out some references upfront.

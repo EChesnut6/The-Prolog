@@ -7,20 +7,21 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from src.content import MovieContent, CollectionContent, ArticleContent
-from src.utils import SCORE_FIELDS, get_weighted_score
+from src.utils import SCORE_FIELDS, get_weighted_score, slugify
 
 import datetime
 import re
 
 
-def resolve_links(html: str, page_type: str, all_movie_slugs: set[str], all_article_slugs: set[str]) -> str:
+def resolve_links(html: str, page_type: str, all_movie_slugs: set[str], all_article_slugs: set[str], all_director_slugs: set[str]) -> str:
     # Prefix mapping for valid reviews
     review_prefixes = {
         "root": "public/reviews/",
         "public": "reviews/",
         "review": "",
         "collection": "../reviews/",
-        "article": "../reviews/"
+        "article": "../reviews/",
+        "director": "../reviews/"
     }
     
     # Prefix mapping for valid articles
@@ -29,7 +30,18 @@ def resolve_links(html: str, page_type: str, all_movie_slugs: set[str], all_arti
         "public": "articles/",
         "review": "../articles/",
         "collection": "../articles/",
-        "article": ""
+        "article": "",
+        "director": "../articles/"
+    }
+    
+    # Prefix mapping for valid directors
+    director_prefixes = {
+        "root": "public/directors/",
+        "public": "directors/",
+        "review": "../directors/",
+        "collection": "../directors/",
+        "article": "../directors/",
+        "director": ""
     }
     
     # Prefix mapping for coming soon page (when movie is missing/draft that isn't built)
@@ -38,11 +50,13 @@ def resolve_links(html: str, page_type: str, all_movie_slugs: set[str], all_arti
         "public": "coming-soon.html",
         "review": "../coming-soon.html",
         "collection": "../coming-soon.html",
-        "article": "../coming-soon.html"
+        "article": "../coming-soon.html",
+        "director": "../coming-soon.html"
     }
     
     review_prefix = review_prefixes.get(page_type, "")
     article_prefix = article_prefixes.get(page_type, "")
+    director_prefix = director_prefixes.get(page_type, "")
     coming_soon_path = coming_soon_paths.get(page_type, "coming-soon.html")
     
     # Matches href="movie-slug.md" or href="./movie-slug.md"
@@ -54,6 +68,8 @@ def resolve_links(html: str, page_type: str, all_movie_slugs: set[str], all_arti
             return f'href="{review_prefix}{slug}.html"'
         elif slug in all_article_slugs:
             return f'href="{article_prefix}{slug}.html"'
+        elif slug in all_director_slugs:
+            return f'href="{director_prefix}{slug}.html"'
         else:
             return f'href="{coming_soon_path}"'
             
@@ -65,6 +81,7 @@ def render_site(
     metadata_by_slug: dict[str, dict[str, Any]],
     collections: list[CollectionContent],
     articles: list[ArticleContent],
+    directors_metadata: dict[str, dict[str, Any]],
     templates_dir: Path,
     output_dir: Path,
     root_index: Path,
@@ -78,6 +95,9 @@ def render_site(
 
     articles_dir = output_dir / "articles"
     articles_dir.mkdir(parents=True, exist_ok=True)
+
+    directors_dir = output_dir / "directors"
+    directors_dir.mkdir(parents=True, exist_ok=True)
 
     env = Environment(
         loader=FileSystemLoader(templates_dir),
@@ -94,12 +114,32 @@ def render_site(
     collection_detail_template = env.get_template("collection_detail.html")
     articles_template = env.get_template("articles.html")
     article_template = env.get_template("article.html")
+    director_template = env.get_template("director.html")
 
     movies_with_metadata = []
     for m in movies:
         meta = metadata_by_slug.get(m.slug, {})
         meta = {**meta, **_score_metadata(m)}
         movies_with_metadata.append((m, meta))
+
+    # Identify all unique directors and their movies
+    directors_movies = {}  # director_slug -> list of (MovieContent, dict)
+    director_names = {}    # director_slug -> display name
+    for m, meta in movies_with_metadata:
+        director_str = meta.get("director") or m.director or ""
+        if director_str and director_str != "Director unavailable":
+            for d in director_str.split(","):
+                d_clean = d.strip()
+                if d_clean:
+                    d_slug = slugify(d_clean)
+                    if d_slug not in directors_movies:
+                        directors_movies[d_slug] = []
+                    directors_movies[d_slug].append((m, meta))
+                    director_names[d_slug] = d_clean
+
+    all_movie_slugs = {m.slug for m in movies}
+    all_article_slugs = {a.slug for a in articles}
+    all_director_slugs = set(directors_movies.keys())
 
     # Calculate great movies based on weighted average of scores
     great_movies = []
@@ -121,55 +161,60 @@ def render_site(
     great_movies.sort(key=lambda x: (-x["weighted_score"], x["movie"].title.lower()))
 
     # Render movie pages
-    all_movie_slugs = {m.slug for m in movies}
-    all_article_slugs = {a.slug for a in articles}
-    
     for movie in movies:
         metadata = metadata_by_slug.get(movie.slug, {})
         page = render_movie(base_template, movie_template, movie, metadata, movies_with_metadata)
-        page = resolve_links(page, "review", all_movie_slugs, all_article_slugs)
+        page = resolve_links(page, "review", all_movie_slugs, all_article_slugs, all_director_slugs)
         (reviews_dir / f"{movie.slug}.html").write_text(page, encoding="utf-8")
+
+    # Render director pages
+    for d_slug, d_movies in directors_movies.items():
+        d_name = director_names[d_slug]
+        d_info = directors_metadata.get(d_slug, {})
+        d_page = render_director(base_template, director_template, d_name, d_slug, d_info, movies_with_metadata)
+        d_page = resolve_links(d_page, "director", all_movie_slugs, all_article_slugs, all_director_slugs)
+        (directors_dir / f"{d_slug}.html").write_text(d_page, encoding="utf-8")
 
     # Render articles pages
     for article in articles:
         page = render_article(base_template, article_template, article)
-        page = resolve_links(page, "article", all_movie_slugs, all_article_slugs)
+        page = resolve_links(page, "article", all_movie_slugs, all_article_slugs, all_director_slugs)
         (articles_dir / f"{article.slug}.html").write_text(page, encoding="utf-8")
 
     # Render index
     index = render_index(base_template, index_template, movies, metadata_by_slug, collections, great_movies)
-    index = resolve_links(index, "root", all_movie_slugs, all_article_slugs)
+    index = resolve_links(index, "root", all_movie_slugs, all_article_slugs, all_director_slugs)
     root_index.write_text(index, encoding="utf-8")
 
     # Render search
     search_page = render_search(base_template, search_template, movies, metadata_by_slug)
-    search_page = resolve_links(search_page, "public", all_movie_slugs, all_article_slugs)
+    search_page = resolve_links(search_page, "public", all_movie_slugs, all_article_slugs, all_director_slugs)
     root_search.write_text(search_page, encoding="utf-8")
 
     # Render articles search/index page
     articles_page = render_articles_page(base_template, articles_template, articles)
-    articles_page = resolve_links(articles_page, "public", all_movie_slugs, all_article_slugs)
+    articles_page = resolve_links(articles_page, "public", all_movie_slugs, all_article_slugs, all_director_slugs)
     (output_dir / "articles.html").write_text(articles_page, encoding="utf-8")
 
     # Render coming soon
     coming_soon = render_coming_soon(base_template, coming_soon_template)
-    coming_soon = resolve_links(coming_soon, "public", all_movie_slugs, all_article_slugs)
+    coming_soon = resolve_links(coming_soon, "public", all_movie_slugs, all_article_slugs, all_director_slugs)
     (output_dir / "coming-soon.html").write_text(coming_soon, encoding="utf-8")
 
     # Render greats page
     greats_page = render_greats(base_template, greats_template, great_movies)
-    greats_page = resolve_links(greats_page, "public", all_movie_slugs, all_article_slugs)
+    greats_page = resolve_links(greats_page, "public", all_movie_slugs, all_article_slugs, all_director_slugs)
     (output_dir / "greats.html").write_text(greats_page, encoding="utf-8")
 
     # Render collections index
     cols_index = render_collections_index(base_template, collections_index_template, collections, metadata_by_slug)
-    cols_index = resolve_links(cols_index, "collection", all_movie_slugs, all_article_slugs)
+    cols_index = resolve_links(cols_index, "collection", all_movie_slugs, all_article_slugs, all_director_slugs)
     (collections_dir / "index.html").write_text(cols_index, encoding="utf-8")
 
     # Render collection details
     for col in collections:
         col_page = render_collection_detail(base_template, collection_detail_template, col, movies_with_metadata)
-        col_page = resolve_links(col_page, "collection", all_movie_slugs, all_article_slugs)
+        col_page = resolve_links(col_page, "collection", all_movie_slugs, all_article_slugs, all_director_slugs)
         (collections_dir / f"{col.slug}.html").write_text(col_page, encoding="utf-8")
 
 
@@ -186,13 +231,36 @@ def render_movie(
     director_slugs = {dm["slug"] for dm in director_movies}
     similar_movies = _get_similar_movies(movie, metadata, all_movies, exclude_slugs=director_slugs)
     
+    attention_raw = movie.attention_rating.strip() if movie.attention_rating else ""
+    attention_percent_num = None
+    attention_rating_str = ""
+    if attention_raw and attention_raw.upper() != "TBD":
+        digits = "".join(c for c in attention_raw if c.isdigit())
+        if digits:
+            attention_percent_num = int(digits)
+            if attention_percent_num > 100:
+                attention_percent_num = 100
+            attention_rating_str = f"{attention_percent_num}%"
+
+    director_str = metadata.get("director") or movie.director or ""
+    directors_list = []
+    if director_str and director_str != "Director unavailable":
+        for d in director_str.split(","):
+            d_clean = d.strip()
+            if d_clean:
+                directors_list.append({
+                    "name": d_clean,
+                    "slug": slugify(d_clean)
+                })
+
     movie_data = asdict(movie)
     movie_data.update(
         {
             "poster_url": metadata.get("poster_url") or "../assets/placeholders/poster-placeholder.svg",
             "backdrop_url": metadata.get("backdrop_url") or metadata.get("poster_url") or "../assets/placeholders/poster-placeholder.svg",
             "release_date": metadata.get("release_date") or movie.year,
-            "director": metadata.get("director") or "Director unavailable",
+            "director": director_str or "Director unavailable",
+            "directors": directors_list,
             "writer": movie.writer or metadata.get("writer") or "N/A",
             "cast": movie.cast or metadata.get("cast") or [],
             "genres": metadata.get("genres") or [],
@@ -202,6 +270,8 @@ def render_movie(
             "metadata": metadata,
             "similar_movies": similar_movies,
             "director_movies": director_movies,
+            "attention_percent_num": attention_percent_num,
+            "attention_rating_display": attention_rating_str,
         }
     )
     
@@ -236,12 +306,23 @@ def render_index(
     movie_cards_data = []
     for movie in movies:
         metadata = {**metadata_by_slug.get(movie.slug, {}), **_score_metadata(movie)}
+        director_str = metadata.get("director") or "Director unavailable"
+        directors_list = []
+        if director_str and director_str != "Director unavailable":
+            for d in director_str.split(","):
+                d_clean = d.strip()
+                if d_clean:
+                    directors_list.append({
+                        "name": d_clean,
+                        "slug": slugify(d_clean)
+                    })
         movie_cards_data.append({
             "movie": movie,
             "metadata": metadata,
             "poster_url": metadata.get("poster_url") or "public/assets/placeholders/poster-placeholder.svg",
             "backdrop_url": metadata.get("backdrop_url") or "",
-            "director": metadata.get("director") or "Director unavailable",
+            "director": director_str,
+            "directors": directors_list,
             "tagline": movie.tagline or metadata.get("tagline", ""),
             "kicker": _card_kicker(movie),
             "reviewed_attr": "true" if movie.reviewed else "false",
@@ -741,3 +822,109 @@ def _get_director_movies(
         })
         
     return director_movies
+
+
+def render_director(
+    base_template: Any,
+    director_template: Any,
+    name: str,
+    slug: str,
+    director_info: dict[str, Any],
+    movies_with_metadata: list[tuple[MovieContent, dict[str, Any]]],
+) -> str:
+    biography = director_info.get("biography") or ""
+    birthday = director_info.get("birthday") or ""
+    deathday = director_info.get("deathday") or ""
+    place_of_birth = director_info.get("place_of_birth") or ""
+    profile_url = director_info.get("profile_url") or ""
+
+    def get_movie_score(movie, metadata):
+        w_score = get_weighted_score(movie, metadata)
+        if w_score is not None:
+            return w_score
+        imdb_val = metadata.get("imdb_score") or movie.scores.get("IMDb score")
+        if imdb_val:
+            try:
+                return float(str(imdb_val).split("/")[0].strip())
+            except ValueError:
+                pass
+        try:
+            return float(metadata.get("vote_average") or 0.0)
+        except ValueError:
+            pass
+        return 0.0
+
+    director_movies = []
+    for movie, metadata in movies_with_metadata:
+        director_str = metadata.get("director") or movie.director or ""
+        if director_str and director_str != "Director unavailable":
+            directors = [d.strip().lower() for d in director_str.split(",")]
+            if name.lower() in directors:
+                score = get_movie_score(movie, metadata)
+                w_score = get_weighted_score(movie, metadata)
+                
+                poster = metadata.get("poster_url") or "assets/placeholders/poster-placeholder.svg"
+                if poster.startswith("public/"):
+                    poster = poster.replace("public/", "../", 1)
+                elif not poster.startswith("http"):
+                    poster = "../" + poster
+
+                director_movies.append({
+                    "movie": movie,
+                    "title": movie.title,
+                    "slug": movie.slug,
+                    "year": movie.year or metadata.get("release_date", "")[:4],
+                    "reviewed": movie.reviewed,
+                    "weighted_score": w_score,
+                    "enjoyment_rating": movie.enjoyment_rating,
+                    "filmmaking_rating": movie.filmmaking_rating,
+                    "score_for_sorting": score,
+                    "poster_url": poster,
+                })
+
+    def get_newest_sort_key(item):
+        try:
+            y = int(item["year"])
+        except ValueError:
+            y = 0
+        return -y, item["title"].lower()
+
+    all_movies_sorted = sorted(director_movies, key=get_newest_sort_key)
+
+    def get_top_sort_key(item):
+        try:
+            y = int(item["year"])
+        except ValueError:
+            y = 0
+        return not item["reviewed"], -item["score_for_sorting"], -y, item["title"].lower()
+
+    top_movies_sorted = sorted(director_movies, key=get_top_sort_key)[:3]
+
+    director_data = {
+        "name": name,
+        "slug": slug,
+        "biography": biography,
+        "birthday": birthday,
+        "deathday": deathday,
+        "place_of_birth": place_of_birth,
+        "profile_url": profile_url,
+        "top_movies": top_movies_sorted,
+        "all_movies": all_movies_sorted,
+    }
+
+    content = director_template.render(**director_data)
+    return base_template.render(
+        title=f"{name} | The Prolog",
+        date=datetime.date.today(),
+        content=content,
+        css_path="../styles.css",
+        home_path="../../index.html",
+        search_path="../search.html",
+        collections_path="../collections/index.html",
+        greats_path="../greats.html",
+        coming_soon_path="../coming-soon.html",
+        theme_toggle_js_path="../assets/js/theme-toggle.js",
+        articles_path="../articles.html",
+        favicon_path="../favicon.png",
+    )
+

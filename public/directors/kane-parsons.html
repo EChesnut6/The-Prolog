@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kane Parsons | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-07-09</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="../collections/index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+          <a href="../articles.html">Articles</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="director-detail-container ebert-container">
+  
+  <!-- Director Header Section -->
+  <div class="director-header-section">
+    <div class="director-header-content">
+      <!-- Profile Picture -->
+      <div class="director-profile-box">
+        
+        <img src="https://image.tmdb.org/t/p/w780/l4hXiK0NI84l328p6V3DEvDtgFE.jpg" alt="Kane Parsons profile">
+        
+      </div>
+      
+      <!-- Director Header Info -->
+      <div class="outline-box director-title-box">
+        <h1 class="director-name">Kane Parsons</h1>
+        <div class="director-meta">
+          
+          <span class="meta-item"><strong>Born:</strong> 2005-06-18 in Petaluma, California, USA</span>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Bio & Filmography) -->
+    <div class="movie-grid-left">
+      <!-- Biography -->
+      <section class="movie-section prose" aria-labelledby="bio-heading">
+        <p class="eyebrow">Biography</p>
+        <h2 id="bio-heading">About the Director</h2>
+        <div class="bio-content">
+          
+          <p>Kane Parsons (born June 18, 2005), also known as Kane Pixels, is an American YouTuber, composer, and filmmaker. In January 2022, Parsons began publishing the viral web series Backrooms, based on the creepypasta of the same name, to his YouTube channel. A film adaptation, which he directed, was released by A24 in May 2026 to critical and commercial success. At 20, Parsons became the youngest director in history to get a number one film at the box office with a global gross of $262.6 million.<br><br>Description above from the Wikipedia article Kane Parsons, licensed under CC-BY-SA, full list of contributors on Wikipedia.</p>
+          
+        </div>
+      </section>
+      
+      <!-- Complete Filmography -->
+      <section class="movie-section prose" aria-labelledby="filmography-heading">
+        <p class="eyebrow">Filmography</p>
+        <h2 id="filmography-heading">All Movies</h2>
+        
+        <div class="filmography-list">
+          
+          <div class="filmography-row">
+            <div class="filmography-left">
+              <span class="filmography-year">2026</span>
+              <a href="../reviews/the-backrooms.html" class="filmography-title">
+                The Backrooms
+              </a>
+              
+              <span class="draft-badge">Draft</span>
+              
+            </div>
+            <div class="filmography-right">
+              
+              <span class="filmography-score">Score: <strong>7.4</strong>/10</span>
+              
+            </div>
+          </div>
+          
+        </div>
+      </section>
+    </div>
+    
+    <!-- Right Column (Featured / Top Movies Sidebar) -->
+    <div class="movie-grid-right">
+      <div class="outline-box related-box">
+        <h3>Top Movies</h3>
+        <p class="sidebar-subtitle">Highest rated movies on this site</p>
+        <div class="related-list">
+          
+          <a href="../reviews/the-backrooms.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/rhGx6E3qRNMgj3i5su2oukNHwIQ.jpg" alt="The Backrooms poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">The Backrooms</span>
+              <span class="related-year">2026</span>
+              
+              <span class="related-score">★ 7.4</span>
+              
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

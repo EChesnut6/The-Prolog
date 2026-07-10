@@ -61,6 +61,7 @@ class MovieContent:
     year: str
     enjoyment_rating: str
     filmmaking_rating: str
+    attention_rating: str
     tagline: str
     reviewed: bool
     letterboxd_rank: str
@@ -102,6 +103,7 @@ def load_movie(path: Path) -> MovieContent:
         year=metadata.get("year", ""),
         enjoyment_rating=metadata.get("enjoyment_rating", ""),
         filmmaking_rating=metadata.get("filmmaking_rating", ""),
+        attention_rating=metadata.get("attention_rating", ""),
         tagline=metadata.get("tagline", ""),
         reviewed=_reviewed(metadata, sections),
         letterboxd_rank=metadata.get("letterboxd_rank", ""),

@@ -14,9 +14,12 @@ from src.metadata_cache import (
     load_metadata_cache,
     make_cache_entry,
     save_metadata_cache,
+    load_directors_cache,
+    save_directors_cache,
 )
 from src.render import render_site
-from src.tmdb import fetch_movie_metadata
+from src.tmdb import fetch_movie_metadata, fetch_person_metadata
+from src.utils import slugify
 
 
 CONTENT_DIR = ROOT / "content" / "movies"
@@ -64,10 +67,51 @@ def main() -> None:
     if cache_changed:
         save_metadata_cache(cache_path, cache)
 
+    # Load director cache
+    directors_cache_path = ROOT / ".tmdb-directors-cache.json"
+    directors_cache = load_directors_cache(directors_cache_path)
+    directors_metadata = {}
+    directors_cache_changed = False
+
+    # Extract unique directors
+    unique_directors = set()
+    for slug, meta in metadata_by_slug.items():
+        if meta and "director" in meta:
+            dir_val = meta["director"]
+            if dir_val and dir_val != "Director unavailable":
+                for d in dir_val.split(","):
+                    d_clean = d.strip()
+                    if d_clean:
+                        unique_directors.add(d_clean)
+
+    for d_name in sorted(unique_directors):
+        d_slug = slugify(d_name)
+        cached_entry = directors_cache.get(d_slug, {})
+        use_dir_cache = cached_entry and not args.refresh_metadata
+        if use_dir_cache:
+            directors_metadata[d_slug] = cached_entry
+            continue
+
+        try:
+            print(f"Fetching TMDB director details for: {d_name}")
+            dir_meta = fetch_person_metadata(d_name)
+            if dir_meta:
+                directors_cache[d_slug] = dir_meta
+                directors_metadata[d_slug] = dir_meta
+                directors_cache_changed = True
+            else:
+                directors_metadata[d_slug] = cached_entry or {"name": d_name}
+        except Exception as exc:
+            print(f"TMDB director details fetch failed for {d_name}: {exc}")
+            directors_metadata[d_slug] = cached_entry or {"name": d_name}
+
+    if directors_cache_changed:
+        save_directors_cache(directors_cache_path, directors_cache)
+
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     _copy_assets()
-    render_site(movies, metadata_by_slug, collections, articles, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX, ROOT_SEARCH)
-    print(f"Built {len(movies)} movie page(s), {len(collections)} collection page(s), and {len(articles)} article page(s) in {OUTPUT_DIR} and {ROOT_INDEX}")
+    render_site(movies, metadata_by_slug, collections, articles, directors_metadata, TEMPLATES_DIR, OUTPUT_DIR, ROOT_INDEX, ROOT_SEARCH)
+    print(f"Built {len(movies)} movie page(s), {len(unique_directors)} director page(s), {len(collections)} collection page(s), and {len(articles)} article page(s) in {OUTPUT_DIR} and {ROOT_INDEX}")
 
 
 def _copy_assets() -> None:

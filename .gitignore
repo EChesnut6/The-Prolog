@@ -1,5 +1,8 @@
 .env
 .tmdb-cache.json
+.tmdb-directors-cache.json
+.antigravitycli
+.venv
 __pycache__/
 *.pyc
 .DS_Store

@@ -7,7 +7,15 @@
       <div class="teaser-copy">
         <p class="eyebrow">Featured Review</p>
         <h1><a href="public/reviews/{{ random_teaser.movie.slug }}.html">{{ random_teaser.movie.title }}</a></h1>
-        <p class="teaser-meta">{{ random_teaser.movie.year }} · Directed by {{ random_teaser.director }}</p>
+        <p class="teaser-meta">{{ random_teaser.movie.year }} · Directed by 
+          {% if random_teaser.directors %}
+            {% for dir in random_teaser.directors %}
+              <a href="public/directors/{{ dir.slug }}.html"><strong>{{ dir.name }}</strong></a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          {% else %}
+            {{ random_teaser.director }}
+          {% endif %}
+        </p>
         {% if random_teaser.tagline %}
         <p class="teaser-tagline">"{{ random_teaser.tagline }}"</p>
         {% endif %}
@@ -57,7 +65,15 @@
               </div>
               <div class="masterpiece-copy">
                 <h3>{{ card.movie.title }} <span class="review-icon" title="Reviewed">★</span></h3>
-                <p>{{ card.movie.year }} · {{ card.director }}</p>
+                <p>{{ card.movie.year }} · 
+                  {% if card.directors %}
+                    {% for dir in card.directors %}
+                      <a href="public/directors/{{ dir.slug }}.html">{{ dir.name }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                  {% else %}
+                    {{ card.director }}
+                  {% endif %}
+                </p>
               </div>
             </a>
           </article>

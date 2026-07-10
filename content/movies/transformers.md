@@ -5,6 +5,7 @@ tmdb_title: Transformers
 year: 2007
 enjoyment_rating: 10
 filmmaking_rating: 7
+attention_rating: 60%
 reviewed: true
 ---
 
@@ -29,8 +30,6 @@ Is Transformers a great magnificent cinematic masterpiece? Of course not, and it
 
 #### Transformers Fans
 This was my first introduction into the world of Transformers, and I know that the fandom is probably rolling their eyes. I don't know how this is compared to a lot of the other media or lore, but like it or not, this movie helped the franchise by introducing it to so many people and a whole new generation. I can say compared to the only other piece of Transformers media I've seen, [[Transformers One]], this is not the best, but it's the most entertaining. 
-
-
 
 ## Review
 

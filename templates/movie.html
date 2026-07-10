@@ -20,7 +20,15 @@
         <div class="movie-core-meta">
           <span class="movie-year">{{ release_date[:4] if release_date else year }}</span>
           <span class="meta-dot">•</span>
-          <span class="movie-director">Directed by <strong>{{ director }}</strong></span>
+          <span class="movie-director">Directed by 
+            {% if directors %}
+              {% for dir in directors %}
+                <a href="../directors/{{ dir.slug }}.html"><strong>{{ dir.name }}</strong></a>{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% else %}
+              <strong>{{ director }}</strong>
+            {% endif %}
+          </span>
         </div>
         {% if tagline %}
         <p class="movie-tagline">“{{ tagline }}”</p>
@@ -97,6 +105,7 @@
       <!-- Box 2: Specs & Scores -->
       <div class="outline-box specs-box">
         <div class="spec-group">
+          <h3>Specs</h3>
           {% if writer and writer != "N/A" %}
           <div class="spec-row">
             <span class="spec-label">Writer</span>
@@ -144,10 +153,21 @@
               <strong>{{ filmmaking_rating }}/10</strong>
             </div>
             {% endif %}
-            {% if (not enjoyment_rating or enjoyment_rating.upper() == "TBD") and (not filmmaking_rating or filmmaking_rating.upper() == "TBD") %}
+            {% if (not enjoyment_rating or enjoyment_rating.upper() == "TBD") and (not filmmaking_rating or filmmaking_rating.upper() == "TBD") and attention_percent_num is none %}
             <p class="empty-note">No ratings yet</p>
             {% endif %}
           </div>
+          {% if attention_percent_num is not none %}
+          <div class="attention-meter-section">
+            <div class="attention-meter-header">
+              <span class="attention-label">Attention Meter</span>
+              <strong class="attention-value">{{ attention_rating_display }}</strong>
+            </div>
+            <div class="attention-bar-bg" title="Attention needed: {{ attention_rating_display }}">
+              <div class="attention-bar-fill" style="width: {{ attention_percent_num }}%;"></div>
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
       

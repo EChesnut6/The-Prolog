@@ -129,3 +129,51 @@ def _imdb_score(imdb_id: str) -> str:
     except Exception as exc:
         print(f"OMDB lookup failed for IMDB ID {imdb_id}: {exc}")
         return ""
+
+
+def fetch_person_metadata(name: str) -> dict[str, Any]:
+    api_key = os.getenv("TMDB_API_KEY")
+    if not api_key or requests is None:
+        return {}
+
+    # Search for the person
+    params = {"api_key": api_key, "query": name}
+    try:
+        response = requests.get(f"{TMDB_API_BASE}/search/person", params=params, timeout=10)
+        if response.status_code == 429:
+            print("TMDB rate limit hit. Sleeping...")
+            time.sleep(1)
+            return fetch_person_metadata(name)
+        response.raise_for_status()
+        results = response.json().get("results", [])
+        if not results:
+            return {}
+        person_id = results[0]["id"]
+    except Exception as exc:
+        print(f"TMDB search person failed for {name}: {exc}")
+        return {}
+
+    # Get person details
+    try:
+        response = requests.get(f"{TMDB_API_BASE}/person/{person_id}", params={"api_key": api_key}, timeout=10)
+        if response.status_code == 429:
+            print("TMDB rate limit hit. Sleeping...")
+            time.sleep(1)
+            response = requests.get(f"{TMDB_API_BASE}/person/{person_id}", params={"api_key": api_key}, timeout=10)
+        response.raise_for_status()
+        details = response.json()
+    except Exception as exc:
+        print(f"TMDB person details failed for ID {person_id}: {exc}")
+        return {}
+
+    profile_path = details.get("profile_path")
+    return {
+        "tmdb_id": details.get("id"),
+        "name": details.get("name") or name,
+        "biography": details.get("biography") or "",
+        "birthday": details.get("birthday") or "",
+        "deathday": details.get("deathday") or "",
+        "place_of_birth": details.get("place_of_birth") or "",
+        "profile_url": f"{TMDB_IMAGE_BASE}{profile_path}" if profile_path else "",
+    }
+

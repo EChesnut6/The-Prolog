@@ -29,6 +29,7 @@ def render_review_template(
     year: str,
     enjoyment_rating: str = "TBD",
     filmmaking_rating: str = "TBD",
+    attention_rating: str = "TBD",
     reviewed: str = "false",
     teaser: str = "",
 ) -> str:
@@ -40,6 +41,7 @@ def render_review_template(
         f"year: {year}",
         f"enjoyment_rating: {enjoyment_rating}",
         f"filmmaking_rating: {filmmaking_rating}",
+        f"attention_rating: {attention_rating}",
         f"reviewed: {reviewed}",
     ]
     if teaser:

@@ -6,6 +6,9 @@ author: Eli Chesnut
 date: 2026-06-26
 ---
 
+## Intro
+I was watching one of my favorite comedies of all time, [[The Other Guys]] when I realized there was a strange uniqueness in the comedy. 
+
 ## The Beginnings
 
 Comedy is one of the original genres and has been apart of film from it's origins. Modern comedy owes it all to the likes of Charlie Chaplin and Buster Keaton who paved the way not just for comedy but film. During this silent era, the comedy was nearly entirely physical setting the stage for what was expected in comedy films for generations to come.

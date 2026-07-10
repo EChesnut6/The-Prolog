@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Charlie Chaplin | The Prolog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+  </head>
+  <body class="light-mode">
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = savedTheme;
+      })();
+    </script>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="header-top__left">
+          <span class="header-date">2026-07-09</span>
+        </div>
+        <div class="header-logo-container">
+          <a class="site-logo" href="../../index.html">The Prolog</a>
+        </div>
+        <div class="header-top__right">
+          <button id="theme-toggle" class="icon-button" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="../search.html" class="icon-button" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="9" r="6"></circle>
+              <line x1="14" y1="14" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-container">
+          <a href="../search.html">Movies</a>
+          <a href="../collections/index.html">Collections</a>
+          <a href="../greats.html">Greats</a>
+          <a href="../articles.html">Articles</a>
+        </div>
+      </nav>
+    </header>
+
+    <script src="../assets/js/theme-toggle.js" defer></script>
+    <main>
+      <div class="director-detail-container ebert-container">
+  
+  <!-- Director Header Section -->
+  <div class="director-header-section">
+    <div class="director-header-content">
+      <!-- Profile Picture -->
+      <div class="director-profile-box">
+        
+        <img src="https://image.tmdb.org/t/p/w780/lRI9Ky1SMOehn04OqhYJ5hQfgIK.jpg" alt="Charlie Chaplin profile">
+        
+      </div>
+      
+      <!-- Director Header Info -->
+      <div class="outline-box director-title-box">
+        <h1 class="director-name">Charlie Chaplin</h1>
+        <div class="director-meta">
+          
+          <span class="meta-item"><strong>Born:</strong> 1889-04-16 in Walworth, London, England, UK</span>
+          
+          
+          <span class="meta-dot">•</span>
+          <span class="meta-item"><strong>Died:</strong> 1977-12-25</span>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Spacing Break / Section Divider -->
+  <hr class="section-divider">
+  
+  <div class="movie-grid">
+    <!-- Left Column (Bio & Filmography) -->
+    <div class="movie-grid-left">
+      <!-- Biography -->
+      <section class="movie-section prose" aria-labelledby="bio-heading">
+        <p class="eyebrow">Biography</p>
+        <h2 id="bio-heading">About the Director</h2>
+        <div class="bio-content">
+          
+          <p>Charles “Charlie” Chaplin (April 16, 1889 – December 25, 1977) was an English comic actor, film director and composer best-known for his work during the silent film era. He used mime, slapstick and other visual comedy routines, and continued well into the era of the talkies, though his films decreased in frequency by the end of the 1920s. His most famous role was that of The Tramp, which he first played in Kid Auto Races (1914). From 1914 onwards he was writing and directing most of his films, by 1916 he was producing them, and by 1918 he was also composing the music for them. In 1919 he co-founded United Artists. In 1999, the American Film Institute ranked Chaplin the 10th greatest male screen legend of all time.</p>
+          
+        </div>
+      </section>
+      
+      <!-- Complete Filmography -->
+      <section class="movie-section prose" aria-labelledby="filmography-heading">
+        <p class="eyebrow">Filmography</p>
+        <h2 id="filmography-heading">All Movies</h2>
+        
+        <div class="filmography-list">
+          
+          <div class="filmography-row">
+            <div class="filmography-left">
+              <span class="filmography-year">1940</span>
+              <a href="../reviews/the-great-dictator.html" class="filmography-title">
+                The Great Dictator
+              </a>
+              
+              <span class="draft-badge">Draft</span>
+              
+            </div>
+            <div class="filmography-right">
+              
+              <span class="filmography-score">Score: <strong>8.4</strong>/10</span>
+              
+            </div>
+          </div>
+          
+          <div class="filmography-row">
+            <div class="filmography-left">
+              <span class="filmography-year">1936</span>
+              <a href="../reviews/modern-times.html" class="filmography-title">
+                Modern Times
+              </a>
+              
+              <span class="draft-badge">Draft</span>
+              
+            </div>
+            <div class="filmography-right">
+              
+              <span class="filmography-score">Score: <strong>8.5</strong>/10</span>
+              
+            </div>
+          </div>
+          
+          <div class="filmography-row">
+            <div class="filmography-left">
+              <span class="filmography-year">1931</span>
+              <a href="../reviews/city-lights.html" class="filmography-title">
+                City Lights
+              </a>
+              
+              <span class="draft-badge">Draft</span>
+              
+            </div>
+            <div class="filmography-right">
+              
+              <span class="filmography-score">Score: <strong>8.5</strong>/10</span>
+              
+            </div>
+          </div>
+          
+        </div>
+      </section>
+    </div>
+    
+    <!-- Right Column (Featured / Top Movies Sidebar) -->
+    <div class="movie-grid-right">
+      <div class="outline-box related-box">
+        <h3>Top Movies</h3>
+        <p class="sidebar-subtitle">Highest rated movies on this site</p>
+        <div class="related-list">
+          
+          <a href="../reviews/modern-times.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/7uoiKOEjxBBW0AgDGQWrlfGQ90w.jpg" alt="Modern Times poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">Modern Times</span>
+              <span class="related-year">1936</span>
+              
+              <span class="related-score">★ 8.5</span>
+              
+            </div>
+          </a>
+          
+          <a href="../reviews/city-lights.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg" alt="City Lights poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">City Lights</span>
+              <span class="related-year">1931</span>
+              
+              <span class="related-score">★ 8.5</span>
+              
+            </div>
+          </a>
+          
+          <a href="../reviews/the-great-dictator.html" class="related-card">
+            <div class="related-poster">
+              <img src="https://image.tmdb.org/t/p/w780/1QpO9wo7JWecZ4NiBuu625FiY1j.jpg" alt="The Great Dictator poster">
+            </div>
+            <div class="related-info">
+              <span class="related-title">The Great Dictator</span>
+              <span class="related-year">1940</span>
+              
+              <span class="related-score">★ 8.4</span>
+              
+            </div>
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <p class="footer-attribution">Special thanks to <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+        <div class="footer-bottom">
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import builtins
 import datetime
 import os
 import subprocess
@@ -33,6 +34,18 @@ YELLOW = "33"
 BLUE = "34"
 MAGENTA = "35"
 CYAN = "36"
+
+# Custom input function to support global q/quit to exit
+def input(prompt: str = "") -> str:
+    try:
+        val = builtins.input(prompt)
+        if val.strip().lower() in ("q", "quit"):
+            print(color("\nGoodbye!", GREEN))
+            sys.exit(0)
+        return val
+    except (KeyboardInterrupt, EOFError):
+        print(color("\nGoodbye!", GREEN))
+        sys.exit(0)
 
 def print_title(title: str) -> None:
     print("\n" + color("=" * 60, BLUE))
@@ -395,6 +408,7 @@ def preview_review(rev: dict) -> None:
         print(f"Status:          {get_status_color_tag(rev['status'])}")
         print(f"Enjoyment:       {movie.enjoyment_rating or 'TBD'}")
         print(f"Filmmaking:      {movie.filmmaking_rating or 'TBD'}")
+        print(f"Attention:       {movie.attention_rating or 'TBD'}")
         print(f"Word Counts:     Primer: {primer_words} words | Review: {review_words} words")
         print(f"Last Modified:   {datetime.datetime.fromtimestamp(rev['last_modified']).strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"File Path:       {path}")
@@ -561,12 +575,13 @@ def handle_review_actions(rev: dict) -> bool:
         print(f"Status:          {get_status_color_tag(rev['status'])}")
         print(f"Enjoyment:       {movie.enjoyment_rating or 'TBD'}")
         print(f"Filmmaking:      {movie.filmmaking_rating or 'TBD'}")
+        print(f"Attention:       {movie.attention_rating or 'TBD'}")
         print(f"File Path:       {path}")
         print("-" * 60)
         print("1. Quick Look (Preview details & word count)")
         print("2. Open in Texodus (Auto-detects editor / opens in default app)")
         print("3. Toggle Reviewed / Published Status")
-        print("4. Edit Ratings (Enjoyment & Filmmaking)")
+        print("4. Edit Ratings (Enjoyment, Filmmaking & Attention)")
         print("5. Rebuild static site")
         print("6. Back to lists")
         print("-" * 60)
@@ -587,7 +602,8 @@ def handle_review_actions(rev: dict) -> bool:
         elif choice == '4':
             enjoy = input(f"New enjoyment rating [{movie.enjoyment_rating}]: ").strip() or movie.enjoyment_rating
             film = input(f"New filmmaking rating [{movie.filmmaking_rating}]: ").strip() or movie.filmmaking_rating
-            if update_review_metadata(path, {"enjoyment_rating": enjoy, "filmmaking_rating": film}):
+            attn = input(f"New attention rating [{movie.attention_rating}]: ").strip() or movie.attention_rating
+            if update_review_metadata(path, {"enjoyment_rating": enjoy, "filmmaking_rating": film, "attention_rating": attn}):
                 print(color("Ratings updated successfully.", GREEN))
                 rebuild_site()
             input("Press Enter to return...")
@@ -1277,7 +1293,7 @@ def run_interactive() -> None:
         elif choice == '4':
             rebuild_site()
             input("\nPress Enter to continue...")
-        elif choice == '5':
+        elif choice == '5' or choice == 'quit':
             print(color("\nGoodbye!", GREEN))
             break
         else:
@@ -1356,6 +1372,7 @@ def main() -> None:
     r_update.add_argument("slug_or_title", help="Review slug or title")
     r_update.add_argument("--enjoyment", help="Set enjoyment rating")
     r_update.add_argument("--filmmaking", help="Set filmmaking rating")
+    r_update.add_argument("--attention", help="Set attention rating (e.g. 80%)")
     r_update.add_argument("--reviewed", choices=["true", "false"], help="Set reviewed status")
     r_update.add_argument("--rebuild", action="store_true", help="Rebuild the site after update")
     
@@ -1369,6 +1386,7 @@ def main() -> None:
     r_create.add_argument("--year", required=True, help="Release year")
     r_create.add_argument("--enjoyment", default="TBD", help="Enjoyment rating")
     r_create.add_argument("--filmmaking", default="TBD", help="Filmmaking rating")
+    r_create.add_argument("--attention", default="TBD", help="Attention rating (e.g. 80%)")
     r_create.add_argument("--reviewed", action="store_true", help="Mark as reviewed")
     r_create.add_argument("--rebuild", action="store_true", help="Rebuild the site after creation")
     
@@ -1488,6 +1506,7 @@ def main() -> None:
                 print(f"Status:        {get_status_color_tag(target['status'])}")
                 print(f"Enjoyment:     {movie.enjoyment_rating or 'TBD'}")
                 print(f"Filmmaking:    {movie.filmmaking_rating or 'TBD'}")
+                print(f"Attention:     {movie.attention_rating or 'TBD'}")
                 print(f"Last Modified: {datetime.datetime.fromtimestamp(target['last_modified']).strftime('%Y-%m-%d %H:%M:%S')}")
                 
             elif args.subcommand == "open":
@@ -1513,6 +1532,8 @@ def main() -> None:
                     updates["enjoyment_rating"] = args.enjoyment
                 if args.filmmaking is not None:
                     updates["filmmaking_rating"] = args.filmmaking
+                if args.attention is not None:
+                    updates["attention_rating"] = args.attention
                 if args.reviewed is not None:
                     updates["reviewed"] = args.reviewed == "true"
                     
@@ -1544,6 +1565,7 @@ def main() -> None:
                         year=args.year,
                         enjoyment_rating=args.enjoyment,
                         filmmaking_rating=args.filmmaking,
+                        attention_rating=args.attention,
                         reviewed="true" if args.reviewed else "false",
                     ),
                     encoding="utf-8",

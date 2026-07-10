@@ -5,6 +5,7 @@ tmdb_title: The Lego Movie
 year: 2014
 enjoyment_rating: 10
 filmmaking_rating: 8
+attention_rating: 30%
 reviewed: true
 ---
 

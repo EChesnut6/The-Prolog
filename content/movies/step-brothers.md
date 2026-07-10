@@ -1,7 +1,7 @@
 ---
-title: Stepbrothers
-slug: stepbrothers
-tmdb_title: Stepbrothers
+title: Step Brothers
+slug: step-brothers
+tmdb_title: Step Brothers
 year: 2008
 enjoyment_rating: 10
 filmmaking_rating: 7

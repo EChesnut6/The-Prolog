@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import builtins
 from pathlib import Path
 import sys
 
@@ -11,6 +12,18 @@ from src.utils import slugify
 
 CONTENT_DIR = ROOT / "content" / "collections"
 MOVIES_DIR = ROOT / "content" / "movies"
+
+# Custom input function to support global q/quit to exit
+def input(prompt: str = "") -> str:
+    try:
+        val = builtins.input(prompt)
+        if val.strip().lower() in ("q", "quit"):
+            print("\nGoodbye!")
+            sys.exit(0)
+        return val
+    except (KeyboardInterrupt, EOFError):
+        print("\nGoodbye!")
+        sys.exit(0)
 
 
 def main() -> None:

@@ -10,6 +10,12 @@ reviewed: false
 
 ## Primer
 
+#### The Premise
+A young up and coming pop idol decides to try her hand at acting.
+
+#### The Essentials
+trailer? It's in Japanese, but you don't have to do it that way. 
+
 This is like a prime psychological thriller. If you really like *Black Swan* then you'll really like this. This is a pretty unique anime from my perspective. It's not horny really, if you find it so you probably need help. It covers a lot of really difficult and intense subjects, especially as they relate to the positions that young women in entertainment are usually put in.
 
 #### Japan
